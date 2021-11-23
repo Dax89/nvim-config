@@ -1,5 +1,6 @@
-(import-macros {: plugin-setup} "macros")
+(import-macros {: plugin-setup : nv-cmd} "macros")
 
+(plugin-setup stickybuf setup)
 (plugin-setup colorizer setup)
 (plugin-setup trouble setup)
 (plugin-setup lspkind init)

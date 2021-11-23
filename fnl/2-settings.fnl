@@ -33,7 +33,7 @@
   :splitbelow true                          ; Put new windows below current
   :splitright true                          ; Put new windows right of current
   :termguicolors true                       ; True color support
-  :list true                                ; Show some invisible characters (tabs...)
+  ;:list true                               ; Show some invisible characters (tabs...)
   :number true                              ; Print line number
   :wrap false                               ; Disable line wrap
   nil)

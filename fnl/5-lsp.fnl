@@ -52,6 +52,8 @@
 (fn setup-servers []
   (local SERVERS ["pyright" "tsserver" "svelte" "sumneko_lua" "clangd"])
   (local lspinstaller (require :nvim-lsp-installer))
+  (local aerial (require :aerial))
+  (local utils (require :utils))
   (var installedcount 0)
 
   (collect [_ name (ipairs SERVERS)]
@@ -64,10 +66,10 @@
                  (set installedcount (+ installedcount 1))))))
 
   (lspinstaller.on_server_ready (fn [server]
-                                  (var opts { })
+                                  (var opts {:on_attach aerial.on_attach})
 
                                   (match server.name
-                                    "sumneko_lua" (set opts (setup-lsp-sumneko_lua)))
+                                    "sumneko_lua" (set opts (utils.merge-tables opts (setup-lsp-sumneko_lua))))
 
                                   (server:setup opts)
 

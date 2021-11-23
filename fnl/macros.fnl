@@ -39,11 +39,11 @@
     ((. p# ,(tostring func)) ,...)))
 
 
-{ : use-pkg
-  : nv-cmd
-  : nv-keys
-  : nv-fn
-  : nv-opt
-  : with-require
-  : with-require-as
-  : plugin-setup }
+{: use-pkg
+ : nv-cmd
+ : nv-keys
+ : nv-fn
+ : nv-opt
+ : with-require
+ : with-require-as
+ : plugin-setup}

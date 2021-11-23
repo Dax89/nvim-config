@@ -20,7 +20,7 @@
   ("n" "<F5>" ":NvimTreeRefresh<CR>"        { :noremap true })
   ("n" "<F6>" ":FloatermToggle<CR>"         { :noremap true })
   ("n" "<F7>" ":NvimTreeToggle<CR>"         { :noremap true })
-  ("n" "<F8>" ":Vista!!<CR>"                { :noremap true })
+  ("n" "<F8>" ":AerialToggle!<CR>"          { :noremap true })
   ("n" "<F9>" ":LspTroubleToggle<CR>"       { :noremap true })
   ("n" "<C-p>" ":Telescope find_files<CR>"  { :noremap true })
   ("n" "<C-A-p>" ":Telescope live_grep<CR>" { :noremap true }))
