@@ -30,7 +30,6 @@
   (use-pkg "williamboman/nvim-lsp-installer")
   (use-pkg "hrsh7th/nvim-compe")
   (use-pkg "norcalli/nvim-colorizer.lua")
-  (use-pkg "pappasam/papercolor-theme-slim")
   ;(use-pkg "mhartington/oceanic-next")
   (use-pkg "folke/lsp-trouble.nvim")
   (use-pkg "windwp/nvim-autopairs")
@@ -41,6 +40,7 @@
   (use-pkg "nvim-telescope/telescope.nvim"   {:requires [[:nvim-lua/popup.nvim] [:nvim-lua/plenary.nvim]]})
 
   ; VimL
+  (use-pkg "pappasam/papercolor-theme-slim")
   (use-pkg "easymotion/vim-easymotion")
   (use-pkg "voldikss/vim-floaterm")
   (use-pkg "mhinz/vim-startify")
