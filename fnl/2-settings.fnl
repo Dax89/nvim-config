@@ -1,10 +1,6 @@
 (import-macros {: nv-opt : nv-cmd} "macros")
 
 (nv-opt g
-  ; Theme Settings
-  :oceanic_next_terminal_italic 1
-  :oceanic_next_terminal_bold 1
-
   ; Editor Settings
   :mapleader " "
 
@@ -45,7 +41,7 @@
 
 (nv-cmd
   ; Color Scheme
-  "colorscheme OceanicNext"
+  "colorscheme PaperColorSlim"
   "syntax on"
 
   ; General Settings
