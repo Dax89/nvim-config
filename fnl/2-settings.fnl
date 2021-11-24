@@ -1,4 +1,6 @@
-(import-macros {: nv-opt : nv-cmd} "macros")
+(import-macros {: plugin-setup : nv-opt : nv-cmd} "macros")
+
+(plugin-setup github-theme setup)
 
 (nv-opt g
   ; Editor Settings
@@ -41,7 +43,6 @@
 
 (nv-cmd
   ; Color Scheme
-  "colorscheme PaperColorSlim"
   "syntax on"
 
   ; General Settings

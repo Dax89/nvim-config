@@ -23,6 +23,7 @@
   ("n" "<F8>" ":AerialToggle!<CR>"          { :noremap true })
   ("n" "<F9>" ":LspTroubleToggle<CR>"       { :noremap true })
   ("n" "<C-p>" ":Telescope find_files<CR>"  { :noremap true })
+  ("n" "<C-S-p>" ":Telescope aerial<CR>"    { :noremap true })
   ("n" "<C-A-p>" ":Telescope live_grep<CR>" { :noremap true }))
 
 ; Terminal Commands

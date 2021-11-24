@@ -1,9 +1,12 @@
-(import-macros {: plugin-setup : nv-cmd} "macros")
+(import-macros {: with-require : plugin-setup : nv-cmd} "macros")
 
 (plugin-setup stickybuf setup)
 (plugin-setup colorizer setup)
 (plugin-setup trouble setup)
 (plugin-setup lspkind init)
+
+(with-require telescope
+              (telescope.load_extension "aerial"))
 
 (plugin-setup nvim-tree setup
               {:update_focused_file {:enable true}
