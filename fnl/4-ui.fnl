@@ -20,17 +20,16 @@
     (menu#:mount)))
 
 (fn show-packer []
-  (show-menu "Manage Packer" [ "Open Configuration" "-" "Sync" "Clean" "Compile" "-" "Check Health" "Check TS" "Check LSP" "-" "LSP Info"]
+  (show-menu "Manage Packer" [ "Open Configuration" "-" "Sync" "Clean" "-" "Check Health" "Check TS" "Check LSP" "-" "LSP Info"]
     (lambda [item]
       (match item._index
          1 (vim.api.nvim_command (.. ":e " (vim.fn.stdpath "config") "/fnl/config.fnl"))
          3 (vim.api.nvim_command ":PackerSync")
          4 (vim.api.nvim_command ":PackerClean")
-         5 (vim.api.nvim_command ":PackerCompile")
-         7 (vim.api.nvim_command ":checkhealth")
-         8 (vim.api.nvim_command ":checkhealth nvim_treesitter")
-         9 (vim.api.nvim_command ":checkhealth lspconfig")
-        11 (vim.api.nvim_command ":LspInstallInfo")
+         6 (vim.api.nvim_command ":checkhealth")
+         7 (vim.api.nvim_command ":checkhealth nvim_treesitter")
+         8 (vim.api.nvim_command ":checkhealth lspconfig")
+        10 (vim.api.nvim_command ":LspInstallInfo")
         ))))
 
 (vim.api.nvim_set_keymap "n" "<A-p>" (wrap-fn show-packer) { :noremap true })

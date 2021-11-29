@@ -1,6 +1,4 @@
-(import-macros {: plugin-setup : nv-opt : nv-cmd} "macros")
-
-(plugin-setup github-theme setup)
+(import-macros {: nv-opt : nv-cmd} "macros")
 
 (nv-opt g
   ; Editor Settings
@@ -42,10 +40,8 @@
   nil)
 
 (nv-cmd
-  ; Color Scheme
-  "syntax on"
-
   ; General Settings
+  "set termguicolors"
   "set nofoldenable"
   "set noswapfile"
   "set autoindent"
@@ -59,4 +55,8 @@
   "autocmd BufEnter * silent! lcd %:p:h"
   "autocmd BufNewFile,BufRead,BufEnter *.postcss set syntax=scss"
   "au TextYankPost * silent! lua vim.highlight.on_yank()"
+
+  ; Color Scheme
+  "syntax enable"
+  "colorscheme OceanicNext"
   nil)

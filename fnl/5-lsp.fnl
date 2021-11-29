@@ -5,7 +5,7 @@
         :completion_matching_smart_case true
         nil)
 
-(nv-keys ("i" "<Tab>" "compe#complete()" {:noremap false :silent true :expr true}))
+(nv-keys ("i" "<C-Space>" "compe#complete()" {:noremap false :silent true :expr true}))
 
 ; Compe
 (with-require compe
@@ -56,7 +56,7 @@
   (local utils (require :utils))
   (var installedcount 0)
 
-  (collect [_ name (ipairs SERVERS)]
+  (each [_ name (ipairs SERVERS)]
            (do
              (local (ok server) (lspinstaller.get_server name))
              (when (and (= ok true) (= (server:is_installed) false))

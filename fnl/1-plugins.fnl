@@ -19,7 +19,7 @@
   (use-pkg "wbthomason/packer.nvim")     ; Packer can manage itself as an optional plugin
   (use-pkg "rktjmp/hotpot.nvim")         ; Fennel Support
   (use-pkg "MunifTanjim/nui.nvim")       ; UI Component Library
-  (use-pkg "stevearc/stickybuf.nvim")    ; https://github.com/neovim/neovim/issues/12517
+  ;(use-pkg "stevearc/stickybuf.nvim")    ; https://github.com/neovim/neovim/issues/12517
   (use-pkg "kyazdani42/nvim-web-devicons")
   (use-pkg "onsails/lspkind-nvim")
   (use-pkg "kyazdani42/nvim-tree.lua")
@@ -30,8 +30,6 @@
   (use-pkg "williamboman/nvim-lsp-installer")
   (use-pkg "hrsh7th/nvim-compe")
   (use-pkg "norcalli/nvim-colorizer.lua")
-  (use-pkg "projekt0n/github-nvim-theme")
-  ;(use-pkg "mhartington/oceanic-next")
   (use-pkg "folke/lsp-trouble.nvim")
   (use-pkg "windwp/nvim-autopairs")
   (use-pkg "yamatsum/nvim-cursorline")
@@ -41,6 +39,7 @@
   (use-pkg "nvim-telescope/telescope.nvim"   {:requires [[:nvim-lua/popup.nvim] [:nvim-lua/plenary.nvim]]})
 
   ; VimL
+  (use-pkg "mhartington/oceanic-next")
   (use-pkg "easymotion/vim-easymotion")
   (use-pkg "voldikss/vim-floaterm")
   (use-pkg "mhinz/vim-startify")
@@ -52,7 +51,8 @@
   (use-pkg "alaviss/nim.nvim")
   (use-pkg "ziglang/zig.vim")
 
-  ; Lisp
+
+  ; Lisp Support
   (use-pkg "vlime/vlime")
   (use-pkg "kovisoft/paredit")
   nil))
