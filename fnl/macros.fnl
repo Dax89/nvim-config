@@ -7,7 +7,7 @@
 
 (fn nv-cmd [...]
   `(each [_# cmd# (ipairs [,...])]
-     (vim.cmd cmd#)))
+     (vim.api.nvim_command cmd#)))
 
 (fn nv-fn [name ...]
   `((. vim.fn ,(tostring name)) ,...))
@@ -28,16 +28,18 @@
 
 (fn with-require [name ...]
   `(let [,name (require ,(tostring name))]
-    (do ,...)))
+     (do ,...)))
 
 (fn with-require-as [altname name ...]
   `(let [,altname (require ,(tostring name))]
-    (do ,...)))
+     (do ,...)))
 
 (fn plugin-setup [name func ...]
   `(let [p# (require ,(tostring name))]
-    ((. p# ,(tostring func)) ,...)))
+     ((. p# ,(tostring func)) ,...)))
 
+(fn wrap-fn [mod name]
+  (.. ":lua require('" mod "')['" (tostring name) "']()<CR>"))
 
 {: use-pkg
  : nv-cmd
@@ -46,4 +48,5 @@
  : nv-opt
  : with-require
  : with-require-as
- : plugin-setup}
+ : plugin-setup
+ : wrap-fn}

@@ -1,20 +1,20 @@
 (import-macros {: nv-keys } "macros")
 
 (tset vim.g :bufferline {
-  :animation true
-  :auto_hide false
-  :clickable true
-  :closable true
-  :icons true
-  :icon_close_tab ""
-  :icon_close_tab_modified "●"
-  :icon_separator_active "▎"
-  :icon_separator_inactive "▎"
-  :letters "asdfjkl;ghnmxcvbziowerutyqpASDFJKLGHNMXCVBZIOWERUTYQP"
-  :maximum_padding 1
-  :semantic_letters true
-  :tabpages true
-})
+                         :animation true
+                         :auto_hide false
+                         :clickable true
+                         :closable true
+                         :icons true
+                         :icon_close_tab ""
+                         :icon_close_tab_modified "●"
+                         :icon_separator_active "▎"
+                         :icon_separator_inactive "▎"
+                         :letters "asdfjkl;ghnmxcvbziowerutyqpASDFJKLGHNMXCVBZIOWERUTYQP"
+                         :maximum_padding 1
+                         :semantic_letters true
+                         :tabpages true
+                         })
 
 (nv-keys
   ("n" "<Leader>1" ":BufferGoto 1<CR>" { :noremap true :silent true })

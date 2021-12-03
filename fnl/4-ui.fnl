@@ -1,37 +1,18 @@
-(import-macros {: with-require-as} "macros")
-
-(macro wrap-fn [name]
-  (.. ":lua require('4-ui')['" (tostring name) "']()<CR>"))
-
-(macro create-ui [type title options]
-  `(,type {:border {:style "single"
-                    :highlight "FloatBorder"
-                    :text {:top ,title :top_align "left"}}
-           :position "50%" } ,options))
-
-(macro show-menu [title items ?onsubmit]
-  `(with-require-as m# "nui.menu"
-    (local menu# (create-ui m# ,title
-                    {:on_submit ,(or ?onsubmit nil)
-                     :lines (icollect [_# v# (ipairs ,items)]
-                              (if (= v# "-") ; Check for separator
-                                (values (m#.separator))
-                                (values (m#.item v#))))}))
-    (menu#:mount)))
+(import-macros {: wrap-fn : with-require : nv-keys : nv-cmd} "macros")
 
 (fn show-packer []
-  (show-menu "Manage Packer" [ "Open Configuration" "-" "Sync" "Clean" "-" "Check Health" "Check TS" "Check LSP" "-" "LSP Info"]
-    (lambda [item]
-      (match item._index
-         1 (vim.api.nvim_command (.. ":e " (vim.fn.stdpath "config") "/fnl/config.fnl"))
-         3 (vim.api.nvim_command ":PackerSync")
-         4 (vim.api.nvim_command ":PackerClean")
-         6 (vim.api.nvim_command ":checkhealth")
-         7 (vim.api.nvim_command ":checkhealth nvim_treesitter")
-         8 (vim.api.nvim_command ":checkhealth lspconfig")
-        10 (vim.api.nvim_command ":LspInstallInfo")
-        ))))
+  (with-require ui
+                (ui.show-menu "Manage Packer" ["Open Configuration" "-" "Sync" "Clean" "-" "Check Health" "Check TS" "Check LSP" "-" "LSP Info"]
+                              (lambda [item]
+                                (match item._index
+                                  1  (nv-cmd (.. ":e " (vim.fn.stdpath "config") "/fnl/config.fnl"))
+                                  3  (nv-cmd ":PackerSync")
+                                  4  (nv-cmd ":PackerClean")
+                                  6  (nv-cmd ":checkhealth")
+                                  7  (nv-cmd ":checkhealth nvim_treesitter")
+                                  8  (nv-cmd ":checkhealth lspconfig")
+                                  10 (nv-cmd ":LspInstallInfo"))))))
 
-(vim.api.nvim_set_keymap "n" "<A-p>" (wrap-fn show-packer) { :noremap true })
+(nv-keys ("n" "<A-p>" (wrap-fn :4-ui show-packer) { :noremap true }))
 
 {: show-packer}

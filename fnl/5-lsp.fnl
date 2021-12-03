@@ -9,44 +9,44 @@
 
 ; Compe
 (with-require compe
-  (compe.setup {
-    :enabled true
-    :autocomplete true
-    :debug false
-    :min_length 1
-    :preselect "enable"
-    :throttle_time 80
-    :source_timeout 200
-    :incomplete_delay 400
-    :max_abbr_width 100
-    :max_kind_width 100
-    :max_menu_width 100
-    :documentation true
+              (compe.setup {
+                            :enabled true
+                            :autocomplete true
+                            :debug false
+                            :min_length 1
+                            :preselect "enable"
+                            :throttle_time 80
+                            :source_timeout 200
+                            :incomplete_delay 400
+                            :max_abbr_width 100
+                            :max_kind_width 100
+                            :max_menu_width 100
+                            :documentation true
 
-    :source {
-      :path true
-      ;:buffer true
-      :calc true
-      :orgmode true
-      :nvim_lsp true
-      :nvim_lua true
-      :vsnip false
-      :ultisnips true
-      :conjure true
-    }
-}))
+                            :source {
+                                     :path true
+                                     ;:buffer true
+                                     :calc true
+                                     :orgmode true
+                                     :nvim_lsp true
+                                     :nvim_lua true
+                                     :vsnip false
+                                     :ultisnips true
+                                     :conjure true
+                                     }
+                            }))
 
 ; Custom LSP Callbacks
 (fn setup-lsp-sumneko_lua [server]
   {
    :settings {
-      :Lua {
-        :diagnostics {
-          :globals ["vim"] ; Get the language server to recognize the `vim` global
-        }
-      }
-    }
-  })
+              :Lua {
+                    :diagnostics {
+                                  :globals ["vim"] ; Get the language server to recognize the `vim` global
+                                  }
+                    }
+              }
+   })
 
 ; LSPInstaller
 (fn setup-servers []
@@ -57,13 +57,13 @@
   (var installedcount 0)
 
   (each [_ name (ipairs SERVERS)]
-           (do
-             (local (ok server) (lspinstaller.get_server name))
-             (when (and (= ok true) (= (server:is_installed) false))
-               (do
-                 (print (.. "[nvim-lsp-installer]: Installing " name "..."))
-                 (server:install)
-                 (set installedcount (+ installedcount 1))))))
+    (do
+      (local (ok server) (lspinstaller.get_server name))
+      (when (and (= ok true) (= (server:is_installed) false))
+        (do
+          (print (.. "[nvim-lsp-installer]: Installing " name "..."))
+          (server:install)
+          (set installedcount (+ installedcount 1))))))
 
   (lspinstaller.on_server_ready (fn [server]
                                   (var opts {:on_attach aerial.on_attach})

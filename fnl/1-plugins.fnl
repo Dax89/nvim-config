@@ -19,12 +19,12 @@
   (use-pkg "wbthomason/packer.nvim")     ; Packer can manage itself as an optional plugin
   (use-pkg "rktjmp/hotpot.nvim")         ; Fennel Support
   (use-pkg "MunifTanjim/nui.nvim")       ; UI Component Library
-  ;(use-pkg "stevearc/stickybuf.nvim")    ; https://github.com/neovim/neovim/issues/12517
+  ;(use-pkg "stevearc/stickybuf.nvim")   ; https://github.com/neovim/neovim/issues/12517
   (use-pkg "kyazdani42/nvim-web-devicons")
   (use-pkg "onsails/lspkind-nvim")
   (use-pkg "kyazdani42/nvim-tree.lua")
   (use-pkg "romgrk/barbar.nvim")
-  (use-pkg "glepnir/galaxyline.nvim")
+  (use-pkg "nvim-lualine/lualine.nvim")
   (use-pkg "stevearc/aerial.nvim")
   (use-pkg "neovim/nvim-lspconfig")
   (use-pkg "williamboman/nvim-lsp-installer")
@@ -35,6 +35,7 @@
   (use-pkg "yamatsum/nvim-cursorline")
   (use-pkg "ahmedkhalf/project.nvim")
   (use-pkg "kristijanhusak/orgmode.nvim")
+  (use-pkg "VonHeikemen/searchbox.nvim"      {:requires [[:MunifTanjim/nui.nvim]]})
   (use-pkg "nvim-treesitter/nvim-treesitter" {:run ":TSUpdate"})
   (use-pkg "nvim-telescope/telescope.nvim"   {:requires [[:nvim-lua/popup.nvim] [:nvim-lua/plenary.nvim]]})
 
