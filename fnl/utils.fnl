@@ -3,4 +3,13 @@
     (tset t1 k v))
   t1)
 
-{: merge-tables}
+(fn table-to-string [t]
+  (let [s { }]
+    (each [k v (pairs t)]
+      (table.insert s (string.format "%s = %s" 
+                                     k
+                                     (if (= (type v) "string") (.. "\"" v "\"") v))))
+    (.. "{" (table.concat s ", ") "}")))
+
+{: merge-tables
+ : table-to-string}
