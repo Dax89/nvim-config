@@ -5,6 +5,7 @@
 (plugin-setup colorizer setup)
 (plugin-setup trouble setup)
 (plugin-setup lspkind init)
+(plugin-setup dressing setup)
 
 (with-require telescope
               (telescope.load_extension "aerial"))
