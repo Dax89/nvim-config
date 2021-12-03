@@ -25,7 +25,7 @@
   :ignorecase true                          ; Ignore case
   :joinspaces false                         ; No double spaces with join after a dot
   :shiftround true                          ; Round indent
-  :smartcase true                           ; Don"t ignore case with capitals
+  :smartcase true                           ; Don't ignore case with capitals
   :splitbelow true                          ; Put new windows below current
   :splitright true                          ; Put new windows right of current
   :termguicolors true                       ; True color support
@@ -41,7 +41,6 @@
 
 (nv-cmd
   ; General Settings
-  "set termguicolors"
   "set nofoldenable"
   "set noswapfile"
   "set autoindent"

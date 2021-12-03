@@ -18,7 +18,7 @@
   ; Lua
   (use-pkg "wbthomason/packer.nvim")     ; Packer can manage itself as an optional plugin
   (use-pkg "rktjmp/hotpot.nvim")         ; Fennel Support
-  ;(use-pkg "MunifTanjim/nui.nvim")       ; UI Component Library
+  ;(use-pkg "MunifTanjim/nui.nvim")      ; UI Component Library
   (use-pkg "stevearc/dressing.nvim")     ; UI Component Styling
   ;(use-pkg "stevearc/stickybuf.nvim")   ; https://github.com/neovim/neovim/issues/12517
   (use-pkg "kyazdani42/nvim-web-devicons")
