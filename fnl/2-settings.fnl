@@ -29,7 +29,7 @@
 
 (nv-opt o
   ; GUI Specific
-  :guifont "Fira Mono:h14"
+  :guifont "FiraCode Nerd Font Mono:h14"
   nil)
 
 (nv-cmd
