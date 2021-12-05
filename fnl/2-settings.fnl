@@ -57,5 +57,5 @@
 
   ; Color Scheme
   "syntax enable"
-  "colorscheme OceanicNext"
+  "colorscheme catppuccin"
   nil)

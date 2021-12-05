@@ -36,12 +36,13 @@
   (use-pkg "yamatsum/nvim-cursorline")
   (use-pkg "ahmedkhalf/project.nvim")
   (use-pkg "kristijanhusak/orgmode.nvim")
+  (use-pkg "catppuccin/nvim" {:as "catppuccin"})
   (use-pkg "VonHeikemen/searchbox.nvim"      {:requires [[:MunifTanjim/nui.nvim]]})
   (use-pkg "nvim-treesitter/nvim-treesitter" {:run ":TSUpdate"})
   (use-pkg "nvim-telescope/telescope.nvim"   {:requires [[:nvim-lua/popup.nvim] [:nvim-lua/plenary.nvim]]})
 
   ; VimL
-  (use-pkg "mhartington/oceanic-next")
+  ;(use-pkg "mhartington/oceanic-next")
   (use-pkg "easymotion/vim-easymotion")
   (use-pkg "voldikss/vim-floaterm")
   (use-pkg "mhinz/vim-startify")
