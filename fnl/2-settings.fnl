@@ -3,6 +3,7 @@
 (nv-opt g
   ; Editor Settings
   :mapleader " "
+  :maplocalleader ","
 
   ; Plugin Settings
   :startify_custom_header ["  ███╗   ██╗███████╗ ██████╗ ██╗   ██╗██╗███╗   ███╗  "
