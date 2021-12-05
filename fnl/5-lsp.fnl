@@ -1,40 +1,9 @@
-(import-macros {: nv-opt : nv-keys : nv-fn : with-require : with-require-as} "macros")
+(import-macros {: nv-opt : nv-keys : with-require : nv-fn : plugin-setup} "macros")
 
 (nv-opt g
         :completion_matching_strategy_list ["exact" "fuzzy"]
         :completion_matching_smart_case true
         nil)
-
-(nv-keys ("i" "<C-Space>" "compe#complete()" {:noremap false :silent true :expr true}))
-
-; Compe
-(with-require compe
-              (compe.setup {
-                            :enabled true
-                            :autocomplete true
-                            :debug false
-                            :min_length 1
-                            :preselect "enable"
-                            :throttle_time 80
-                            :source_timeout 200
-                            :incomplete_delay 400
-                            :max_abbr_width 100
-                            :max_kind_width 100
-                            :max_menu_width 100
-                            :documentation true
-
-                            :source {
-                                     :path true
-                                     ;:buffer true
-                                     :calc true
-                                     :orgmode true
-                                     :nvim_lsp true
-                                     :nvim_lua true
-                                     :vsnip false
-                                     :ultisnips true
-                                     :conjure true
-                                     }
-                            }))
 
 ; Custom LSP Callbacks
 (fn setup-lsp-sumneko_lua [server]
@@ -67,6 +36,10 @@
 
   (lspinstaller.on_server_ready (fn [server]
                                   (var opts {:on_attach aerial.on_attach})
+
+                                  (with-require lspconfig
+                                                (local capabilities ((. (require :cmp_nvim_lsp) :update_capabilities) (vim.lsp.protocol.make_client_capabilities)))
+                                                ((. (. lspconfig server.name) :setup) {: capabilities}))
 
                                   (match server.name
                                     "sumneko_lua" (set opts (utils.merge-tables opts (setup-lsp-sumneko_lua))))

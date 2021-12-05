@@ -5,5 +5,6 @@ if vim.fn.empty(vim.fn.glob(hotpotpath)) > 0 then
     vim.fn.system({"git", "clone", "https://github.com/rktjmp/hotpot.nvim", hotpotpath})
 end
 
+_G.nvcfg = { }    -- Initialize config namespace
 require("hotpot") -- Bootstrap .fnl support
 require("config") -- Load Configuration

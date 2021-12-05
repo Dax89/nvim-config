@@ -8,7 +8,6 @@
 (fn nv-cmd [...]
   `(each [_# cmd# (ipairs [,...])]
      (vim.api.nvim_command cmd#)))
-
 (fn nv-fn [name ...]
   `((. vim.fn ,(tostring name)) ,...))
 
@@ -44,6 +43,7 @@
 {: use-pkg
  : nv-cmd
  : nv-keys
+ : nv-api
  : nv-fn
  : nv-opt
  : with-require

@@ -18,31 +18,24 @@
   ; Lua
   (use-pkg "wbthomason/packer.nvim")     ; Packer can manage itself as an optional plugin
   (use-pkg "rktjmp/hotpot.nvim")         ; Fennel Support
-  ;(use-pkg "MunifTanjim/nui.nvim")      ; UI Component Library
   (use-pkg "stevearc/dressing.nvim")     ; UI Component Styling
-  ;(use-pkg "stevearc/stickybuf.nvim")   ; https://github.com/neovim/neovim/issues/12517
   (use-pkg "kyazdani42/nvim-web-devicons")
-  (use-pkg "onsails/lspkind-nvim")
   (use-pkg "kyazdani42/nvim-tree.lua")
   (use-pkg "romgrk/barbar.nvim")
   (use-pkg "nvim-lualine/lualine.nvim")
   (use-pkg "stevearc/aerial.nvim")
-  (use-pkg "neovim/nvim-lspconfig")
-  (use-pkg "williamboman/nvim-lsp-installer")
-  (use-pkg "hrsh7th/nvim-compe")
   (use-pkg "norcalli/nvim-colorizer.lua")
-  (use-pkg "folke/lsp-trouble.nvim")
   (use-pkg "windwp/nvim-autopairs")
   (use-pkg "yamatsum/nvim-cursorline")
   (use-pkg "ahmedkhalf/project.nvim")
   (use-pkg "kristijanhusak/orgmode.nvim")
+  (use-pkg "L3MON4D3/LuaSnip")
   (use-pkg "catppuccin/nvim" {:as "catppuccin"})
   (use-pkg "VonHeikemen/searchbox.nvim"      {:requires [[:MunifTanjim/nui.nvim]]})
   (use-pkg "nvim-treesitter/nvim-treesitter" {:run ":TSUpdate"})
   (use-pkg "nvim-telescope/telescope.nvim"   {:requires [[:nvim-lua/popup.nvim] [:nvim-lua/plenary.nvim]]})
 
   ; VimL
-  ;(use-pkg "mhartington/oceanic-next")
   (use-pkg "easymotion/vim-easymotion")
   (use-pkg "voldikss/vim-floaterm")
   (use-pkg "mhinz/vim-startify")
@@ -54,8 +47,18 @@
   (use-pkg "alaviss/nim.nvim")
   (use-pkg "ziglang/zig.vim")
 
+  ; LSP Support
+  (use-pkg "hrsh7th/nvim-cmp")
+  (use-pkg "hrsh7th/cmp-nvim-lsp")
+  (use-pkg "hrsh7th/cmp-path")
+  (use-pkg "neovim/nvim-lspconfig")
+  (use-pkg "folke/lsp-trouble.nvim")
+  (use-pkg "williamboman/nvim-lsp-installer")
+  (use-pkg "onsails/lspkind-nvim")
+  (use-pkg "saadparwaiz1/cmp_luasnip")
 
   ; Lisp Support
+  (use-pkg "Olical/conjure")
   (use-pkg "vlime/vlime")
   (use-pkg "kovisoft/paredit")
   nil))
