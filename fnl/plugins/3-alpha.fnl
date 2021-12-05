@@ -7,11 +7,11 @@
              "  ██║ ╚████║███████╗╚██████╔╝ ╚████╔╝ ██║██║ ╚═╝ ██║  "
              "  ╚═╝  ╚═══╝╚══════╝ ╚═════╝   ╚═══╝  ╚═╝╚═╝     ╚═╝  "])
 
-(local BUTTONS [["e" " > New File"     ":ene <BAR> startinsert <CR>"]
-                ["r" " > Recents"      ":Telescope oldfiles<CR>"]
-                ["u" " > Sync Plugins" ":PackerSync<CR>"]
-                ["x" " > Settings"     ":e $MYVIMRC | :cd %:p:h | split . | wincmd k | pwd<CR> "]
-                ["q" " > Quit NVIM"    ":qa<CR>"]])
+(local BUTTONS [["e" " ➤ New File"     ":ene <BAR> startinsert <CR>"]
+                ["r" " ➤ Recents"      ":Telescope oldfiles<CR>"]
+                ["u" " ➤ Sync Plugins" ":PackerSync<CR>"]
+                ["x" " ➤ Settings"     ":e $MYVIMRC | :cd %:p:h | split . | wincmd k | pwd<CR> "]
+                ["q" " ➤ Quit"         ":qa<CR>"]])
 
 (fn get-footer []
   (let [v (vim.version) datetime (os.date "%d-%m-%Y")]
