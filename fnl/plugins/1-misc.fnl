@@ -1,6 +1,5 @@
-(import-macros {: with-require : plugin-setup : nv-cmd} "macros")
+(import-macros {: with-require : plugin-setup} "macros")
 
-;(plugin-setup stickybuf setup)
 (plugin-setup colorizer setup)
 (plugin-setup trouble setup)
 (plugin-setup lspkind init)
@@ -9,11 +8,11 @@
 (with-require telescope
               (telescope.load_extension "aerial"))
 
- (plugin-setup lualine setup 
-               {:integration {
-                              :nvimtree {
-                                         :enabled true
-                                         :show_roow true}}}) 
+(plugin-setup lualine setup 
+              {:integration {
+                             :nvimtree {
+                                        :enabled true
+                                        :show_roow true}}}) 
 
 (plugin-setup lualine setup
               {:options {:theme "catppuccin"}})

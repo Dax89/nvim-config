@@ -1,11 +1,11 @@
 (import-macros {: wrap-fn : nv-keys : nv-cmd} "macros")
 
 (fn show-packer []
-  (vim.ui.select ["Open Configuration" "Sync Packages" "Clean Packages" "Check Health" "Check TS" "Check LSP" "LSP Info"] 
+  (vim.ui.select [" Settings" " Sync Plugins" "✘ Clean Plugins" "♥ NVIM" "♥ TreeSitter" "♥ LSP" "ǃ Install Info"] 
                  { :prompt "Manage Packer" }
                  (fn [_ idx]
                    (match idx
-                     1 (nv-cmd (.. ":e " (vim.fn.stdpath "config") "/fnl/config.fnl"))
+                     1 (nv-cmd ":e $MYVIMRC | :cd %:p:h | split . | wincmd k | pwd")
                      2 (nv-cmd ":PackerSync")
                      3 (nv-cmd ":PackerClean")
                      4 (nv-cmd ":checkhealth")
