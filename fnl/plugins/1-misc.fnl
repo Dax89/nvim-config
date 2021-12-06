@@ -9,9 +9,8 @@
               (telescope.load_extension "aerial"))
 
 (plugin-setup lualine setup 
-              {:integration {
-                             :nvimtree {
-                                        :enabled true
+              {:sections {:lualine_x ["aerial"] }
+               :integration {:nvimtree {:enabled true
                                         :show_roow true}}}) 
 
 (plugin-setup lualine setup
