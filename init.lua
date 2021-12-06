@@ -5,6 +5,14 @@ if vim.fn.empty(vim.fn.glob(hotpotpath)) > 0 then
     vim.fn.system({"git", "clone", "https://github.com/rktjmp/hotpot.nvim", hotpotpath})
 end
 
-_G.nvcfg = { }    -- Initialize config namespace
+_G.nvcfg = { }       -- Initialize config namespace
+require("impatient") -- Preload impatient
+
+local packercompiled = vim.fn.stdpath("config") .. "/lua/packer_compiled.lua"
+
+if vim.fn.filereadable(packercompiled) == 1 then
+    require("packer_compiled") -- Load & Cache "packer_compiled.lua"
+end
+
 require("hotpot") -- Bootstrap .fnl support
 require("config") -- Load Configuration

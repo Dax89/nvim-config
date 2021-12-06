@@ -7,9 +7,10 @@
 
 (fn packer-startup [usefn]
   (with-require packer
-                (packer.startup {1 usefn :config { :display {:open_fn (fn []
-                                                                        ((. (require :packer.util)
-                                                                            :float) {:border "single"}))}}})))
+                (packer.startup {1 usefn :config {:display {:open_fn (fn []
+                                                                       ((. (require :packer.util)
+                                                                           :float) {:border "single"}))}
+                                                  :compile_path (.. (nv-fn stdpath "config") "/lua/packer_compiled.lua")}})))
 
 (local wasinstalled? (packer-installed?))
 
@@ -23,6 +24,7 @@
     ; Lua
     (use-pkg "wbthomason/packer.nvim")         ; Packer can manage itself
     (use-pkg "rktjmp/hotpot.nvim")             ; Fennel Support
+    (use-pkg "lewis6991/impatient.nvim")       ; https://github.com/neovim/neovim/pull/15436
     (use-pkg "stevearc/dressing.nvim")         ; UI Component Styling
     (use-pkg "kyazdani42/nvim-web-devicons")
     (use-pkg "kyazdani42/nvim-tree.lua")
