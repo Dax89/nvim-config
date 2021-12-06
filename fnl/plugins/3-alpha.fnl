@@ -14,8 +14,8 @@
                 ["q" " ➤ Quit"         ":qa<CR>"]])
 
 (fn get-footer []
-  (let [v (vim.version) datetime (os.date "%d-%m-%Y")]
-    (local version (string.format "NeoVIM %d.%d.%d (API Level %d)" v.major v.minor v.patch v.api_level))
+  (let [v (vim.version) datetime (os.date "%d-%m-%Y") nplugins (length (vim.tbl_keys _G.packer_plugins))]
+    (local version (string.format "NeoVIM %d.%d.%d (API Level %d, %d Plugins)" v.major v.minor v.patch v.api_level nplugins))
     (.. version "  " datetime)))
 
 (with-require alpha 
