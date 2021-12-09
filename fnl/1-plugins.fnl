@@ -63,6 +63,7 @@
     (use-pkg "williamboman/nvim-lsp-installer")
     (use-pkg "onsails/lspkind-nvim")
     (use-pkg "saadparwaiz1/cmp_luasnip")
+    (use-pkg "filipdutescu/renamer.nvim" { :branch "master" :requires [["nvim-lua/plenary.nvim"]]})
 
     ; Lisp Support
     (use-pkg "vlime/vlime")
