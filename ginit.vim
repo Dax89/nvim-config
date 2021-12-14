@@ -1,3 +1,4 @@
 " NVimQt Workaround
-:GuiTabline 0
+:GuiRenderLigatures 1
 :GuiPopupmenu 0
+:GuiTabline 0
