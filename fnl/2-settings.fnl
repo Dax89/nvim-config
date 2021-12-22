@@ -11,6 +11,7 @@
   :completeopt "menuone,noinsert,noselect"  ; Completion options
   :wildmode "list:longest"                  ; Command-line completion mode
   :mouse "a"                                ; Mouse interacts with NeoVim
+  :signcolumn "yes"                         ; LSP Diagnostic column is always visible
   :sidescrolloff 8                          ; Columns of context
   :scrolloff 4                              ; Lines of context
   :cursorline true                          ; Highlight current line
