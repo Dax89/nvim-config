@@ -17,15 +17,26 @@
               }
    })
 
-; LSPInstaller
-(fn setup-servers []
-  (local SERVERS ["pyright" "tsserver" "svelte" "sumneko_lua" "clangd"])
+
+(fn setup-lspconfig-servers []
+  (local customservers ["nimls"])
+  (local lspconfig (require :lspconfig))
+  (local aerial (require :aerial))
+
+  (each [_ name (ipairs customservers)]
+    (let [server (. lspconfig name)]
+      (server.setup {:on_attach aerial.on_attach
+                     :capabilities ((. (require :cmp_nvim_lsp) :update_capabilities) (vim.lsp.protocol.make_client_capabilities))}))))
+
+(fn setup-lspinstaller-servers []
+  (var servers ["pyright" "tsserver" "svelte" "sumneko_lua" "clangd"])
+
   (local lspinstaller (require :nvim-lsp-installer))
   (local aerial (require :aerial))
   (local utils (require :utils))
   (var installedcount 0)
 
-  (each [_ name (ipairs SERVERS)]
+  (each [_ name (ipairs servers)]
     (do
       (local (ok server) (lspinstaller.get_server name))
       (when (and (= ok true) (= (server:is_installed) false))
@@ -49,5 +60,5 @@
                                   (when (> installedcount 0) ; Show LSP Installation Dialog
                                     (vim.api.nvim_command ":LspInstallInfo")))))
 
-(setup-servers)
-
+(setup-lspinstaller-servers)
+(setup-lspconfig-servers)
