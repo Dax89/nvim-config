@@ -29,7 +29,7 @@
                      :capabilities ((. (require :cmp_nvim_lsp) :update_capabilities) (vim.lsp.protocol.make_client_capabilities))}))))
 
 (fn setup-lspinstaller-servers []
-  (var servers ["pyright" "tsserver" "svelte" "sumneko_lua" "clangd"])
+  (var servers ["pyright" "tsserver" "svelte" "sumneko_lua" "cmake" "clangd" "rust_analyzer" "zls"])
 
   (local lspinstaller (require :nvim-lsp-installer))
   (local aerial (require :aerial))
