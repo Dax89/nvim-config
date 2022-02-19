@@ -1,7 +1,6 @@
 (import-macros {: nv-opt : nv-cmd} "macros")
 
 (nv-opt g
-  ; Editor Settings
   :mapleader " "
   :maplocalleader ","
   nil)
@@ -29,12 +28,10 @@
   nil)
 
 (nv-opt o
-  ; GUI Specific
   :guifont "FiraCode Nerd Font Mono:h14"
   nil)
 
 (nv-cmd
-  ; General Settings
   "set nofoldenable"
   "set noswapfile"
   "set autoindent"
@@ -44,11 +41,9 @@
   "set softtabstop=4"
   "set tabstop=4"
 
-  ; Auto Commands
   "autocmd BufEnter * silent! lcd %:p:h"
   "autocmd BufNewFile,BufRead,BufEnter *.postcss set syntax=scss"
   "au TextYankPost * silent! lua vim.highlight.on_yank()"
 
-  ; Color Scheme
   "syntax enable"
   nil)

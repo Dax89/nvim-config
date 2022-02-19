@@ -13,11 +13,10 @@
                                (local snippets [(.. (vim.fn.stdpath "data") "/site/pack/packer/start/friendly-snippets")
                                                 (.. (vim.fn.stdpath "config") "/snippet")])
                                (fromvscode.lazy_load {:paths snippets}))
-                               
+
               (cmp.setup {
                           :snippet {
                                     :expand (lambda [args]
-                                              (print (vim.inspect args))
                                               (luasnip.lsp_expand args.body))}
                           :mapping {
                                     "<C-b>"     (cmp.mapping (cmp.mapping.scroll_docs -4) ["i" "c"])

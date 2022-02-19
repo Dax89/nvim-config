@@ -46,7 +46,6 @@
     (use-pkg "nvim-telescope/telescope.nvim"   {:requires [["nvim-lua/popup.nvim"] ["nvim-lua/plenary.nvim"]]})
 
     ; VimL
-    (use-pkg "puremourning/vimspector")
     (use-pkg "peterhoeg/vim-qml")
     (use-pkg "voldikss/vim-floaterm")
     (use-pkg "pangloss/vim-javascript")
