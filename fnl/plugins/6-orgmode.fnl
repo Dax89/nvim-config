@@ -1,4 +1,4 @@
-(import-macros {: with-require-as : with-require : plugin-setup} "macros")
+(import-macros {: with-require : plugin-setup} "macros")
 
 (with-require orgmode
               (orgmode.setup_ts_grammar)
