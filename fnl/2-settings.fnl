@@ -51,5 +51,4 @@
 
   ; Color Scheme
   "syntax enable"
-  "colorscheme catppuccin"
   nil)

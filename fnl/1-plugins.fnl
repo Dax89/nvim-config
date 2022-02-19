@@ -31,6 +31,7 @@
     (use-pkg "romgrk/barbar.nvim")
     (use-pkg "nvim-lualine/lualine.nvim")
     (use-pkg "stevearc/aerial.nvim")
+    (use-pkg "weilbith/nvim-code-action-menu")  
     (use-pkg "norcalli/nvim-colorizer.lua")
     (use-pkg "windwp/nvim-autopairs")
     (use-pkg "yamatsum/nvim-cursorline")
@@ -40,13 +41,13 @@
     (use-pkg "goolord/alpha-nvim")
     (use-pkg "phaazon/hop.nvim")
     (use-pkg "catppuccin/nvim"                 {:as "catppuccin"})
-    (use-pkg "VonHeikemen/searchbox.nvim"      {:requires [[:MunifTanjim/nui.nvim]]})
+    (use-pkg "VonHeikemen/searchbox.nvim"      {:requires [["MunifTanjim/nui.nvim"]]})
     (use-pkg "nvim-treesitter/nvim-treesitter" {:run ":TSUpdate"})
-    (use-pkg "nvim-telescope/telescope.nvim"   {:requires [[:nvim-lua/popup.nvim] [:nvim-lua/plenary.nvim]]})
+    (use-pkg "nvim-telescope/telescope.nvim"   {:requires [["nvim-lua/popup.nvim"] ["nvim-lua/plenary.nvim"]]})
 
     ; VimL
+    (use-pkg "puremourning/vimspector")
     (use-pkg "peterhoeg/vim-qml")
-    ;(use-pkg "easymotion/vim-easymotion")
     (use-pkg "voldikss/vim-floaterm")
     (use-pkg "pangloss/vim-javascript")
     (use-pkg "evanleck/vim-svelte")
@@ -57,6 +58,7 @@
     (use-pkg "ziglang/zig.vim")
 
     ; LSP Support
+    (use-pkg "rafamadriz/friendly-snippets")
     (use-pkg "hrsh7th/nvim-cmp")
     (use-pkg "hrsh7th/cmp-nvim-lsp")
     (use-pkg "hrsh7th/cmp-path")
@@ -65,7 +67,8 @@
     (use-pkg "williamboman/nvim-lsp-installer")
     (use-pkg "onsails/lspkind-nvim")
     (use-pkg "saadparwaiz1/cmp_luasnip")
-    (use-pkg "filipdutescu/renamer.nvim" { :branch "master" :requires [["nvim-lua/plenary.nvim"]]})
+    (use-pkg "abzcoding/renamer.nvim" {:branch "develop" :requires [["nvim-lua/plenary.nvim"]]})
+    ;(use-pkg "filipdutescu/renamer.nvim" { :branch "master" :requires [["nvim-lua/plenary.nvim"]]}) ; https://github.com/filipdutescu/renamer.nvim/pull/118
 
     ; Lisp Support
     (use-pkg "vlime/vlime")
