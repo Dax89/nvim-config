@@ -1,4 +1,4 @@
-(import-macros {: nv-api : with-require} "macros")
+(import-macros {: nv-api : with-require : with-require-as} "macros")
 
 (with-require cmp
               (local luasnip (require "luasnip"))
@@ -9,9 +9,15 @@
                                                                       1) :sub col col) :match
                                                                 "%s") nil))))
 
+              (with-require-as fromvscode luasnip/loaders/from_vscode
+                               (local snippets [(.. (vim.fn.stdpath "data") "/site/pack/packer/start/friendly-snippets")
+                                                (.. (vim.fn.stdpath "config") "/snippet")])
+                               (fromvscode.lazy_load {:paths snippets}))
+                               
               (cmp.setup {
                           :snippet {
                                     :expand (lambda [args]
+                                              (print (vim.inspect args))
                                               (luasnip.lsp_expand args.body))}
                           :mapping {
                                     "<C-b>"     (cmp.mapping (cmp.mapping.scroll_docs -4) ["i" "c"])
@@ -34,7 +40,8 @@
 
                           :sources (cmp.config.sources {
                                                         1 {:name "nvim_lsp"}
-                                                        2 {:name "luasnip"}
-                                                        3 {:name "path"}
-                                                        4 {:name "orgmode"}})}))
+                                                        2 {:name "nvim_lua"}
+                                                        3 {:name "luasnip"}
+                                                        4 {:name "path"}
+                                                        5 {:name "orgmode"}})}))
 

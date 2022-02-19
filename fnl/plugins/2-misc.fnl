@@ -11,11 +11,9 @@
 
 (plugin-setup lualine setup 
               {:sections {:lualine_x ["aerial"] }
+               :options {:theme "catppuccin"}
                :integration {:nvimtree {:enabled true
                                         :show_roow true}}}) 
-
-(plugin-setup lualine setup
-              {:options {:theme "catppuccin"}})
 
 (plugin-setup nvim-tree setup
               {:update_focused_file {:enable true}
