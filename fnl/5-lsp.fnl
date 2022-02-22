@@ -17,23 +17,25 @@
               }
    })
 
+(fn lsp-onattach [client]
+  (let [aerial (require "aerial") illuminate (require "illuminate")]
+    (aerial.on_attach client)
+    (illiminate.on_attach client)))
 
 (fn setup-lspconfig-servers []
   (local customservers ["nimls"])
-  (local lspconfig (require :lspconfig))
-  (local aerial (require :aerial))
+  (local lspconfig (require "lspconfig"))
 
   (each [_ name (ipairs customservers)]
     (let [server (. lspconfig name)]
-      (server.setup {:on_attach aerial.on_attach
+      (server.setup {:on_attach lsp-onattach
                      :capabilities ((. (require :cmp_nvim_lsp) :update_capabilities) (vim.lsp.protocol.make_client_capabilities))}))))
 
 (fn setup-lspinstaller-servers []
   (var servers ["pyright" "tsserver" "svelte" "sumneko_lua" "cmake" "clangd" "rust_analyzer" "zls"])
 
   (local lspinstaller (require :nvim-lsp-installer))
-  (local aerial (require :aerial))
-  (local utils (require :utils))
+  (local utils (require "utils"))
   (var installedcount 0)
 
   (each [_ name (ipairs servers)]
@@ -46,7 +48,7 @@
           (set installedcount (+ installedcount 1))))))
 
   (lspinstaller.on_server_ready (fn [server]
-                                  (var opts {:on_attach aerial.on_attach})
+                                  (var opts {:on_attach lsp-onattach })
 
                                   (with-require lspconfig
                                                 (local capabilities ((. (require :cmp_nvim_lsp) :update_capabilities) (vim.lsp.protocol.make_client_capabilities)))

@@ -34,7 +34,7 @@
     (use-pkg "weilbith/nvim-code-action-menu")  
     (use-pkg "norcalli/nvim-colorizer.lua")
     (use-pkg "windwp/nvim-autopairs")
-    (use-pkg "yamatsum/nvim-cursorline")
+    (use-pkg "RRethy/vim-illuminate")
     (use-pkg "ahmedkhalf/project.nvim")
     (use-pkg "nvim-orgmode/orgmode")
     (use-pkg "L3MON4D3/LuaSnip")
