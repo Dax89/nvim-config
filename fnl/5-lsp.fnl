@@ -20,7 +20,7 @@
 (fn lsp-onattach [client]
   (let [aerial (require "aerial") illuminate (require "illuminate")]
     (aerial.on_attach client)
-    (illiminate.on_attach client)))
+    (illuminate.on_attach client)))
 
 (fn setup-lspconfig-servers []
   (local customservers ["nimls"])
