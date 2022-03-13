@@ -5,6 +5,7 @@
 (plugin-setup lspkind init)
 (plugin-setup dressing setup)
 (plugin-setup renamer setup)
+(plugin-setup aerial setup {})
 
 (with-require telescope
               (telescope.load_extension "aerial"))
