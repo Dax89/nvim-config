@@ -47,6 +47,7 @@
 
     ; VimL
     (use-pkg "peterhoeg/vim-qml")
+    (use-pkg "mechatroner/rainbow_csv")
     (use-pkg "voldikss/vim-floaterm")
     (use-pkg "pangloss/vim-javascript")
     (use-pkg "evanleck/vim-svelte")
