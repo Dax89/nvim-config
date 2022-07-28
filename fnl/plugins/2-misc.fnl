@@ -19,6 +19,7 @@
 (plugin-setup nvim-tree setup
               {:update_focused_file {:enable true}
                :hijack_directories {:enable true}
-               :update_cwd true})
+               :update_cwd true
+               :filters {:dotfiles true}})
 
 (nv-cmd "highlight CursorWord term=underline cterm=underline gui=underline guisp=foreground")

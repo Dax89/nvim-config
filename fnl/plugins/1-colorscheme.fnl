@@ -1,8 +1,8 @@
 (import-macros {: plugin-setup : nv-cmd} "macros")
 
-(plugin-setup catppuccin setup {:styles {:comments  "NONE"
-                                         :functions "NONE"
-                                         :keywords  "NONE"
-                                         :variables "NONE"}})
+(plugin-setup catppuccin setup {:styles {:comments  {}
+                                         :functions {}
+                                         :keywords  {}
+                                         :variables {}}})
 
 (nv-cmd "colorscheme catppuccin")
