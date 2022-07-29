@@ -1,18 +1,30 @@
-local hotpotpath = vim.fn.stdpath("data").."/site/pack/packer/start/hotpot.nvim"
+local function load_modules(p)
+    for _, mod in ipairs(vim.fn.glob(p, nil, true)) do
+        require(string.gsub(mod:match(".+/lua/(.+).lua$"), "/", "."))
+    end
+end
 
-if vim.fn.empty(vim.fn.glob(hotpotpath)) > 0 then
-    print("Could not find hotpot.nvim, cloning new copy to", hotpotpath)
-    vim.fn.system({"git", "clone", "https://github.com/rktjmp/hotpot.nvim", hotpotpath})
+local function get_config_path(p)
+    return vim.fn.stdpath("config") .. p
+end
+
+local function load_config(p)
+    load_modules(get_config_path("/lua/" .. p .. "/*-*.lua"))
 end
 
 _G.nvcfg = { }       -- Initialize config namespace
-require("impatient") -- Preload impatient
 
-local packercompiled = vim.fn.stdpath("config") .. "/lua/packer_compiled.lua"
+pcall(require, "impatient")       -- Preload impatient (if installed)
+pcall(require, "packer_compiled") -- Load & Cache "packer_compiled.lua" (if exists)
 
-if vim.fn.filereadable(packercompiled) == 1 then
-    require("packer_compiled") -- Load & Cache "packer_compiled.lua"
+local instplugins, configs  = _G["packer_plugins"], { }
+
+if type(instplugins) == "table" and #vim.tbl_keys(instplugins) > 0 then
+    configs = {"core", "plugins"}
+else
+    configs = {"core"}
 end
 
-require("hotpot") -- Bootstrap .fnl support
-require("config") -- Load Configuration
+for _, c in pairs(configs) do
+    load_config(c)
+end
