@@ -1,14 +1,12 @@
+require("nvim-web-devicons").setup()
 require("colorizer").setup()
 require("trouble").setup()
 require("dressing").setup()
 require("renamer").setup()
-require("aerial").setup()
+require("which-key").setup()
 require("lspkind").init()
 
-require("telescope").load_extension("aerial")
-
 require("lualine").setup({
-    sections = {lualine_x = {"aerial"}},
     options = {theme = "catppuccin"},
     integration = {nvimtree = {enabled = true, show_root = true}}
 })

@@ -4,7 +4,8 @@ common.set_options("g", {
     bufferline = {
         maximum_padding = 1,
         auto_hide = false,
-        icons = "both"
+        icons = "both",
+        exclude_ft = {"qf"} -- Hide 'quickfix' windows
     }
 })
 

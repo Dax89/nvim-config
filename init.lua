@@ -20,7 +20,7 @@ pcall(require, "packer_compiled") -- Load & Cache "packer_compiled.lua" (if exis
 local instplugins, configs  = _G["packer_plugins"], { }
 
 if type(instplugins) == "table" and #vim.tbl_keys(instplugins) > 0 then
-    configs = {"core", "plugins"}
+    configs = {"core", "plugins", "config"}
 else
     configs = {"core"}
 end

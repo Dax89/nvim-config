@@ -39,11 +39,13 @@ packer_startup({
     "wbthomason/packer.nvim",         -- Packer can manage itself
     "lewis6991/impatient.nvim",       -- https://github.com/neovim/neovim/pull/15436
     "stevearc/dressing.nvim",         -- UI Component Styling
+    "folke/which-key.nvim",
+    "nvim-lua/plenary.nvim",
     "kyazdani42/nvim-web-devicons",
     "kyazdani42/nvim-tree.lua",
     "romgrk/barbar.nvim",
     "nvim-lualine/lualine.nvim",
-    "stevearc/aerial.nvim",
+    "kevinhwang91/nvim-bqf",
     "weilbith/nvim-code-action-menu",
     "norcalli/nvim-colorizer.lua",
     "windwp/nvim-autopairs",
@@ -53,7 +55,6 @@ packer_startup({
     "L3MON4D3/LuaSnip",
     "goolord/alpha-nvim",
     "phaazon/hop.nvim",
-    "LinArcX/telescope-command-palette.nvim",
     {"catppuccin/nvim",                 as = "catppuccin"},
     {"nvim-treesitter/nvim-treesitter", run = ":TSUpdate"},
     {"Shatur/neovim-cmake",             requires = {{"mfussenegger/nvim-dap"}, {"nvim-lua/plenary.nvim"}}},
@@ -72,7 +73,13 @@ packer_startup({
     "alaviss/nim.nvim",
     "ziglang/zig.vim",
 
+    -- DAP Support
+    "mfussenegger/nvim-dap",
+    "rcarriga/nvim-dap-ui",
+
     -- LSP Support
+    "simrat39/symbols-outline.nvim",
+    "glepnir/lspsaga.nvim",
     "rafamadriz/friendly-snippets",
     "hrsh7th/nvim-cmp",
     "hrsh7th/cmp-nvim-lsp",
@@ -83,6 +90,10 @@ packer_startup({
     "onsails/lspkind-nvim",
     "saadparwaiz1/cmp_luasnip",
     {"filipdutescu/renamer.nvim", branch = "master", requires = {{"nvim-lua/plenary.nvim"}}},
+
+    -- External packages
+    "williamboman/mason.nvim",
+    "williamboman/mason-lspconfig.nvim"
 })
 
 

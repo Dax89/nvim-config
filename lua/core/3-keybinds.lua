@@ -1,41 +1,39 @@
 local common = require("core.common")
 
-common.map_keys({
-    -- General
-    {"n", "<Up>",      "<Nop>",     {noremap = true}},
-    {"n", "<Down>",    "<Nop>",     {noremap = true}},
-    {"n", "<Left>",    "<Nop>",     {noremap = true}},
-    {"n", "<Right>",   "<Nop>",     {noremap = true}},
-    {"n", "<Space>",   "<Nop>",     {noremap = true}},
-    {"n", "<C-n>",     "<Nop>",     {noremap = true}},
-    {"n", "<F10>",     "zA",        {noremap = true}},
-    {"i", "<F10>",     "zA",        {noremap = true}},
-    {"i", "<C-n>",     "<Nop>",     {noremap = true}},
-    {"o", "<F10>",     "zA",        {noremap = true}},
-    {"v", "<F10>",     "zA",        {noremap = true}},
-    {"n", "<Leader>a", "gg0VG",     {noremap = true}},
-    {"n", "<C-Tab>",   ":bn<CR>",   {noremap = true}},
-    {"n", "<C-S-Tab>", ":bp<CR>",   {noremap = true}},
+-- General
+common.map("<Up>", "<Nop>", "n")
+common.map("<Down>", "<Nop>", "n")
+common.map("<Left>", "<Nop>", "n")
+common.map("<Right>", "<Nop>", "n")
+common.map("<Space>", "<Nop>", "n")
+common.map("<C-n>", "<Nop>", "n")
+common.map("<F10>", "zA", "n")
+common.map("<F10>", "zA", "i")
+common.map("<C-n>", "<Nop>", "i")
+common.map("<F10>", "zA", "o")
+common.map("<F10>", "zA", "v")
+common.map("<Leader>a", "gg0VG", "n")
+common.map("<C-Tab>", ":bn<CR>", "n")
+common.map("<C-S-Tab>", ":bp<CR>", "n")
 
-    -- Plugins
-    {"n", "<A-Enter>", ":CodeActionMenu<CR>",            {noremap = true}},
-    {"n", "<F5>",      ":NvimTreeRefresh<CR>",           {noremap = true}},
-    {"n", "<F6>",      ":FloatermToggle<CR>",            {noremap = true}},
-    {"n", "<F7>",      ":NvimTreeToggle<CR>",            {noremap = true}},
-    {"n", "<F8>",      ":AerialToggle!<CR>",             {noremap = true}},
-    {"n", "<F9>",      ":Telescope command_palette<CR>", {noremap = true}},
-    {"n", "<C-p>",     ":Telescope find_files<CR>",      {noremap = true}},
-    {"n", "<C-S-r>",   ":Telescope oldfiles<CR>",        {noremap = true}},
-    {"n", "<C-S-p>",   ":Telescope aerial<CR>",          {noremap = true}},
-    {"n", "<C-A-p>",   ":Telescope live_grep<CR>",       {noremap = true}},
+-- Plugins
+common.map("<A-Enter>", ":CodeActionMenu<CR>", "n")
+common.map("<F6>", ":FloatermToggle<CR>", "n")
+common.map("<F7>", ":NvimTreeToggle<CR>", "n")
+common.map("<C-k>", ":Telescope find_files<CR>", "n")
+common.map("<C-S-r>", ":Telescope oldfiles<CR>", "n")
+common.map("<C-S-k>", ":Telescope live_grep<CR>", "n")
+common.map("<F2>", ":lua require('renamer').rename()<CR>", "i")
+common.map("<F2>", ":lua require('renamer').rename()<CR>", "n")
+common.map("<F2>", ":lua require('renamer').rename()<CR>", "v")
+common.map("<F6>", "<C-\\><C-n>:FloatermToggle<CR>", "t")
 
-    -- Renamer
-    {"i", "<F2>", "<CMD>lua require('renamer').rename()<CR>", {noremap = true, silent = true}},
-    {"n", "<F2>", "<CMD>lua require('renamer').rename()<CR>", {noremap = true, silent = true}},
-    {"v", "<F2>", "<CMD>lua require('renamer').rename()<CR>", {noremap = true, silent = true}},
+-- LSP
+common.map("<S-Enter>", ":Lspsaga lsp_finder<CR>", "n")
+common.map("<A-Enter>", ":Lspsaga code_action<CR>", "n")
+common.map("<C-F7>", ":SymbolsOutline<CR>", "n")
 
-    -- Terminal Commands
-    {"t", "<F6>", "<C-\\><C-n>:FloatermToggle<CR>", {noremap = true}}
-})
-
-
+-- DAP
+common.map("<F9>", ":DapToggleBreakpoint<CR>", "n")
+common.map("<F10>", ":DapStepOver<CR>", "n")
+common.map("<F11>", ":DapStepInto<CR>", "n")

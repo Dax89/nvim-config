@@ -10,12 +10,14 @@ local LOGO = {
 }
 
 local BUTTONS = {
-    {"e", " ➤ New File",     ":ene <BAR> startinsert <CR>"},
-    {"r", " ➤ Recents",      ":Telescope oldfiles<CR>"},
-    {"p", "★ ➤ Projects",     ":Telescope projects<CR>"},
-    {"u", " ➤ Sync Plugins", ":PackerSync<CR>"},
-    {"x", " ➤ Settings",     ":e $MYVIMRC | :cd %:p:h | split . | wincmd k | pwd<CR> "},
-    {"q", " ➤ Quit",         ":qa<CR>"},
+    {"Files & Projects"},
+    {"e", " ➤ New File",      ":ene <BAR> startinsert <CR>"},
+    {"n", " ➤ New Project",   common.wrap_fn("config.ide.project", "select_language")},
+    {"r", " ➤ Recents Files", ":Telescope oldfiles<CR>"},
+    {"p", "★ ➤ Projects",      ":Telescope projects<CR>"},
+    {"Settings & Plugins"},
+    {"u", " ➤ Sync Plugins",  ":PackerSync<CR>"},
+    {"x", " ➤ Settings",      ":e $MYVIMRC | :cd %:p:h | split . | wincmd k | pwd<CR> "},
 }
 
 local alpha, dashboard = require("alpha"), require("alpha.themes.dashboard")
@@ -40,9 +42,16 @@ dashboard.section.buttons.val = function()
     local res = { }
 
     for _, buttons in ipairs(BUTTONS) do
-        local b = dashboard.button(unpack(buttons))
-        b.opts.hl = "Function"
-        b.opts.hl_shortcut = "Type"
+        local b = nil
+
+        if #buttons == 1 then
+            b = {type = "text", val = buttons[1], opts = {hl = "SpecialComment", position = "center"}}
+        else
+            b = dashboard.button(unpack(buttons))
+            b.opts.hl = "Function"
+            b.opts.hl_shortcut = "Type"
+        end
+
         table.insert(res, b)
     end
 

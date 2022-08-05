@@ -18,60 +18,35 @@ local function setup_lsp_sumneko_lua()
     }
 end
 
-local function lsp_onattach(client)
-    local aerial, illuminate = require("aerial"), require("illuminate")
-    aerial.on_attach(client)
-    illuminate.on_attach(client)
-end
-
-local function setup_lspconfig_servers()
-    local CUSTOM_SERVERS = {"nimls"}
-    local lspconfig = require("lspconfig")
-
-    for _, name in ipairs(CUSTOM_SERVERS) do
-        lspconfig[name].setup({
-            on_attach = lsp_onattach,
-            capabilities = require("cmp_nvim_lsp").update_capabilities(vim.lsp.protocol.make_client_capabilities())
-        })
-    end
-end
-
 local CUSTOM_LSP_CALLBACKS = {
     sumneko_lua =  setup_lsp_sumneko_lua
 }
 
-local function setup_lspinstaller_servers()
-    local SERVERS = {"pyright", "tsserver", "svelte", "sumneko_lua", "cmake", "clangd", "zls"}
-    local lspinstaller, installedcount  = require("nvim-lsp-installer"), 0
+local CUSTOM_SERVERS = {"nimls"}
 
-    for _, name in ipairs(SERVERS) do
-        local ok, server = lspinstaller.get_server(name)
-
-        if ok and not server:is_installed() then
-            print("[nvim-lsp-installer]: Installing " .. name .. "...")
-            server:install()
-            installedcount = installedcount + 1
-        end
-    end
-
-    lspinstaller.on_server_ready(function(server)
-        local lspconfig, opts = require("lspconfig"), {on_attach = lsp_onattach}
-
-        lspconfig[server.name]:setup({
-            capabilities = require("cmp_nvim_lsp").update_capabilities(vim.lsp.protocol.make_client_capabilities())
-        })
-
-        if CUSTOM_LSP_CALLBACKS[server.name] then
-            opts = common.merge_tables(opts, CUSTOM_LSP_CALLBACKS[server.name]())
-        end
-
-        server:setup(opts)
-
-        if installedcount > 0 then
-            vim.api.nvim_command(":LspInstallInfo")
-        end
-    end)
+local function lsp_onattach(client)
+    local illuminate = require("illuminate")
+    illuminate.on_attach(client)
 end
 
-setup_lspinstaller_servers()
-setup_lspconfig_servers()
+local function setup_servers()
+    local installedservers = require("mason-lspconfig").get_installed_servers()
+    local lspconfig = require("lspconfig")
+
+    for _, name in ipairs(vim.list_extend(installedservers, CUSTOM_SERVERS)) do
+        local options = {
+            on_attach = lsp_onattach,
+            capabilities = require("cmp_nvim_lsp").update_capabilities(vim.lsp.protocol.make_client_capabilities())
+        }
+
+        if CUSTOM_LSP_CALLBACKS[name] then
+            options = vim.tbl_extend("force", options, CUSTOM_LSP_CALLBACKS[name]())
+        end
+
+        lspconfig[name].setup(options)
+    end
+end
+
+setup_servers()
+require("lspsaga").init_lsp_saga()
+
