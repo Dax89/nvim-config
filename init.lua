@@ -1,3 +1,5 @@
+local runtime = require("config.runtime")
+
 local function load_modules(p)
     for _, mod in ipairs(vim.fn.glob(p, nil, true)) do
         require(string.gsub(mod:match(".+/lua/(.+).lua$"), "/", "."))
@@ -12,8 +14,7 @@ local function load_config(p)
     load_modules(get_config_path("/lua/" .. p .. "/*-*.lua"))
 end
 
-_G.nvcfg = { }       -- Initialize config namespace
-
+runtime.init()
 pcall(require, "impatient")       -- Preload impatient (if installed)
 pcall(require, "packer_compiled") -- Load & Cache "packer_compiled.lua" (if exists)
 

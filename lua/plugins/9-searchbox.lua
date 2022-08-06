@@ -2,12 +2,20 @@ local common = require("core.common")
 
 require("searchbox").setup()
 
-common.map_keys({
-    -- Find
-    {"n", "/", "<CMD>lua require('searchbox').match_all({clear_matches = true})<CR>",                           {noremap = true}},
-    {"v", "/", "y<ESC><CMD>lua require('searchbox').match_all({clear_matches = true, visual_mode = true})<CR>", {noremap = true}},
+-- Find
+common.map("/", function()
+    require("searchbox").match_all({clear_matches = true})
+end, "n")
 
-    -- Replace
-    {"n", "&", "<CMD>lua require('searchbox').replace()<CR>", {noremap = true}},
-    {"v", "&", "<CMD>lua require('searchbox').replace()<CR>", {noremap = true}},
-})
+common.map("/", function()
+    require("searchbox").match_all({clear_matches = true, visual_mode = true})
+end, "v")
+
+-- Replace
+common.map("&", function()
+    require("searchbox").replace()
+end, "n")
+
+common.map("&", function()
+    require("searchbox").replace()
+end, "v")

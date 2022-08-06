@@ -6,43 +6,48 @@ common.set_options("g", {
 })
 
 common.set_options("opt", {
-    clipboard = "unnamedplus",                 -- Use System Clipboard
-    completeopt = "menuone,noinsert,noselect", -- Completion options
-    wildmode = "list:longest",                 -- Command-line completion mode
+    -- General
     mouse = "a",                               -- Mouse interacts with NeoVim
+    clipboard = "unnamedplus",                 -- Use System Clipboard
+    swapfile = false,                          -- Don"t use swapfile
+    completeopt = "menuone,noinsert,noselect", -- Completion options
+
+    -- Neovim UI
+    number = true,                             -- Print line number
+    showmatch = true,                          -- Highlight matching parenthesis
+    foldmethod = "marker",                     -- Enable folding
+    splitbelow = true,                         -- Put new windows below current
+    splitright = true,                         -- Put new windows right of current
+    ignorecase = true,                         -- Ignore case
+    smartcase = true,                          -- Don"t ignore case with capitals
+    termguicolors = true,                      -- True color support
+    laststatus = 3,                            -- Set global statusline
     signcolumn = "yes",                        -- LSP Diagnostic column is always visible
     sidescrolloff = 8,                         -- Columns of context
     scrolloff = 4,                             -- Lines of context
     cursorline = true,                         -- Highlight current line
-    hidden = true,                             -- Enable modified buffers in background
-    ignorecase = true,                         -- Ignore case
     joinspaces = false,                        -- No double spaces with join after a dot
-    shiftround = true,                         -- Round indent
-    smartcase = true,                          -- Don't ignore case with capitals
-    splitbelow = true,                         -- Put new windows below current
-    splitright = true,                         -- Put new windows right of current
-    termguicolors = true,                      -- True color support
-    -- list = true,                            -- Show some invisible characters (tabs...)
-    number = true,                             -- Print line number
     wrap = false,                              -- Disable line wrap
+
+    -- Tabs, indent
+    expandtab = true,                          -- Use spaces instead of tabs
+    shiftwidth = 4,                            -- Shift 4 spaces when tab
+    softtabstop = 4,                           -- 4 spaces == 1 tab
+    tabstop = 4,                               -- 1 tab == 4 spaces
+    smartindent = true,                        -- Autoindent new lines
+    shiftround = true,                         -- Round indent
+
+    -- Memory, CPU
+    lazyredraw = true,                         -- Faster scrolling
+    hidden = true,                             -- Enable modified buffers in background
+    history = 100,                             -- Remember N lines in history
+
+    wildmode = "longest,full",                 -- Command-line completion mode
 })
 
 common.set_options("o", {
     guifont = "FiraCode Nerd Font Mono:h14"
 })
 
-common.exec_commands({
-  "set noswapfile",
-  "set autoindent",
-  "set expandtab",
-  "set shiftwidth=4",
-  "set smartindent",
-  "set softtabstop=4",
-  "set tabstop=4",
-
-  "autocmd BufEnter * silent! lcd %:p:h",
-  "autocmd BufNewFile,BufRead,BufEnter *.postcss set syntax=scss",
-  "au TextYankPost * silent! lua vim.highlight.on_yank()",
-  "syntax enable",
-  "highlight CursorWord term=underline cterm=underline gui=underline guisp=foreground",
-})
+vim.api.nvim_create_autocmd("TextYankPost", {command = "silent! lua vim.highlight.on_yank()"})
+vim.api.nvim_create_autocmd({"BufNewFile", "BufRead", "BufEnter"}, {command = "set syntax=scss", pattern = "*.postcss"})

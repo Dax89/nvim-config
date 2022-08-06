@@ -37,10 +37,6 @@ local function map(key, cmd, mode, options)
     vim.keymap.set(mode, key, cmd, opts)
 end
 
-local function map_fn(key, fn, options)
-    map(key, wrap_fn(fn[1], fn[2]), options)
-end
-
 local function map_keys(keys)
     for _, key in ipairs(keys) do
         vim.api.nvim_set_keymap(unpack(key))
@@ -66,7 +62,6 @@ end
 
 return {
     map = map,
-    map_fn = map_fn,
     map_keys = map_keys,
     set_options = set_options,
     exec_commands = exec_commands,
