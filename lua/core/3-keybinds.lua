@@ -18,8 +18,12 @@ common.map("<F6>", "<C-\\><C-n>:FloatermToggle<CR>", "t")
 
 -- Navigation
 common.map("<F7>", function()
-    if #require("dap").status() == 0 then -- Check if DAP is not active
-        vim.api.nvim_command(":NvimTreeToggle<CR>", "n")
+    local dap = require("dap")
+
+    if #dap.status() == 0 then
+        vim.api.nvim_command(":NvimTreeToggle")
+    else
+        dap.step_into()
     end
 end, "n")
 
