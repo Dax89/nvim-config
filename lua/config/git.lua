@@ -28,8 +28,6 @@ return {
             {"Show", ":Git"},
             {"Diff", ":Git diff"},
             {"Log", ":Git log"},
-            {"Commit...", ":Git commit"},
-            {"Amend Last Commit", ":Git commit amend"},
             {"Push to master", ":Git push origin master"},
             {"Pull from master", ":Git pull origin master"},
             {"Push to...", push_to_branch},
