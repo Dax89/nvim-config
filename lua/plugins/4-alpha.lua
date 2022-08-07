@@ -60,3 +60,4 @@ end
 
 alpha.setup(dashboard.opts)
 common.exec_commands("autocmd FileType alpha set showtabline=0 | autocmd BufUnload <buffer> set showtabline=2")
+

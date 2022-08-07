@@ -7,11 +7,27 @@ common.set_options("g", {
 
 -- Custom LSP Callbacks
 local function setup_lsp_sumneko_lua()
+    -- Make runtime files discoverable to the server
+    local runtimepath = vim.split(package.path, ";")
+    table.insert(runtimepath, "lua/?.lua")
+    table.insert(runtimepath, "lua/?/init.lua")
+
     return {
         settings = {
             Lua = {
+                runtime = {
+                    version = "LuaJIT",
+                    path = runtimepath
+                },
                 diagnostics = {
                     globals = {"vim"} -- Get the language server to recognize the `vim` global
+                },
+                workspace = {
+                    [vim.fn.expand("$VIMRUNTIME/lua")] = true,
+                    [vim.fn.expand("$VIMRUNTIME/lua/vim/lsp")] = true,
+                },
+                telemetry = {
+                    enable = false
                 }
             }
         }

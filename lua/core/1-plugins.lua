@@ -98,5 +98,5 @@ packer_startup({
 
 
 if not WAS_INSTALLED then
-    vim.api.nvim_command(":PackerInstall")
+    require("packer").sync()
 end

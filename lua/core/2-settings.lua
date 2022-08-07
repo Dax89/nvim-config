@@ -2,7 +2,14 @@ local common = require("core.common")
 
 common.set_options("g", {
     mapleader = " ",
-    maplocalleader = ","
+    maplocalleader = ",",
+
+    bufferline = {
+        maximum_padding = 1,
+        auto_hide = false,
+        icons = "both",
+        exclude_ft = {"qf", "dap-repl"} -- Hide some windows
+    }
 })
 
 common.set_options("opt", {
@@ -48,6 +55,3 @@ common.set_options("opt", {
 common.set_options("o", {
     guifont = "FiraCode Nerd Font Mono:h14"
 })
-
-vim.api.nvim_create_autocmd("TextYankPost", {command = "silent! lua vim.highlight.on_yank()"})
-vim.api.nvim_create_autocmd({"BufNewFile", "BufRead", "BufEnter"}, {command = "set syntax=scss", pattern = "*.postcss"})

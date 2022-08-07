@@ -1,3 +1,21 @@
+local function list_contains(l, v)
+    for _, i in ipairs(l) do
+        if v == i then
+            return true
+        end
+    end
+
+    return false
+end
+
+local function if_installed(module, cb)
+    local ok, m = pcall(require, module)
+
+    if ok then
+        cb(m)
+    end
+end
+
 local function show_select(prompt, choices, mode)
     local m = nil
 
@@ -66,5 +84,7 @@ return {
     set_options = set_options,
     exec_commands = exec_commands,
     wrap_fn = wrap_fn,
-    show_select = show_select
+    show_select = show_select,
+    if_installed = if_installed,
+    list_contains = list_contains
 }
