@@ -38,6 +38,7 @@ local KEYS = {
         ["<C-S-k>"] = ":Telescope live_grep<CR>",
         ["<S-Enter>"] = ":Lspsaga lsp_finder<CR>",
         ["<A-Enter>"] = ":Lspsaga code_action<CR>",
+        ["<A-g>" ] = require("config.git").show_git_commands,
         ["<A-p>" ] = require("config.general").show_general_settings,
         ["<F2>"] = require("renamer").rename,
         ["<F6>"] = ":FloatermToggle<CR>",

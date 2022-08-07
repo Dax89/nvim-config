@@ -21,12 +21,15 @@ require("lualine").setup({
 
 require("nvim-tree").setup({
     hijack_directories = {enable = true},
-    update_focused_file = {enable = true, update_cwd = true},
+
+    update_focused_file = {
+        enable = true,
+        update_cwd = true,
+        ignore_list = {"qf", "dap", "help"}
+    },
+
     filters = {dotfiles = true},
     respect_buf_cwd = true,
-    -- open_on_setup = true,
-    -- open_on_setup_file = true,
-    -- open_on_tab = true,
 })
 
 require("nvim-autopairs").setup({

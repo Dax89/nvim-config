@@ -62,6 +62,7 @@ packer_startup({
     {"nvim-telescope/telescope.nvim",   requires = {{"nvim-lua/popup.nvim"}, {"nvim-lua/plenary.nvim"}}},
 
     -- VimL
+    "tpope/vim-fugitive",
     "peterhoeg/vim-qml",
     "mechatroner/rainbow_csv",
     "voldikss/vim-floaterm",

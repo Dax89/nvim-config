@@ -41,8 +41,7 @@ local CUSTOM_LSP_CALLBACKS = {
 local CUSTOM_SERVERS = {"nimls"}
 
 local function lsp_onattach(client)
-    local illuminate = require("illuminate")
-    illuminate.on_attach(client)
+    require("illuminate").on_attach(client)
 end
 
 local function setup_servers()
