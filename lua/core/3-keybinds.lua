@@ -40,6 +40,7 @@ local KEYS = {
         ["<A-Enter>"] = ":Lspsaga code_action<CR>",
         ["<A-p>" ] = require("config.general").show_general_settings,
         ["<F2>"] = require("renamer").rename,
+        ["<F4>"] = ":ClangdSwitchSourceHeader<CR>",
         ["<F6>"] = ":FloatermToggle<CR>",
         ["<F9>"] = ":DapToggleBreakpoint<CR>",
         ["<F10>"] = ":DapStepOver<CR>",
