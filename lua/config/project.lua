@@ -18,24 +18,34 @@ return {
             {"C/C++", ":CMake create_project"}
         })
     end,
+
     settings = function()
         check_project_action("settings", function(ft)
             common.show_select("Project Settings", ft.settings)
         end)
     end,
+
     build = function()
         check_project_action("build", function(ft)
             ft.build()
         end)
     end,
+
     run = function()
         check_project_action("run", function(ft)
             ft.run()
         end)
     end,
+
     debug = function()
-        check_project_action("debug", function(ft)
-            ft.debug()
-        end)
+        local dap = require("dap")
+
+        if #dap.status() > 0 then
+            dap.continue()
+        else
+            check_project_action("debug", function(ft)
+                ft.debug()
+            end)
+        end
     end
 }

@@ -29,7 +29,9 @@ local KEYS = {
         ["<Leader>-"] = ":BufferClose!<CR>",
         ["<Leader>+"] = ":enew<CR>",
         ["<Leader>p"] = ":BufferPick<CR>",
+        ["<C-F5>"] = require("config.project").run,
         ["<C-F7>"] = ":SymbolsOutline<CR>",
+        ["<C-F8>"] = require("config.project").settings,
         ["<C-n>"] = "<Nop>",
         ["<C-h>"] = ":Telescope oldfiles<CR>",
         ["<C-k>"] = ":Telescope find_files<CR>",
@@ -60,6 +62,24 @@ local KEYS = {
             require("hop").hint_words({direction = require("hop.hint").HintDirection.BEFORE_CURSOR})
         end,
 
+        ["<A-F5>"] = function()
+            local dap = require("dap")
+
+            if #dap.status() > 0 then
+                dap.disconnect()
+            end
+        end,
+
+        ["<F5>"] = function()
+            local dap = require("dap")
+
+            if #dap.status() > 0 then
+                dap.continue()
+            else
+                require("config.project").debug()
+            end
+        end,
+
         ["<F7>"] = function()
             local dap = require("dap")
 
@@ -67,6 +87,16 @@ local KEYS = {
                 vim.api.nvim_command(":NvimTreeToggle")
             else
                 dap.step_into()
+            end
+        end,
+
+        ["<F8>"] = function()
+            local dap = require("dap")
+
+            if #dap.status() > 0 then
+                dap.step_over()
+            else
+                require("config.project").build()
             end
         end
     },
