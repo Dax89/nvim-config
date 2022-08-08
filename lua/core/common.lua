@@ -78,6 +78,17 @@ local function exec_commands(commands)
     end
 end
 
+local function open_folder(path)
+    local Job = require("plenary.job")
+
+    local job = Job:new({
+        command = vim.fn.has("unix") and "xdg-open" or "start",
+        args = {path}
+    })
+
+    job:start()
+end
+
 return {
     map = map,
     map_keys = map_keys,
@@ -86,5 +97,6 @@ return {
     wrap_fn = wrap_fn,
     show_select = show_select,
     if_installed = if_installed,
-    list_contains = list_contains
+    list_contains = list_contains,
+    open_folder = open_folder
 }
