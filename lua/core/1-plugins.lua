@@ -86,7 +86,7 @@ packer_startup({
     "hrsh7th/cmp-nvim-lsp",
     "hrsh7th/cmp-path",
     "neovim/nvim-lspconfig",
-    "folke/lsp-trouble.nvim",
+    "folke/trouble.nvim",
     "williamboman/nvim-lsp-installer",
     "onsails/lspkind-nvim",
     "saadparwaiz1/cmp_luasnip",
