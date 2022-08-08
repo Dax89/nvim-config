@@ -39,7 +39,6 @@ packer_startup({
     "wbthomason/packer.nvim",         -- Packer can manage itself
     "lewis6991/impatient.nvim",       -- https://github.com/neovim/neovim/pull/15436
     "stevearc/dressing.nvim",         -- UI Component Styling
-    "folke/which-key.nvim",
     "nvim-lua/plenary.nvim",
     "kyazdani42/nvim-web-devicons",
     "kyazdani42/nvim-tree.lua",

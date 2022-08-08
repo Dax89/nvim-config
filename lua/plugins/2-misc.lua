@@ -4,12 +4,17 @@ require("trouble").setup()
 require("dressing").setup()
 require("renamer").setup()
 require("hop").setup()
-require("which-key").setup()
 require("searchbox").setup()
 require("lspkind").init()
 
 require("project_nvim").setup()
 require("telescope").load_extension("projects")
+
+require("bqf").setup({
+    preview = {
+        auto_preview = false
+    }
+})
 
 require("lualine").setup({
     options = {
