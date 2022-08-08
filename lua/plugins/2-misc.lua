@@ -10,6 +10,11 @@ require("lspkind").init()
 require("project_nvim").setup()
 require("telescope").load_extension("projects")
 
+local filebrowser = require("telescope").load_extension("file_browser")
+
+-- FIXME: nvim-project's browse project workaround
+require("telescope.builtin").file_browser = filebrowser.file_browser
+
 require("bqf").setup({
     preview = {
         auto_preview = false

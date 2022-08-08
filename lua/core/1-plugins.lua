@@ -54,6 +54,7 @@ packer_startup({
     "L3MON4D3/LuaSnip",
     "goolord/alpha-nvim",
     "phaazon/hop.nvim",
+    "nvim-telescope/telescope-file-browser.nvim",
     {"catppuccin/nvim",                 as = "catppuccin"},
     {"nvim-treesitter/nvim-treesitter", run = ":TSUpdate"},
     {"Shatur/neovim-cmake",             requires = {{"mfussenegger/nvim-dap"}, {"nvim-lua/plenary.nvim"}}},
