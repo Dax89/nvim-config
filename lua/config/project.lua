@@ -25,6 +25,12 @@ return {
         end)
     end,
 
+    cancel = function()
+        check_project_action("cancel", function(ft)
+            ft.cancel()
+        end)
+    end,
+
     build = function()
         check_project_action("build", function(ft)
             ft.build()
