@@ -6,7 +6,6 @@ require("renamer").setup()
 require("hop").setup()
 require("searchbox").setup()
 require("lspkind").init()
-
 require("project_nvim").setup()
 require("telescope").load_extension("projects")
 

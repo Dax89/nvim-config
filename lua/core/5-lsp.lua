@@ -1,4 +1,4 @@
-local common = require("core.common")
+local common = require("config.common")
 
 common.set_options("g", {
     completion_matching_strategy_list = {"exact", "fuzzy"},

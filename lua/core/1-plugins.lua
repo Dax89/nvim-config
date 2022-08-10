@@ -55,6 +55,7 @@ packer_startup({
     "goolord/alpha-nvim",
     "phaazon/hop.nvim",
     "nvim-telescope/telescope-file-browser.nvim",
+    "MunifTanjim/nui.nvim",
     {"catppuccin/nvim",                 as = "catppuccin"},
     {"nvim-treesitter/nvim-treesitter", run = ":TSUpdate"},
     {"Shatur/neovim-cmake",             requires = {{"mfussenegger/nvim-dap"}, {"nvim-lua/plenary.nvim"}}},

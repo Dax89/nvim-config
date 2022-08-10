@@ -1,4 +1,6 @@
-local function list_contains(l, v)
+local M = {}
+
+M.list_contains = function(l, v)
     for _, i in ipairs(l) do
         if v == i then
             return true
@@ -8,7 +10,7 @@ local function list_contains(l, v)
     return false
 end
 
-local function if_installed(module, cb)
+M.if_installed = function(module, cb)
     local ok, m = pcall(require, module)
 
     if ok then
@@ -16,7 +18,7 @@ local function if_installed(module, cb)
     end
 end
 
-local function show_select(prompt, choices, mode)
+M.show_select = function(prompt, choices, mode)
     local m = nil
 
     if mode == "cursor" then
@@ -41,11 +43,11 @@ local function show_select(prompt, choices, mode)
     end)
 end
 
-local function wrap_fn(mod, fn)
+M.wrap_fn = function(mod, fn)
     return string.format(":lua require('%s')['%s']()<CR>", mod, fn)
 end
 
-local function map(key, cmd, mode, options)
+M.map = function(key, cmd, mode, options)
     local opts = {silent = true}
 
     if options then
@@ -55,19 +57,19 @@ local function map(key, cmd, mode, options)
     vim.keymap.set(mode, key, cmd, opts)
 end
 
-local function map_keys(keys)
+M.map_keys = function(keys)
     for _, key in ipairs(keys) do
         vim.api.nvim_set_keymap(unpack(key))
     end
 end
 
-local function set_options(t, options)
+M.set_options = function(t, options)
     for k, v in pairs(options) do
         vim[t][k] = v
     end
 end
 
-local function exec_commands(commands)
+M.exec_commands = function(commands)
     if type(commands) == "string" then
         vim.api.nvim_command(commands)
         return
@@ -78,7 +80,7 @@ local function exec_commands(commands)
     end
 end
 
-local function open_folder(path)
+M.open_folder = function(path)
     local Job = require("plenary.job")
 
     local job = Job:new({
@@ -89,14 +91,4 @@ local function open_folder(path)
     job:start()
 end
 
-return {
-    map = map,
-    map_keys = map_keys,
-    set_options = set_options,
-    exec_commands = exec_commands,
-    wrap_fn = wrap_fn,
-    show_select = show_select,
-    if_installed = if_installed,
-    list_contains = list_contains,
-    open_folder = open_folder
-}
+return M

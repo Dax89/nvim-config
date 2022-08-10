@@ -1,7 +1,7 @@
-local common = require("core.common")
+local M = {}
 
-local function show_general_settings()
-    common.show_select("Quick Actions", {
+M.show_general_settings = function()
+    require("config.common").show_select("Quick Actions", {
         {" Settings", ":e $MYVIMRC | :cd %:p:h | split . | wincmd k"},
         {" Sync Plugins", ":PackerSync"},
         {"↺ Restart LSP", ":LspRestart"},
@@ -10,6 +10,4 @@ local function show_general_settings()
     })
 end
 
-return {
-    show_general_settings = show_general_settings
-}
+return M

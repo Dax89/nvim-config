@@ -1,5 +1,5 @@
 local function map_keys(keytable)
-    local common = require("core.common")
+    local common = require("config.common")
 
     for t, keys in pairs(keytable) do
         for k, act in pairs(keys) do

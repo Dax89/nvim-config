@@ -1,4 +1,4 @@
-local common = require("core.common")
+local common = require("config.common")
 
 local LOGO = {
     "  ███╗   ██╗███████╗ ██████╗ ██╗   ██╗██╗███╗   ███╗  ",
@@ -12,7 +12,7 @@ local LOGO = {
 local BUTTONS = {
     {"Files & Projects"},
     {"e", " ➤ New File",      ":ene <BAR> startinsert <CR>"},
-    {"n", " ➤ New Project",   common.wrap_fn("config.ide.project", "select_language")},
+    {"n", " ➤ New Project",   common.wrap_fn("config.project", "select_language")},
     {"r", " ➤ Recents Files", ":Telescope oldfiles<CR>"},
     {"p", "★ ➤ Projects",      ":Telescope projects<CR>"},
     {"Settings & Plugins"},

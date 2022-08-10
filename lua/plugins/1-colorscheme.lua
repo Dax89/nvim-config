@@ -1,4 +1,4 @@
-local common = require("core.common")
+local common = require("config.common")
 
 require("catppuccin").setup({
     styles = {
