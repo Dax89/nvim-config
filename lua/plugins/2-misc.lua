@@ -10,9 +10,12 @@ require("project_nvim").setup()
 require("telescope").load_extension("projects")
 
 local filebrowser = require("telescope").load_extension("file_browser")
-
 -- FIXME: nvim-project's browse project workaround
 require("telescope.builtin").file_browser = filebrowser.file_browser
+
+require("nvim-treesitter.configs").setup({
+    ensure_installed = { "c", "cpp", "lua", "json", "regex", "python", "svelte", "javascript", "css", "html"},
+})
 
 require("bqf").setup({
     preview = {
