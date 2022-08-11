@@ -54,6 +54,7 @@ local KEYS = {
             require("searchbox").match_all({clear_matches = true})
         end,
 
+        [",w" ] = require("nvim-window").pick,
         [",g" ] = require("config.git").show_git_commands,
 
         [",f"] = function()

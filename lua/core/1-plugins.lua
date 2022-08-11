@@ -61,6 +61,7 @@ packer_startup({
     {"Shatur/neovim-cmake",             requires = {{"mfussenegger/nvim-dap"}, {"nvim-lua/plenary.nvim"}}},
     {"VonHeikemen/searchbox.nvim",      requires = {{"MunifTanjim/nui.nvim"}}},
     {"nvim-telescope/telescope.nvim",   requires = {{"nvim-lua/popup.nvim"}, {"nvim-lua/plenary.nvim"}}},
+    "https://gitlab.com/yorickpeterse/nvim-window",
 
     -- VimL
     "tpope/vim-fugitive",
