@@ -25,13 +25,13 @@ local M = { }
 M.show_git_commands = function()
     require("config.common").show_select("Git", {
         {"Show", ":Git"},
-        {"Diff", ":Git diff"},
-        {"Log", ":Git log"},
         {"Push to master", ":Git push origin master"},
         {"Pull from master", ":Git pull origin master"},
         {"Push to...", push_to_branch},
         {"Pull from ...", pull_from_branch},
         {"Reset", ":Git reset"},
+        {"Diff", ":Git diff"},
+        {"Log", ":Git log"},
     })
 end
 
