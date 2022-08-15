@@ -35,7 +35,6 @@ local KEYS = {
         ["<C-F8>"] = require("config.project").settings,
         ["<C-n>"] = "<Nop>",
         ["<C-h>"] = ":Telescope oldfiles<CR>",
-        ["<C-k>"] = ":Telescope find_files<CR>",
         ["<C-Tab>"] = ":bn<CR>",
         ["<C-S-Tab>"] = ":bp<CR>",
         ["<C-S-k>"] = ":Telescope live_grep<CR>",
@@ -63,6 +62,14 @@ local KEYS = {
 
         [",F"] = function()
             require("hop").hint_words({direction = require("hop.hint").HintDirection.BEFORE_CURSOR})
+        end,
+
+        ["<C-k>"] = function()
+            if require("plenary.path"):new(vim.fn.getcwd(), ".git"):is_dir() then
+                vim.api.nvim_command(":Telescope git_files")
+            else
+                vim.api.nvim_command(":Telescope find_files")
+            end
         end,
 
         ["<A-F5>"] = function()
