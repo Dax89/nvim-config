@@ -57,6 +57,7 @@ packer_startup({
     "nvim-telescope/telescope-file-browser.nvim",
     "MunifTanjim/nui.nvim",
     "nvim-treesitter/nvim-treesitter-context",
+    "numToStr/Comment.nvim",
     {"catppuccin/nvim",                 as = "catppuccin"},
     {"nvim-treesitter/nvim-treesitter", run = ":TSUpdate"},
     {"Shatur/neovim-cmake",             requires = {{"mfussenegger/nvim-dap"}, {"nvim-lua/plenary.nvim"}}},

@@ -6,6 +6,7 @@ require("hop").setup()
 require("searchbox").setup()
 require("lspkind").init()
 require("project_nvim").setup()
+require("Comment").setup()
 require("telescope").load_extension("projects")
 
 local filebrowser = require("telescope").load_extension("file_browser")
