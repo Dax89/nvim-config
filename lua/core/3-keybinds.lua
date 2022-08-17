@@ -42,7 +42,7 @@ local KEYS = {
         ["<A-Enter>"] = ":Lspsaga code_action<CR>",
         ["<A-BS>"] = require("config.project").cancel,
         ["<A-p>" ] = require("config.general").show_general_settings,
-        ["<F2>"] = require("renamer").rename,
+        ["<F2>"] = ":Lspsaga rename<CR>",
         ["<F4>"] = ":ClangdSwitchSourceHeader<CR>",
         ["<F6>"] = ":FloatermToggle<CR>",
         ["<F9>"] = ":DapToggleBreakpoint<CR>",
@@ -112,7 +112,6 @@ local KEYS = {
     },
 
     v = { -- VISUAL
-        ["<F2>"] = require("renamer").rename,
         ["&"] = require("searchbox").replace,
 
         ["/"] = function()
@@ -122,7 +121,7 @@ local KEYS = {
 
     i = { -- INSERT
         ["<C-n>"] = "<Nop>",
-        ["<F2>"] = require("renamer").rename,
+        ["<F2>"] =  ":Lspsaga rename<CR>"
     },
 
     t = { -- TERMINAL

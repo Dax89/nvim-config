@@ -93,7 +93,6 @@ packer_startup({
     "williamboman/nvim-lsp-installer",
     "onsails/lspkind-nvim",
     "saadparwaiz1/cmp_luasnip",
-    {"filipdutescu/renamer.nvim", branch = "master", requires = {{"nvim-lua/plenary.nvim"}}},
 
     -- External packages
     "williamboman/mason.nvim",
