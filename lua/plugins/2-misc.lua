@@ -1,4 +1,5 @@
 require("nvim-web-devicons").setup()
+require("symbols-outline").setup()
 require("colorizer").setup()
 require("trouble").setup()
 require("dressing").setup()
