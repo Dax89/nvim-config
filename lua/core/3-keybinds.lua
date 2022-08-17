@@ -38,6 +38,7 @@ local KEYS = {
         ["<C-Tab>"] = ":bn<CR>",
         ["<C-S-Tab>"] = ":bp<CR>",
         ["<C-S-k>"] = ":Telescope live_grep<CR>",
+        ["<A-S-k>"] = ":Telescope lsp_dynamic_workspace_symbols<CR>",
         ["<S-Enter>"] = ":Lspsaga lsp_finder<CR>",
         ["<A-Enter>"] = ":Lspsaga code_action<CR>",
         ["<A-BS>"] = require("config.project").cancel,
