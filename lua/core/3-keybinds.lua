@@ -54,14 +54,14 @@ local KEYS = {
             require("searchbox").match_all({clear_matches = true})
         end,
 
-        [",w" ] = require("nvim-window").pick,
-        [",g" ] = require("config.git").show_git_commands,
+        ["<leader>w" ] = require("nvim-window").pick,
+        ["<leader>g" ] = require("config.git").show_git_commands,
 
-        [",f"] = function()
+        ["<leader>f"] = function()
             require("hop").hint_words({direction = require"hop.hint".HintDirection.AFTER_CURSOR})
         end,
 
-        [",F"] = function()
+        ["<leader>F"] = function()
             require("hop").hint_words({direction = require("hop.hint").HintDirection.BEFORE_CURSOR})
         end,
 
