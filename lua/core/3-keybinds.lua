@@ -31,6 +31,10 @@ local KEYS = {
         ["<Leader>h"] = ":BufferMovePrevious<CR>",
         ["<Leader>l"] = ":BufferMoveNext<CR>",
         ["<Leader>p"] = ":BufferPick<CR>",
+        ["<leader>s" ] = ":Telescope lsp_document_symbols<CR>",
+        ["<leader>w" ] = require("nvim-window").pick,
+        ["<leader>g" ] = require("config.git").show_git_commands,
+
         ["<C-F5>"] = require("config.project").run,
         ["<C-F6>"] = ":TroubleToggle<CR>",
         ["<C-F7>"] = ":SymbolsOutline<CR>",
@@ -55,9 +59,6 @@ local KEYS = {
         ["/"] = function()
             require("searchbox").match_all({clear_matches = true})
         end,
-
-        ["<leader>w" ] = require("nvim-window").pick,
-        ["<leader>g" ] = require("config.git").show_git_commands,
 
         ["<leader>f"] = function()
             require("hop").hint_words({direction = require"hop.hint".HintDirection.AFTER_CURSOR})
