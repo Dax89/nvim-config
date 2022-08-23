@@ -83,6 +83,7 @@ packer_startup({
     "rcarriga/nvim-dap-ui",
 
     -- LSP Support
+    "p00f/clangd_extensions.nvim",
     "simrat39/symbols-outline.nvim",
     "glepnir/lspsaga.nvim",
     "rafamadriz/friendly-snippets",

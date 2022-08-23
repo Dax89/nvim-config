@@ -7,6 +7,7 @@ require("hop").setup()
 require("searchbox").setup()
 require("lspkind").init()
 require("project_nvim").setup()
+require("clangd_extensions").setup()
 require("Comment").setup()
 require("telescope").load_extension("projects")
 
