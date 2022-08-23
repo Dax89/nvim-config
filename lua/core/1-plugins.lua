@@ -12,7 +12,7 @@ local function packer_startup(plugins)
 
         display = {
             open_fn = function()
-                return require('packer.util').float({ border = 'single' })
+                return require("packer.util").float({ border = "single" })
             end
         }
     })
