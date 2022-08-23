@@ -34,7 +34,7 @@ local KEYS = {
         ["<leader>s" ] = ":Telescope lsp_document_symbols<CR>",
         ["<leader>w" ] = require("nvim-window").pick,
         ["<leader>g" ] = require("config.git").show_git_commands,
-
+        ["<A-S-Enter>"] = ":Lspsaga signature_help<CR>",
         ["<C-F5>"] = require("config.project").run,
         ["<C-F6>"] = ":TroubleToggle<CR>",
         ["<C-F7>"] = ":SymbolsOutline<CR>",
@@ -70,9 +70,9 @@ local KEYS = {
 
         ["<C-k>"] = function()
             if require("plenary.path"):new(vim.fn.getcwd(), ".git"):is_dir() then
-                vim.api.nvim_command(":Telescope git_files")
+                require("telescope.builtin").git_files({recurse_submodules = true})
             else
-                vim.api.nvim_command(":Telescope find_files")
+                require("telescope.builtin").find_files()
             end
         end,
 
@@ -125,7 +125,7 @@ local KEYS = {
 
     i = { -- INSERT
         ["<C-n>"] = "<Nop>",
-        ["<F2>"] =  ":Lspsaga rename<CR>"
+        ["<F2>"] =  ":Lspsaga rename<CR>",
     },
 
     t = { -- TERMINAL
