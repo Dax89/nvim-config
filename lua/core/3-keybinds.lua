@@ -59,10 +59,9 @@ local KEYS = {
         end,
 
         ["<leader>g" ] = function()
-            require("neogit").open({
-                cwd = vim.fn.expand("%:p:h"),
-                kind = "split"
-            })
+            local cwd = vim.fn.expand('%:p:h')
+            require("neogit").open({kind = "split"})
+            vim.cmd(":lcd" .. cwd)
         end,
 
         ["<leader>f"] = function()
