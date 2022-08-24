@@ -8,7 +8,7 @@ common.set_options("g", {
         maximum_padding = 1,
         auto_hide = false,
         icons = "both",
-        exclude_ft = {"qf", "dap-repl"} -- Hide some windows
+        exclude_ft = {"qf", "dap-repl", "NeogitStatus"} -- Hide some windows
     }
 })
 
