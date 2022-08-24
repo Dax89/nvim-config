@@ -18,6 +18,16 @@ cmp.setup({
             luasnip.lsp_expand(args.body)
         end
     },
+    formatting = {
+        format = require("lspkind").cmp_format({
+            mode = "symbol_text",
+            maxwidth = 100,
+
+            before = function (_, vim_item)
+                return vim_item
+            end
+        })
+    },
     mapping = {
         ["<C-b>"]     = cmp.mapping(cmp.mapping.scroll_docs(-4), {"i", "c"}),
         ["<C-f>"]     = cmp.mapping(cmp.mapping.scroll_docs(4), {"i", "c"}),
