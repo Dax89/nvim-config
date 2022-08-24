@@ -9,7 +9,13 @@ require("lspkind").init()
 require("project_nvim").setup()
 require("clangd_extensions").setup()
 require("Comment").setup()
+
+require("neoclip").setup({
+    default_register = "+"
+})
+
 require("telescope").load_extension("projects")
+require("telescope").load_extension("neoclip")
 
 local filebrowser = require("telescope").load_extension("file_browser")
 -- FIXME: nvim-project's browse project workaround
@@ -17,6 +23,13 @@ require("telescope.builtin").file_browser = filebrowser.file_browser
 
 require("nvim-treesitter.configs").setup({
     ensure_installed = { "c", "cpp", "lua", "json", "regex", "python", "svelte", "javascript", "css", "html"},
+})
+
+require("numb").setup({
+    show_numbers = true,
+    show_cursorline = true,
+    number_only = false,
+    centered_peeking = true,
 })
 
 require("bqf").setup({

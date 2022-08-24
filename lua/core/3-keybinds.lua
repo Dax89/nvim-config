@@ -28,6 +28,7 @@ local KEYS = {
         ["<Leader>9"] = ":BufferLast<CR>",
         ["<Leader>-"] = ":BufferClose!<CR>",
         ["<Leader>+"] = ":enew<CR>",
+        ["<leader>c"] = ":Telescope neoclip<CR>",
         ["<Leader>h"] = ":BufferMovePrevious<CR>",
         ["<Leader>l"] = ":BufferMoveNext<CR>",
         ["<Leader>p"] = ":BufferPick<CR>",
