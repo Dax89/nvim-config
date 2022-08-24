@@ -17,7 +17,7 @@ local BUTTONS = {
     {"p", "★ ➤ Projects",      ":Telescope projects<CR>"},
     {"Settings & Plugins"},
     {"u", " ➤ Sync Plugins",  ":PackerSync<CR>"},
-    {"x", " ➤ Settings",      ":e $MYVIMRC | :cd %:p:h | split . | wincmd k | pwd<CR> "},
+    {"x", " ➤ Settings",      ":e $MYVIMRC | :cd %:p:h<CR>"},
 }
 
 local alpha, dashboard = require("alpha"), require("alpha.themes.dashboard")

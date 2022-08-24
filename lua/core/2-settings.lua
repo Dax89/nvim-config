@@ -8,7 +8,7 @@ common.set_options("g", {
         maximum_padding = 1,
         auto_hide = false,
         icons = "both",
-        exclude_ft = {"qf", "dap-repl", "fugitive", "gitcommit"} -- Hide some windows
+        exclude_ft = {"qf", "dap-repl"} -- Hide some windows
     }
 })
 
@@ -45,7 +45,6 @@ common.set_options("opt", {
     shiftround = true,                         -- Round indent
 
     -- Memory, CPU
-    lazyredraw = true,                         -- Faster scrolling
     hidden = true,                             -- Enable modified buffers in background
     history = 100,                             -- Remember N lines in history
 

@@ -25,25 +25,17 @@ require("bqf").setup({
     }
 })
 
+require("toggleterm").setup({
+  shade_terminals = false,
+  open_mapping = "<F6>"
+})
+
 require("lualine").setup({
     options = {
         theme = "catppuccin",
         disabled_filetypes = {"alpha", "NVimTree"}
     },
     integration = {nvimtree = {enabled = true, show_root = true}}
-})
-
-require("nvim-tree").setup({
-    hijack_directories = {enable = true},
-
-    update_focused_file = {
-        enable = true,
-        update_cwd = true,
-        ignore_list = {"qf", "dap", "help"}
-    },
-
-    filters = {dotfiles = true},
-    respect_buf_cwd = true,
 })
 
 require("nvim-autopairs").setup({
@@ -53,4 +45,17 @@ require("nvim-autopairs").setup({
 
 require("nvim-treesitter.configs").setup({
     autopairs = {enable = true}
+})
+
+require("neo-tree").setup({
+    close_if_last_window = true, -- Close Neo-tree if it is the last window left in the tab
+    source_selector = {
+        winbar = false,
+        statusline = false
+    },
+    default_component_configs = {
+        indent = {
+            with_expanders = true,
+        },
+    },
 })

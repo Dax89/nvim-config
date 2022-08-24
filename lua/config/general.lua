@@ -2,7 +2,7 @@ local M = {}
 
 M.show_general_settings = function()
     require("config.common").show_select("Quick Actions", {
-        {" Settings", ":e $MYVIMRC | :cd %:p:h | split . | wincmd k"},
+        {" Settings", ":e $MYVIMRC | :cd %:p:h"},
         {" Sync Plugins", ":PackerSync"},
         {"↺ Restart LSP", ":LspRestart"},
         {"! Mason", ":Mason"},

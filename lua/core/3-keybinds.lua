@@ -33,7 +33,6 @@ local KEYS = {
         ["<Leader>p"] = ":BufferPick<CR>",
         ["<leader>s" ] = ":Telescope lsp_document_symbols<CR>",
         ["<leader>w" ] = require("nvim-window").pick,
-        ["<leader>g" ] = require("config.git").show_git_commands,
         ["<A-S-Enter>"] = ":Lspsaga signature_help<CR>",
         ["<C-F5>"] = require("config.project").run,
         ["<C-F6>"] = ":TroubleToggle<CR>",
@@ -51,13 +50,16 @@ local KEYS = {
         ["<A-p>" ] = require("config.general").show_general_settings,
         ["<F2>"] = ":Lspsaga rename<CR>",
         ["<F4>"] = ":ClangdSwitchSourceHeader<CR>",
-        ["<F6>"] = ":FloatermToggle<CR>",
         ["<F9>"] = ":DapToggleBreakpoint<CR>",
         ["<F10>"] = ":DapStepOver<CR>",
         ["<F11>"] = ":DapStepInto<CR>",
 
         ["/"] = function()
             require("searchbox").match_all({clear_matches = true})
+        end,
+
+        ["<leader>g" ] = function()
+            require("neogit").open({kind = "split"})
         end,
 
         ["<leader>f"] = function()
@@ -98,7 +100,7 @@ local KEYS = {
             local dap = require("dap")
 
             if #dap.status() == 0 then
-                vim.api.nvim_command(":NvimTreeToggle")
+                vim.api.nvim_command(":NeoTreeShowToggle")
             else
                 dap.step_into()
             end
@@ -129,7 +131,7 @@ local KEYS = {
     },
 
     t = { -- TERMINAL
-        ["<F6>"] = "<C-\\><C-n>:FloatermToggle<CR>"
+
     }
 }
 
