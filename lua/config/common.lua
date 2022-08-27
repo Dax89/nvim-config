@@ -1,5 +1,15 @@
 local M = {}
 
+M.filetype_blacklist = {
+    "alpha",
+    "NeogitStatus",
+    "NeogitPopup",
+    "NeogitCommitMessage",
+    "neo-tree",
+    "dap-repl",
+    "qf"
+}
+
 M.list_contains = function(l, v)
     for _, i in ipairs(l) do
         if v == i then

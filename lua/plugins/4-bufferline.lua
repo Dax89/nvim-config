@@ -39,13 +39,18 @@ require("bufferline").setup({
             require("bufdelete").bufdelete(nbuf, true)
         end,
 
+        custom_filter = function(nbuf)
+            if not vim.tbl_contains(require("config.common").filetype_blacklist, vim.bo[nbuf].filetype) then
+                return true
+            end
+        end,
+
         offsets = {
             {
                 filetype = "neo-tree",
                 text = " NeoTree",
                 text_align = "left",
                 highlight = "Directory",
-                bold = true,
                 separator = true,
             }
         },

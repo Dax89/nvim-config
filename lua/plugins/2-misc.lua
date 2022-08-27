@@ -45,7 +45,7 @@ require("toggleterm").setup({
 
 require("lualine").setup({
     options = {
-        disabled_filetypes = {"alpha"}
+        disabled_filetypes = require("config.common").filetype_blacklist
     },
     integration = {nvimtree = {enabled = true, show_root = true}}
 })
