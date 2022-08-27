@@ -45,8 +45,7 @@ require("toggleterm").setup({
 
 require("lualine").setup({
     options = {
-        theme = "catppuccin",
-        disabled_filetypes = {"alpha", "NVimTree"}
+        disabled_filetypes = {"alpha"}
     },
     integration = {nvimtree = {enabled = true, show_root = true}}
 })
@@ -76,3 +75,4 @@ require("neo-tree").setup({
         },
     },
 })
+

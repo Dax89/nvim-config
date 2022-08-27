@@ -50,7 +50,3 @@ common.set_options("opt", {
 
     wildmode = "longest,full",                 -- Command-line completion mode
 })
-
-common.set_options("o", {
-    guifont = "FiraCode Nerd Font Mono:h14"
-})

@@ -17,21 +17,20 @@ local KEYS = {
         ["<Space>"] = "<Nop>",
         ["&"] = require("searchbox").replace,
         ["<Leader>a"] = "gg0VG",
-        ["<Leader>1"] = ":BufferGoto 1<CR>",
-        ["<Leader>2"] = ":BufferGoto 2<CR>",
-        ["<Leader>3"] = ":BufferGoto 3<CR>",
-        ["<Leader>4"] = ":BufferGoto 4<CR>",
-        ["<Leader>5"] = ":BufferGoto 5<CR>",
-        ["<Leader>6"] = ":BufferGoto 6<CR>",
-        ["<Leader>7"] = ":BufferGoto 7<CR>",
-        ["<Leader>8"] = ":BufferGoto 8<CR>",
-        ["<Leader>9"] = ":BufferLast<CR>",
-        ["<Leader>-"] = ":BufferClose!<CR>",
+        ["<Leader>1"] = ":BufferLineGoToBuffer 1<CR>",
+        ["<Leader>2"] = ":BufferLineGoToBuffer 2<CR>",
+        ["<Leader>3"] = ":BufferLineGoToBuffer 3<CR>",
+        ["<Leader>4"] = ":BufferLineGoToBuffer 4<CR>",
+        ["<Leader>5"] = ":BufferLineGoToBuffer 5<CR>",
+        ["<Leader>6"] = ":BufferLineGoToBuffer 6<CR>",
+        ["<Leader>7"] = ":BufferLineGoToBuffer 7<CR>",
+        ["<Leader>8"] = ":BufferLineGoToBuffer 8<CR>",
+        ["<Leader>9"] = ":BufferLineGoToBuffer 9<CR>",
         ["<Leader>+"] = ":enew<CR>",
         ["<leader>c"] = ":Telescope neoclip<CR>",
-        ["<Leader>h"] = ":BufferMovePrevious<CR>",
-        ["<Leader>l"] = ":BufferMoveNext<CR>",
-        ["<Leader>p"] = ":BufferPick<CR>",
+        ["<Leader>h"] = ":BufferLineMovePrev<CR>",
+        ["<Leader>l"] = ":BufferLineMoveNext<CR>",
+        ["<Leader>p"] = ":BufferLinePick<CR>",
         ["<leader>s" ] = ":Telescope lsp_document_symbols<CR>",
         ["<leader>w" ] = require("nvim-window").pick,
         ["<A-S-Enter>"] = ":Lspsaga signature_help<CR>",
@@ -41,8 +40,8 @@ local KEYS = {
         ["<C-F8>"] = require("config.project").settings,
         ["<C-n>"] = "<Nop>",
         ["<C-h>"] = ":Telescope oldfiles<CR>",
-        ["<C-Tab>"] = ":bn<CR>",
-        ["<C-S-Tab>"] = ":bp<CR>",
+        ["<C-Tab>"] = ":BufferLineCycleNext<CR>",
+        ["<C-S-Tab>"] = ":BufferLineCyclePrev<CR>",
         ["<C-S-k>"] = ":Telescope live_grep<CR>",
         ["<A-S-k>"] = ":Telescope lsp_dynamic_workspace_symbols<CR>",
         ["<S-Enter>"] = ":Lspsaga lsp_finder<CR>",
@@ -59,17 +58,21 @@ local KEYS = {
             require("searchbox").match_all({clear_matches = true})
         end,
 
-        ["<leader>g" ] = function()
+        ["<Leader>-"] = function()
+            require("bufdelete").bufdelete(0, true)
+        end,
+
+        ["<Leader>g" ] = function()
             local cwd = vim.fn.expand('%:p:h')
             require("neogit").open({kind = "split"})
             vim.cmd(":lcd" .. cwd)
         end,
 
-        ["<leader>f"] = function()
+        ["<Leader>f"] = function()
             require("hop").hint_words({direction = require"hop.hint".HintDirection.AFTER_CURSOR})
         end,
 
-        ["<leader>F"] = function()
+        ["<Leader>F"] = function()
             require("hop").hint_words({direction = require("hop.hint").HintDirection.BEFORE_CURSOR})
         end,
 

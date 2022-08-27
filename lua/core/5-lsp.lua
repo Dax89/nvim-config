@@ -63,5 +63,8 @@ local function setup_servers()
 end
 
 setup_servers()
-require("lspsaga").init_lsp_saga()
+
+require("lspsaga").init_lsp_saga({
+    code_action_icon = "‼ "
+})
 
