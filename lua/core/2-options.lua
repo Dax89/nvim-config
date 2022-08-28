@@ -45,30 +45,10 @@ common.set_options("opt", {
     shiftround = true,                         -- Round indent
 
     -- Memory, CPU
+    lazyredraw = true,                         -- Improve performance when running macros
     hidden = true,                             -- Enable modified buffers in background
     history = 100,                             -- Remember N lines in history
 
     wildmode = "longest,full",                 -- Command-line completion mode
 })
 
-require("catppuccin").setup({
-    styles = {
-        comments = { },
-        functions = { },
-        keywords = { },
-        variables = { },
-    },
-    integration = {
-        neotree = {
-            enabled = true,
-            show_root = true,
-            transparent_panel = false,
-        },
-        dap = {
-            enabled = true,
-            enable_ui = true,
-        }
-    }
-})
-
-common.exec_commands("colorscheme catppuccin")
