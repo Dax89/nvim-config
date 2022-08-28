@@ -10,16 +10,6 @@ M.filetype_blacklist = {
     "qf"
 }
 
-M.list_contains = function(l, v)
-    for _, i in ipairs(l) do
-        if v == i then
-            return true
-        end
-    end
-
-    return false
-end
-
 M.if_installed = function(module, cb)
     local ok, m = pcall(require, module)
 
