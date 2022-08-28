@@ -23,6 +23,13 @@ require("telescope.builtin").file_browser = filebrowser.file_browser
 
 require("nvim-treesitter.configs").setup({
     ensure_installed = { "c", "cpp", "lua", "json", "regex", "python", "svelte", "javascript", "css", "html"},
+    autopairs = {enable = true},
+
+    rainbow = {
+        enable = true,
+        extended_mode = true,
+        max_file_lines = nil
+    }
 })
 
 require("numb").setup({
@@ -54,10 +61,6 @@ require("lualine").setup({
 require("nvim-autopairs").setup({
     check_ts = true,
     disable_filetype = {"fennel", "lisp"}
-})
-
-require("nvim-treesitter.configs").setup({
-    autopairs = {enable = true}
 })
 
 require("neo-tree").setup({

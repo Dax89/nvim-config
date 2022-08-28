@@ -65,6 +65,9 @@ end
 setup_servers()
 
 require("lspsaga").init_lsp_saga({
-    code_action_icon = "‼ "
+    code_action_icon = "‼ ",
+    code_action_keys = { quit = "<ESC>" },
+    finder_action_keys = { quit = "<ESC>" },
+    rename_action_quit = "<ESC>"
 })
 

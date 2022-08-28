@@ -17,7 +17,7 @@ common.set_options("opt", {
     mouse = "a",                               -- Mouse interacts with NeoVim
     clipboard = "unnamedplus",                 -- Use System Clipboard
     swapfile = false,                          -- Don"t use swapfile
-    completeopt = "menuone,noinsert,noselect", -- Completion options
+    completeopt = "menu,menuone,noselect",     -- Completion options
 
     -- Neovim UI
     number = true,                             -- Print line number
@@ -50,3 +50,25 @@ common.set_options("opt", {
 
     wildmode = "longest,full",                 -- Command-line completion mode
 })
+
+require("catppuccin").setup({
+    styles = {
+        comments = { },
+        functions = { },
+        keywords = { },
+        variables = { },
+    },
+    integration = {
+        neotree = {
+            enabled = true,
+            show_root = true,
+            transparent_panel = false,
+        },
+        dap = {
+            enabled = true,
+            enable_ui = true,
+        }
+    }
+})
+
+common.exec_commands("colorscheme catppuccin")
