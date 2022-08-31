@@ -55,8 +55,6 @@ local function create_buttons()
 end
 
 
-dashboard.hide_tabline = true
-dashboard.hide_statusline = true
 dashboard.custom_center = create_buttons()
 
 dashboard.custom_header = {
@@ -79,3 +77,5 @@ dashboard.custom_footer = function()
     local version = string.format("NeoVIM %d.%d.%d (API Level %d, %d Plugins)", v.major, v.minor, v.patch, v.api_level, nplugins)
     return {version .. "  " .. datetime}
 end
+
+common.exec_commands("autocmd FileType dashboard set showtabline=0 | autocmd BufUnload <buffer> set showtabline=2")
