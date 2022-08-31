@@ -55,6 +55,8 @@ local function create_buttons()
 end
 
 
+dashboard.hide_tabline = false
+dashboard.hide_statusline = false
 dashboard.custom_center = create_buttons()
 
 dashboard.custom_header = {
