@@ -16,7 +16,7 @@ local PLUGINS = {
     "ahmedkhalf/project.nvim",
     "nvim-orgmode/orgmode",
     "L3MON4D3/LuaSnip",
-    "goolord/alpha-nvim",
+    "glepnir/dashboard-nvim",
     "phaazon/hop.nvim",
     "nvim-telescope/telescope-file-browser.nvim",
     "MunifTanjim/nui.nvim",
@@ -66,7 +66,10 @@ local PLUGINS = {
 
     -- External packages
     "williamboman/mason.nvim",
-    "williamboman/mason-lspconfig.nvim"
+    "williamboman/mason-lspconfig.nvim",
+
+    -- Local Plugins
+    -- "~/Programmazione/Progetti/NVim/ide.nvim"
 }
 
 local DISABLED_BUILTINS = {

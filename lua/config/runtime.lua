@@ -1,20 +1,20 @@
 local M = {}
 
-M.init = function()
+function M.init()
     if not _G.cfgrt then
         _G.cfgrt = { }
     end
 end
 
-M.get = function(k)
+function M.get(k)
     return _G.cfgrt[k]
 end
 
-M.set = function(k, v)
+function M.set(k, v)
     _G.cfgrt[k] = v
 end
 
-M.del = function(k)
+function M.del(k)
     _G.cfgrt[k] = nil
 end
 

@@ -1,16 +1,23 @@
-local M = {}
-
-M.filetype_blacklist = {
-    "alpha",
-    "NeogitStatus",
-    "NeogitPopup",
-    "NeogitCommitMessage",
-    "neo-tree",
-    "dap-repl",
-    "qf"
+local Common = {
+    filetype_blacklist = {
+        "help",
+        "dashboard",
+        "NeogitStatus",
+        "NeogitPopup",
+        "NeogitCommitMessage",
+        "neo-tree",
+        "dap-repl",
+        "qf"
+    }
 }
 
-M.if_installed = function(module, cb)
+function Common.highlight(items, ns)
+    for _, item in ipairs(items) do
+        vim.api.nvim_set_hl(ns or 0, item[1], item[2])
+    end
+end
+
+function Common.if_installed(module, cb)
     local ok, m = pcall(require, module)
 
     if ok then
@@ -18,7 +25,7 @@ M.if_installed = function(module, cb)
     end
 end
 
-M.show_select = function(prompt, choices, mode)
+function Common.show_select(prompt, choices, mode)
     local m = nil
 
     if mode == "cursor" then
@@ -43,11 +50,11 @@ M.show_select = function(prompt, choices, mode)
     end)
 end
 
-M.wrap_fn = function(mod, fn)
+function Common.wrap_fn(mod, fn)
     return string.format(":lua require('%s')['%s']()<CR>", mod, fn)
 end
 
-M.map = function(key, cmd, mode, options)
+function Common.map(key, cmd, mode, options)
     local opts = {silent = true}
 
     if options then
@@ -57,19 +64,19 @@ M.map = function(key, cmd, mode, options)
     vim.keymap.set(mode, key, cmd, opts)
 end
 
-M.map_keys = function(keys)
+function Common.map_keys(keys)
     for _, key in ipairs(keys) do
         vim.api.nvim_set_keymap(unpack(key))
     end
 end
 
-M.set_options = function(t, options)
+function Common.set_options(t, options)
     for k, v in pairs(options) do
         vim[t][k] = v
     end
 end
 
-M.exec_commands = function(commands)
+function Common.exec_commands(commands)
     if type(commands) == "string" then
         vim.api.nvim_command(commands)
         return
@@ -80,7 +87,7 @@ M.exec_commands = function(commands)
     end
 end
 
-M.open_folder = function(path)
+function Common.open_folder(path)
     local Job = require("plenary.job")
 
     local job = Job:new({
@@ -91,4 +98,4 @@ M.open_folder = function(path)
     job:start()
 end
 
-return M
+return Common

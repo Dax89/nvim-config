@@ -10,7 +10,7 @@ require("clangd_extensions").setup()
 require("Comment").setup()
 
 require("project_nvim").setup({
-    patterns = { "CMakeLists.txt", ".git", "_darcs", ".hg", ".bzr", ".svn", "Makefile", "package.json" },
+    -- patterns = { "CMakeLists.txt", ".git", "_darcs", ".hg", ".bzr", ".svn", "Makefile", "package.json" },
 })
 
 require("neoclip").setup({
@@ -83,3 +83,5 @@ require("neo-tree").setup({
     },
 })
 
+
+-- require("ide").setup()
