@@ -13,9 +13,9 @@ local function create_buttons()
     local BUTTONS_TEMPLATE = {
         {"Files & Projects"},
         {"e", "", "New File",      ":ene <BAR> startinsert <CR>"},
-        {"n", "", "New Project",   require("config.common").wrap_fn("config.project", "select_language")},
+        {"n", "", "New Project",   ":IdeProjectCreate<CR>"},
         {"r", "", "Recents Files", ":Telescope oldfiles<CR>"},
-        {"p", "★", "Projects",      ":Telescope projects<CR>"},
+        {"p", "★", "Projects",      ":IdeRecentProjects<CR>"},
         {"Settings & Plugins"},
         {"u", "", "Sync Plugins",  ":PackerSync<CR>"},
         {"x", "", "Settings",      ":e $MYVIMRC | :cd %:p:h<CR>"},

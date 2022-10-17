@@ -5,6 +5,32 @@ common.set_options("g", {
     completion_matching_smart_case = true
 })
 
+-- Diagnostic (https://github.com/VonHeikemen/lsp-zero.nvim/blob/main/lua/lsp-zero/presets.lua)
+local function set_sign(name, icon)
+    vim.fn.sign_define(name, {texthl = name, text = icon, numhl = ""})
+end
+
+set_sign("DiagnosticSignError", "✘")
+set_sign("DiagnosticSignWarn",  "▲")
+set_sign("DiagnosticSignHint",  "⚑")
+set_sign("DiagnosticSignInfo",  "")
+
+vim.diagnostic.config({
+    virtual_text = true,
+    signs = true,
+    update_in_insert = false,
+    underline = true,
+    severity_sort = true,
+    float = {
+        focusable = false,
+        style = "minimal",
+        border = "rounded",
+        source = "always",
+        header = "",
+        prefix = "",
+    },
+})
+
 -- Custom LSP Callbacks
 local function setup_lsp_sumneko_lua()
     -- Make runtime files discoverable to the server
@@ -15,6 +41,7 @@ local function setup_lsp_sumneko_lua()
     return {
         settings = {
             Lua = {
+                telemetry = { enable = false },
                 runtime = {
                     version = "LuaJIT",
                     path = runtimepath
@@ -23,12 +50,9 @@ local function setup_lsp_sumneko_lua()
                     globals = {"vim"} -- Get the language server to recognize the `vim` global
                 },
                 workspace = {
-                    [vim.fn.expand("$VIMRUNTIME/lua")] = true,
-                    [vim.fn.expand("$VIMRUNTIME/lua/vim/lsp")] = true,
+                    vim.fn.expand("$VIMRUNTIME/lua"),
+                    vim.fn.stdpath("config") .. "/lua"
                 },
-                telemetry = {
-                    enable = false
-                }
             }
         }
     }
@@ -40,21 +64,16 @@ local CUSTOM_LSP_CALLBACKS = {
 
 local CUSTOM_SERVERS = {"nimls"}
 
-local function lsp_onattach(client)
-    require("illuminate").on_attach(client)
-end
-
 local function setup_servers()
     local installedservers = require("mason-lspconfig").get_installed_servers()
     local lspconfig = require("lspconfig")
 
     for _, name in ipairs(vim.list_extend(installedservers, CUSTOM_SERVERS)) do
         local options = {
-            on_attach = lsp_onattach,
-            capabilities = require("cmp_nvim_lsp").update_capabilities(vim.lsp.protocol.make_client_capabilities())
+            capabilities = require("cmp_nvim_lsp").default_capabilities()
         }
 
-        if CUSTOM_LSP_CALLBACKS[name] then
+        if vim.is_callable(CUSTOM_LSP_CALLBACKS[name]) then
             options = vim.tbl_extend("force", options, CUSTOM_LSP_CALLBACKS[name]())
         end
 
@@ -63,11 +82,3 @@ local function setup_servers()
 end
 
 setup_servers()
-
-require("lspsaga").init_lsp_saga({
-    code_action_icon = "‼ ",
-    code_action_keys = { quit = "<ESC>" },
-    finder_action_keys = { quit = "<ESC>" },
-    rename_action_quit = "<ESC>"
-})
-

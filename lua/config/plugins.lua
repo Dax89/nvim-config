@@ -1,3 +1,17 @@
+local Path = require("plenary.path")
+
+local function check_dev_mode(plugins)
+    local devmode = Path:new(vim.fn.stdpath("config"), ".dev"):is_file()
+
+    if devmode then
+        plugins = vim.list_extend(plugins, {"~/Programmazione/Progetti/NVim/IDE.nvim"})
+    else
+        plugins = vim.list_extend(plugins, {"Dax89/IDE.nvim"})
+    end
+
+    return plugins
+end
+
 local PLUGINS = {
     -- Lua
     "wbthomason/packer.nvim",         -- Packer can manage itself
@@ -8,14 +22,11 @@ local PLUGINS = {
     "famiu/bufdelete.nvim",
     "akinsho/bufferline.nvim",
     "nvim-lualine/lualine.nvim",
-    "kevinhwang91/nvim-bqf",
+    "rcarriga/nvim-notify",
     "weilbith/nvim-code-action-menu",
     "norcalli/nvim-colorizer.lua",
     "windwp/nvim-autopairs",
-    "RRethy/vim-illuminate",
-    "ahmedkhalf/project.nvim",
     "nvim-orgmode/orgmode",
-    "L3MON4D3/LuaSnip",
     "glepnir/dashboard-nvim",
     "phaazon/hop.nvim",
     "nvim-telescope/telescope-file-browser.nvim",
@@ -23,6 +34,7 @@ local PLUGINS = {
     "nvim-treesitter/nvim-treesitter-context",
     "numToStr/Comment.nvim",
     "nacro90/numb.nvim",
+    "jbyuki/venn.nvim",
     "TimUntersberger/neogit",
     "p00f/nvim-ts-rainbow",
     {"AckslD/nvim-neoclip.lua",         requires = {"nvim-telescope/telescope.nvim"}},
@@ -30,7 +42,6 @@ local PLUGINS = {
     {"akinsho/toggleterm.nvim",         tag = "v2.*"},
     {"catppuccin/nvim",                 as = "catppuccin"},
     {"nvim-treesitter/nvim-treesitter", run = ":TSUpdate"},
-    {"Shatur/neovim-cmake",             requires = {"mfussenegger/nvim-dap", "nvim-lua/plenary.nvim"}},
     {"VonHeikemen/searchbox.nvim",      requires = {"MunifTanjim/nui.nvim"}},
     {"nvim-telescope/telescope.nvim",   requires = {"nvim-lua/popup.nvim", "nvim-lua/plenary.nvim"}},
     "https://gitlab.com/yorickpeterse/nvim-window",
@@ -51,25 +62,26 @@ local PLUGINS = {
     "rcarriga/nvim-dap-ui",
 
     -- LSP Support
-    "p00f/clangd_extensions.nvim",
-    "simrat39/symbols-outline.nvim",
-    "glepnir/lspsaga.nvim",
-    "rafamadriz/friendly-snippets",
-    "hrsh7th/nvim-cmp",
-    "hrsh7th/cmp-nvim-lsp",
-    "hrsh7th/cmp-path",
     "neovim/nvim-lspconfig",
-    "folke/trouble.nvim",
-    "williamboman/nvim-lsp-installer",
-    "onsails/lspkind-nvim",
-    "saadparwaiz1/cmp_luasnip",
-
-    -- External packages
     "williamboman/mason.nvim",
     "williamboman/mason-lspconfig.nvim",
+    "onsails/lspkind-nvim",
 
-    -- Local Plugins
-    -- "~/Programmazione/Progetti/NVim/ide.nvim"
+    -- Autocompletion
+    "hrsh7th/nvim-cmp",
+    "hrsh7th/cmp-buffer",
+    "hrsh7th/cmp-path",
+    "hrsh7th/cmp-nvim-lsp",
+    "hrsh7th/cmp-nvim-lua",
+    "saadparwaiz1/cmp_luasnip",
+
+    -- Snippets
+    "L3MON4D3/LuaSnip",
+    "rafamadriz/friendly-snippets",
+
+    "p00f/clangd_extensions.nvim",
+    "simrat39/symbols-outline.nvim",
+    "folke/trouble.nvim",
 }
 
 local DISABLED_BUILTINS = {
@@ -95,5 +107,5 @@ local DISABLED_BUILTINS = {
 
 return {
     disabledbuiltins = DISABLED_BUILTINS,
-    plugins = PLUGINS,
+    plugins = check_dev_mode(PLUGINS),
 }

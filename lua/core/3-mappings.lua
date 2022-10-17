@@ -33,22 +33,19 @@ local KEYS = {
         ["<Leader>p"] = ":BufferLinePick<CR>",
         ["<leader>s" ] = ":Telescope lsp_document_symbols<CR>",
         ["<leader>w" ] = require("nvim-window").pick,
-        ["<A-S-Enter>"] = ":Lspsaga signature_help<CR>",
-        ["<C-F5>"] = require("config.project").run,
+        ["<A-S-Enter>"] = vim.lsp.buf.signature_help,
         ["<C-F6>"] = ":TroubleToggle<CR>",
         ["<C-F7>"] = ":SymbolsOutline<CR>",
-        ["<C-F8>"] = require("config.project").settings,
         ["<C-n>"] = "<Nop>",
         ["<C-h>"] = ":Telescope oldfiles<CR>",
         ["<C-Tab>"] = ":BufferLineCycleNext<CR>",
         ["<C-S-Tab>"] = ":BufferLineCyclePrev<CR>",
         ["<C-S-k>"] = ":Telescope live_grep<CR>",
         ["<A-S-k>"] = ":Telescope lsp_dynamic_workspace_symbols<CR>",
-        ["<S-Enter>"] = ":Lspsaga lsp_finder<CR>",
-        ["<A-Enter>"] = ":Lspsaga code_action<CR>",
-        ["<A-BS>"] = require("config.project").cancel,
+        ["<S-Enter>"] = vim.lsp.buf.references,
+        ["<A-Enter>"] = vim.lsp.buf.code_action,
         ["<A-p>" ] = require("config.general").show_general_settings,
-        ["<F2>"] = ":Lspsaga rename<CR>",
+        ["<F2>"] = vim.lsp.buf.rename,
         ["<F4>"] = ":ClangdSwitchSourceHeader<CR>",
         ["<F9>"] = ":DapToggleBreakpoint<CR>",
         ["<F10>"] = ":DapStepOver<CR>",
@@ -77,54 +74,14 @@ local KEYS = {
         end,
 
         ["<C-k>"] = function()
-            if require("plenary.path"):new(vim.fn.getcwd(), ".git"):is_dir() then
-                require("telescope.builtin").git_files({recurse_submodules = true})
-            else
-                require("telescope.builtin").find_files()
-            end
+            require("telescope.builtin").find_files()
         end,
-
-        ["<A-F5>"] = function()
-            local dap = require("dap")
-
-            if #dap.status() > 0 then
-                dap.disconnect()
-            end
-        end,
-
-        ["<F5>"] = function()
-            local dap = require("dap")
-
-            if #dap.status() > 0 then
-                dap.continue()
-            else
-                require("config.project").debug()
-            end
-        end,
-
-        ["<F7>"] = function()
-            local dap = require("dap")
-
-            if #dap.status() == 0 then
-                vim.api.nvim_command(":NeoTreeShowToggle")
-            else
-                dap.step_into()
-            end
-        end,
-
-        ["<F8>"] = function()
-            local dap = require("dap")
-
-            if #dap.status() > 0 then
-                dap.step_over()
-            else
-                require("config.project").build()
-            end
-        end
     },
 
     v = { -- VISUAL
         ["&"] = require("searchbox").replace,
+        ["<A-Enter>"] = vim.lsp.buf.range_code_action,
+
 
         ["/"] = function()
             require("searchbox").match_all({clear_matches = true, visual_mode = true})
@@ -133,7 +90,7 @@ local KEYS = {
 
     i = { -- INSERT
         ["<C-n>"] = "<Nop>",
-        ["<F2>"] =  ":Lspsaga rename<CR>",
+        ["<F2>"] = vim.lsp.buf.rename
     },
 
     t = { -- TERMINAL

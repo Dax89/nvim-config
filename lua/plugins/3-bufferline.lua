@@ -16,6 +16,7 @@ require("bufferline").setup({
                 indicator_selected = {bg = palette.blue, fg = palette.sky},
                 modified_selected = hlselected,
                 buffer_selected = selected,
+                duplicate_selected = selected,
                 numbers_selected = selected,
                 diagnostic_selected = selected,
                 error_selected = selected,

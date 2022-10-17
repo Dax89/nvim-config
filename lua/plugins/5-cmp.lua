@@ -13,18 +13,36 @@ require("luasnip/loaders/from_vscode").lazy_load({
 })
 
 cmp.setup({
+    preselect = cmp.PreselectMode.Item,
+    completion = {
+      completeopt = "menu,menuone,noinsert"
+    },
+    window = {
+        documentation = vim.tbl_extend("force", cmp.config.window.bordered(), {
+            max_height = 15,
+            max_width = 60,
+        })
+    },
     snippet = {
         expand = function(args)
             luasnip.lsp_expand(args.body)
         end
     },
     formatting = {
+        fields = {"abbr", "menu", "kind"},
         format = require("lspkind").cmp_format({
             mode = "symbol_text",
             maxwidth = 100,
 
-            before = function (_, vim_item)
-                return vim_item
+            before = function (entry, item)
+                local shortname = {
+                    nvim_lsp = "LSP",
+                    nvim_lua = "nvim"
+                }
+
+                local mnuname = shortname[entry.source.name] or entry.source.name
+                item.menu = string.format("[%s]", mnuname)
+                return item
             end
         })
     },
