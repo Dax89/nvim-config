@@ -13,12 +13,13 @@ local function create_buttons()
     local BUTTONS_TEMPLATE = {
         {"Files & Projects"},
         {"e", "", "New File",      ":ene <BAR> startinsert <CR>"},
-        {"n", "", "New Project",   ":IdeProjectCreate<CR>"},
-        {"r", "", "Recents Files", ":Telescope oldfiles<CR>"},
-        {"p", "★", "Projects",      ":IdeRecentProjects<CR>"},
+        {"n", "", "New Project",   ":IdeProjectCreate<CR>"},
+        {"r", "", "Recents Files", ":Telescope oldfiles<CR>"},
+        {"p", "", "Projects",      ":IdeRecentProjects<CR>"},
         {"Settings & Plugins"},
         {"u", "", "Sync Plugins",  ":PackerSync<CR>"},
         {"x", "", "Settings",      ":e $MYVIMRC | :cd %:p:h<CR>"},
+        {"N", "ﴽ", "News",          ":help news<CR>"},
     }
 
     vim.api.nvim_create_autocmd("FileType", {
