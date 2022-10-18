@@ -51,6 +51,14 @@ local KEYS = {
         ["<F10>"] = ":DapStepOver<CR>",
         ["<F11>"] = ":DapStepInto<CR>",
 
+        ["<leader>m"] = function()
+            if require("codewindow.window").is_minimap_open() then
+                require("codewindow").close_minimap()
+            else
+                require("codewindow").open_minimap()
+            end
+        end,
+
         ["/"] = function()
             require("searchbox").match_all({clear_matches = true})
         end,

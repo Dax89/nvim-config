@@ -36,6 +36,7 @@ local PLUGINS = {
     "nacro90/numb.nvim",
     "jbyuki/venn.nvim",
     "TimUntersberger/neogit",
+    "gorbit99/codewindow.nvim",
     "p00f/nvim-ts-rainbow",
     {"AckslD/nvim-neoclip.lua",         requires = {"nvim-telescope/telescope.nvim"}},
     {"nvim-neo-tree/neo-tree.nvim",     branch = "v2.x", requires = {"nvim-lua/plenary.nvim", "kyazdani42/nvim-web-devicons", "MunifTanjim/nui.nvim"}},
