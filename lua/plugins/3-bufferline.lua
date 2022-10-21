@@ -56,7 +56,20 @@ require("bufferline").setup({
         offsets = {
             {
                 filetype = "neo-tree",
-                text = " NeoTree",
+                text = function()
+                    local s, p = "NeoTree", require("ide"):get_active_project()
+
+                    if p then
+                        s = p:get_name()
+                        local cfg = p:get_selected_config()
+
+                        if cfg then
+                            s = s .. " - " .. cfg.name
+                        end
+                    end
+
+                    return " " .. s
+                end,
                 text_align = "left",
                 highlight = "Directory",
                 separator = true,
