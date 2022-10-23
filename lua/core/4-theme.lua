@@ -1,10 +1,7 @@
 local common = require("config.common")
 
-common.set_options("g", {
-    catppuccin_flavour = "macchiato"
-})
-
 require("catppuccin").setup({
+    flavour = "macchiato",
     styles = {
         comments = { },
         functions = { },
