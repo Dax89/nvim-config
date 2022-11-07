@@ -63,6 +63,10 @@ local KEYS = {
             require("searchbox").match_all({clear_matches = true})
         end,
 
+        ["|"] = function()
+            require("spectre").open()
+        end,
+
         ["<Leader>-"] = function()
             require("bufdelete").bufdelete(0, true)
         end,

@@ -39,6 +39,7 @@ local PLUGINS = {
     "gorbit99/codewindow.nvim",
     "p00f/nvim-ts-rainbow",
     "RRethy/vim-illuminate",
+    "nvim-pack/nvim-spectre",
     {"AckslD/nvim-neoclip.lua",         requires = {"nvim-telescope/telescope.nvim"}},
     {"nvim-neo-tree/neo-tree.nvim",     branch = "v2.x", requires = {"nvim-lua/plenary.nvim", "kyazdani42/nvim-web-devicons", "MunifTanjim/nui.nvim"}},
     {"akinsho/toggleterm.nvim",         tag = "v2.*"},
