@@ -1,6 +1,6 @@
 " Set Editor Font
 if exists(':GuiFont')
-    GuiFont FuraCode Nerd Font Mono:h14
+    GuiFont! FuraCode Nerd Font Mono:h14
 endif
 
 " Disable GUI Tabline
