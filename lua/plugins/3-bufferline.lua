@@ -61,14 +61,18 @@ require("bufferline").setup({
 
                     if p then
                         s = p:get_name()
-                        local cfg = p:get_selected_config()
+                        local cfg, runcfg = p:get_selected_config(), p:get_selected_runconfig()
 
                         if cfg then
-                            s = s .. " - " .. cfg.name
+                            s = s .. " |  " .. cfg.name
+                        end
+
+                        if runcfg then
+                            s = s .. " |  " .. runcfg.name
                         end
                     end
 
-                    return " " .. s
+                    return s
                 end,
                 text_align = "left",
                 highlight = "Directory",
