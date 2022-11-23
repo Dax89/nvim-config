@@ -16,21 +16,21 @@ local KEYS = {
         ["<Right>"] = "<Nop>",
         ["<Space>"] = "<Nop>",
         ["&"] = require("searchbox").replace,
-        ["<Leader>a"] = "gg0VG",
-        ["<Leader>1"] = ":BufferLineGoToBuffer 1<CR>",
-        ["<Leader>2"] = ":BufferLineGoToBuffer 2<CR>",
-        ["<Leader>3"] = ":BufferLineGoToBuffer 3<CR>",
-        ["<Leader>4"] = ":BufferLineGoToBuffer 4<CR>",
-        ["<Leader>5"] = ":BufferLineGoToBuffer 5<CR>",
-        ["<Leader>6"] = ":BufferLineGoToBuffer 6<CR>",
-        ["<Leader>7"] = ":BufferLineGoToBuffer 7<CR>",
-        ["<Leader>8"] = ":BufferLineGoToBuffer 8<CR>",
-        ["<Leader>9"] = ":BufferLineGoToBuffer 9<CR>",
-        ["<Leader>+"] = ":enew<CR>",
+        ["<leader>a"] = "gg0VG",
+        ["<leader>1"] = ":BufferLineGoToBuffer 1<CR>",
+        ["<leader>2"] = ":BufferLineGoToBuffer 2<CR>",
+        ["<leader>3"] = ":BufferLineGoToBuffer 3<CR>",
+        ["<leader>4"] = ":BufferLineGoToBuffer 4<CR>",
+        ["<leader>5"] = ":BufferLineGoToBuffer 5<CR>",
+        ["<leader>6"] = ":BufferLineGoToBuffer 6<CR>",
+        ["<leader>7"] = ":BufferLineGoToBuffer 7<CR>",
+        ["<leader>8"] = ":BufferLineGoToBuffer 8<CR>",
+        ["<leader>9"] = ":BufferLineGoToBuffer 9<CR>",
+        ["<leader>+"] = ":enew<CR>",
         ["<leader>c"] = ":Telescope neoclip<CR>",
-        ["<Leader>h"] = ":BufferLineMovePrev<CR>",
-        ["<Leader>l"] = ":BufferLineMoveNext<CR>",
-        ["<Leader>p"] = ":BufferLinePick<CR>",
+        ["<leader>h"] = ":BufferLineMovePrev<CR>",
+        ["<leader>l"] = ":BufferLineMoveNext<CR>",
+        ["<leader>p"] = ":BufferLinePick<CR>",
         ["<leader>s" ] = ":Telescope lsp_document_symbols<CR>",
         ["<leader>w" ] = require("nvim-window").pick,
         ["<A-S-Enter>"] = vim.lsp.buf.signature_help,
@@ -67,21 +67,25 @@ local KEYS = {
             require("spectre").open()
         end,
 
-        ["<Leader>-"] = function()
+        ["<leader>-"] = function()
             require("bufdelete").bufdelete(0, true)
         end,
 
-        ["<Leader>g" ] = function()
+        ["<leader>r"] = function()
+            require("ssr").open()
+        end,
+
+        ["<leader>g" ] = function()
             local cwd = vim.fn.expand('%:p:h')
             require("neogit").open({kind = "split"})
             vim.cmd(":lcd" .. cwd)
         end,
 
-        ["<Leader>f"] = function()
+        ["<leader>f"] = function()
             require("hop").hint_words({direction = require"hop.hint".HintDirection.AFTER_CURSOR})
         end,
 
-        ["<Leader>F"] = function()
+        ["<leader>F"] = function()
             require("hop").hint_words({direction = require("hop.hint").HintDirection.BEFORE_CURSOR})
         end,
 
@@ -103,6 +107,12 @@ local KEYS = {
     i = { -- INSERT
         ["<C-n>"] = "<Nop>",
         ["<F2>"] = vim.lsp.buf.rename
+    },
+
+    x = {
+        ["<leader>r"] = function()
+            require("ssr").open()
+        end
     },
 
     t = { -- TERMINAL
