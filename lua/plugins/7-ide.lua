@@ -4,6 +4,7 @@ local DAP_BASEPATH = Path:new(vim.fn.stdpath("data"), "/mason/bin")
 
 require("ide").setup({
     debug = true,
+    auto_save = false,
     shadow_build = true,
 
     mappings = {

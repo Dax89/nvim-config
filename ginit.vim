@@ -1,4 +1,8 @@
 " Set Editor Font
+"
+if exists(':GuiFont')
+    GuiFont! FiraCode Nerd Font:h14
+endif
 
 " Disable GUI Tabline
 if exists(':GuiTabline')
