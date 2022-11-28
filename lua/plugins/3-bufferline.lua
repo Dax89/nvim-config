@@ -1,34 +1,21 @@
-local palette = require("catppuccin.palettes").get_palette("macchiato")
-local selected = {bg = palette.blue, fg = palette.crust, italic = false}
-local hlselected = {bg = palette.blue, fg = palette.crust, italic = false}
+local palette = require("nvim-tundra.palette.arctic")
 
 require("bufferline").setup({
-    highlights = require("catppuccin.groups.integrations.bufferline").get {
-        styles = {},
-        custom = {
-            all = {
-                fill = {bg = palette.base, fg = palette.crust},
-                offset_separator = {bg = palette.base, fg = palette.mantle},
-                error_diagnostic_selected = {bg = palette.red, fg = palette.base, italic = false},
-                warning_diagnostic_selected = {bg = palette.yellow, fg = palette.base, italic = false},
-                info_diagnostic_selected = {bg = palette.sky, fg = palette.base, italic = false},
-                hint_diagnostic_selected = {bg = palette.green, fg = palette.base, italic = false},
-                indicator_selected = {bg = palette.blue, fg = palette.sky},
-                modified_selected = hlselected,
-                buffer_selected = selected,
-                duplicate_selected = selected,
-                numbers_selected = selected,
-                diagnostic_selected = selected,
-                error_selected = selected,
-                warning_selected = selected,
-                info_selected = selected,
-                hint_selected = selected,
-                close_button_selected = selected,
-            },
-        },
+    highlights = {
+        offset_separator = {bg = palette.gray._900},
+        modified_selected = {italic = false},
+        duplicate_selected = {italic = false},
+        numbers_selected = {italic = false},
+        error_selected = {italic = false},
+        warning_selected = {italic = false},
+        info_selected = {italic = false},
+        buffer_selected = {italic = false},
+        diagnostic_selected = {italic = false},
+        pick_selected = {italic = false},
+        pick_visible = {italic = false},
+        pick = {italic = false},
     },
     options = {
-        theme = "onedark",
         numbers = "ordinal",
         show_close_icon = false,
         right_mouse_command = nil,

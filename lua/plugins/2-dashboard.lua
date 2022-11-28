@@ -1,12 +1,12 @@
-local palette = require("catppuccin.palettes").get_palette()
+local palette = require("nvim-tundra.palette.arctic")
 local dashboard = require("dashboard")
 local common = require("config.common")
 
 common.highlight({
-    {"DashboardHeader",   {fg=palette.blue}},
-    {"DashboardShortCut", {fg=palette.red}},
-    {"DashboardCenter",   {fg=palette.green}},
-    {"DashboardFooter",   {fg=palette.yellow}},
+    {"DashboardHeader",   {fg=palette.red._600}},
+    {"DashboardShortCut", {fg=palette.orange._500}},
+    {"DashboardCenter",   {fg=palette.gray._50}},
+    {"DashboardFooter",   {fg=palette.green._500}},
 })
 
 local function create_buttons()
