@@ -1,8 +1,12 @@
 " Set Editor Font
-"
 if exists(':GuiFont')
-    GuiFont! FiraCode Nerd Font:h14
+    GuiFont! JetBrainsMono Nerd Font:h14
 endif
+
+" Enable Ligatures
+"if exists(':GuiRenderLigatures')
+"    GuiRenderLigatures 1
+"endif
 
 " Disable GUI Tabline
 if exists(':GuiTabline')

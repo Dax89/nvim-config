@@ -31,18 +31,17 @@ local KEYS = {
         ["<leader>h"] = ":BufferLineMovePrev<CR>",
         ["<leader>l"] = ":BufferLineMoveNext<CR>",
         ["<leader>p"] = ":BufferLinePick<CR>",
-        ["<leader>s" ] = ":Telescope lsp_document_symbols<CR>",
+        ["<leader>s" ] = ":Telescope aerial<CR>",
         ["<leader>w" ] = require("nvim-window").pick,
-        ["<A-S-Enter>"] = vim.lsp.buf.signature_help,
         ["<C-F6>"] = ":TroubleToggle<CR>",
-        ["<C-F7>"] = ":SymbolsOutline<CR>",
+        ["<C-F7>"] = ":AerialToggle!<CR>",
         ["<C-n>"] = "<Nop>",
         ["<C-h>"] = ":Telescope oldfiles<CR>",
         ["<C-Tab>"] = ":BufferLineCycleNext<CR>",
         ["<C-S-Tab>"] = ":BufferLineCyclePrev<CR>",
         ["<C-S-k>"] = ":Telescope live_grep<CR>",
         ["<A-S-k>"] = ":Telescope lsp_dynamic_workspace_symbols<CR>",
-        ["<S-Enter>"] = vim.lsp.buf.references,
+        ["<S-Enter>"] = ":Telescope lsp_references<CR>",
         ["<A-Enter>"] = vim.lsp.buf.code_action,
         ["<A-p>" ] = require("config.general").show_general_settings,
         ["<F2>"] = vim.lsp.buf.rename,
@@ -50,6 +49,7 @@ local KEYS = {
         ["<F9>"] = ":DapToggleBreakpoint<CR>",
         ["<F10>"] = ":DapStepOver<CR>",
         ["<F11>"] = ":DapStepInto<CR>",
+        ["K"] = vim.lsp.buf.hover,
 
         ["<leader>m"] = function()
             if require("codewindow.window").is_minimap_open() then
@@ -97,7 +97,6 @@ local KEYS = {
     v = { -- VISUAL
         ["&"] = require("searchbox").replace,
         ["<A-Enter>"] = vim.lsp.buf.range_code_action,
-
 
         ["/"] = function()
             require("searchbox").match_all({clear_matches = true, visual_mode = true})

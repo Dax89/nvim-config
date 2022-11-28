@@ -20,7 +20,7 @@ common.set_options("opt", {
     clipboard = "unnamedplus",                -- Use System Clipboard
     swapfile = false,                         -- Don"t use swapfile
     completeopt = "menu,menuone,noselect",    -- Completion options
-    guifont = "FiraCode Nerd Font:h14",       -- GUI Font
+    guifont = "JetBrainsMono Nerd Font:h14",  -- GUI Font
 
     -- Neovim UI
     number = true,                            -- Print line number

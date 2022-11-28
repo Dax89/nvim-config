@@ -70,6 +70,9 @@ local PLUGINS = {
     "williamboman/mason.nvim",
     "williamboman/mason-lspconfig.nvim",
     "onsails/lspkind-nvim",
+    "stevearc/aerial.nvim",
+    "p00f/clangd_extensions.nvim",
+    "folke/trouble.nvim",
 
     -- Autocompletion
     "hrsh7th/nvim-cmp",
@@ -82,10 +85,6 @@ local PLUGINS = {
     -- Snippets
     "L3MON4D3/LuaSnip",
     "rafamadriz/friendly-snippets",
-
-    "p00f/clangd_extensions.nvim",
-    "simrat39/symbols-outline.nvim",
-    "folke/trouble.nvim",
 }
 
 local DISABLED_BUILTINS = {

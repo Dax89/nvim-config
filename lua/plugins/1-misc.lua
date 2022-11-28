@@ -1,5 +1,4 @@
 require("nvim-web-devicons").setup()
-require("symbols-outline").setup()
 require("colorizer").setup()
 require("trouble").setup()
 require("dressing").setup()
@@ -9,11 +8,13 @@ require("lspkind").init()
 require("clangd_extensions").setup()
 require("Comment").setup()
 require("neoclip").setup({default_register = "+"})
-
-require("telescope").load_extension("neoclip")
 require("codewindow").setup()
 require("spectre").setup()
 require("ssr").setup()
+require("aerial").setup()
+
+require("telescope").load_extension("neoclip")
+require("telescope").load_extension("aerial")
 
 local filebrowser = require("telescope").load_extension("file_browser")
 require("telescope.builtin").file_browser = filebrowser.file_browser -- FIXME: File browser workaround
