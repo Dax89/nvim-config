@@ -19,7 +19,7 @@ vim.keymap.set("n", "<Space>", "<Nop>")
 vim.keymap.set("i", "<C-n>", "<Nop>")
 
 wk.register({
-    ["leader"] = {
+    ["<leader>"] = {
         a = { "gg0VG", "Select All"}
     },
 
