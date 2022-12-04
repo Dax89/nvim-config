@@ -36,6 +36,7 @@ local PLUGINS = {
     {"nvim-neo-tree/neo-tree.nvim", as = "neotree",   requires = {"MunifTanjim/nui.nvim"}, branch = "v2.x"},
 
     {"iamcco/markdown-preview.nvim", ft = "markdown", run = function() vim.fn["mkdp#util#install"]() end},
+    {"lukas-reineke/headlines.nvim", as = "headlines", ft = {"markdown", "orgmode", "neorg"}, config = function() require("headlines").setup() end},
 
     {"nvim-telescope/telescope-file-browser.nvim", as = "telescope-filebrowser" },
     {"nvim-telescope/telescope.nvim",              as = "telescope",            after = {"telescope-filebrowser"}},
