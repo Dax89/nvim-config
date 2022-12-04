@@ -82,3 +82,4 @@ dashboard.custom_footer = function()
 end
 
 common.exec_commands("autocmd FileType dashboard set showtabline=0 | autocmd BufUnload <buffer> set showtabline=2")
+

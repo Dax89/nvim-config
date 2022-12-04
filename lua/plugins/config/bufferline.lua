@@ -1,4 +1,14 @@
+local common = require("config.common")
 local palette = require("nvim-tundra.palette.arctic")
+
+common.set_options("g", {
+    bufferline = {
+        maximum_padding = 1,
+        auto_hide = false,
+        icons = "both",
+        exclude_ft = common.filetype_blacklist
+    }
+})
 
 require("bufferline").setup({
     highlights = {
@@ -44,22 +54,23 @@ require("bufferline").setup({
             {
                 filetype = "neo-tree",
                 text = function()
-                    local s, p = "NeoTree", require("ide"):get_active_project()
+                    -- local s, p = "NeoTree", require("ide"):get_active_project()
 
-                    if p then
-                        s = p:get_name()
-                        local cfg, runcfg = p:get_selected_config(), p:get_selected_runconfig()
+                    -- if p then
+                        -- s = p:get_name()
+                        -- local cfg, runcfg = p:get_selected_config(), p:get_selected_runconfig()
 
-                        if cfg then
-                            s = s .. " |  " .. cfg.name
-                        end
+                        -- if cfg then
+                            -- s = s .. " |  " .. cfg.name
+                        -- end
 
-                        if runcfg then
-                            s = s .. " |  " .. runcfg.name
-                        end
-                    end
+                        -- if runcfg then
+                            -- s = s .. " |  " .. runcfg.name
+                        -- end
+                    -- end
 
-                    return s
+                    -- return s
+		     return "TODO"
                 end,
                 text_align = "left",
                 highlight = "Directory",
@@ -68,4 +79,3 @@ require("bufferline").setup({
         },
     }
 })
-

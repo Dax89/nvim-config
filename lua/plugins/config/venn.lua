@@ -1,4 +1,4 @@
-local Common = require("config.common")
+local common = require("config.common")
 
 local function toggle_venn()
     if vim.b.venn_enabled == nil then
@@ -22,4 +22,5 @@ local function toggle_venn()
     end
 end
 
-Common.map("<leader>v", toggle_venn, "n")
+common.map("<leader>v", toggle_venn, "n")
+

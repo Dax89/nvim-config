@@ -3,14 +3,6 @@ local common = require("config.common")
 common.set_options("g", {
     mapleader = " ",
     maplocalleader = ",",
-
-    bufferline = {
-        maximum_padding = 1,
-        auto_hide = false,
-        icons = "both",
-        exclude_ft = common.filetype_blacklist
-    },
-
     neovide_cursor_vfx_mode = "railgun",
 })
 

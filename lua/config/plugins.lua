@@ -1,12 +1,12 @@
-local Path = require("plenary.path")
-
 local function check_dev_mode(plugins)
-    local devmode = Path:new(vim.fn.stdpath("config"), ".dev"):is_file()
+    local PATH_SEP = vim.loop.os_uname().sysname == "Windows" and "\\" or "/"
+    local AFTER = {"mason"}
+    local devmode = vim.fn.filereadable(vim.fn.stdpath("config") .. PATH_SEP .. ".dev") == 1
 
     if devmode then
-        plugins = vim.list_extend(plugins, {"~/Programmazione/Progetti/NVim/IDE.nvim"})
+        plugins = vim.list_extend(plugins, {{"~/Programmazione/Progetti/NVim/IDE.nvim", as = "ide", after = AFTER}})
     else
-        plugins = vim.list_extend(plugins, {"Dax89/IDE.nvim"})
+        plugins = vim.list_extend(plugins, {{"Dax89/IDE.nvim", as = "ide", after = AFTER}})
     end
 
     return plugins
@@ -14,77 +14,88 @@ end
 
 local PLUGINS = {
     -- Lua
-    "wbthomason/packer.nvim",         -- Packer can manage itself
-    "lewis6991/impatient.nvim",       -- https://github.com/neovim/neovim/pull/15436
-    "stevearc/dressing.nvim",         -- UI Component Styling
-    "nvim-lua/plenary.nvim",
-    "kyazdani42/nvim-web-devicons",
-    "famiu/bufdelete.nvim",
-    "akinsho/bufferline.nvim",
-    "nvim-lualine/lualine.nvim",
-    "rcarriga/nvim-notify",
-    "weilbith/nvim-code-action-menu",
-    "norcalli/nvim-colorizer.lua",
-    "windwp/nvim-autopairs",
-    "nvim-orgmode/orgmode",
-    "glepnir/dashboard-nvim",
-    "phaazon/hop.nvim",
-    "nvim-telescope/telescope-file-browser.nvim",
-    "MunifTanjim/nui.nvim",
-    "nvim-treesitter/nvim-treesitter-context",
-    "numToStr/Comment.nvim",
-    "nacro90/numb.nvim",
-    "jbyuki/venn.nvim",
-    "TimUntersberger/neogit",
-    "gorbit99/codewindow.nvim",
-    "p00f/nvim-ts-rainbow",
-    "RRethy/vim-illuminate",
-    "nvim-pack/nvim-spectre",
-    "sam4llis/nvim-tundra",
-    {"cshuaimin/ssr.nvim",              module = "ssr"},
-    {"AckslD/nvim-neoclip.lua",         requires = {"nvim-telescope/telescope.nvim"}},
-    {"nvim-neo-tree/neo-tree.nvim",     branch = "v2.x", requires = {"nvim-lua/plenary.nvim", "kyazdani42/nvim-web-devicons", "MunifTanjim/nui.nvim"}},
-    {"akinsho/toggleterm.nvim",         tag = "v2.*"},
-    {"nvim-treesitter/nvim-treesitter", run = ":TSUpdate"},
-    {"VonHeikemen/searchbox.nvim",      requires = {"MunifTanjim/nui.nvim"}},
-    {"nvim-telescope/telescope.nvim",   requires = {"nvim-lua/popup.nvim", "nvim-lua/plenary.nvim"}},
-    "https://gitlab.com/yorickpeterse/nvim-window",
+    {"wbthomason/packer.nvim",   noconfig = true},  -- Packer can manage itself
+    {"lewis6991/impatient.nvim", noconfig = true},  -- https://github.com/neovim/neovim/pull/15436
+    {"nvim-lua/plenary.nvim",    noconfig = true},  -- Misc Utilities
+    {"stevearc/dressing.nvim",   noconfig = true, config = function() require("dressing").setup() end},
+    {"famiu/bufdelete.nvim",     noconfig = true},
+    {"folke/which-key.nvim",     as = "whichkey"},
 
-    -- VimL
-    "peterhoeg/vim-qml",
-    "mechatroner/rainbow_csv",
-    "pangloss/vim-javascript",
-    "evanleck/vim-svelte",
-    "instant-markdown/vim-instant-markdown",
-    "MTDL9/vim-log-highlighting",
-    "bakpakin/fennel.vim",
-    "alaviss/nim.nvim",
-    "ziglang/zig.vim",
+    -- TreeSitter --
+    {"nvim-treesitter/nvim-treesitter-context", as = "ts-context", noconfig = true},
+    {"nvim-treesitter/nvim-treesitter",         as = "treesitter", after = "ts-context", run = true},
+    {"p00f/nvim-ts-rainbow",                    as = "ts-rainbow", after = "treesitter"},
+    {"gorbit99/codewindow.nvim",                as = "codewindow", after = "treesitter", config = function() require("codewindow").setup() end},
+    {"cshuaimin/ssr.nvim",                      as = "ssr",        module = "ssr"},
+    -- TreeSitter --
 
-    -- DAP Support
-    "mfussenegger/nvim-dap",
-    "rcarriga/nvim-dap-ui",
+    {"rcarriga/nvim-notify",         config = function() require("notify") end},
+    {"kyazdani42/nvim-web-devicons", config = function() require("nvim-web-devicons").setup() end},
 
-    -- LSP Support
-    "neovim/nvim-lspconfig",
-    "williamboman/mason.nvim",
-    "williamboman/mason-lspconfig.nvim",
-    "onsails/lspkind-nvim",
-    "stevearc/aerial.nvim",
-    "p00f/clangd_extensions.nvim",
-    "folke/trouble.nvim",
+    {"VonHeikemen/searchbox.nvim",  as = "searchbox", requires = {"MunifTanjim/nui.nvim"}},
+    {"nvim-neo-tree/neo-tree.nvim", as = "neotree",   requires = {"MunifTanjim/nui.nvim"}, branch = "v2.x"},
 
-    -- Autocompletion
-    "hrsh7th/nvim-cmp",
-    "hrsh7th/cmp-buffer",
-    "hrsh7th/cmp-path",
-    "hrsh7th/cmp-nvim-lsp",
-    "hrsh7th/cmp-nvim-lua",
-    "saadparwaiz1/cmp_luasnip",
+    {"iamcco/markdown-preview.nvim", ft = "markdown", run = function() vim.fn["mkdp#util#install"]() end},
 
-    -- Snippets
-    "L3MON4D3/LuaSnip",
+    {"nvim-telescope/telescope-file-browser.nvim", as = "telescope-filebrowser" },
+    {"nvim-telescope/telescope.nvim",              as = "telescope",            after = {"telescope-filebrowser"}},
+    {"AckslD/nvim-neoclip.lua",                    as = "neoclip",              after = "telescope"},
+
+    {"sam4llis/nvim-tundra",        as = "tundra"},
+    {"nvim-lualine/lualine.nvim",   as = "lualine",    after = "tundra"},
+    {"akinsho/bufferline.nvim",     as = "bufferline", after = "tundra"},
+    {"glepnir/dashboard-nvim",      as = "dashboard",  after = "tundra"},
+    {"jbyuki/venn.nvim",            as = "venn"},
+    {"nvim-pack/nvim-spectre",      as = "spectre"},
+    {"akinsho/toggleterm.nvim",     as = "toggleterm", tag = "*"},
+    {"numToStr/Comment.nvim",       as = "comment",    config = function() require("Comment").setup() end },
+    {"norcalli/nvim-colorizer.lua", as = "colorizer",  config = function() require("colorizer").setup() end },
+    {"windwp/nvim-autopairs",       as = "autopairs"},
+    {"phaazon/hop.nvim",            as = "hop"},
+    {"nacro90/numb.nvim",           as = "numb"},
+
+    -- LSP Support --
+    {"neovim/nvim-lspconfig",             as = "lspconfig"},
+    {"williamboman/mason-lspconfig.nvim", as = "mason-lspconfig"},
+    {"williamboman/mason.nvim",           as = "mason",             after = {"lspconfig", "mason-lspconfig"}},
+    {"stevearc/aerial.nvim",              as = "aerial",            after = {"lspconfig", "treesitter", "telescope"}},
+    {"onsails/lspkind-nvim",              as = "lspkind",           config = function() require("lspkind").init() end},
+    {"p00f/clangd_extensions.nvim",       as = "clangd-extensions", after = {"lspconfig", "mason-lspconfig"}, config = function() require("clangd_extensions").setup() end},
+    {"RRethy/vim-illuminate",             as = "illuminate",        after = "lspconfig"},
+    {"weilbith/nvim-code-action-menu",    cmd = "CodeActionMenu",   after = "lspconfig"},
+    {"folke/trouble.nvim",                cmd = "TroubleToggle",    config = function() require("trouble").setup() end},
+    -- LSP Support --
+
+    -- Snippets --
+    {"L3MON4D3/LuaSnip", as = "luasnip"},
     "rafamadriz/friendly-snippets",
+    -- Snippets --
+
+    -- Autocompletion --
+    {
+        "hrsh7th/nvim-cmp",
+        as = "cmp",
+        requires = {"saadparwaiz1/cmp_luasnip", "hrsh7th/cmp-buffer", "hrsh7th/cmp-path", "hrsh7th/cmp-nvim-lsp", "hrsh7th/cmp-nvim-lua" },
+        after = {"lspconfig", "luasnip", "friendly-snippets", "clangd-extensions" }
+    },
+    -- Autocompletion --
+
+    -- DAP Support --
+    {"mfussenegger/nvim-dap", as = "dap"},
+    {"rcarriga/nvim-dap-ui",  as = "dap-ui"},
+    -- DAP Support --
+
+    "TimUntersberger/neogit",
+    {"https://gitlab.com/yorickpeterse/nvim-window", as = "window"},
+
+    -- VimL --
+    {"peterhoeg/vim-qml", ft = "qml"},
+    {"mechatroner/rainbow_csv", ft = "csv"},
+    {"MTDL9/vim-log-highlighting", ft = "log"},
+    {"bakpakin/fennel.vim", ft = "fennel"},
+    {"alaviss/nim.nvim", ft = "nim"},
+    {"ziglang/zig.vim", ft = "zig"}
+    -- VimL --
 }
 
 local DISABLED_BUILTINS = {

@@ -1,4 +1,4 @@
-local Common = {
+local common = {
     filetype_blacklist = {
         "help",
         "dashboard",
@@ -11,21 +11,13 @@ local Common = {
     }
 }
 
-function Common.highlight(items, ns)
+function common.highlight(items, ns)
     for _, item in ipairs(items) do
         vim.api.nvim_set_hl(ns or 0, item[1], item[2])
     end
 end
 
-function Common.if_installed(module, cb)
-    local ok, m = pcall(require, module)
-
-    if ok then
-        cb(m)
-    end
-end
-
-function Common.show_select(prompt, choices, mode)
+function common.show_select(prompt, choices, mode)
     local m = nil
 
     if mode == "cursor" then
@@ -50,11 +42,11 @@ function Common.show_select(prompt, choices, mode)
     end)
 end
 
-function Common.wrap_fn(mod, fn)
+function common.wrap_fn(mod, fn)
     return string.format(":lua require('%s')['%s']()<CR>", mod, fn)
 end
 
-function Common.map(key, cmd, mode, options)
+function common.map(key, cmd, mode, options)
     local opts = {silent = true}
 
     if options then
@@ -64,19 +56,19 @@ function Common.map(key, cmd, mode, options)
     vim.keymap.set(mode, key, cmd, opts)
 end
 
-function Common.map_keys(keys)
+function common.map_keys(keys)
     for _, key in ipairs(keys) do
         vim.api.nvim_set_keymap(unpack(key))
     end
 end
 
-function Common.set_options(t, options)
+function common.set_options(t, options)
     for k, v in pairs(options) do
         vim[t][k] = v
     end
 end
 
-function Common.exec_commands(commands)
+function common.exec_commands(commands)
     if type(commands) == "string" then
         vim.api.nvim_command(commands)
         return
@@ -87,7 +79,7 @@ function Common.exec_commands(commands)
     end
 end
 
-function Common.open_folder(path)
+function common.open_folder(path)
     local Job = require("plenary.job")
 
     local job = Job:new({
@@ -98,4 +90,4 @@ function Common.open_folder(path)
     job:start()
 end
 
-return Common
+return common

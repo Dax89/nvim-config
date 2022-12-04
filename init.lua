@@ -1,31 +1,7 @@
-local runtime = require("config.runtime")
-
-local function load_modules(p)
-    for _, mod in ipairs(vim.fn.glob(p, nil, true)) do
-        require(string.gsub(mod:match(".+/lua/(.+).lua$"), "/", "."))
-    end
-end
-
-local function get_config_path(p)
-    return vim.fn.stdpath("config") .. p
-end
-
-local function load_config(p)
-    load_modules(get_config_path("/lua/" .. p .. "/*-*.lua"))
-end
-
-runtime.init()
 pcall(require, "impatient")       -- Preload impatient (if installed)
+require("config.options")
+require("config.commands")
+require("config.lsp")
+
 pcall(require, "packer_compiled") -- Load & Cache "packer_compiled.lua" (if exists)
-
-local instplugins, configs  = _G["packer_plugins"], { }
-
-if type(instplugins) == "table" and #vim.tbl_keys(instplugins) > 0 then
-    configs = {"core", "plugins", "config"}
-else
-    configs = {"core"}
-end
-
-for _, c in pairs(configs) do
-    load_config(c)
-end
+require("plugins")

@@ -1,6 +1,5 @@
 local Path = require("plenary.path")
-
-local DAP_BASEPATH = Path:new(vim.fn.stdpath("data"), "/mason/bin")
+local DAP_BASEPATH = Path:new(vim.fn.stdpath("data"), "mason", "bin")
 
 require("ide").setup({
     debug = true,
@@ -30,6 +29,14 @@ require("ide").setup({
             else
                 project:build()
             end
+        end,
+
+        ["<S-F5>"] = function(project)
+            project:select_runconfig()
+        end,
+
+        ["<S-F8>"] = function(project)
+            project:select_config()
         end,
 
         ["<C-F5>"] = function(project)
@@ -98,3 +105,4 @@ require("ide").setup({
         git = { enable = true }
     }
 })
+

@@ -84,7 +84,7 @@ cmp.setup({
         comparators = {
             cmp.config.compare.locality,
             cmp.config.compare.recently_used,
-            require("clangd_extensions.cmp_scores"),
+            -- require("clangd_extensions.cmp_scores"),
             cmp.config.compare.score,
             cmp.config.compare.offset,
             cmp.config.compare.order,
@@ -95,3 +95,4 @@ cmp.setup({
         },
     },
 })
+
