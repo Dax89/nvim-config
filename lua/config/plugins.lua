@@ -99,13 +99,10 @@ local PLUGINS = {
 }
 
 local DISABLED_BUILTINS = {
-    "netrw",
-    "netrwPlugin",
-    "netrwSettings",
-    "netrwFileHandlers",
     "gzip",
     "zip",
     "zipPlugin",
+    "fzf",
     "tar",
     "tarPlugin",
     "getscript",
@@ -113,10 +110,14 @@ local DISABLED_BUILTINS = {
     "vimball",
     "vimballPlugin",
     "2html_plugin",
-    "logipat",
+    "matchit",
+    "matchparen",
+    "logiPat",
     "rrhelper",
-    "spellfile_plugin",
-    "matchit"
+    "netrw",
+    "netrwPlugin",
+    "netrwSettings",
+    "netrwFileHandlers",
 }
 
 return {
