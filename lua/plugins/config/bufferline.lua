@@ -54,23 +54,29 @@ require("bufferline").setup({
             {
                 filetype = "neo-tree",
                 text = function()
-                    -- local s, p = "NeoTree", require("ide"):get_active_project()
+                    local ok, ide = pcall(require, "ide")
+                    local s = "NEO-TREE"
 
-                    -- if p then
-                        -- s = p:get_name()
-                        -- local cfg, runcfg = p:get_selected_config(), p:get_selected_runconfig()
+                    if not ok then
+                        return s
+                    end
 
-                        -- if cfg then
-                            -- s = s .. " |  " .. cfg.name
-                        -- end
+                    local p = ide:get_active_project()
 
-                        -- if runcfg then
-                            -- s = s .. " |  " .. runcfg.name
-                        -- end
-                    -- end
+                    if p then
+                        s = p:get_name()
+                        local cfg, runcfg = p:get_selected_config(), p:get_selected_runconfig()
 
-                    -- return s
-		     return "TODO"
+                        if cfg then
+                            s = s .. " |  " .. cfg.name
+                        end
+
+                        if runcfg then
+                            s = s .. " |  " .. runcfg.name
+                        end
+                    end
+
+                    return s
                 end,
                 text_align = "left",
                 highlight = "Directory",
