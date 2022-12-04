@@ -18,8 +18,6 @@ require("ide").setup({
         ["<F7>"] = function(project)
             if project:has_state("debug") then
                 project:debug({type = "stepinto"})
-            else
-                vim.api.nvim_command(":NeoTreeShowToggle")
             end
         end,
 
