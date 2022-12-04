@@ -22,9 +22,9 @@ local PLUGINS = {
     {"folke/which-key.nvim",     as = "whichkey"},
 
     -- TreeSitter --
-    {"nvim-treesitter/nvim-treesitter-context", as = "ts-context", noconfig = true},
-    {"nvim-treesitter/nvim-treesitter",         as = "treesitter", after = "ts-context", run = true},
-    {"p00f/nvim-ts-rainbow",                    as = "ts-rainbow", after = "treesitter"},
+    {"nvim-treesitter/nvim-treesitter",         as = "treesitter", run = true},
+    {"nvim-treesitter/nvim-treesitter-context", as = "tscontext",  after = "treesitter"},
+    {"p00f/nvim-ts-rainbow",                    as = "tsrainbow", after = "treesitter"},
     {"gorbit99/codewindow.nvim",                as = "codewindow", after = "treesitter", config = function() require("codewindow").setup() end},
     {"cshuaimin/ssr.nvim",                      as = "ssr",        module = "ssr"},
     -- TreeSitter --
