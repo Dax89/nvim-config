@@ -21,6 +21,11 @@ require("neo-tree").setup({
             with_expanders = true,
         },
     },
+    window = {
+        mappings = {
+            ["<space>"] = false
+        }
+    }
 })
 
 wk.register({
