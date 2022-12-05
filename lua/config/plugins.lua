@@ -22,9 +22,9 @@ local PLUGINS = {
     {"folke/which-key.nvim",     as = "whichkey"},
 
     -- TreeSitter --
-    {"nvim-treesitter/nvim-treesitter",         as = "treesitter", run = true},
-    {"nvim-treesitter/nvim-treesitter-context", as = "tscontext",  after = "treesitter"},
-    {"p00f/nvim-ts-rainbow",                    as = "tsrainbow", after = "treesitter"},
+    {"nvim-treesitter/nvim-treesitter-context", as = "ts-context", noconfig = true},
+    {"nvim-treesitter/nvim-treesitter",         as = "treesitter", after = "ts-context", run = true},
+    {"p00f/nvim-ts-rainbow",                    as = "ts-rainbow", after = "treesitter"},
     {"gorbit99/codewindow.nvim",                as = "codewindow", after = "treesitter", config = function() require("codewindow").setup() end},
     {"cshuaimin/ssr.nvim",                      as = "ssr",        module = "ssr"},
     -- TreeSitter --
@@ -85,6 +85,10 @@ local PLUGINS = {
     {"mfussenegger/nvim-dap", as = "dap"},
     {"rcarriga/nvim-dap-ui",  as = "dap-ui"},
     -- DAP Support --
+
+    -- Python --
+    {"terror/chatgpt.nvim",   as = "chatgpt", run = "pip3 install -r requirements.txt"},
+    -- Python --
 
     "TimUntersberger/neogit",
     {"https://gitlab.com/yorickpeterse/nvim-window", as = "window"},
