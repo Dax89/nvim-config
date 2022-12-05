@@ -19,6 +19,7 @@ local PLUGINS = {
     {"nvim-lua/plenary.nvim",    noconfig = true},  -- Misc Utilities
     {"stevearc/dressing.nvim",   noconfig = true, config = function() require("dressing").setup() end},
     {"famiu/bufdelete.nvim",     noconfig = true},
+    {"rcarriga/nvim-notify",     as = "notify"},
     {"folke/which-key.nvim",     as = "whichkey"},
 
     -- TreeSitter --
@@ -29,7 +30,6 @@ local PLUGINS = {
     {"cshuaimin/ssr.nvim",                      as = "ssr",        module = "ssr"},
     -- TreeSitter --
 
-    {"rcarriga/nvim-notify",         config = function() require("notify") end},
     {"kyazdani42/nvim-web-devicons", config = function() require("nvim-web-devicons").setup() end},
 
     {"VonHeikemen/searchbox.nvim",  as = "searchbox", requires = {"MunifTanjim/nui.nvim"}},
