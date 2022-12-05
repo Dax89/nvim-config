@@ -30,8 +30,8 @@ vim.keymap.set("i", "<C-n>", "<Nop>")
 
 wk.register({
     ["<leader>"] = {
-        a = { "gg0VG", "Select All"},
-        q = { query_chatgpt, "Query ChatGPT"}
+        ["a"] = { "gg0VG", "Select All"},
+        ["q"] = { query_chatgpt, "Query ChatGPT"}
     },
 
     ["<A-p>"] = {
