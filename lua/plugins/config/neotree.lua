@@ -8,7 +8,6 @@ common.set_options("g", {
 require("neo-tree").setup({
     close_if_last_window = true,
     enable_diagnostics = false,
-    hide_root_node = true,
 
     filesystem = {
         hijack_netrw_behavior = "open_current",
