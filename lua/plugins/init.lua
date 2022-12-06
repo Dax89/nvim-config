@@ -27,20 +27,39 @@ end
 -- HACK: https://github.com/wbthomason/packer.nvim/discussions/443
 local function get_plugin_config(plugin)
     local name = get_plugin_name(plugin)
+    local identifier = name:gsub("-", "_")
+
+    if type(plugin.config) == "string" then
+        return ([[
+        local function %s_init()
+            require("%s").%s()
+
+            local ok, res = pcall(require, "plugins.mappings.%s")
+
+            if not ok and not res:match("^module '.+' not found") then
+                error(res)
+            end
+        end
+        %s_init()
+        ]]):format(identifier, name, plugin.config, name, identifier)
+    end
 
     return ([[
-    local ok, res = pcall(require, "plugins.config.%s")
+    local function %s_init()
+        local ok, res = pcall(require, "plugins.config.%s")
 
-    if not ok and not res:match("^module '.+' not found") then
-        error(res) -- Propagate error
+        if not ok and not res:match("^module '.+' not found") then
+            error(res)
+        end
+
+        ok, res = pcall(require, "plugins.mappings.%s")
+
+        if not ok and not res:match("^module '.+' not found") then
+            error(res)
+        end
     end
-
-    local ok, res = pcall(require, "plugins.mappings.%s")
-
-    if not ok and not res:match("^module '.+' not found") then
-        error(res) -- Propagate error
-    end
-    ]]):format(name, name)
+    %s_init()
+    ]]):format(identifier, name, name, identifier)
 end
 
 -- HACK: https://github.com/wbthomason/packer.nvim/discussions/443
@@ -77,7 +96,9 @@ local function packer_startup(plugins)
                 plugin = {plugin}
             end
 
-            if not plugin.noconfig and not plugin.config then
+            if plugin.config == "none" then
+                plugin.config = nil
+            else
                 plugin.config = get_plugin_config(plugin)
             end
 

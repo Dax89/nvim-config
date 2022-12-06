@@ -14,29 +14,29 @@ end
 
 local PLUGINS = {
     -- Lua
-    {"wbthomason/packer.nvim",   noconfig = true},  -- Packer can manage itself
-    {"lewis6991/impatient.nvim", noconfig = true},  -- https://github.com/neovim/neovim/pull/15436
-    {"nvim-lua/plenary.nvim",    noconfig = true},  -- Misc Utilities
-    {"stevearc/dressing.nvim",   noconfig = true, config = function() require("dressing").setup() end},
-    {"famiu/bufdelete.nvim",     noconfig = true},
+    {"wbthomason/packer.nvim",   config = "none"},  -- Packer can manage itself
+    {"lewis6991/impatient.nvim", config = "none"},  -- https://github.com/neovim/neovim/pull/15436
+    {"nvim-lua/plenary.nvim",    config = "none"},  -- Misc Utilities
+    {"stevearc/dressing.nvim",   config = "setup", as = "dressing"},
+    {"famiu/bufdelete.nvim",     config = "none"},
     {"rcarriga/nvim-notify",     as = "notify"},
     {"folke/which-key.nvim",     as = "whichkey"},
 
     -- TreeSitter --
-    {"nvim-treesitter/nvim-treesitter-context", as = "ts-context", noconfig = true},
+    {"nvim-treesitter/nvim-treesitter-context", as = "ts-context", config = "none"},
     {"nvim-treesitter/nvim-treesitter",         as = "treesitter", after = "ts-context", run = true},
     {"p00f/nvim-ts-rainbow",                    as = "ts-rainbow", after = "treesitter"},
-    {"gorbit99/codewindow.nvim",                as = "codewindow", after = "treesitter", config = function() require("codewindow").setup() end},
+    {"gorbit99/codewindow.nvim",                as = "codewindow", after = "treesitter", config = "setup"},
     {"cshuaimin/ssr.nvim",                      as = "ssr",        module = "ssr"},
     -- TreeSitter --
 
-    {"kyazdani42/nvim-web-devicons", config = function() require("nvim-web-devicons").setup() end},
+    {"kyazdani42/nvim-web-devicons", config = "setup"},
 
     {"VonHeikemen/searchbox.nvim",  as = "searchbox", requires = {"MunifTanjim/nui.nvim"}},
     {"nvim-neo-tree/neo-tree.nvim", as = "neotree",   requires = {"MunifTanjim/nui.nvim"}, branch = "v2.x"},
 
     {"iamcco/markdown-preview.nvim", ft = "markdown", run = function() vim.fn["mkdp#util#install"]() end},
-    {"lukas-reineke/headlines.nvim", as = "headlines", ft = {"markdown", "orgmode", "neorg"}, config = function() require("headlines").setup() end},
+    {"lukas-reineke/headlines.nvim", as = "headlines", ft = {"markdown", "orgmode", "neorg"}, config = "setup"},
 
     {"nvim-telescope/telescope-file-browser.nvim", as = "telescope-filebrowser" },
     {"nvim-telescope/telescope.nvim",              as = "telescope",            after = {"telescope-filebrowser"}},
@@ -49,8 +49,8 @@ local PLUGINS = {
     {"jbyuki/venn.nvim",            as = "venn"},
     {"nvim-pack/nvim-spectre",      as = "spectre"},
     {"akinsho/toggleterm.nvim",     as = "toggleterm", tag = "*"},
-    {"numToStr/Comment.nvim",       as = "comment",    config = function() require("Comment").setup() end },
-    {"norcalli/nvim-colorizer.lua", as = "colorizer",  config = function() require("colorizer").setup() end },
+    {"numToStr/Comment.nvim",       as = "comment", module = "comment", config = "setup"},
+    {"norcalli/nvim-colorizer.lua", as = "colorizer", config = "setup" },
     {"windwp/nvim-autopairs",       as = "autopairs"},
     {"phaazon/hop.nvim",            as = "hop"},
     {"nacro90/numb.nvim",           as = "numb"},
@@ -58,18 +58,21 @@ local PLUGINS = {
     -- LSP Support --
     {"neovim/nvim-lspconfig",             as = "lspconfig"},
     {"williamboman/mason-lspconfig.nvim", as = "mason-lspconfig"},
-    {"williamboman/mason.nvim",           as = "mason",             after = {"lspconfig", "mason-lspconfig"}},
-    {"stevearc/aerial.nvim",              as = "aerial",            after = {"lspconfig", "treesitter", "telescope"}},
-    {"onsails/lspkind-nvim",              as = "lspkind",           config = function() require("lspkind").init() end},
-    {"p00f/clangd_extensions.nvim",       as = "clangd-extensions", after = {"lspconfig", "mason-lspconfig"}, config = function() require("clangd_extensions").setup() end},
-    {"RRethy/vim-illuminate",             as = "illuminate",        after = "lspconfig"},
-    {"weilbith/nvim-code-action-menu",    cmd = "CodeActionMenu",   after = "lspconfig"},
-    {"folke/trouble.nvim",                cmd = "TroubleToggle",    config = function() require("trouble").setup() end},
+    {"williamboman/mason.nvim",           as = "mason",              after = {"lspconfig", "mason-lspconfig"}},
+    {"stevearc/aerial.nvim",              as = "aerial",             after = {"lspconfig", "treesitter", "telescope"}},
+    {"onsails/lspkind-nvim",              as = "lspkind",            config = "init"},
+    {"p00f/clangd_extensions.nvim",       as = "clangd_extensions",  after = {"lspconfig", "mason-lspconfig"}, config = "setup"},
+    {"RRethy/vim-illuminate",             as = "illuminate",         after = "lspconfig"},
+    {"folke/trouble.nvim",                as = "trouble",            cmd = "TroubleToggle", config = "setup"},
+    {"utilyre/barbecue.nvim",             as = "barbecue",           after = "lspconfig",   config = "setup", requires = {"smiteshp/nvim-navic"}},
+    {"j-hui/fidget.nvim",                 as = "fidget",             config = "setup"},
+    {"smjonas/inc-rename.nvim",           as = "inc_rename",         after = "lspconfig", config = "setup"},
+    {"weilbith/nvim-code-action-menu",    cmd = "CodeActionMenu",    after = "lspconfig"},
     -- LSP Support --
 
     -- Snippets --
-    {"L3MON4D3/LuaSnip", as = "luasnip"},
-    "rafamadriz/friendly-snippets",
+    {"L3MON4D3/LuaSnip",             as = "luasnip"},
+    {"rafamadriz/friendly-snippets", as = "friendly_snippets"},
     -- Snippets --
 
     -- Autocompletion --
@@ -77,13 +80,13 @@ local PLUGINS = {
         "hrsh7th/nvim-cmp",
         as = "cmp",
         requires = {"saadparwaiz1/cmp_luasnip", "hrsh7th/cmp-buffer", "hrsh7th/cmp-path", "hrsh7th/cmp-nvim-lsp", "hrsh7th/cmp-nvim-lua" },
-        after = {"lspconfig", "luasnip", "friendly-snippets", "clangd-extensions" }
+        after = {"lspconfig", "luasnip", "friendly_snippets", "clangd_extensions" }
     },
     -- Autocompletion --
 
     -- DAP Support --
     {"mfussenegger/nvim-dap", as = "dap"},
-    {"rcarriga/nvim-dap-ui",  as = "dap-ui"},
+    {"rcarriga/nvim-dap-ui",  as = "dap_ui"},
     -- DAP Support --
 
     -- Python --

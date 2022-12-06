@@ -43,7 +43,7 @@ wk.register({
 wk.register({
     name = "+lsp",
     ["K"] = {vim.lsp.buf.hover, "LSP Show Symbol Details"},
-    ["<F2>"] = {vim.lsp.buf.rename, "LSP Rename Symbol"},
+    ["<F2>"] = {":IncRename ", "LSP Incremental Rename"},
     ["<F4>"] = {"<CMD>ClangdSwitchSourceHeader<CR>", "Switch C++ Header/Source"},
     ["<A-Enter>"] = {vim.lsp.buf.code_action, "LSP Code Actions"},
 })
