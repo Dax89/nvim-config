@@ -49,7 +49,7 @@ local PLUGINS = {
     {"jbyuki/venn.nvim",            as = "venn"},
     {"nvim-pack/nvim-spectre",      as = "spectre"},
     {"akinsho/toggleterm.nvim",     as = "toggleterm", tag = "*"},
-    {"numToStr/Comment.nvim",       as = "comment", module = "comment", config = "setup"},
+    {"numToStr/Comment.nvim",       as = "Comment", config = "setup"},
     {"norcalli/nvim-colorizer.lua", as = "colorizer", config = "setup" },
     {"windwp/nvim-autopairs",       as = "autopairs"},
     {"phaazon/hop.nvim",            as = "hop"},
