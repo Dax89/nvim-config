@@ -2,6 +2,7 @@ local common = {
     filetype_blacklist = {
         "help",
         "dashboard",
+        "toggleterm",
         "NeogitStatus",
         "NeogitPopup",
         "NeogitCommitMessage",
