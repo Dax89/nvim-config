@@ -64,7 +64,7 @@ require("bufferline").setup({
                     local p = ide:get_active_project()
 
                     if p then
-                        s = p:get_name()
+                        s = " " .. p:get_name()
                         local cfg, runcfg = p:get_selected_config(), p:get_selected_runconfig()
 
                         if cfg then
