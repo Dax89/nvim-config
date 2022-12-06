@@ -72,7 +72,7 @@ local PLUGINS = {
     -- LSP Support --
 
     -- Snippets --
-    {"L3MON4D3/LuaSnip",             as = "luasnip"},
+    {"L3MON4D3/LuaSnip",             as = "luasnip",          tag = "*"},
     {"rafamadriz/friendly-snippets", as = "friendly_snippets"},
     -- Snippets --
 
