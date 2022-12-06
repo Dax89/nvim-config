@@ -119,7 +119,10 @@ local DISABLED_BUILTINS = {
     "vimball",
     "vimballPlugin",
     "2html_plugin",
+    "logipat",
+    "spellfile_plugin";
     "rrhelper",
+    "matchit",
     "netrw",
     "netrwPlugin",
     "netrwSettings",
