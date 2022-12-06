@@ -19,7 +19,6 @@ local PLUGINS = {
     {"nvim-lua/plenary.nvim",    config = "none"},  -- Misc Utilities
     {"stevearc/dressing.nvim",   config = "setup", as = "dressing"},
     {"famiu/bufdelete.nvim",     config = "none"},
-    {"rcarriga/nvim-notify",     as = "notify"},
     {"folke/which-key.nvim",     as = "whichkey"},
 
     -- TreeSitter --
@@ -43,6 +42,7 @@ local PLUGINS = {
     {"AckslD/nvim-neoclip.lua",                    as = "neoclip",              after = "telescope"},
 
     {"sam4llis/nvim-tundra",        as = "tundra"},
+    {"rcarriga/nvim-notify",        as = "notify",     after = "tundra"},
     {"nvim-lualine/lualine.nvim",   as = "lualine",    after = "tundra"},
     {"akinsho/bufferline.nvim",     as = "bufferline", after = "tundra"},
     {"glepnir/dashboard-nvim",      as = "dashboard",  after = "tundra"},
