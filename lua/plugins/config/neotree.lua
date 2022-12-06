@@ -17,21 +17,36 @@ require("neo-tree").setup({
         always_show = {
             ".gitignore",
         },
+
+        window = {
+            mappings = {
+                ["s"] = "os_open",
+            }
+        },
+
+        commands = {
+            os_open = function(state)
+                common.os_open(state.tree:get_node():get_id())
+            end
+        }
     },
+
     source_selector = {
         winbar = true,
         statusline = false,
     },
+
     default_component_configs = {
         indent = {
             with_expanders = true,
         },
     },
+
     window = {
         mappings = {
-            ["<space>"] = false
+            ["<space>"] = false,
         }
-    }
+    },
 })
 
 wk.register({

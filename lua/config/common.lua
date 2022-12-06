@@ -91,4 +91,27 @@ function common.open_folder(path)
     job:start()
 end
 
+function common.os_open(arg)
+    arg = tostring(arg)
+
+    local uname = vim.loop.os_uname().sysname
+    local cmd = nil
+
+    if uname == "Windows" then
+        cmd = {command = "cmd", args = {"/c", "start", arg}}
+    elseif uname == "Darwin" then
+        cmd = {command = "open", args = {arg}}
+    elseif uname == "Linux" then
+        cmd = {command = "xdg-open", args = {arg}}
+    else
+        vim.notify("Unsupported Platform '" .. uname .. "'", "warn", {title = "OS Open"})
+        return
+    end
+
+    require("plenary.job"):new({
+        command = cmd.command,
+        args = cmd.args,
+    }):start()
+end
+
 return common
