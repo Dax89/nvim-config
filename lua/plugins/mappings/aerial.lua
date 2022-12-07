@@ -7,5 +7,5 @@ wk.register({
     },
 
     ["<C-F7>"] = {"<CMD>AerialToggle!<CR>", "Toggle Outline"}
-})
+}, {mode = {"n", "v"}})
 

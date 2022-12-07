@@ -70,7 +70,7 @@ local function get_plugin_run(plugin)
     local ok, res = pcall(require, "plugins.run.%s")
 
     if not ok and not res:match("^module '.+' not found") then
-        error(res) -- Propagate error
+        error(res)
     end
     ]]):format(name, name)
 end

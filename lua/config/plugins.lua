@@ -31,13 +31,13 @@ local PLUGINS = {
 
     {"kyazdani42/nvim-web-devicons", config = "setup"},
 
-    {"VonHeikemen/searchbox.nvim",  as = "searchbox", requires = {"MunifTanjim/nui.nvim"}},
+    {"VonHeikemen/searchbox.nvim",  as = "searchbox", requires = {"MunifTanjim/nui.nvim"}, cmd = {"SearchBoxMatchAll", "SearchBoxReplace"}},
     {"nvim-neo-tree/neo-tree.nvim", as = "neotree",   requires = {"MunifTanjim/nui.nvim"}, branch = "v2.x"},
 
     {"iamcco/markdown-preview.nvim", ft = "markdown", run = function() vim.fn["mkdp#util#install"]() end},
     {"lukas-reineke/headlines.nvim", as = "headlines", ft = {"markdown", "orgmode", "neorg"}, config = "setup"},
 
-    {"nvim-telescope/telescope-file-browser.nvim", as = "telescope-filebrowser" },
+    {"nvim-telescope/telescope-file-browser.nvim", as = "telescope-filebrowser"},
     {"nvim-telescope/telescope.nvim",              as = "telescope",            after = {"telescope-filebrowser"}},
     {"AckslD/nvim-neoclip.lua",                    as = "neoclip",              after = "telescope"},
 
@@ -46,11 +46,11 @@ local PLUGINS = {
     {"nvim-lualine/lualine.nvim",   as = "lualine",    after = "tundra"},
     {"akinsho/bufferline.nvim",     as = "bufferline", after = "tundra"},
     {"glepnir/dashboard-nvim",      as = "dashboard",  after = "tundra"},
-    {"jbyuki/venn.nvim",            as = "venn"},
-    {"nvim-pack/nvim-spectre",      as = "spectre"},
+    {"nvim-pack/nvim-spectre",      as = "spectre",    config = "setup"},
+    {"numToStr/Comment.nvim",       as = "Comment",    config = "setup"},
+    {"norcalli/nvim-colorizer.lua", as = "colorizer",  config = "setup"},
     {"akinsho/toggleterm.nvim",     as = "toggleterm", tag = "*"},
-    {"numToStr/Comment.nvim",       as = "Comment", config = "setup"},
-    {"norcalli/nvim-colorizer.lua", as = "colorizer", config = "setup" },
+    {"jbyuki/venn.nvim",            as = "venn"},
     {"windwp/nvim-autopairs",       as = "autopairs"},
     {"phaazon/hop.nvim",            as = "hop"},
     {"nacro90/numb.nvim",           as = "numb"},
@@ -81,7 +81,7 @@ local PLUGINS = {
         "hrsh7th/nvim-cmp",
         as = "cmp",
         requires = {"saadparwaiz1/cmp_luasnip", "hrsh7th/cmp-buffer", "hrsh7th/cmp-path", "hrsh7th/cmp-nvim-lsp", "hrsh7th/cmp-nvim-lua" },
-        after = {"lspconfig", "luasnip", "friendly_snippets", "clangd_extensions" }
+        after = {"lspconfig", "luasnip", "friendly_snippets"}
     },
     -- Autocompletion --
 
@@ -91,10 +91,10 @@ local PLUGINS = {
     -- DAP Support --
 
     -- Python --
-    {"terror/chatgpt.nvim",   as = "chatgpt", run = "pip3 install -r requirements.txt"},
+    {"terror/chatgpt.nvim",   as = "chatgpt", run = "pip3 install -r requirements.txt", cmd = "ChatGPT"},
     -- Python --
 
-    "TimUntersberger/neogit",
+    {"TimUntersberger/neogit",                       cmd = "Neogit"},
     {"https://gitlab.com/yorickpeterse/nvim-window", as = "window"},
 
     -- VimL --

@@ -1,6 +1,7 @@
 local function filter_filetypes(ft)
     return not vim.tbl_contains({"neo-tree", "toggleterm"}, ft)
 end
+
 local function get_current_lsp()
     local msg = " LSP"
     local ft = vim.api.nvim_buf_get_option(0, "filetype")
