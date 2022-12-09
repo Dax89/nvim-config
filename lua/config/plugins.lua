@@ -90,10 +90,6 @@ local PLUGINS = {
     {"rcarriga/nvim-dap-ui",  as = "dap_ui"},
     -- DAP Support --
 
-    -- Python --
-    {"terror/chatgpt.nvim",   as = "chatgpt", run = "pip3 install -r requirements.txt", cmd = "ChatGPT"},
-    -- Python --
-
     {"TimUntersberger/neogit",                       cmd = "Neogit"},
     {"https://gitlab.com/yorickpeterse/nvim-window", as = "window"},
 

@@ -10,16 +10,6 @@ local function show_general_settings()
     })
 end
 
-local function query_chatgpt()
-    vim.ui.input({
-        prompt = "ChatGPT",
-    }, function(q)
-        if q and #q > 0 then
-            vim.api.nvim_command("ChatGPT " .. q)
-        end
-    end)
-end
-
 -- Disabled keys
 vim.keymap.set("n", "<Up>", "<Nop>")
 vim.keymap.set("n", "<Down>", "<Nop>")
@@ -31,7 +21,6 @@ vim.keymap.set("i", "<C-n>", "<Nop>")
 wk.register({
     ["<leader>"] = {
         ["a"] = { "gg0VG", "Select All"},
-        ["q"] = { query_chatgpt, "Query ChatGPT"},
 
         ["g"] = {
             function()
