@@ -54,6 +54,7 @@ local PLUGINS = {
     {"windwp/nvim-autopairs",       as = "autopairs"},
     {"phaazon/hop.nvim",            as = "hop"},
     {"nacro90/numb.nvim",           as = "numb"},
+    {"kylechui/nvim-surround",      config = "setup"},
 
     -- LSP Support --
     {"neovim/nvim-lspconfig",             as = "lspconfig"},
