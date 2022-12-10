@@ -33,8 +33,20 @@ local function setup_lsp_sumneko_lua()
     }
 end
 
+local function setup_lsp_clangd()
+    return {
+        cmd = {
+            "clangd",
+            "--background-index",
+            "--header-insertion=never",
+            "--completion-style=detailed",
+        }
+    }
+end
+
 local CUSTOM_LSP_CALLBACKS = {
-    sumneko_lua =  setup_lsp_sumneko_lua
+    sumneko_lua =  setup_lsp_sumneko_lua,
+    clangd = setup_lsp_clangd,
 }
 
 local CUSTOM_SERVERS = {"nimls"}
