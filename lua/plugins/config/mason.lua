@@ -39,12 +39,11 @@ local function setup_lsp_clangd()
             "clangd",
             "--background-index",
             "--header-insertion=never",
-            "--completion-style=detailed",
         }
     }
 end
 
-local CUSTOM_LSP_CALLBACKS = {
+local CUSTOM_LSP_CONFIGS = {
     sumneko_lua =  setup_lsp_sumneko_lua,
     clangd = setup_lsp_clangd,
 }
@@ -56,15 +55,15 @@ local function setup_servers()
     local lspconfig = require("lspconfig")
 
     for _, name in ipairs(vim.list_extend(installedservers, CUSTOM_SERVERS)) do
-        local options = {
+        local config = {
             capabilities = require("cmp_nvim_lsp").default_capabilities()
         }
 
-        if vim.is_callable(CUSTOM_LSP_CALLBACKS[name]) then
-            options = vim.tbl_extend("force", options, CUSTOM_LSP_CALLBACKS[name]())
+        if vim.is_callable(CUSTOM_LSP_CONFIGS[name]) then
+            config = vim.tbl_deep_extend("force", config, CUSTOM_LSP_CONFIGS[name]())
         end
 
-        lspconfig[name].setup(options)
+        lspconfig[name].setup(config)
     end
 end
 
