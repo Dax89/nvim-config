@@ -29,9 +29,9 @@ cmp.setup({
         end
     },
     formatting = {
-        fields = {"abbr", "menu", "kind"},
+        fields = { "kind", "abbr", "menu"},
         format = require("lspkind").cmp_format({
-            mode = "symbol_text",
+            mode = "symbol",
             maxwidth = 100,
 
             before = function (entry, item)
