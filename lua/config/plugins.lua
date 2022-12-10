@@ -62,7 +62,7 @@ local PLUGINS = {
     {"williamboman/mason.nvim",           as = "mason",              after = {"lspconfig", "mason-lspconfig"}},
     {"stevearc/aerial.nvim",              as = "aerial",             after = {"lspconfig", "treesitter", "telescope"}},
     {"ray-x/lsp_signature.nvim",          as = "lspsignature",       after = "lspconfig"},
-    {"onsails/lspkind-nvim",              as = "lspkind",            config = "init"},
+    {"onsails/lspkind-nvim",              as = "lspkind"},
     {"p00f/clangd_extensions.nvim",       as = "clangd_extensions",  after = {"lspconfig", "mason-lspconfig"}, config = "setup"},
     {"RRethy/vim-illuminate",             as = "illuminate",         after = "lspconfig"},
     {"folke/trouble.nvim",                as = "trouble",            cmd = "TroubleToggle", config = "setup"},
