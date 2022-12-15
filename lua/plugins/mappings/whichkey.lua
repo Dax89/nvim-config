@@ -30,10 +30,17 @@ wk.register({
             end,
             "Show Git"
         }
+
     },
 
     ["|"] = {function() require("spectre").open() end, "Find & Replace in files"},
     ["<A-p>"] = {show_general_settings, "Show General Settings"}
+})
+
+wk.register({
+    name = "+chatgpt",
+    ["<C-p>"] = { "<CMD>ChatGPT<CR>", "ChatGPT"},
+    ["<C-S-p>"] = { "<CMD>ChatGPTActAs<CR>", "ChatGPT Act As..."},
 })
 
 wk.register({
