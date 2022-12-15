@@ -39,7 +39,6 @@ wk.register({
 wk.register({
     name = "+lsp",
     ["K"] = {vim.lsp.buf.hover, "LSP Show Symbol Details"},
-    ["<F2>"] = {":IncRename ", "LSP Incremental Rename"},
     ["<F4>"] = {"<CMD>ClangdSwitchSourceHeader<CR>", "Switch C++ Header/Source"},
     ["<C-F6>"] = {"<CMD>TroubleToggle<CR>", "Toggle LSP Troubles"},
     ["<A-Enter>"] = {vim.lsp.buf.code_action, "LSP Code Actions"},
@@ -47,14 +46,14 @@ wk.register({
 
 wk.register({
     name = "+lsp",
-    ["<A-Enter>"] = {vim.lsp.buf.range_code_action, "LSP Code Actions"},
-    ["<C-F6>"] = {"<CMD>TroubleToggle<CR>", "Toggle LSP Troubles"},
-}, {mode = "v"})
+    ["<F2>"] = {function() return ":IncRename " .. vim.fn.expand("<cword>") end, "LSP Incremental Rename"},
+}, { mode = {"n", "i"}, expr = true })
 
 wk.register({
     name = "+lsp",
-    ["<F2>"] = {":IncRename ", "LSP Incremental Rename"},
-}, {mode = "i"})
+    ["<A-Enter>"] = {vim.lsp.buf.range_code_action, "LSP Code Actions"},
+    ["<C-F6>"] = {"<CMD>TroubleToggle<CR>", "Toggle LSP Troubles"},
+}, {mode = "v"})
 
 wk.register({
     name = "+search",

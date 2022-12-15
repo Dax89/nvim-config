@@ -37,7 +37,6 @@ local function setup_lsp_clangd()
     return {
         cmd = {
             "clangd",
-            "--background-index",
             "--header-insertion=never",
         }
     }

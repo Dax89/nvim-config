@@ -15,17 +15,21 @@ require("ide").setup({
             project:debug()
         end,
 
-        ["<F7>"] = function(project)
-            if project:has_state("debug") then
-                project:debug({type = "stepinto"})
+        ["<F8>"] = function(project)
+            if not project:has_state("build") then
+                project:build()
             end
         end,
 
-        ["<F8>"] = function(project)
+        ["<F10>"] = function(project)
             if project:has_state("debug") then
                 project:debug({type = "stepover"})
-            else
-                project:build()
+            end
+        end,
+
+        ["<F11>"] = function(project)
+            if project:has_state("debug") then
+                project:debug({type = "stepinto"})
             end
         end,
 
