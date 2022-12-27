@@ -19,7 +19,7 @@ end
 
 require("lualine").setup({
     options = {
-        theme = "tundra",
+        theme = "kanagawa",
         globalstatus = true,
         disabled_filetypes = vim.tbl_filter(filter_filetypes, require("config.common").filetype_blacklist)
     },

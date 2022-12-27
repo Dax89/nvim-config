@@ -1,12 +1,12 @@
-local palette = require("nvim-tundra.palette.arctic")
 local dashboard = require("dashboard")
 local common = require("config.common")
+local palette = require("kanagawa.colors").setup()
 
 common.highlight({
-    {"DashboardHeader",   {fg=palette.red._600}},
-    {"DashboardShortCut", {fg=palette.orange._500}},
-    {"DashboardCenter",   {fg=palette.gray._50}},
-    {"DashboardFooter",   {fg=palette.green._500}},
+    {"DashboardHeader",   {fg=palette.sakuraPink}},
+    {"DashboardShortCut", {fg=palette.peachRed}},
+    {"DashboardCenter",   {fg=palette.oldWhite}},
+    {"DashboardFooter",   {fg=palette.springGreen}},
 })
 
 local function create_buttons()
@@ -61,12 +61,11 @@ dashboard.hide_statusline = false
 dashboard.custom_center = create_buttons()
 
 dashboard.custom_header = {
-    "  ███╗   ██╗███████╗ ██████╗ ██╗   ██╗██╗███╗   ███╗  ",
-    "  ████╗  ██║██╔════╝██╔═══██╗██║   ██║██║████╗ ████║  ",
-    "  ██╔██╗ ██║█████╗  ██║   ██║██║   ██║██║██╔████╔██║  ",
-    "  ██║╚██╗██║██╔══╝  ██║   ██║╚██╗ ██╔╝██║██║╚██╔╝██║  ",
-    "  ██║ ╚████║███████╗╚██████╔╝ ╚████╔╝ ██║██║ ╚═╝ ██║  ",
-    "  ╚═╝  ╚═══╝╚══════╝ ╚═════╝   ╚═══╝  ╚═╝╚═╝     ╚═╝  ",
+    " ███    ██ ███████  ██████  ██    ██ ██ ███    ███ ",
+    " ████   ██ ██      ██    ██ ██    ██ ██ ████  ████ ",
+    " ██ ██  ██ █████   ██    ██ ██    ██ ██ ██ ████ ██ ",
+    " ██  ██ ██ ██      ██    ██  ██  ██  ██ ██  ██  ██ ",
+    " ██   ████ ███████  ██████    ████   ██ ██      ██ ",
 }
 
 dashboard.custom_footer = function()

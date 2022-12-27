@@ -96,14 +96,16 @@ local function packer_startup(plugins)
                 plugin = {plugin}
             end
 
-            if plugin.config == "none" then
-                plugin.config = nil
-            else
-                plugin.config = get_plugin_config(plugin)
-            end
+            if plugin.config ~= "skip" then
+                if plugin.config == "none" then
+                    plugin.config = nil
+                else
+                    plugin.config = get_plugin_config(plugin)
+                end
 
-            if plugin.run == true then
-                plugin.run = get_plugin_run(plugin)
+                if plugin.run == true then
+                    plugin.run = get_plugin_run(plugin)
+                end
             end
 
             use(plugin)

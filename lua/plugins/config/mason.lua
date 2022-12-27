@@ -35,6 +35,9 @@ end
 
 local function setup_lsp_clangd()
     return {
+        capabilities = {
+            offsetEncoding = "utf-8"
+        },
         cmd = {
             "clangd",
             "--header-insertion=never",

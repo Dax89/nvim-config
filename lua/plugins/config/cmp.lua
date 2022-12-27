@@ -12,6 +12,28 @@ require("luasnip/loaders/from_vscode").lazy_load({
     }
 })
 
+local function get_comparators()
+    local comparators = {
+        cmp.config.compare.locality,
+        cmp.config.compare.recently_used,
+        cmp.config.compare.score,
+        cmp.config.compare.offset,
+        cmp.config.compare.order,
+        -- cmp.config.compare.sort_text,
+        -- cmp.config.compare.exact,
+        -- cmp.config.compare.kind,
+        -- cmp.config.compare.length,
+    }
+
+    local ok, cmpscores = pcall(require, "clangd_extensions.cmp_scores")
+
+    if ok then
+        table.insert(comparators, 3, cmpscores)
+    end
+
+    return comparators
+end
+
 cmp.setup({
     preselect = cmp.PreselectMode.Item,
     completion = {
@@ -71,28 +93,16 @@ cmp.setup({
     },
 
     sources           = cmp.config.sources({
-        {name = "nvim_lsp"},
-        {name = "nvim_lua"},
-        {name = "luasnip"},
-        {name = "path"},
+        {name = "nvim_lsp", group_index = 1},
+        {name = "nvim_lua", groupindex = 2},
+        {name = "luasnip", group_index = 3},
+        {name = "path", group_index = 2},
         {name = "orgmode"}
     }),
 
     sorting           = {
         priority_weight = 1.0,
-
-        comparators = {
-            cmp.config.compare.locality,
-            cmp.config.compare.recently_used,
-            -- require("clangd_extensions.cmp_scores"),
-            cmp.config.compare.score,
-            cmp.config.compare.offset,
-            cmp.config.compare.order,
-            -- cmp.config.compare.sort_text,
-            -- cmp.config.compare.exact,
-            -- cmp.config.compare.kind,
-            -- cmp.config.compare.length,
-        },
+        comparators = get_comparators()
     },
 })
 

@@ -36,6 +36,7 @@ local common = {
       Struct = "פּ",
       Event = "",
       Operator = "",
+      Copilot = "",
       TypeParameter = ""
     }
 }

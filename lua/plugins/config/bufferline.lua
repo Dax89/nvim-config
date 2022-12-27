@@ -1,5 +1,5 @@
 local common = require("config.common")
-local palette = require("nvim-tundra.palette.arctic")
+local palette = require("kanagawa.colors").setup()
 
 common.set_options("g", {
     bufferline = {
@@ -12,7 +12,7 @@ common.set_options("g", {
 
 require("bufferline").setup({
     highlights = {
-        offset_separator = {bg = palette.gray._900},
+        offset_separator = {bg = palette.sumiInk1},
         modified_selected = {italic = false},
         duplicate_selected = {italic = false},
         numbers_selected = {italic = false},

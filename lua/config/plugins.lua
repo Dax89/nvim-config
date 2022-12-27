@@ -34,26 +34,27 @@ local PLUGINS = {
     {"VonHeikemen/searchbox.nvim",  as = "searchbox", requires = {"MunifTanjim/nui.nvim"}, cmd = {"SearchBoxMatchAll", "SearchBoxReplace"}},
     {"nvim-neo-tree/neo-tree.nvim", as = "neotree",   requires = {"MunifTanjim/nui.nvim"}, branch = "v2.x"},
 
-    {"iamcco/markdown-preview.nvim", ft = "markdown", run = function() vim.fn["mkdp#util#install"]() end},
+    -- {"iamcco/markdown-preview.nvim", ft = "markdown", run = function() vim.fn["mkdp#util#install"]() end, config = "skip"},
+    {"ellisonleao/glow.nvim",        as = "glow",      ft = "markdown", config = "setup"},
     {"lukas-reineke/headlines.nvim", as = "headlines", ft = {"markdown", "orgmode", "neorg"}, config = "setup"},
 
     {"nvim-telescope/telescope-file-browser.nvim", as = "telescope-filebrowser"},
     {"nvim-telescope/telescope.nvim",              as = "telescope",            after = {"telescope-filebrowser"}},
     {"AckslD/nvim-neoclip.lua",                    as = "neoclip",              after = "telescope"},
 
-    {"sam4llis/nvim-tundra",        as = "tundra"},
-    {"rcarriga/nvim-notify",        as = "notify",     after = "tundra"},
-    {"nvim-lualine/lualine.nvim",   as = "lualine",    after = "tundra"},
-    {"akinsho/bufferline.nvim",     as = "bufferline", after = "tundra"},
-    {"glepnir/dashboard-nvim",      as = "dashboard",  after = "tundra"},
+    {"rebelot/kanagawa.nvim",       as = "kanagawa"},
+    {"rcarriga/nvim-notify",        as = "notify",     after = "kanagawa"},
+    {"nvim-lualine/lualine.nvim",   as = "lualine",    after = "kanagawa"},
+    {"akinsho/bufferline.nvim",     as = "bufferline", after = "kanagawa"},
+    {"glepnir/dashboard-nvim",      as = "dashboard",  after = "kanagawa"},
     {"nvim-pack/nvim-spectre",      as = "spectre",    config = "setup"},
     {"numToStr/Comment.nvim",       as = "Comment",    config = "setup"},
     {"norcalli/nvim-colorizer.lua", as = "colorizer",  config = "setup"},
     {"jackMort/ChatGPT.nvim",       as = "chatgpt",    config = "setup"},
+    {"phaazon/hop.nvim",            as = "hop",        config = "setup"},
     {"akinsho/toggleterm.nvim",     as = "toggleterm", tag = "*"},
     {"jbyuki/venn.nvim",            as = "venn"},
     {"windwp/nvim-autopairs",       as = "autopairs"},
-    {"phaazon/hop.nvim",            as = "hop"},
     {"nacro90/numb.nvim",           as = "numb"},
     {"kylechui/nvim-surround",      config = "setup"},
 
@@ -96,12 +97,12 @@ local PLUGINS = {
     {"https://gitlab.com/yorickpeterse/nvim-window", as = "window"},
 
     -- VimL --
-    {"peterhoeg/vim-qml", ft = "qml"},
-    {"mechatroner/rainbow_csv", ft = "csv"},
-    {"MTDL9/vim-log-highlighting", ft = "log"},
-    {"bakpakin/fennel.vim", ft = "fennel"},
-    {"alaviss/nim.nvim", ft = "nim"},
-    {"ziglang/zig.vim", ft = "zig"}
+    {"peterhoeg/vim-qml",          ft = "qml",    as = "qml_syntax"},
+    {"mechatroner/rainbow_csv",    ft = "csv",    as = "csv_syntax"},
+    {"MTDL9/vim-log-highlighting", ft = "log",    as = "log_syntax"},
+    {"bakpakin/fennel.vim",        ft = "fennel", as = "fennel_syntax"},
+    {"alaviss/nim.nvim",           ft = "nim",    as = "nim_syntax"},
+    {"ziglang/zig.vim",            ft = "zig",    as = "zig_syntax"},
     -- VimL --
 }
 
