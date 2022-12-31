@@ -3,10 +3,10 @@ local common = require("config.common")
 local palette = require("kanagawa.colors").setup()
 
 common.highlight({
-    {"DashboardHeader",   {fg=palette.sakuraPink}},
-    {"DashboardShortCut", {fg=palette.peachRed}},
-    {"DashboardCenter",   {fg=palette.oldWhite}},
-    {"DashboardFooter",   {fg=palette.springGreen}},
+    {"DashboardHeader",   {fg = palette.sakuraPink}},
+    {"DashboardShortCut", {fg = palette.peachRed}},
+    {"DashboardCenter",   {fg = palette.oldWhite}},
+    {"DashboardFooter",   {fg = palette.springGreen}},
 })
 
 local function create_buttons()
