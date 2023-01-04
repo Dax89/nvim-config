@@ -38,12 +38,6 @@ wk.register({
 })
 
 wk.register({
-    name = "+chatgpt",
-    ["<C-p>"] = { "<CMD>ChatGPT<CR>", "ChatGPT"},
-    ["<C-S-p>"] = { "<CMD>ChatGPTActAs<CR>", "ChatGPT Act As..."},
-})
-
-wk.register({
     name = "+lsp",
     ["K"] = {vim.lsp.buf.hover, "LSP Show Symbol Details"},
     ["<F4>"] = {"<CMD>ClangdSwitchSourceHeader<CR>", "Switch C++ Header/Source"},

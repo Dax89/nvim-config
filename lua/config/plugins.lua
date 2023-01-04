@@ -49,7 +49,6 @@ local PLUGINS = {
     {"nvim-pack/nvim-spectre",      as = "spectre",    config = "setup"},
     {"numToStr/Comment.nvim",       as = "Comment",    config = "setup"},
     {"norcalli/nvim-colorizer.lua", as = "colorizer",  config = "setup"},
-    {"jackMort/ChatGPT.nvim",       as = "chatgpt",    config = "setup"},
     {"phaazon/hop.nvim",            as = "hop",        config = "setup"},
     {"akinsho/toggleterm.nvim",     as = "toggleterm", tag = "*"},
     {"jbyuki/venn.nvim",            as = "venn"},
