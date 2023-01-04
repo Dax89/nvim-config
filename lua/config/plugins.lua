@@ -64,7 +64,6 @@ local PLUGINS = {
     {"stevearc/aerial.nvim",              as = "aerial",             after = {"lspconfig", "treesitter", "telescope"}},
     {"ray-x/lsp_signature.nvim",          as = "lspsignature",       after = "lspconfig"},
     {"onsails/lspkind-nvim",              as = "lspkind"},
-    {"p00f/clangd_extensions.nvim",       as = "clangd_extensions",  after = {"lspconfig", "mason-lspconfig"}, config = "setup"},
     {"RRethy/vim-illuminate",             as = "illuminate",         after = "lspconfig"},
     {"folke/trouble.nvim",                as = "trouble",            cmd = "TroubleToggle", config = "setup"},
     {"utilyre/barbecue.nvim",             as = "barbecue",           after = "lspconfig",   requires = {"smiteshp/nvim-navic"}},

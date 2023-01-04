@@ -25,12 +25,6 @@ local function get_comparators()
         -- cmp.config.compare.length,
     }
 
-    local ok, cmpscores = pcall(require, "clangd_extensions.cmp_scores")
-
-    if ok then
-        table.insert(comparators, 3, cmpscores)
-    end
-
     return comparators
 end
 
