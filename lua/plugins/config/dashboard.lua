@@ -46,7 +46,7 @@ local function create_buttons()
         if #bt == 1 then
             b = {desc = bt[1]}
         else
-            b = {shortcut = " " .. bt[1], icon = string.format("%s ➤ ", bt[2]), desc = fillw(bt[3]), action = bt[4]}
+            b = {shortcut = " " .. bt[1], icon = string.format("%s  ", bt[2]), desc = fillw(bt[3]), action = bt[4]}
         end
 
         table.insert(buttons, b)
