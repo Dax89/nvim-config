@@ -79,7 +79,7 @@ local PLUGINS = {
     {"rcarriga/nvim-dap-ui",  as = "dap_ui"},
     -- DAP Support --
 
-    {"TimUntersberger/neogit",                       cmd = "Neogit"},
+    "TimUntersberger/neogit",
     {"https://gitlab.com/yorickpeterse/nvim-window", as = "window"},
 
     -- VimL --
