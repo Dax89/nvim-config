@@ -76,22 +76,6 @@ function common.wrap_fn(mod, fn)
     return string.format(":lua require('%s')['%s']()<CR>", mod, fn)
 end
 
-function common.map(key, cmd, mode, options)
-    local opts = {silent = true}
-
-    if options then
-        opts = vim.tbl_extend("force", opts, options)
-    end
-
-    vim.keymap.set(mode, key, cmd, opts)
-end
-
-function common.map_keys(keys)
-    for _, key in ipairs(keys) do
-        vim.api.nvim_set_keymap(unpack(key))
-    end
-end
-
 function common.set_options(t, options)
     for k, v in pairs(options) do
         vim[t][k] = v

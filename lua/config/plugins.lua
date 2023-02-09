@@ -19,18 +19,14 @@ local PLUGINS = {
     {"nvim-lua/plenary.nvim",    config = "none"},  -- Misc Utilities
     {"stevearc/dressing.nvim",   config = "setup", as = "dressing"},
     {"famiu/bufdelete.nvim",     config = "none"},
-    {"folke/which-key.nvim",     as = "whichkey"},
 
     -- TreeSitter --
     {"nvim-treesitter/nvim-treesitter",         as = "treesitter", run = true},
     {"p00f/nvim-ts-rainbow",                    as = "ts-rainbow", after = "treesitter"},
-    {"gorbit99/codewindow.nvim",                as = "codewindow", after = "treesitter", config = "setup"},
-    {"cshuaimin/ssr.nvim",                      as = "ssr",        module = "ssr"},
     -- TreeSitter --
 
     {"kyazdani42/nvim-web-devicons", config = "setup"},
 
-    {"VonHeikemen/searchbox.nvim",  as = "searchbox", requires = {"MunifTanjim/nui.nvim"}, cmd = {"SearchBoxMatchAll", "SearchBoxReplace"}},
     {"nvim-neo-tree/neo-tree.nvim", as = "neotree",   requires = {"MunifTanjim/nui.nvim"}, branch = "v2.x"},
 
     {"ellisonleao/glow.nvim",        as = "glow",      ft = "markdown", config = "setup"},
@@ -59,28 +55,22 @@ local PLUGINS = {
     {"neovim/nvim-lspconfig",             as = "lspconfig"},
     {"williamboman/mason-lspconfig.nvim", as = "mason-lspconfig"},
     {"williamboman/mason.nvim",           as = "mason",              after = {"lspconfig", "mason-lspconfig"}},
-    {"stevearc/aerial.nvim",              as = "aerial",             after = {"lspconfig", "treesitter", "telescope"}},
     {"ray-x/lsp_signature.nvim",          as = "lspsignature",       after = "lspconfig"},
     {"onsails/lspkind-nvim",              as = "lspkind"},
     {"RRethy/vim-illuminate",             as = "illuminate",         after = "lspconfig"},
     {"folke/trouble.nvim",                as = "trouble",            cmd = "TroubleToggle", config = "setup"},
-    {"utilyre/barbecue.nvim",             as = "barbecue",           after = "lspconfig",   requires = {"smiteshp/nvim-navic"}},
+    {"utilyre/barbecue.nvim",             as = "barbecue",           after = "lspconfig",   requires = {"smiteshp/nvim-navic"}, branch = "fix/E36"},
     {"j-hui/fidget.nvim",                 as = "fidget",             config = "setup"},
     {"smjonas/inc-rename.nvim",           as = "inc_rename",         after = "lspconfig", config = "setup"},
     {"weilbith/nvim-code-action-menu",    cmd = "CodeActionMenu",    after = "lspconfig"},
     -- LSP Support --
 
-    -- Snippets --
-    {"L3MON4D3/LuaSnip",             as = "luasnip",          tag = "*"},
-    {"rafamadriz/friendly-snippets", as = "friendly_snippets"},
-    -- Snippets --
-
     -- Autocompletion --
     {
         "hrsh7th/nvim-cmp",
         as = "cmp",
-        requires = {"saadparwaiz1/cmp_luasnip", "hrsh7th/cmp-buffer", "hrsh7th/cmp-path", "hrsh7th/cmp-nvim-lsp", "hrsh7th/cmp-nvim-lua" },
-        after = {"lspconfig", "luasnip", "friendly_snippets"}
+        requires = {"hrsh7th/cmp-buffer", "hrsh7th/cmp-path", "hrsh7th/cmp-nvim-lsp", "hrsh7th/cmp-nvim-lua" },
+        after = "lspconfig"
     },
     -- Autocompletion --
 

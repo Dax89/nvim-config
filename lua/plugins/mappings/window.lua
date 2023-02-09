@@ -1,8 +1,1 @@
-local wk = require("which-key")
-
-wk.register({
-    ["w"] = {
-        require("nvim-window").pick,
-        "Pick Window"
-    }
-}, {prefix = "<leader>"})
+vim.keymap.set("n", "<leader>w", function() require("nvim-window").pick() end)

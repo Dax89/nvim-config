@@ -1,6 +1,1 @@
-local wk = require("which-key")
-
-wk.register({
-    name = "+telescope",
-    ["c"] = {"<CMD>Telescope neoclip<CR>", "Show Clipboard"}
-}, {prefix = "<leader>"})
+vim.keymap.set("n", "<leader>c", ":Telescope neoclip<CR>")

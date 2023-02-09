@@ -1,6 +1,6 @@
 " Set Editor Font
 if exists(':GuiFont')
-    GuiFont! JetBrainsMono Nerd Font:h14
+    GuiFont! monospace:h14
 endif
 
 " Enable Ligatures

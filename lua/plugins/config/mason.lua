@@ -3,7 +3,7 @@ local mason = require("mason")
 mason.setup()
 
 require("mason-lspconfig").setup({
-    ensure_installed = {"pyright", "tsserver", "svelte", "sumneko_lua", "cmake", "clangd", "marksman", "zls"}
+    ensure_installed = {"pyright", "tsserver", "svelte", "sumneko_lua", "cmake", "clangd", "marksman", "perlnavigator"}
 })
 
 -- Custom LSP Callbacks
@@ -52,6 +52,7 @@ local function setup_servers()
 
     for _, name in ipairs(vim.list_extend(installedservers, CUSTOM_SERVERS)) do
         local config = {
+            on_attach = require("config.lsp").on_attach,
             capabilities = require("cmp_nvim_lsp").default_capabilities()
         }
 

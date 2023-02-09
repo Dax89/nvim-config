@@ -1,0 +1,5 @@
+vim.keymap.set("n", "<leader>g", function()
+    local cwd = vim.fn.expand('%:p:h')
+    vim.api.nvim_command(":Neogit kind=split")
+    vim.cmd(":lcd" .. cwd)
+end)

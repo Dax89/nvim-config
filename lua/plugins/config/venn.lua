@@ -1,5 +1,3 @@
-local common = require("config.common")
-
 local function toggle_venn()
     if vim.b.venn_enabled == nil then
         vim.b.venn_enabled = true
@@ -22,5 +20,5 @@ local function toggle_venn()
     end
 end
 
-common.map("<leader>v", toggle_venn, "n")
+vim.keymap.set("n", "<leader>v", toggle_venn)
 

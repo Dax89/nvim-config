@@ -1,19 +1,11 @@
-local wk = require("which-key")
+vim.keymap.set("n", "<leader>f", function()
+    require("hop").hint_words({
+        direction = require("hop.hint").HintDirection.AFTER_CURSOR
+    })
+end)
 
-wk.register({
-    name = "+hop",
-
-    ["f"] = {
-        function()
-            require("hop").hint_words({direction = require("hop.hint").HintDirection.AFTER_CURSOR})
-        end,
-        "Hop After"
-    },
-
-    ["F"] = {
-        function()
-            require("hop").hint_words({direction = require("hop.hint").HintDirection.BEFORE_CURSOR})
-        end,
-        "Hop Before"
-    },
-}, {prefix = "<leader>"})
+vim.keymap.set("n", "<leader>F", function()
+    require("hop").hint_words({
+        direction = require("hop.hint").HintDirection.BEFORE_CURSOR
+    })
+end)

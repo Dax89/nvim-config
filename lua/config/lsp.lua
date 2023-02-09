@@ -1,32 +1,17 @@
-local common = require("config.common")
+local M = { }
 
-common.set_options("g", {
-    completion_matching_strategy_list = {"exact", "fuzzy"},
-    completion_matching_smart_case = true
-})
+function M.on_attach(client, bufnr)
+    local options = {buffer = bufnr, remap = false};
 
--- Diagnostic (https://github.com/VonHeikemen/lsp-zero.nvim/blob/main/lua/lsp-zero/presets.lua)
-local function set_sign(name, icon)
-    vim.fn.sign_define(name, {texthl = name, text = icon, numhl = ""})
+    vim.keymap.set("n", "<A-Enter>", function() vim.lsp.buf.code_action() end, options)
+    vim.keymap.set("n", "<C-h>", function() vim.lsp.buf.signature_help() end, options)
+    vim.keymap.set("n", "<F2>", function() vim.lsp.buf.rename() end, options)
+    vim.keymap.set("n", "gd", function() vim.lsp.buf.definition() end, options)
+    vim.keymap.set("n", "K", function() vim.lsp.buf.hover() end, options)
+
+    if client.name == "clangd" then
+        vim.keymap.set("n", "<F4>", ":ClangdSwitchSourceHeader<CR>")
+    end
 end
 
-set_sign("DiagnosticSignError", "✘")
-set_sign("DiagnosticSignWarn",  "▲")
-set_sign("DiagnosticSignHint",  "⚑")
-set_sign("DiagnosticSignInfo",  "")
-
-vim.diagnostic.config({
-    virtual_text = true,
-    signs = true,
-    update_in_insert = false,
-    underline = true,
-    severity_sort = true,
-    float = {
-        focusable = false,
-        style = "minimal",
-        border = "rounded",
-        source = "always",
-        header = "",
-        prefix = "",
-    },
-})
+return M
