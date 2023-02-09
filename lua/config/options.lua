@@ -28,6 +28,7 @@ common.set_options("opt", {
     scrolloff = 4,                                -- Lines of context
     cursorline = true,                            -- Highlight current line
     joinspaces = false,                           -- No double spaces with join after a dot
+    hlsearch = false,                             -- Don't highlight search results
     wrap = false,                                 -- Disable line wrap
 
     -- Tabs, indent
