@@ -9,6 +9,7 @@ vim.keymap.set("n", "<C-u>", "<C-u>zz")
 vim.keymap.set("n", "n", "nzzzv")
 vim.keymap.set("n", "N", "Nzzzv")
 
+vim.keymap.set("n", "<leader><leader>", ":so")
 vim.keymap.set("n", "<leader>a", "gg0VG")
 vim.keymap.set("n", "<leader>|", function() require("spectre").open() end)
 
