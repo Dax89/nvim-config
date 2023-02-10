@@ -64,13 +64,18 @@ local PLUGINS = {
     {"smjonas/inc-rename.nvim",           as = "inc_rename",         after = "lspconfig", config = "setup"},
     {"weilbith/nvim-code-action-menu",    cmd = "CodeActionMenu",    after = "lspconfig"},
     -- LSP Support --
+    --
+    -- Snippets --
+    {"L3MON4D3/LuaSnip",             as = "luasnip",          tag = "*"},
+    {"rafamadriz/friendly-snippets", as = "friendly_snippets"},
+    -- Snippets --
 
     -- Autocompletion --
     {
         "hrsh7th/nvim-cmp",
         as = "cmp",
-        requires = {"hrsh7th/cmp-buffer", "hrsh7th/cmp-path", "hrsh7th/cmp-nvim-lsp", "hrsh7th/cmp-nvim-lua" },
-        after = "lspconfig"
+        requires = {"saadparwaiz1/cmp_luasnip", "hrsh7th/cmp-buffer", "hrsh7th/cmp-path", "hrsh7th/cmp-nvim-lsp", "hrsh7th/cmp-nvim-lua" },
+        after = {"lspconfig", "luasnip", "friendly_snippets"}
     },
     -- Autocompletion --
 
