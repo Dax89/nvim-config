@@ -49,17 +49,5 @@ require("neo-tree").setup({
 })
 
 vim.keymap.set("n", "<F7>", function()
-    -- local ok, ide = pcall(require, "ide")
-    --
-    -- if ok then
-    --     local p = ide:get_active_project()
-    --
-    --     if p and p:has_state("debug") then
-    --         return
-    --     end
-    -- end
-
     vim.api.nvim_command(":Neotree show toggle")
 end)
-
--- vim.api.nvim_create_autocmd("BufReadPost", {callback = function() require("neo-tree").show() end})

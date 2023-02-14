@@ -54,42 +54,27 @@ require("bufferline").setup({
             {
                 filetype = "neo-tree",
                 text = function()
-                    local ok, neotasks = pcall(require, "neotasks")
+                    local ok, automaton = pcall(require, "automaton")
                     local s = "NEO-TREE"
 
                     if ok then
-                        local ws = neotasks.get_current_workspace()
+                        local ws = automaton.get_active_workspace()
 
                         if ws then
                             s = " " .. ws:get_name()
+                            local task, launch = ws:get_default_task(), ws:get_default_launch()
+
+                            if task then
+                                s = s .. " |  " .. task.name
+                            end
+
+                            if launch then
+                                s = s .. " |  " .. launch.name
+                            end
                         end
                     end
 
                     return s
-
-                    -- local ok, ide = pcall(require, "ide")
-                    -- local s = "NEO-TREE"
-                    --
-                    -- if not ok then
-                    --     return s
-                    -- end
-                    --
-                    -- local p = ide:get_active_project()
-                    --
-                    -- if p then
-                    --     s = " " .. p:get_name()
-                    --     local cfg, runcfg = p:get_selected_config(), p:get_selected_runconfig()
-                    --
-                    --     if cfg then
-                    --         s = s .. " |  " .. cfg.name
-                    --     end
-                    --
-                    --     if runcfg then
-                    --         s = s .. " |  " .. runcfg.name
-                    --     end
-                    -- end
-                    --
-                    -- return s
                 end,
                 text_align = "left",
                 highlight = "Directory",
