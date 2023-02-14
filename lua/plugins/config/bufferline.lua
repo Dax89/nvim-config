@@ -54,29 +54,42 @@ require("bufferline").setup({
             {
                 filetype = "neo-tree",
                 text = function()
-                    local ok, ide = pcall(require, "ide")
+                    local ok, neotasks = pcall(require, "neotasks")
                     local s = "NEO-TREE"
 
-                    if not ok then
-                        return s
-                    end
+                    if ok then
+                        local ws = neotasks.get_current_workspace()
 
-                    local p = ide:get_active_project()
-
-                    if p then
-                        s = " " .. p:get_name()
-                        local cfg, runcfg = p:get_selected_config(), p:get_selected_runconfig()
-
-                        if cfg then
-                            s = s .. " |  " .. cfg.name
-                        end
-
-                        if runcfg then
-                            s = s .. " |  " .. runcfg.name
+                        if ws then
+                            s = " " .. ws:get_name()
                         end
                     end
 
                     return s
+
+                    -- local ok, ide = pcall(require, "ide")
+                    -- local s = "NEO-TREE"
+                    --
+                    -- if not ok then
+                    --     return s
+                    -- end
+                    --
+                    -- local p = ide:get_active_project()
+                    --
+                    -- if p then
+                    --     s = " " .. p:get_name()
+                    --     local cfg, runcfg = p:get_selected_config(), p:get_selected_runconfig()
+                    --
+                    --     if cfg then
+                    --         s = s .. " |  " .. cfg.name
+                    --     end
+                    --
+                    --     if runcfg then
+                    --         s = s .. " |  " .. runcfg.name
+                    --     end
+                    -- end
+                    --
+                    -- return s
                 end,
                 text_align = "left",
                 highlight = "Directory",

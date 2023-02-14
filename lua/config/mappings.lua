@@ -13,21 +13,6 @@ vim.keymap.set("n", "<leader><leader>", ":so<CR>")
 vim.keymap.set("n", "<leader>a", "gg0VG")
 vim.keymap.set("n", "<leader>|", function() require("spectre").open() end)
 
-vim.keymap.set({"n", "v"}, "<leader>y", [["+y]])
-vim.keymap.set({"n", "v"}, "<leader>p", [["+p]])
-vim.keymap.set({"n", "v"}, "<leader>P", [["+P]])
-vim.keymap.set({"n", "v"}, "<leader>d", [["+d]])
-
-vim.keymap.set("n", "<A-p>", function()
-    require("config.common").show_select("Quick Actions", {
-        {" Settings", ":e $MYVIMRC | :cd %:p:h"},
-        {" Sync Plugins", ":PackerSync"},
-        {"↺ Restart LSP", ":LspRestart"},
-        {"! Mason", ":Mason"},
-        {"⚙ Commands", function() require("telescope.builtin").commands() end}
-    })
-end)
-
 vim.keymap.set("n", "<A-p>", function()
     require("config.common").show_select("Quick Actions", {
         {" Settings", ":e $MYVIMRC | :cd %:p:h"},

@@ -11,6 +11,7 @@ common.set_options("opt", {
     mouse = "a",                                  -- Mouse interacts with NeoVim
     swapfile = false,                             -- Don"t use swapfile
     completeopt = "menu,menuone,noselect",        -- Completion options
+    clipboard = "unnamedplus",                    -- Use System Clipboard
     guifont = "monospace:h14",                    -- GUI Font
 
     -- Neovim UI
@@ -40,7 +41,7 @@ common.set_options("opt", {
     shiftround = true,                            -- Round indent
 
     -- Memory, CPU
-    lazyredraw = true,                            -- Improve performance when running macros
+    -- lazyredraw = true,                            -- Improve performance when running macros
     hidden = true,                                -- Enable modified buffers in background
     history = 100,                                -- Remember N lines in history
 

@@ -1,13 +1,21 @@
 local function check_dev_mode(plugins)
     local PATH_SEP = vim.loop.os_uname().sysname == "Windows" and "\\" or "/"
-    local AFTER = {"mason"}
+    -- local AFTER = {"mason"}
     local devmode = vim.fn.filereadable(vim.fn.stdpath("config") .. PATH_SEP .. ".dev") == 1
 
     if devmode then
-        plugins = vim.list_extend(plugins, {{"~/Programmazione/Progetti/NVim/IDE.nvim", as = "ide", after = AFTER}})
+        plugins = vim.list_extend(plugins, {
+            -- {"~/Dev/Progetti/NVim/IDE.nvim", as = "ide", after = AFTER},
+            {"~/Dev/Progetti/NVim/automaton.nvim", as = "automaton"}
+        })
     else
-        plugins = vim.list_extend(plugins, {{"Dax89/IDE.nvim", as = "ide", after = AFTER}})
+        plugins = vim.list_extend(plugins, {
+            -- {"Dax89/IDE.nvim", as = "ide", after = AFTER},
+            {"Dax89/automaton.nvim", as = "automaton" }
+        })
     end
+
+    plugins = vim.list_extend(plugins, {})
 
     return plugins
 end
@@ -80,8 +88,8 @@ local PLUGINS = {
     -- Autocompletion --
 
     -- DAP Support --
-    {"mfussenegger/nvim-dap", as = "dap"},
-    {"rcarriga/nvim-dap-ui",  as = "dap_ui"},
+    {"mfussenegger/nvim-dap",    as = "dap"},
+    -- {"rcarriga/nvim-dap-ui",  as = "dap_ui"},
     -- DAP Support --
 
     "TimUntersberger/neogit",

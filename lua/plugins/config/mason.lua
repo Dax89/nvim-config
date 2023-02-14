@@ -3,11 +3,11 @@ local mason = require("mason")
 mason.setup()
 
 require("mason-lspconfig").setup({
-    ensure_installed = {"pyright", "tsserver", "svelte", "sumneko_lua", "cmake", "clangd", "marksman", "perlnavigator"}
+    ensure_installed = {"pyright", "tsserver", "svelte", "lua_ls", "cmake", "clangd", "marksman", "perlnavigator"}
 })
 
 -- Custom LSP Callbacks
-local function setup_lsp_sumneko_lua()
+local function setup_lsp_lua_ls()
     -- Make runtime files discoverable to the server
     local runtimepath = vim.split(package.path, ";")
     table.insert(runtimepath, "lua/?.lua")
@@ -40,7 +40,7 @@ local function setup_lsp_clangd()
 end
 
 local CUSTOM_LSP_CONFIGS = {
-    sumneko_lua =  setup_lsp_sumneko_lua,
+    lua_ls =  setup_lsp_lua_ls,
     clangd = setup_lsp_clangd,
 }
 
