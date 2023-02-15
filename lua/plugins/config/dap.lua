@@ -3,14 +3,10 @@ local dap = require("dap")
 
 local DAP_BASEPATH = Path:new(vim.fn.stdpath("data"), "mason", "bin")
 
-dap.adapters.codelldb = {
-    type = "server",
-    port = 8990,
-
-    executable = {
-        command = tostring(Path:new(DAP_BASEPATH, "codelldb")),
-        args = {"--port", "8990"}
-    }
+dap.adapters.cppdbg = {
+    id = "cppdbg",
+    type = "executable",
+    command = tostring(Path:new(DAP_BASEPATH, "OpenDebugAD7"))
 }
 
 vim.api.nvim_set_hl(0, "DapBreakpoint", {ctermbg = 0, fg = "#993939"})

@@ -7,6 +7,7 @@ local common = {
         "NeogitPopup",
         "NeogitCommitMessage",
         "neo-tree",
+        "dap-terminal",
         "dap-repl",
         "qf"
     },

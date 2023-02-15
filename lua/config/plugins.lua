@@ -67,7 +67,7 @@ local PLUGINS = {
     {"onsails/lspkind-nvim",              as = "lspkind"},
     {"RRethy/vim-illuminate",             as = "illuminate",         after = "lspconfig"},
     {"folke/trouble.nvim",                as = "trouble",            cmd = "TroubleToggle", config = "setup"},
-    {"utilyre/barbecue.nvim",             as = "barbecue",           after = "lspconfig",   requires = {"smiteshp/nvim-navic"}, branch = "fix/E36"},
+    {"utilyre/barbecue.nvim",             as = "barbecue",           after = "lspconfig",   requires = {"smiteshp/nvim-navic"}},
     {"j-hui/fidget.nvim",                 as = "fidget",             config = "setup"},
     {"smjonas/inc-rename.nvim",           as = "inc_rename",         after = "lspconfig", config = "setup"},
     {"weilbith/nvim-code-action-menu",    cmd = "CodeActionMenu",    after = "lspconfig"},
@@ -89,7 +89,7 @@ local PLUGINS = {
 
     -- DAP Support --
     {"mfussenegger/nvim-dap",    as = "dap"},
-    -- {"rcarriga/nvim-dap-ui",  as = "dap_ui"},
+    {"nvim-telescope/telescope-dap.nvim", as = "telescope_dap"},
     -- DAP Support --
 
     "TimUntersberger/neogit",

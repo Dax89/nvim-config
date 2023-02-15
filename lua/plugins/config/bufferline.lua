@@ -54,10 +54,20 @@ require("bufferline").setup({
             {
                 filetype = "neo-tree",
                 text = function()
-                    local ok, automaton = pcall(require, "automaton")
+                    local dapok, dap = pcall(require, "dap")
+
+                    if dapok then
+                        local session = dap.session()
+
+                        if session then
+                            return " " .. vim.F.if_nil(session.config.name, "DEBUG")
+                        end
+                    end
+
+                    local automatonok, automaton = pcall(require, "automaton")
                     local s = "NEO-TREE"
 
-                    if ok then
+                    if automatonok then
                         local ws = automaton.get_active_workspace()
 
                         if ws then

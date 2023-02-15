@@ -1,7 +1,7 @@
 local M = { }
 
 function M.on_attach(client, bufnr)
-    local options = {buffer = bufnr, remap = false};
+    local options = {buffer = bufnr, remap = false}
 
     vim.keymap.set("n", "<A-Enter>", function() vim.lsp.buf.code_action() end, options)
     vim.keymap.set("n", "<F2>", function() vim.lsp.buf.rename() end, options)
