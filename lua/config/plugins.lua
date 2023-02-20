@@ -88,8 +88,9 @@ local PLUGINS = {
     -- Autocompletion --
 
     -- DAP Support --
-    {"mfussenegger/nvim-dap",    as = "dap"},
-    {"nvim-telescope/telescope-dap.nvim", as = "telescope_dap"},
+    {"mfussenegger/nvim-dap",             as = "dap"},
+    {"nvim-telescope/telescope-dap.nvim", as = "dap_telescope"},
+    {"theHamsta/nvim-dap-virtual-text",   after = "dap", config = "setup"},
     -- DAP Support --
 
     "TimUntersberger/neogit",

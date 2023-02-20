@@ -1,6 +1,6 @@
 local common = {
     buftype_blacklist = {
-        "terminal",
+        -- "terminal",
         "qf",
     },
 
@@ -12,7 +12,6 @@ local common = {
         "NeogitPopup",
         "NeogitCommitMessage",
         "neo-tree",
-        "dap-terminal",
         "dap-repl",
         "qf"
     },
