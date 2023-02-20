@@ -20,8 +20,8 @@ vim.keymap.set("n", "<A-p>", function()
         {"↺ Restart LSP", ":LspRestart"},
         {"! Mason", ":Mason"},
         {"⚙ Commands", function() require("telescope.builtin").commands() end},
-        {" New Workspace", ":AutomatonCreateWorkspace<CR>"},
-        {" Workspaces", ":AutomatonRecentWorkspaces<CR>"},
+        {" New Workspace", ":AutomatonCreateWorkspace"},
+        {" Workspaces", ":AutomatonRecentWorkspaces"},
     })
 end)
 
