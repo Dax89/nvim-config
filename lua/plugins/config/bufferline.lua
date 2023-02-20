@@ -1,14 +1,4 @@
-local common = require("config.common")
 local palette = require("kanagawa.colors").setup()
-
-common.set_options("g", {
-    bufferline = {
-        maximum_padding = 1,
-        auto_hide = false,
-        icons = "both",
-        exclude_ft = common.filetype_blacklist
-    }
-})
 
 require("bufferline").setup({
     highlights = {
@@ -45,9 +35,15 @@ require("bufferline").setup({
         end,
 
         custom_filter = function(nbuf)
-            if not vim.tbl_contains(require("config.common").filetype_blacklist, vim.bo[nbuf].filetype) then
-                return true
-            end
+            local common = require("config.common")
+
+            local mustfilter = vim.tbl_contains(common.buftype_blacklist, vim.bo[nbuf].buftype)
+            if mustfilter then return false end
+
+            mustfilter = vim.tbl_contains(common.filetype_blacklist, vim.bo[nbuf].filetype)
+            if mustfilter then return false end
+
+            return true
         end,
 
         offsets = {

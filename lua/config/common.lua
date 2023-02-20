@@ -1,4 +1,9 @@
 local common = {
+    buftype_blacklist = {
+        "terminal",
+        "qf",
+    },
+
     filetype_blacklist = {
         "help",
         "dashboard",
