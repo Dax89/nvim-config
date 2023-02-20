@@ -9,9 +9,9 @@ vim.keymap.set("n", "<C-u>", "<C-u>zz")
 vim.keymap.set("n", "n", "nzzzv")
 vim.keymap.set("n", "N", "Nzzzv")
 vim.keymap.set("n", "<C-F3>", ":TroubleToggle<CR>")
+vim.keymap.set("n", "&", function() require("spectre").open() end)
 
 vim.keymap.set("n", "<leader>a", "gg0VG")
-vim.keymap.set("n", "<leader>|", function() require("spectre").open() end)
 
 vim.keymap.set("n", "<A-p>", function()
     require("config.common").show_select("Quick Actions", {
@@ -19,7 +19,9 @@ vim.keymap.set("n", "<A-p>", function()
         {" Sync Plugins", ":PackerSync"},
         {"↺ Restart LSP", ":LspRestart"},
         {"! Mason", ":Mason"},
-        {"⚙ Commands", function() require("telescope.builtin").commands() end}
+        {"⚙ Commands", function() require("telescope.builtin").commands() end},
+        {" New Workspace", ":AutomatonCreateWorkspace<CR>"},
+        {" Workspaces", ":AutomatonRecentWorkspaces<CR>"},
     })
 end)
 
