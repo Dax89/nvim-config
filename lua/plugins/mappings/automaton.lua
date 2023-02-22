@@ -1,5 +1,6 @@
 vim.keymap.set("n", "<F5>", ":AutomatonLaunchDefault<CR>")
 vim.keymap.set("n", "<F6>", ":AutomatonDebugDefault<CR>")
+vim.keymap.set("n", "<F7>", ":AutomatonRunningJobs<CR>")
 vim.keymap.set("n", "<F8>", ":AutomatonTasksDefault<CR>")
 
 vim.keymap.set("n", "<C-F5>", ":AutomatonLaunch<CR>")
