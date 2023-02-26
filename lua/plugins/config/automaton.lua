@@ -4,7 +4,7 @@ require("automaton").setup({
     events = {
         workspacechanged = function(ws)
             if ws then
-                require("neo-tree").show()
+                -- require("neo-tree").show()
             end
         end
     }
