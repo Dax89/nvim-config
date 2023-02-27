@@ -1,7 +1,8 @@
 require("toggleterm").setup({
-    shade_terminals = false,
-    open_mapping = "<leader>t"
+    shade_terminals = false
 })
+
+vim.keymap.set("n", "<leader>t", ":ToggleTerm<CR>")
 
 vim.api.nvim_create_autocmd("TermOpen", {pattern = "term://*", command = [[nnoremap <buffer> <LeftRelease> <LeftRelease>i]]})
 
