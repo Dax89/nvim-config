@@ -1,6 +1,6 @@
 require("toggleterm").setup({
     shade_terminals = false,
-    open_mapping = "<C-F2>"
+    open_mapping = "<leader>t"
 })
 
 vim.api.nvim_create_autocmd("TermOpen", {pattern = "term://*", command = [[nnoremap <buffer> <LeftRelease> <LeftRelease>i]]})
