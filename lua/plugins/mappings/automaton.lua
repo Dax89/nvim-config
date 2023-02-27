@@ -3,11 +3,12 @@ vim.keymap.set("n", "<F6>", ":Automaton debug default<CR>", {silent = true})
 vim.keymap.set("n", "<F8>", ":Automaton tasks default<CR>", {silent = true})
 
 vim.keymap.set("n", "<leader>aC", ":Automaton create<CR>", {silent = true})
-vim.keymap.set("n", "<leader>aR", ":Automaton recents<CR>", {silent = true})
 vim.keymap.set("n", "<leader>aI", ":Automaton init<CR>", {silent = true})
 vim.keymap.set("n", "<leader>aL", ":Automaton load<CR>", {silent = true})
 
 vim.keymap.set("n", "<leader>ac", ":Automaton config<CR>", {silent = true})
+vim.keymap.set("n", "<leader>ar", ":Automaton recents<CR>", {silent = true})
+vim.keymap.set("n", "<leader>aw", ":Automaton workspaces<CR>", {silent = true})
 vim.keymap.set("n", "<leader>aj", ":Automaton jobs<CR>", {silent = true})
 vim.keymap.set("n", "<leader>al", ":Automaton launch<CR>", {silent = true})
 vim.keymap.set("n", "<leader>ad", ":Automaton debug<CR>", {silent = true})
