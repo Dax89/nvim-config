@@ -18,3 +18,9 @@ vim.keymap.set("n", "<leader>aol", ":Automaton open launch<CR>", {silent = true}
 vim.keymap.set("n", "<leader>aov", ":Automaton open variables<CR>", {silent = true})
 vim.keymap.set("n", "<leader>aot", ":Automaton open tasks<CR>", {silent = true})
 
+vim.keymap.set("v", "<F5>", ":<C-U>Automaton launch default<CR>", {silent = true})
+vim.keymap.set("v", "<F6>", ":<C-U>Automaton debug default<CR>", {silent = true})
+vim.keymap.set("v", "<F8>", ":<C-U>Automaton tasks default<CR>", {silent = true})
+vim.keymap.set("v", "<leader>al", ":<C-U>Automaton launch<CR>", {silent = true})
+vim.keymap.set("v", "<leader>ad", ":<C-U>Automaton debug<CR>", {silent = true})
+vim.keymap.set("v", "<leader>at", ":<C-U>Automaton tasks<CR>", {silent = true})
