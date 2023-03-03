@@ -29,8 +29,8 @@ local PLUGINS = {
     {"famiu/bufdelete.nvim",     config = "none"},
 
     -- TreeSitter --
-    {"nvim-treesitter/nvim-treesitter",         as = "treesitter", run = true},
-    {"p00f/nvim-ts-rainbow",                    as = "ts-rainbow", after = "treesitter"},
+    {"HiPhish/nvim-ts-rainbow2",        as = "ts-rainbow2"},
+    {"nvim-treesitter/nvim-treesitter", as = "treesitter", after = "ts-rainbow2", run = true},
     -- TreeSitter --
 
     {"kyazdani42/nvim-web-devicons", config = "setup"},
