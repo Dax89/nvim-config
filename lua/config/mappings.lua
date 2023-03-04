@@ -8,8 +8,6 @@ vim.keymap.set("n", "<C-d>", "<C-d>zz")
 vim.keymap.set("n", "<C-u>", "<C-u>zz")
 vim.keymap.set("n", "n", "nzzzv")
 vim.keymap.set("n", "N", "Nzzzv")
-vim.keymap.set("n", "<C-F3>", ":TroubleToggle<CR>")
-vim.keymap.set("n", "&", function() require("spectre").open() end)
 
 vim.keymap.set("n", "<leader>A", "gg0VG")
 

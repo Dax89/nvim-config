@@ -20,5 +20,12 @@ local function toggle_venn()
     end
 end
 
-vim.keymap.set("n", "<leader>v", toggle_venn)
+return {
+    {
+        "jbyuki/venn.nvim",
 
+        keys = {
+            {"<leader>v", toggle_venn}
+        }
+    }
+}
