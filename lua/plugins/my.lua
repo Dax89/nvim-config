@@ -20,9 +20,9 @@ return {
             {"<F5>", "<CMD>Automaton launch default<CR>"},
             {"<F6>", "<CMD>Automaton debug default<CR>"},
             {"<F8>", "<CMD>Automaton tasks default<CR>"},
-            {"<F5>", "<CMD><C-U>Automaton launch default<CR>", {mode = "v"}},
-            {"<F6>", "<CMD><C-U>Automaton debug default<CR>", {mode = "v"}},
-            {"<F8>", "<CMD><C-U>Automaton tasks default<CR>", {mode = "v"}},
+            {"<F5>", "<CMD><C-U>Automaton launch default<CR>", mode = "v"},
+            {"<F6>", "<CMD><C-U>Automaton debug default<CR>", mode = "v"},
+            {"<F8>", "<CMD><C-U>Automaton tasks default<CR>", mode = "v"},
 
             {"<leader>aC", "<CMD>Automaton create<CR>"},
             {"<leader>aI", "<CMD>Automaton init<CR>"},
@@ -41,9 +41,9 @@ return {
             {"<leader>aot", "<CMD>Automaton open tasks<CR>"},
             {"<leader>aoc", "<CMD>Automaton open config<CR>"},
 
-            {"<leader>al", "<CMD><C-U>Automaton launch<CR>", {mode = "v"}},
-            {"<leader>ad", "<CMD><C-U>Automaton debug<CR>", {mode = "v"}},
-            {"<leader>at", "<CMD><C-U>Automaton tasks<CR>", {mode = "v"}},
+            {"<leader>al", "<CMD><C-U>Automaton launch<CR>", mode = "v"},
+            {"<leader>ad", "<CMD><C-U>Automaton debug<CR>", mode = "v"},
+            {"<leader>at", "<CMD><C-U>Automaton tasks<CR>", mode = "v"},
         },
 
         opts = {
