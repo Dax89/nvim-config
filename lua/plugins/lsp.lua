@@ -111,8 +111,8 @@ return {
         branch = "fix/E36",
 
         dependencies = {
-            "smiteshp/nvim-navic"
-        }, 
+            "smiteshp/nvim-navic",
+        },
 
         opts = function()
             local palette = require("kanagawa.colors").setup()
