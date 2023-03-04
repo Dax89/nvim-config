@@ -7,7 +7,7 @@ return {
     },
 
     keys = {
-        {"<F7>", "<CMD>Neotree toggle<CR>"},
+        {"<leader>tf", "<CMD>Neotree toggle<CR>"},
     },
 
     opts = {
