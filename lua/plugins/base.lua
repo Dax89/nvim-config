@@ -33,6 +33,10 @@ return {
     },
 
     {
+        "tpope/vim-fugitive"
+    },
+
+    {
         "TimUntersberger/neogit",
         opts = { disable_builtin_notifications = true, },
 
