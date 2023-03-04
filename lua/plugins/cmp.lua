@@ -28,7 +28,7 @@ return {
         config = function()
             require("luasnip/loaders/from_vscode").lazy_load({
                 paths = {
-                    vim.fn.stdpath("data") .. "/site/pack/packer/start/friendly_snippets",
+                    vim.fn.stdpath("data") .. "/lazy/friendly_snippets",
                     vim.fn.stdpath("config") .. "/snippet",
                 }
             })
