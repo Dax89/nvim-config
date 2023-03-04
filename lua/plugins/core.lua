@@ -19,7 +19,18 @@ return {
 
     {"stevearc/dressing.nvim", config = true},
     {"kyazdani42/nvim-web-devicons", config = true},
+    {"norcalli/nvim-colorizer.lua", config = true },
     {"kylechui/nvim-surround", config = true},
+    {"numToStr/Comment.nvim", config = true},
+
+    {
+        "nvim-pack/nvim-spectre",
+        config = true,
+
+        keys = {
+            {"&", "<CMD>Spectre<CR>"}
+        }
+    },
 
     {
         "TimUntersberger/neogit",
@@ -62,5 +73,5 @@ return {
             number_only = false,
             centered_peeking = true,
         }
-    }
+    },
 }

@@ -14,7 +14,7 @@ vim.keymap.set("n", "<leader>A", "gg0VG")
 vim.keymap.set("n", "<A-p>", function()
     require("config.common").show_select("Quick Actions", {
         {" Settings", ":e $MYVIMRC | :cd %:p:h"},
-        {" Sync Plugins", ":PackerSync"},
+        {"󰒲 Lazy", ":Lazy"},
         {"↺ Restart LSP", ":LspRestart"},
         {"! Mason", ":Mason"},
         {"⚙ Commands", function() require("telescope.builtin").commands() end},
