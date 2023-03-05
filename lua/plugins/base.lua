@@ -79,7 +79,7 @@ return {
         "mbbill/undotree",
 
         keys = {
-            {"<leader>tu", "<CMD>UndotreeToggle<CR>"}
+            {"<leader>ou", "<CMD>UndotreeToggle<CR>"}
         }
     }
 }
