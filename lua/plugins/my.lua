@@ -15,7 +15,7 @@ end
 
 return {
     local_plugin("automaton.nvim", {
-        lazy = false,
+        event = "VimEnter",
         keys = {
             {"<F5>", "<CMD>Automaton launch default<CR>"},
             {"<F6>", "<CMD>Automaton debug default<CR>"},

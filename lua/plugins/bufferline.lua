@@ -1,7 +1,7 @@
 return {
     {
         "akinsho/bufferline.nvim",
-        lazy = false,
+        event = "VimEnter",
 
         keys = {
             {"<leader>h", "<CMD>BufferLineMovePrev<CR>"},
