@@ -54,11 +54,11 @@ return {
     },
     {
         "HiPhish/nvim-ts-rainbow2",
-        dependencies = { "nvim-treesitter/nvim-treesitter", }
+        dependencies = { "nvim-treesitter/nvim-treesitter" }
     },
     {
         "Badhi/nvim-treesitter-cpp-tools",
-        dependencies = { "nvim-treesitter/nvim-treesitter", },
+        dependencies = { "nvim-treesitter/nvim-treesitter" },
         ft = {"c", "cpp"},
 
         keys = {
@@ -67,5 +67,32 @@ return {
             {"<leader>tr3", "<CMD>TSCppRuleOf3<CR>", mode = "v"},
             {"<leader>tr5", "<CMD>TSCppRuleOf5<CR>", mode = "v"},
         },
+    },
+    {
+        "stevearc/aerial.nvim",
+        dependencies = { "nvim-treesitter/nvim-treesitter" },
+
+        opts = {
+            icons = require("config.common").lsp_kinds,
+            show_guides = true,
+            backends = { "lsp", "treesitter", "markdown" },
+            layout = { min_width = 30 },
+            lsp = { diagnostics_trigger_update = false },
+
+            filter_kind = {
+                "Module",
+                "Struct",
+                "Interface",
+                "Class",
+                "Constructor",
+                "Enum",
+                "Function",
+                "Method",
+            },
+        },
+
+        keys = {
+            {"<leader>os", "<CMD>AerialToggle!<CR>"},
+        }
     }
 }
