@@ -7,7 +7,7 @@ local function local_plugin(name, options)
     if devmode then
         plugin.dir = "~/Dev/Progetti/NVim/" .. name
     else
-        plugin.url = "Dax89/" .. name
+        table.insert(plugin, "Dax89/" .. name)
     end
 
     return vim.tbl_deep_extend("force", plugin, options or { })
