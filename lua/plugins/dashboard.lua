@@ -83,11 +83,11 @@ return {
         },
 
         config = function(_, opts)
-            local palette = require("kanagawa.colors").setup()
+            local colors = require("kanagawa.colors").setup()
 
             require("config.common").highlight({
-                {"DashboardHeader", {fg = palette.sakuraPink}},
-                {"DashboardFooter", {fg = palette.springGreen}},
+                {"DashboardHeader", {fg = colors.palette.sakuraPink}},
+                {"DashboardFooter", {fg = colors.palette.springGreen}},
             })
 
             require("dashboard").setup(opts)

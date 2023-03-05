@@ -115,14 +115,14 @@ return {
         },
 
         opts = function()
-            local palette = require("kanagawa.colors").setup()
+            local colors = require("kanagawa.colors").setup()
             local common = require("config.common")
 
             return {
                 exclude_filetypes = common.filetype_blacklist,
                 kinds = common.lsp_kinds,
                 theme = vim.tbl_deep_extend("force", require("barbecue.theme.default"), {
-                    normal = { background = palette.sumiInk1 }
+                    normal = { background = colors.palette.sumiInk1 }
                 })
             }
         end

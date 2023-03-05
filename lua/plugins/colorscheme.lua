@@ -1,16 +1,18 @@
 return {
     {
         "rebelot/kanagawa.nvim",
-        commit = "de7fb5f5de25ab45ec6039e33c80aeecc891dd92",
 
         config = function()
-            local palette = require("kanagawa.colors").setup()
-            vim.o.background = "dark"
-
             require("kanagawa").setup({
-                overrides = {
-                    QuickFixWarning = { fg = palette.roninYellow }
-                }
+                overrides = function(colors)
+                    return {
+                        QuickFixWarning = { fg = colors.palette.roninYellow },
+                        CursorColumn = { bg = colors.palette.sumiInk3, fg = colors.palette.oldWhite },
+                        SignColumn = { bg = colors.palette.sumiInk3, fg = colors.palette.oldWhite },
+                        FoldColumn = { bg = colors.palette.sumiInk3, fg = colors.palette.oldWhite },
+                        LineNr = { bg = colors.palette.sumiInk3, fg = colors.palette.oldWhite },
+                    }
+                end
             })
 
             require("config.common").exec_commands("colorscheme kanagawa")

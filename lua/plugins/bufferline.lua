@@ -23,11 +23,11 @@ return {
         },
 
         opts = function()
-            local palette = require("kanagawa.colors").setup()
+            local colors = require("kanagawa.colors").setup()
 
             return {
                 highlights = {
-                    offset_separator = {bg = palette.sumiInk1},
+                    offset_separator = {bg = colors.palette.sumiInk3},
                     modified_selected = {italic = false},
                     duplicate_selected = {italic = false},
                     numbers_selected = {italic = false},
