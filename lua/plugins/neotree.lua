@@ -1,3 +1,7 @@
+require("config.common").set_options("g", {
+    neo_tree_remove_legacy_commands = true
+})
+
 return {
     "nvim-neo-tree/neo-tree.nvim",
     branch = "v2.x",
@@ -53,12 +57,4 @@ return {
             }
         },
     },
-
-    config = function(_, opts)
-        require("config.common").set_options("g", {
-            neo_tree_remove_legacy_commands = true
-        })
-
-        require("neo-tree").setup(opts)
-    end
 }
