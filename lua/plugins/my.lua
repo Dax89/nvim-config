@@ -50,6 +50,10 @@ return {
             debug = true,
             ignore_ft = require("config.common").buftype_blacklist,
 
+            integrations = {
+                cmp = true
+            },
+
             events = {
                 workspacechanged = function(ws)
                     if ws then
