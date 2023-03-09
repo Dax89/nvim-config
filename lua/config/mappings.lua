@@ -13,13 +13,13 @@ vim.keymap.set("n", "<leader>A", "gg0VG")
 
 vim.keymap.set("n", "<A-p>", function()
     require("config.common").show_select("Quick Actions", {
+        {" Workspaces", ":Automaton recents"},
+        {" New Workspace", ":Automaton create"},
         {" Settings", ":e $MYVIMRC | :cd %:p:h"},
         {"󰒲 Lazy", ":Lazy"},
         {"↺ Restart LSP", ":LspRestart"},
         {"! Mason", ":Mason"},
-        {"⚙ Commands", function() require("telescope.builtin").commands() end},
-        {" New Workspace", ":Automaton create"},
-        {" Workspaces", ":Automaton recents"},
+        {"⚙ Commands", function() require("telescope.builtin").commands() end}
     })
 end)
 

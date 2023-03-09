@@ -1,7 +1,7 @@
 local function create_buttons()
     local BUTTONS_TEMPLATE = {
         {"Files & Projects"},
-        {"e", "", "New File",      ":ene <BAR> startinsert"},
+        {"e", "", "New File",      ":enew"},
         {"r", "", "Recents Files", ":Telescope oldfiles"},
         {"n", "", "New Workspace", ":Automaton create"},
         {"p", "", "Workspaces",    ":Automaton recents"},

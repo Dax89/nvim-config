@@ -51,6 +51,7 @@ return {
             ignore_ft = require("config.common").buftype_blacklist,
 
             integrations = {
+                luasnip = true,
                 cmp = true
             },
 
