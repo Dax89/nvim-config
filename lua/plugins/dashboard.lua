@@ -55,6 +55,12 @@ return {
         opts = {
             theme = "doom",
 
+            hide = {
+                statusline = true,
+                tabline = true,
+                winbar = true,
+            },
+
             config = {
                 header = {
                     "",

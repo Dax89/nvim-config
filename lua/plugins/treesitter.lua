@@ -69,25 +69,30 @@ return {
         },
     },
     {
+        "Wansmer/treesj",
+        dependencies = { "nvim-treesitter/nvim-treesitter" },
+        config = true,
+
+        keys = {
+            {"<leader>tj", function() require("treesj").toggle() end},
+        }
+    },
+    {
         "stevearc/aerial.nvim",
         dependencies = { "nvim-treesitter/nvim-treesitter" },
 
         opts = {
             icons = require("config.common").lsp_kinds,
+            attach_mode = "global",
+            backends = { "lsp", "treesitter", "markdown", "man" },
+            layout = { min_width = 28 },
             show_guides = true,
-            backends = { "lsp", "treesitter", "markdown" },
-            layout = { min_width = 30 },
-            lsp = { diagnostics_trigger_update = false },
-
-            filter_kind = {
-                "Module",
-                "Struct",
-                "Interface",
-                "Class",
-                "Constructor",
-                "Enum",
-                "Function",
-                "Method",
+            filter_kind = false,
+            guides = {
+                mid_item = "├ ",
+                last_item = "└ ",
+                nested_top = "│ ",
+                whitespace = "  ",
             },
         },
 

@@ -65,7 +65,7 @@ return {
         "folke/trouble.nvim",
         config = true,
         keys = {
-            {"<C-F3>", "<CMD>TroubleToggle<CR>"}
+            {"<leader>tt", "<CMD>TroubleToggle<CR>"}
         }
     },
 
