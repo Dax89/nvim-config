@@ -1,6 +1,7 @@
 return {
     "nvim-lua/plenary.nvim",
     "famiu/bufdelete.nvim",
+    "Bekaboo/deadcolumn.nvim",
 
     {
         "rcarriga/nvim-notify",

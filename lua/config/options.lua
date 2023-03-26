@@ -13,6 +13,7 @@ common.set_options("opt", {
     completeopt = "menu,menuone,noselect",        -- Completion options
     clipboard = "unnamedplus",                    -- Use System Clipboard
     guifont = "monospace:h14",                    -- GUI Font
+    colorcolumn = "100,120,150",                  -- Screen Columns
 
     -- Neovim UI
     number = true,                                -- Print line number
