@@ -71,7 +71,7 @@ return {
 
     {
         "onsails/lspkind-nvim",
-        opts = function() 
+        opts = function()
             return {
                 symbol_map = require("config.common").lsp_kinds
             }
@@ -107,11 +107,25 @@ return {
     },
 
     {
-        "utilyre/barbecue.nvim",
-        branch = "fix/E36",
+        "SmiteshP/nvim-navbuddy",
+        lazy = false,
+
+        keys = {
+            {"<leader>", "<CMD>Navbuddy<CR>"}
+        },
 
         dependencies = {
-            "smiteshp/nvim-navic",
+            "SmiteshP/nvim-navic",
+            "MunifTanjim/nui.nvim"
+        },
+        opts = { lsp = { auto_attach = true } }
+    },
+
+    {
+        "utilyre/barbecue.nvim",
+
+        dependencies = {
+            "SmiteshP/nvim-navic",
         },
 
         opts = function()

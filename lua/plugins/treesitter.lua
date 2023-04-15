@@ -77,27 +77,4 @@ return {
             {"<leader>tj", function() require("treesj").toggle() end},
         }
     },
-    {
-        "stevearc/aerial.nvim",
-        dependencies = { "nvim-treesitter/nvim-treesitter" },
-
-        opts = {
-            icons = require("config.common").lsp_kinds,
-            attach_mode = "global",
-            backends = { "lsp", "treesitter", "markdown", "man" },
-            layout = { min_width = 28 },
-            show_guides = true,
-            filter_kind = false,
-            guides = {
-                mid_item = "├ ",
-                last_item = "└ ",
-                nested_top = "│ ",
-                whitespace = "  ",
-            },
-        },
-
-        keys = {
-            {"<leader>os", "<CMD>AerialToggle!<CR>"},
-        }
-    }
 }
