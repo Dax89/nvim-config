@@ -1,5 +1,5 @@
 local function filter_filetypes(ft)
-    return not vim.tbl_contains({"neo-tree", "toggleterm"}, ft)
+    return not vim.tbl_contains({"toggleterm"}, ft)
 end
 
 local function get_current_lsp()
@@ -90,7 +90,6 @@ return {
         },
 
         extensions = {
-            -- "neo-tree",
             "toggleterm"
         }
     }

@@ -2,7 +2,6 @@ local common = {
     buftype_blacklist = {
         -- "terminal",
         "gitcommit",
-        -- "aerial",
         "qf",
     },
 
@@ -14,9 +13,7 @@ local common = {
         "NeogitPopup",
         "NeogitCommitMessage",
         "gitcommit",
-        "neo-tree",
         "dap-repl",
-        -- "aerial",
         "qf"
     },
 
