@@ -8,7 +8,7 @@ return {
         opts = function ()
             return {
                 highlight = { enable = true },
-                indent = { enable = true, disable = { "python" } },
+                -- indent = { enable = false, disable = { "python" } },
                 context_commentstring = { enable = true, enable_autocmd = false },
                 autopairs = { enable = true },
 

@@ -111,7 +111,7 @@ return {
         lazy = false,
 
         keys = {
-            {"<leader>", "<CMD>Navbuddy<CR>"}
+            {"<leader>n", "<CMD>Navbuddy<CR>"}
         },
 
         dependencies = {
@@ -123,6 +123,7 @@ return {
 
     {
         "utilyre/barbecue.nvim",
+        enabled = false,
 
         dependencies = {
             "SmiteshP/nvim-navic",

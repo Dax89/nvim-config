@@ -9,7 +9,7 @@ return {
         },
 
         keys = {
-            {"<C-b>", "<CMD>Telescope buffers<CR>"},
+            {"<leader>b", "<CMD>Telescope buffers<CR>"},
             {"<C-h>", "<CMD>Telescope oldfiles<CR>"},
             {"<C-k>", "<CMD>Telescope find_files<CR>"},
             {"<C-p>", "<CMD>Telescope git_files<CR>"},
@@ -31,7 +31,32 @@ return {
             }
         },
 
-        config = function()
+        opts = {
+            extensions = {
+                file_browser = {
+                    hijack_netrw = true,
+                    grouped = true,
+                }
+            },
+
+            pickers = {
+                buffers = {
+                    show_all_buffers = true,
+                    sort_mru = true,
+                    mappings = {
+                        i = {
+                            ["<A-d>"] = "delete_buffer",
+                        },
+                        n = {
+                            ["d"] = "delete_buffer",
+                        }
+                    },
+                },
+            },
+        },
+
+        config = function(_, opts)
+            require("telescope").setup(opts)
             require("telescope").load_extension("file_browser")
         end
     },
