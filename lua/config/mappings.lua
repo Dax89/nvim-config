@@ -11,6 +11,18 @@ vim.keymap.set("n", "N", "Nzzzv")
 
 vim.keymap.set("n", "<leader>A", "gg0VG")
 
+vim.keymap.set("n", "<leader>s", function()
+    local p = require("plenary.path"):new(vim.api.nvim_buf_get_name(0))
+
+    if p:is_file() then
+        p = p:parent()
+    end
+
+    if p:is_dir() then
+        require("config.common").os_open(tostring(p))
+    end
+end)
+
 vim.keymap.set("n", "<A-p>", function()
     require("config.common").show_select("Quick Actions", {
         {" Workspaces", ":Automaton recents"},
