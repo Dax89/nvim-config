@@ -10,7 +10,7 @@ return {
             {"<F11>", function() require("dap").step_into() end},
             {"<leader>dR", function() require("dap").restart() end},
             {"<leader>dC", function() require("dap").clear_breakpoints() end},
-            {"<leader>db", function() require("dap").list_breakpoints() end},
+            {"<leader>db", function() require("dap").list_breakpoints(true) end},
             {"<leader>dc", function() require("dap").continue() end},
             {"<leader>de", function() require("dap").set_exception_breakpoints({"all"}) end},
             {"<leader>di", function() require("dap.ui.widgets").hover() end, mode = {"n", "v"}},
