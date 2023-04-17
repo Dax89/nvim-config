@@ -67,6 +67,10 @@ return {
             {"<leader>tr3", "<CMD>TSCppRuleOf3<CR>", mode = "v"},
             {"<leader>tr5", "<CMD>TSCppRuleOf5<CR>", mode = "v"},
         },
+
+        config = function(_, opts)
+            require("nt-cpp-tools").setup(opts)
+        end
     },
     {
         "Wansmer/treesj",
