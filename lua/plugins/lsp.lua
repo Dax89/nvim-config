@@ -59,7 +59,11 @@ end
 return {
     "neovim/nvim-lspconfig",
     "RRethy/vim-illuminate",
-    { "ray-x/lsp_signature.nvim", opts = { hint_prefix = " "} },
+
+    {
+        "ray-x/lsp_signature.nvim",
+        opts = { hint_prefix = " "}
+    },
 
     {
         "folke/trouble.nvim",
@@ -107,39 +111,11 @@ return {
     },
 
     {
-        "SmiteshP/nvim-navbuddy",
-        lazy = false,
+        "SmiteshP/nvim-navic",
 
-        keys = {
-            {"<leader>n", "<CMD>Navbuddy<CR>"}
-        },
-
-        dependencies = {
-            "SmiteshP/nvim-navic",
-            "MunifTanjim/nui.nvim"
-        },
-        opts = { lsp = { auto_attach = true } }
-    },
-
-    {
-        "utilyre/barbecue.nvim",
-        enabled = false,
-
-        dependencies = {
-            "SmiteshP/nvim-navic",
-        },
-
-        opts = function()
-            local colors = require("kanagawa.colors").setup()
-            local common = require("config.common")
-
-            return {
-                exclude_filetypes = common.filetype_blacklist,
-                kinds = common.lsp_kinds,
-                theme = vim.tbl_deep_extend("force", require("barbecue.theme.default"), {
-                    normal = { background = colors.palette.sumiInk1 }
-                })
-            }
-        end
+        opts = {
+            icons = require("config.common").lsp_kinds,
+            lsp = { auto_attach = true }
+        }
     }
 }
