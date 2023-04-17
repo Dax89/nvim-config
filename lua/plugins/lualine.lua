@@ -63,6 +63,36 @@ local Automaton = {
     separator = {left = "", right = ""},
 }
 
+local Navic = {
+    function()
+        local TYPES = {
+            Function = true, Method = true, Enum = true, Struct = true,
+            Class = true, Interface = true, Object = true,
+            Namespace = true
+        }
+
+        local data = require("nvim-navic").get_data()
+        local v = nil
+
+        for _, d in ipairs(data) do
+            if TYPES[d.type] then
+                v = d
+            end
+        end
+
+        if v then
+            return table.concat({v.icon, v.name}, " ")
+        end
+
+        return ""
+    end,
+
+    cond = function()
+        local ok, navic = pcall(require, "nvim-navic")
+        return ok and navic.is_available()
+    end
+}
+
 return {
     "nvim-lualine/lualine.nvim",
 
@@ -73,8 +103,8 @@ return {
             disabled_filetypes = vim.tbl_filter(filter_filetypes, require("config.common").filetype_blacklist)
         },
         sections = {
-            lualine_a = { Mode },
-            lualine_b = { Automaton, "branch" },
+            lualine_a = { Mode, Navic },
+            lualine_b = { Automaton },
             lualine_c = { "filename" },
             lualine_x = { "diagnostics", get_current_lsp, "encoding", "filetype" },
             lualine_y = { "progress" },
