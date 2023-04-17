@@ -43,7 +43,7 @@ local common = {
       Event = "",
       Operator = "",
       Copilot = "",
-      TypeParameter = ""
+      TypeParameter = ""
     }
 }
 
