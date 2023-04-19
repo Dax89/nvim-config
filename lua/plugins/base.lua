@@ -82,5 +82,47 @@ return {
         keys = {
             {"<leader>ou", "<CMD>UndotreeToggle<CR>"}
         }
+    },
+
+    {
+        "X3eRo0/dired.nvim",
+
+        keys = {
+            {"<C-f>", "<CMD>Dired<CR>"}
+        },
+
+        opts = {
+            show_banner = false,
+            show_colors = true,
+        },
+
+        dependencies = {
+            "MunifTanjim/nui.nvim"
+        },
+
+        config = function(_, opts)
+            require("dired").setup(opts)
+
+            vim.api.nvim_create_autocmd("FileType", {
+                pattern = "dired",
+
+                callback = function()
+                    vim.keymap.set("n", "s", function()
+                        local Display = require("dired.display")
+                        local filename = Display.get_filename_from_listing(vim.api.nvim_get_current_line())
+
+                        if filename ~= nil then
+                            local filepath = require("plenary.path"):new(vim.g.current_dired_path, filename)
+
+                            if filepath:is_file() then
+                                filepath = filepath:parent()
+                            end
+
+                            require("config.common").os_open(filepath)
+                        end
+                    end)
+                end
+            })
+        end
     }
 }
