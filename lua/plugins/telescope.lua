@@ -1,6 +1,15 @@
-return {
-    "nvim-telescope/telescope-file-browser.nvim",
+local function telescope_delete_buffer(promptnr)
+    local ActionState = require("telescope.actions.state")
+    local currentpicker = ActionState.get_current_picker(promptnr)
 
+    currentpicker:delete_selection(function(selection)
+        local force = vim.api.nvim_buf_get_option(selection.bufnr, "buftype") == "terminal"
+        local ok = pcall(require("bufdelete").bufdelete, selection.bufnr, force)
+        return ok
+    end)
+end
+
+return {
     {
         "nvim-telescope/telescope.nvim",
 
@@ -17,47 +26,24 @@ return {
             {"<C-s>", "<CMD>Telescope lsp_document_symbols<CR>"},
             {"<C-Enter>", "<CMD>Telescope lsp_references<CR>"},
             {"<C-S-s>", "<CMD>Telescope lsp_dynamic_workspace_symbols<CR>"},
-
-            {
-                "<C-f>",
-                function()
-                    local Path = require("plenary.path")
-                    local extensions = require("telescope").extensions
-
-                    extensions.file_browser.file_browser({
-                        path = tostring(Path:new(vim.fn.expand("%:p")):parent())
-                    })
-                end
-            }
         },
 
         opts = {
-            extensions = {
-                file_browser = {
-                    hijack_netrw = true,
-                    grouped = true,
-                }
-            },
-
             pickers = {
                 buffers = {
+                    initial_mode = "normal",
                     show_all_buffers = true,
                     sort_mru = true,
                     mappings = {
                         i = {
-                            ["<A-d>"] = "delete_buffer",
+                            ["<A-d>"] = telescope_delete_buffer,
                         },
                         n = {
-                            ["d"] = "delete_buffer",
+                            ["d"] = telescope_delete_buffer
                         }
                     },
                 },
             },
         },
-
-        config = function(_, opts)
-            require("telescope").setup(opts)
-            require("telescope").load_extension("file_browser")
-        end
     },
 }
