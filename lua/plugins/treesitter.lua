@@ -57,22 +57,6 @@ return {
         dependencies = { "nvim-treesitter/nvim-treesitter" }
     },
     {
-        "Badhi/nvim-treesitter-cpp-tools",
-        dependencies = { "nvim-treesitter/nvim-treesitter" },
-        ft = {"c", "cpp"},
-
-        keys = {
-            {"<leader>tdf", "<CMD>TSCppDefineClassFunc<CR>", mode = "v"},
-            {"<leader>tmc", "<CMD>TSCppMakeConcreteClass<CR>", mode = "v"},
-            {"<leader>tr3", "<CMD>TSCppRuleOf3<CR>", mode = "v"},
-            {"<leader>tr5", "<CMD>TSCppRuleOf5<CR>", mode = "v"},
-        },
-
-        config = function(_, opts)
-            require("nt-cpp-tools").setup(opts)
-        end
-    },
-    {
         "Wansmer/treesj",
         dependencies = { "nvim-treesitter/nvim-treesitter" },
         config = true,
