@@ -10,6 +10,8 @@ vim.keymap.set("n", "n", "nzzzv")
 vim.keymap.set("n", "N", "Nzzzv")
 
 vim.keymap.set("n", "<leader>A", "gg0VG")
+vim.keymap.set("n", "<leader>+", "<CMD>enew<CR>")
+vim.keymap.set("n", "<leader>-", function() require("bufdelete").bufdelete(0, true) end)
 
 vim.keymap.set("n", "<leader>s", function()
     local p = require("plenary.path"):new(vim.api.nvim_buf_get_name(0))
