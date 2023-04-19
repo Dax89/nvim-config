@@ -5,19 +5,21 @@ return {
 
         keys = {
             {
-                "<leader>f",
+                "f",
                 function()
                     require("hop").hint_words({
                         direction = require("hop.hint").HintDirection.AFTER_CURSOR
                     })
-                end
+                end,
+                { mode = "n"}
             },
             {
-                "<leader>F", function()
+                "F", function()
                     require("hop").hint_words({
                         direction = require("hop.hint").HintDirection.BEFORE_CURSOR
                     })
-                end
+                end,
+                { mode = "n"}
             }
         }
     }
