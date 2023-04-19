@@ -88,7 +88,26 @@ return {
         "X3eRo0/dired.nvim",
 
         keys = {
-            {"<C-f>", "<CMD>Dired<CR>"}
+            {
+                "<C-f>",
+                function()
+                    local filepath = vim.api.nvim_buf_get_name(0)
+
+                    if filepath then
+                        local p = require("plenary.path"):new(filepath)
+
+                        if p:exists() and p:is_file() then
+                            p = p:parent()
+                        end
+
+                        if p:is_dir() then
+                            vim.api.nvim_command(":Dired " .. tostring(p))
+                        end
+                    end
+
+                    vim.api.nvim_command(":Dired")
+                end
+            }
         },
 
         opts = {
