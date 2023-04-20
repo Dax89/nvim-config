@@ -139,7 +139,7 @@ return {
 
                             require("config.common").os_open(filepath)
                         end
-                    end)
+                    end, {buffer = true})
                 end
             })
         end
