@@ -66,7 +66,7 @@ local Automaton = {
 local Navic = {
     function()
         local TYPES = {
-            Function = true, Method = true, Enum = true, Struct = true,
+            Function = true, Method = true, Constructor = true, Enum = true, Struct = true,
             Class = true, Interface = true, Object = true,
             Namespace = true
         }
