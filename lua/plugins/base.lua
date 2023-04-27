@@ -85,63 +85,34 @@ return {
     },
 
     {
-        "X3eRo0/dired.nvim",
+        "stevearc/oil.nvim",
 
         keys = {
-            {
-                "<C-f>",
-                function()
-                    local filepath = vim.api.nvim_buf_get_name(0)
-
-                    if filepath then
-                        local p = require("plenary.path"):new(filepath)
-
-                        if p:exists() and p:is_file() then
-                            p = p:parent()
-                        end
-
-                        if p:is_dir() then
-                            vim.api.nvim_command(":Dired " .. tostring(p))
-                        end
-                    end
-
-                    vim.api.nvim_command(":Dired")
-                end
-            }
+            {"<C-f>", "<CMD>Oil<CR>"}
         },
 
         opts = {
-            show_banner = false,
-            show_colors = true,
-        },
+            columns = {
+                "permissions",
+                "size",
+                "mtime",
+                "icon"
+            },
 
-        dependencies = {
-            "MunifTanjim/nui.nvim"
-        },
+            keymaps = {
+                ["S"] = function()
+                    local Oil = require("oil")
+                    local d = Oil.get_current_dir()
+                    local e = Oil.get_cursor_entry()
 
-        config = function(_, opts)
-            require("dired").setup(opts)
-
-            vim.api.nvim_create_autocmd("FileType", {
-                pattern = "dired",
-
-                callback = function()
-                    vim.keymap.set("n", "s", function()
-                        local Display = require("dired.display")
-                        local filename = Display.get_filename_from_listing(vim.api.nvim_get_current_line())
-
-                        if filename ~= nil then
-                            local filepath = require("plenary.path"):new(vim.g.current_dired_path, filename)
-
-                            if filepath:is_file() then
-                                filepath = filepath:parent()
-                            end
-
-                            require("config.common").os_open(filepath)
-                        end
-                    end, {buffer = true})
+                    if e.type == "directory" then
+                        local Path = require("plenary.path")
+                        require("config.common").os_open(tostring(Path:new(d, e.name)))
+                    else
+                        require("config.common").os_open(d)
+                    end
                 end
-            })
-        end
+            }
+        }
     }
 }
