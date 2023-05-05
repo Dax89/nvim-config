@@ -75,11 +75,6 @@ return {
 
     {
         "onsails/lspkind-nvim",
-        opts = function()
-            return {
-                symbol_map = require("config.common").lsp_kinds
-            }
-        end,
         config = function(_, opts)
             require("lspkind").init(opts)
         end
@@ -114,7 +109,6 @@ return {
         "SmiteshP/nvim-navic",
 
         opts = {
-            icons = require("config.common").lsp_kinds,
             lsp = { auto_attach = true }
         }
     }
