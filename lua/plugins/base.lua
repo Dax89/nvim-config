@@ -99,7 +99,7 @@ return {
             },
 
             keymaps = {
-                ["S"] = function()
+                ["<C-s>"] = function()
                     local Oil = require("oil")
                     local d = Oil.get_current_dir()
                     local e = Oil.get_cursor_entry()
