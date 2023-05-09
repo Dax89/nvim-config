@@ -83,7 +83,6 @@ return {
             {"<leader>ou", "<CMD>UndotreeToggle<CR>"}
         }
     },
-
     {
         "stevearc/oil.nvim",
 
@@ -114,5 +113,5 @@ return {
                 end
             }
         }
-    }
+    },
 }
