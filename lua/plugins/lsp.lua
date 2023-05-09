@@ -96,7 +96,7 @@ return {
                 "cmake",
                 "clangd",
                 "marksman",
-                "perlnavigator"
+                -- "perlnavigator"
             }
         },
         config = function(_, opts)
