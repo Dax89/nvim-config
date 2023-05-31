@@ -1,7 +1,7 @@
 return {
     {
         "lukas-reineke/headlines.nvim",
-        ft = {"markdown", "orgmode", "neorg"},
+        ft = {"markdown"},
 
         opts = {
             markdown = {

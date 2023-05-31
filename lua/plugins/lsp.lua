@@ -93,7 +93,7 @@ return {
                 "tsserver",
                 "svelte",
                 "lua_ls",
-                "cmake",
+                -- "cmake",
                 "clangd",
                 "marksman",
                 -- "perlnavigator"

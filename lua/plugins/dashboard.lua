@@ -7,6 +7,7 @@ local function create_buttons()
         {"p", "", "Workspaces",    ":Automaton recents"},
         {"Settings & Plugins"},
         {"x", "", "Settings",      ":e $MYVIMRC | :cd %:p:h"},
+        {"B", "", "Second Brain",  ":e $HOME/Dev/Cloud/BrainDump/index.wiki | :cd %:p:h"},
         {"L", "󰒲", "Lazy",          ":Lazy"},
         {"N", "ﴽ", "News",          ":help news"},
     }

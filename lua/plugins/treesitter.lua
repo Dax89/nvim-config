@@ -7,10 +7,14 @@ return {
 
         opts = function ()
             return {
-                highlight = { enable = true },
                 -- indent = { enable = false, disable = { "python" } },
                 context_commentstring = { enable = true, enable_autocmd = false },
                 autopairs = { enable = true },
+
+                highlight = {
+                    enable = true,
+                    additional_vim_regex_highlighting = {"org"},
+                },
 
                 rainbow = {
                     enable = true,
@@ -44,6 +48,7 @@ return {
                     "tsx",
                     "typescript",
                     "vim",
+                    "org",
                 },
             }
         end,

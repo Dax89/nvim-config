@@ -43,5 +43,6 @@ require("config.options")
 require("config.commands")
 require("config.diagnostic")
 require("config.mappings")
+require("config.secondbrain")
 
 require("lazy").setup("plugins")

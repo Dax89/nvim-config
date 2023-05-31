@@ -110,7 +110,6 @@ return {
                     {name = "nvim_lua", groupindex = 2},
                     {name = "luasnip", group_index = 3},
                     {name = "path", group_index = 2},
-                    {name = "orgmode"}
                 }),
 
                 sorting = {
