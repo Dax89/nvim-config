@@ -58,7 +58,6 @@ local function iterate(date, callback)
 end
 
 local function is_weekend(date)
-    vim.print(date)
     return date.weekday == 0 or date.weekday == 6
 end
 
