@@ -31,12 +31,27 @@ local function setup_lsp_clangd()
     }
 end
 
+local function setup_lsp_qmlls()
+    return {
+        cmd = {"qmlls6"},
+        filetypes = {"qmljs", "qml"}
+    }
+end
+
+local function setup_lsp_solargraph()
+    return {
+        single_file_support = true
+    }
+end
+
 local CUSTOM_LSP_CONFIGS = {
-    lua_ls =  setup_lsp_lua_ls,
+    lua_ls = setup_lsp_lua_ls,
     clangd = setup_lsp_clangd,
+    qmlls  = setup_lsp_qmlls,
+    solargraph = setup_lsp_solargraph,
 }
 
-local CUSTOM_SERVERS = {"nimls"}
+local CUSTOM_SERVERS = {"qmlls"}
 
 local function setup_servers()
     local installedservers = require("mason-lspconfig").get_installed_servers()
@@ -97,6 +112,7 @@ return {
                 "clangd",
                 "marksman",
                 -- "perlnavigator"
+                "solargraph"
             }
         },
         config = function(_, opts)
