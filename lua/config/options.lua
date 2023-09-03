@@ -18,7 +18,7 @@ common.set_options("opt", {
     -- Neovim UI
     number = true,                                -- Print line number
     showmatch = true,                             -- Highlight matching parenthesis
-    foldmethod = "marker",                        -- Enable folding
+    foldenable = false,                           -- Disable folding
     splitbelow = true,                            -- Put new windows below current
     splitright = true,                            -- Put new windows right of current
     ignorecase = true,                            -- Ignore case

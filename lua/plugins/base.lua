@@ -34,7 +34,7 @@ return {
     },
 
     {
-        "TimUntersberger/neogit",
+        "NeogitOrg/neogit",
         opts = { disable_builtin_notifications = true, },
 
         keys = {

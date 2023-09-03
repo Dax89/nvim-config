@@ -16,12 +16,6 @@ return {
                     additional_vim_regex_highlighting = {"org"},
                 },
 
-                rainbow = {
-                    enable = true,
-                    query = "rainbow-parens",
-                    strategy = require("ts-rainbow.strategy.global")
-                },
-
                 nt_cpp_tools = {
                     enable = true,
                     preview = {
@@ -58,8 +52,21 @@ return {
         end
     },
     {
-        "HiPhish/nvim-ts-rainbow2",
-        dependencies = { "nvim-treesitter/nvim-treesitter" }
+        "hiphish/rainbow-delimiters.nvim",
+        event = "VeryLazy",
+
+        config = function()
+            local rainbowdelimiters = require("rainbow-delimiters")
+
+            vim.g.rainbow_delimiters = {
+                strategy = {
+                    [""] = rainbowdelimiters.strategy["global"],
+                },
+                query = {
+                    [""] = "rainbow-delimiters",
+                },
+            }
+        end
     },
     {
         "Wansmer/treesj",
