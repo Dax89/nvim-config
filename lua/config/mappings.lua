@@ -10,7 +10,14 @@ vim.keymap.set("n", "n", "nzzzv")
 vim.keymap.set("n", "N", "Nzzzv")
 
 vim.keymap.set("n", "<leader>A", "gg0VG")
-vim.keymap.set("n", "<leader>=", "<CMD>enew<CR>")
+
+-- Check keyboard layout
+if vim.fn.system("setxkbmap -query | grep layout | awk '{print $NF}'") == "it" then
+    vim.keymap.set("n", "<leader>+", "<CMD>enew<CR>")
+else
+    vim.keymap.set("n", "<leader>=", "<CMD>enew<CR>")
+end
+
 vim.keymap.set("n", "<leader>-", function() require("bufdelete").bufdelete(0, true) end)
 
 vim.keymap.set("n", "<leader>s", function()
