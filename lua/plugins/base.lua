@@ -83,35 +83,4 @@ return {
             {"<leader>ou", "<CMD>UndotreeToggle<CR>"}
         }
     },
-    {
-        "stevearc/oil.nvim",
-
-        keys = {
-            {"<C-f>", "<CMD>Oil<CR>"}
-        },
-
-        opts = {
-            columns = {
-                "permissions",
-                "size",
-                "mtime",
-                "icon"
-            },
-
-            keymaps = {
-                ["<C-s>"] = function()
-                    local Oil = require("oil")
-                    local d = Oil.get_current_dir()
-                    local e = Oil.get_cursor_entry()
-
-                    if e.type == "directory" then
-                        local Path = require("plenary.path")
-                        require("config.common").os_open(tostring(Path:new(d, e.name)))
-                    else
-                        require("config.common").os_open(d)
-                    end
-                end
-            }
-        }
-    },
 }

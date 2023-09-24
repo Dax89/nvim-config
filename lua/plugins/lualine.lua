@@ -56,34 +56,11 @@ local Mode = {
     color = { gui = "bold" }
 }
 
-local OilCurrentDir = {
-    function()
-        local ok, oil = pcall(require, "oil")
-
-        if ok then
-            return oil.get_current_dir()
-        end
-
-        return ""
-    end,
-
-    cond = function()
-        return vim.bo.filetype == "oil"
-    end,
-
-    color = "CursorLine",
-    separator = {left = "", right = ""}
-}
-
 local Automaton = {
     get_automaton_status,
     icons_enabled = false,
     color = "CursorLine",
     separator = {left = "", right = ""},
-
-    cond = function()
-        return vim.bo.filetype ~= "oil"
-    end
 }
 
 local Navic = {
@@ -116,14 +93,6 @@ local Navic = {
     end
 }
 
-local FileName = {
-    "filename",
-
-    cond = function()
-        return vim.bo.filetype ~= "oil"
-    end
-}
-
 return {
     "nvim-lualine/lualine.nvim",
 
@@ -135,8 +104,8 @@ return {
         },
         sections = {
             lualine_a = { Mode, Navic },
-            lualine_b = { OilCurrentDir, Automaton },
-            lualine_c = { FileName },
+            lualine_b = { Automaton },
+            lualine_c = { "filename" },
             lualine_x = { "diagnostics", get_current_lsp, "encoding", "filetype" },
             lualine_y = { "progress" },
             lualine_z = { "location" },
