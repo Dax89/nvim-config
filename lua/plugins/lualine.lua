@@ -2,6 +2,10 @@ local function filter_filetypes(ft)
     return not vim.tbl_contains({"toggleterm"}, ft)
 end
 
+local function get_current_window()
+    return " " .. vim.api.nvim_win_get_number(0)
+end
+
 local function get_current_lsp()
     local msg = ""
     local ft = vim.api.nvim_buf_get_option(0, "filetype")
@@ -51,6 +55,12 @@ local function get_automaton_status()
     return s
 end
 
+local Window = {
+    get_current_window,
+    color = "CursorLine",
+    separator = { right = "" },
+}
+
 local Mode = {
     "mode",
     color = { gui = "bold" }
@@ -60,7 +70,7 @@ local Automaton = {
     get_automaton_status,
     icons_enabled = false,
     color = "CursorLine",
-    separator = {left = "", right = ""},
+    separator = { left = "", right = "" },
 }
 
 local Navic = {
@@ -99,7 +109,7 @@ return {
     opts = {
         options = {
             theme = "kanagawa",
-            globalstatus = true,
+            globalstatus = false,
             disabled_filetypes = vim.tbl_filter(filter_filetypes, require("config.common").filetype_blacklist)
         },
         sections = {
@@ -111,7 +121,7 @@ return {
             lualine_z = { "location" },
         },
         inactive_sections = {
-            lualine_a = {},
+            lualine_a = { Window },
             lualine_b = {},
             lualine_c = { "filename" },
             lualine_x = { "location" },

@@ -47,6 +47,13 @@ end)
 vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv")
 vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv")
 
+-- Window mappings
+for i = 1, 9 do
+    local lhs = "<leader>" .. i
+    local rhs = i .. "<C-w>w"
+    vim.keymap.set("n", lhs, rhs, { desc = "Move to Window " .. i})
+end
+
 vim.api.nvim_create_autocmd("FileType", {
     pattern = "lua",
     callback = function(arg)
