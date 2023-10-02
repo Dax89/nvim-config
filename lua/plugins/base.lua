@@ -36,10 +36,18 @@ return {
     {
         "NeogitOrg/neogit",
         opts = { disable_builtin_notifications = true, },
+        config = true,
+
+        dependencies = {
+            "nvim-lua/plenary.nvim",         -- required
+            "nvim-telescope/telescope.nvim", -- optional
+            "sindrets/diffview.nvim",        -- optional
+            "ibhagwan/fzf-lua",              -- optional
+        },
 
         keys = {
             {
-                "<leader>g",
+                "<leader>gg",
                 function()
                     local cwd = vim.fn.expand('%:p:h')
                     vim.api.nvim_command(":Neogit kind=split")
