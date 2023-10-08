@@ -35,7 +35,7 @@ end)
 vim.keymap.set("n", "<A-p>", function()
     require("config.common").show_select("Quick Actions", {
         {" Workspaces", ":Automaton recents"},
-        {" New Workspace", ":Automaton create"},
+        {"󱕣 New Workspace", ":Automaton create"},
         {" Settings", ":e $MYVIMRC | :cd %:p:h"},
         {"󰒲 Lazy", ":Lazy"},
         {"↺ Restart LSP", ":LspRestart"},

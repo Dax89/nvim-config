@@ -3,13 +3,13 @@ local function create_buttons()
         {"Files & Projects"},
         {"e", "", "New File",      ":enew"},
         {"r", "", "Recents Files", ":Telescope oldfiles"},
-        {"n", "", "New Workspace", ":Automaton create"},
+        {"n", "󱕣", "New Workspace", ":Automaton create"},
         {"p", "", "Workspaces",    ":Automaton recents"},
         {"Settings & Plugins"},
         {"x", "", "Settings",      ":e $MYVIMRC | :cd %:p:h"},
         {"B", "", "Second Brain",  ":e $HOME/Dev/Cloud/BrainDump/index.wiki | :cd %:p:h"},
         {"L", "󰒲", "Lazy",          ":Lazy"},
-        {"N", "ﴽ", "News",          ":help news"},
+        {"N", "", "News",          ":help news"},
     }
 
     local function fillw(s, w, before)
