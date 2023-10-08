@@ -106,10 +106,10 @@ return {
                 },
 
                 sources = cmp.config.sources({
-                    {name = "nvim_lsp", group_index = 1},
-                    {name = "nvim_lua", groupindex = 2},
-                    {name = "luasnip", group_index = 3},
-                    {name = "path", group_index = 2},
+                    {name = "nvim_lsp" },
+                    {name = "nvim_lua" },
+                    {name = "path" },
+                    {name = "luasnip" },
                 }),
 
                 sorting = {

@@ -28,6 +28,7 @@ return {
                     "bash",
                     "c",
                     "cpp",
+                    "ruby",
                     "css",
                     "help",
                     "html",
@@ -42,7 +43,6 @@ return {
                     "tsx",
                     "typescript",
                     "vim",
-                    "org",
                 },
             }
         end,
