@@ -11,8 +11,8 @@ local function set_sign(name, icon)
 end
 
 set_sign("DiagnosticSignError", "✘")
-set_sign("DiagnosticSignWarn",  "▲")
-set_sign("DiagnosticSignHint",  "⚑")
+set_sign("DiagnosticSignWarn",  "")
+set_sign("DiagnosticSignHint",  "")
 set_sign("DiagnosticSignInfo",  "")
 
 vim.diagnostic.config({
