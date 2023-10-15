@@ -10,10 +10,10 @@ local function set_sign(name, icon)
     vim.fn.sign_define(name, {texthl = name, text = icon, numhl = ""})
 end
 
-set_sign("DiagnosticSignError", "✘")
-set_sign("DiagnosticSignWarn",  "")
-set_sign("DiagnosticSignHint",  "")
-set_sign("DiagnosticSignInfo",  "")
+set_sign("DiagnosticSignError", " ✘")
+set_sign("DiagnosticSignWarn",  " ")
+set_sign("DiagnosticSignHint",  " ")
+set_sign("DiagnosticSignInfo",  " ")
 
 vim.diagnostic.config({
     virtual_text = true,

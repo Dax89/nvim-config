@@ -25,7 +25,7 @@ common.set_options("opt", {
     smartcase = true,                             -- Don"t ignore case with capitals
     termguicolors = true,                         -- True color support
     laststatus = 3,                               -- Set global statusline
-    signcolumn = "yes",                           -- LSP Diagnostic column is always visible
+    signcolumn = "number",                        -- LSP Diagnostic column is always visible
     sidescrolloff = 8,                            -- Columns of context
     scrolloff = 4,                                -- Lines of context
     cursorline = true,                            -- Highlight current line
