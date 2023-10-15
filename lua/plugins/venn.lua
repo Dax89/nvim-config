@@ -25,7 +25,7 @@ return {
         "jbyuki/venn.nvim",
 
         keys = {
-            {"<leader>v", toggle_venn}
+            {"<leader>vv", toggle_venn}
         }
     }
 }
