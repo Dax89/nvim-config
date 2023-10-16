@@ -1,3 +1,6 @@
+-- Disable Help Shortcut
+vim.keymap.set({"i", "n"}, "<F1>", "<Nop>")
+
 vim.keymap.set("n", "<Up>", "<Nop>")
 vim.keymap.set("n", "<Down>", "<Nop>")
 vim.keymap.set("n", "<Left>", "<Nop>")
