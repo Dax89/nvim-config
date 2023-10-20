@@ -84,7 +84,7 @@ return {
                     local ok, lazy = pcall(require, "lazy")
                     local nplugins = ok and lazy.stats().count or 0
                     local version = string.format("NeoVIM %d.%d.%d (API Level %d, %d Plugins)", v.major, v.minor, v.patch, v.api_level, nplugins)
-                    return {version .. "  " .. datetime}
+                    return {version .. " 󰇝 " .. datetime}
                 end
             }
         },
