@@ -8,9 +8,9 @@ return {
                     return {
                         QuickFixWarning = { fg = colors.palette.roninYellow },
                         CursorColumn = { bg = colors.palette.sumiInk3, fg = colors.palette.oldWhite },
-                        -- SignColumn = { bg = colors.palette.sumiInk3, fg = colors.palette.oldWhite },
                         FoldColumn = { bg = colors.palette.sumiInk3, fg = colors.palette.oldWhite },
                         LineNr = { bg = colors.palette.sumiInk3, fg = colors.palette.oldWhite },
+                        -- SignColumn = { bg = colors.palette.sumiInk3, fg = colors.palette.oldWhite },
                     }
                 end
             })
