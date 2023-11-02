@@ -27,7 +27,19 @@ end
 
 local function setup_lsp_clangd()
     return {
-        cmd = {"clangd", "--background-index", "--header-insertion=never"}
+        cmd = {
+            "clangd",
+            "--background-index",
+            "--clang-tidy",
+            "--header-insertion=never",
+            "--completion-style=detailed",
+            "--function-arg-placeholders",
+        },
+        init_options = {
+            usePlaceholders = true,
+            completeUnimported = true,
+            clangdFileStatus = true,
+        }
     }
 end
 
