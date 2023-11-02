@@ -5,7 +5,7 @@ return {
         build = ":TSUpdate",
         event = { "BufReadPost", "BufNewFile" },
 
-        opts = function ()
+        opts = function()
             return {
                 -- indent = { enable = false, disable = { "python" } },
                 context_commentstring = { enable = true, enable_autocmd = false },
@@ -13,7 +13,7 @@ return {
 
                 highlight = {
                     enable = true,
-                    additional_vim_regex_highlighting = {"org"},
+                    additional_vim_regex_highlighting = { "org" },
                 },
 
                 nt_cpp_tools = {
@@ -74,7 +74,7 @@ return {
         config = true,
 
         keys = {
-            {"<leader>tj", function() require("treesj").toggle() end},
+            { "<leader>tj", function() require("treesj").toggle() end },
         }
     },
 }

@@ -18,10 +18,10 @@ return {
         end
     },
 
-    {"stevearc/dressing.nvim", config = true},
-    {"kyazdani42/nvim-web-devicons", config = true},
-    {"kylechui/nvim-surround", config = true},
-    {"numToStr/Comment.nvim", config = true},
+    { "stevearc/dressing.nvim",       config = true },
+    { "kyazdani42/nvim-web-devicons", config = true },
+    { "kylechui/nvim-surround",       config = true },
+    { "numToStr/Comment.nvim",        config = true },
 
     {
         "norcalli/nvim-colorizer.lua",
@@ -34,7 +34,7 @@ return {
         config = true,
 
         keys = {
-            {"&", "<CMD>Spectre<CR>"}
+            { "&", "<CMD>Spectre<CR>" }
         }
     },
 
@@ -65,7 +65,7 @@ return {
     {
         url = "https://gitlab.com/yorickpeterse/nvim-window",
         keys = {
-            {"<leader>w", function() require("nvim-window").pick() end}
+            { "<leader>w", function() require("nvim-window").pick() end }
         }
     },
 
@@ -74,7 +74,7 @@ return {
 
         opts = {
             check_ts = true,
-            disable_filetype = {"fennel", "lisp"}
+            disable_filetype = { "fennel", "lisp" }
         }
     },
 
@@ -93,7 +93,7 @@ return {
         "mbbill/undotree",
 
         keys = {
-            {"<leader>ou", "<CMD>UndotreeToggle<CR>"}
+            { "<leader>ou", "<CMD>UndotreeToggle<CR>" }
         }
     },
 }

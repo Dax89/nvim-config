@@ -14,7 +14,7 @@ local function setup_lsp_lua_ls()
                     path = runtimepath
                 },
                 diagnostics = {
-                    globals = {"vim"} -- Get the language server to recognize the `vim` global
+                    globals = { "vim" } -- Get the language server to recognize the `vim` global
                 },
                 workspace = {
                     vim.fn.expand("$VIMRUNTIME/lua"),
@@ -45,8 +45,8 @@ end
 
 local function setup_lsp_qmlls()
     return {
-        cmd = {"qmlls6"},
-        filetypes = {"qmljs", "qml"}
+        cmd = { "qmlls6" },
+        filetypes = { "qmljs", "qml" }
     }
 end
 
@@ -57,13 +57,13 @@ local function setup_lsp_solargraph()
 end
 
 local CUSTOM_LSP_CONFIGS = {
-    lua_ls = setup_lsp_lua_ls,
-    clangd = setup_lsp_clangd,
-    qmlls  = setup_lsp_qmlls,
+    lua_ls     = setup_lsp_lua_ls,
+    clangd     = setup_lsp_clangd,
+    qmlls      = setup_lsp_qmlls,
     solargraph = setup_lsp_solargraph,
 }
 
-local CUSTOM_SERVERS = {"qmlls"}
+local CUSTOM_SERVERS = { "qmlls" }
 
 local function setup_servers()
     local installedservers = require("mason-lspconfig").get_installed_servers()
@@ -89,14 +89,14 @@ return {
 
     {
         "ray-x/lsp_signature.nvim",
-        opts = { hint_prefix = " "}
+        opts = { hint_prefix = " " }
     },
 
     {
         "folke/trouble.nvim",
         config = true,
         keys = {
-            {"<leader>tt", "<CMD>TroubleToggle<CR>"}
+            { "<leader>tt", "<CMD>TroubleToggle<CR>" }
         }
     },
 
@@ -123,7 +123,6 @@ return {
                 -- "cmake",
                 "clangd",
                 "marksman",
-                -- "perlnavigator"
                 "solargraph"
             }
         },
