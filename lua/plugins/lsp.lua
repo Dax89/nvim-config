@@ -33,7 +33,7 @@ local function setup_lsp_clangd()
             "--clang-tidy",
             "--header-insertion=never",
             "--completion-style=detailed",
-            "--function-arg-placeholders",
+            "--function-arg-placeholders=false",
         },
         init_options = {
             usePlaceholders = true,
@@ -89,7 +89,13 @@ return {
 
     {
         "ray-x/lsp_signature.nvim",
-        opts = { hint_prefix = " " }
+        event = "VeryLazy",
+        opts = {
+            hint_prefix = " ",
+        },
+        config = function(_, opts)
+            require "lsp_signature".setup(opts)
+        end
     },
 
     {
@@ -120,7 +126,7 @@ return {
                 "tsserver",
                 "svelte",
                 "lua_ls",
-                -- "cmake",
+                "cmake",
                 "clangd",
                 "marksman",
                 "solargraph"
