@@ -9,7 +9,7 @@ local common = {
         "help",
         "dashboard",
         "toggleterm",
-        "NeogitStatus",
+        -- "NeogitStatus",
         "NeogitPopup",
         "NeogitCommitMessage",
         "gitcommit",
@@ -32,21 +32,21 @@ function common.show_select(prompt, choices, mode)
     end
 
     vim.ui.select(choices, {
-        prompt = prompt,
-        telescope = m,
-        format_item = function(item)
-            return item[1]
-        end
-    },
-    function(choice)
-        if choice then
-            if type(choice[2]) == "function" then
-                choice[2]()
-            else
-                vim.api.nvim_command(choice[2])
+            prompt = prompt,
+            telescope = m,
+            format_item = function(item)
+                return item[1]
             end
-        end
-    end)
+        },
+        function(choice)
+            if choice then
+                if type(choice[2]) == "function" then
+                    choice[2]()
+                else
+                    vim.api.nvim_command(choice[2])
+                end
+            end
+        end)
 end
 
 function common.wrap_fn(mod, fn)
@@ -75,7 +75,7 @@ function common.open_folder(path)
 
     local job = Job:new({
         command = vim.fn.has("unix") and "xdg-open" or "start",
-        args = {path}
+        args = { path }
     })
 
     job:start()
@@ -88,13 +88,13 @@ function common.os_open(arg)
     local cmd = nil
 
     if uname == "Windows" then
-        cmd = {command = "cmd", args = {"/c", "start", arg}}
+        cmd = { command = "cmd", args = { "/c", "start", arg } }
     elseif uname == "Darwin" then
-        cmd = {command = "open", args = {arg}}
+        cmd = { command = "open", args = { arg } }
     elseif uname == "Linux" then
-        cmd = {command = "xdg-open", args = {arg}}
+        cmd = { command = "xdg-open", args = { arg } }
     else
-        vim.notify("Unsupported Platform '" .. uname .. "'", "warn", {title = "OS Open"})
+        vim.notify("Unsupported Platform '" .. uname .. "'", "warn", { title = "OS Open" })
         return
     end
 

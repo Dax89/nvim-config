@@ -1,5 +1,5 @@
 local function filter_filetypes(ft)
-    return not vim.tbl_contains({"toggleterm"}, ft)
+    return not vim.tbl_contains({ "toggleterm" }, ft)
 end
 
 local function get_current_window()
@@ -76,8 +76,14 @@ local Automaton = {
 local Navic = {
     function()
         local TYPES = {
-            Function = true, Method = true, Constructor = true, Enum = true, Struct = true,
-            Class = true, Interface = true, Object = true,
+            Function = true,
+            Method = true,
+            Constructor = true,
+            Enum = true,
+            Struct = true,
+            Class = true,
+            Interface = true,
+            Object = true,
             Namespace = true
         }
 
@@ -91,7 +97,7 @@ local Navic = {
         end
 
         if v then
-            return table.concat({v.icon, v.name}, " ")
+            return table.concat({ v.icon, v.name }, " ")
         end
 
         return ""
