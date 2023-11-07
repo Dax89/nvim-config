@@ -37,7 +37,7 @@ return {
         end,
 
         keys = {
-            {"<C-f>", "<CMD>Vifm<CR>"}
+            { "<C-f>", "<CMD>Vifm<CR>", desc = "VIFM - Open" }
         },
     }
 }

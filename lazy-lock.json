@@ -38,7 +38,6 @@
   "nvim-surround": { "branch": "main", "commit": "4f0e1f470595af067eca9b872778d83c7f52f134" },
   "nvim-treesitter": { "branch": "master", "commit": "9a746b4b6a1ef215943f07e6aa2ec35fb14097d4" },
   "nvim-web-devicons": { "branch": "master", "commit": "5de460ca7595806044eced31e3c36c159a493857" },
-  "nvim-window": { "branch": "main", "commit": "dd0a6b230003ef35524853d71e5413f88fd2ba74" },
   "plenary.nvim": { "branch": "master", "commit": "50012918b2fc8357b87cff2a7f7f0446e47da174" },
   "rainbow-delimiters.nvim": { "branch": "master", "commit": "df8cdf68234fbf056202a9684931c3dfa89988c1" },
   "rainbow_csv": { "branch": "master", "commit": "6955d13a65e0161e8dad488b6045441d527d62ec" },
@@ -54,5 +53,6 @@
   "vim-qml": { "branch": "master", "commit": "892c36a80a8711025af7bb9d09a8a6b90fe3d0c8" },
   "vim-sneak": { "branch": "master", "commit": "29ec9167d4a609f74c130b46265aa17eb2736e6a" },
   "vimwiki": { "branch": "dev", "commit": "0bb1b4945bb205a076a35b66174e5d66be8eaafe" },
+  "which-key.nvim": { "branch": "main", "commit": "4433e5ec9a507e5097571ed55c02ea9658fb268a" },
   "zig.vim": { "branch": "master", "commit": "54c216e5306a5c3878a60596aacb94dca8652ab9" }
 }

@@ -18,14 +18,14 @@ return {
         },
 
         keys = {
-            {"<leader>b", "<CMD>Telescope buffers<CR>"},
-            {"<C-h>", "<CMD>Telescope oldfiles<CR>"},
-            {"<C-k>", "<CMD>Telescope find_files<CR>"},
-            {"<C-p>", "<CMD>Telescope git_files<CR>"},
-            {"<C-g>", "<CMD>Telescope live_grep<CR>"},
-            {"<C-s>", "<CMD>Telescope lsp_document_symbols<CR>"},
-            {"<C-Enter>", "<CMD>Telescope lsp_references<CR>"},
-            {"<C-S-s>", "<CMD>Telescope lsp_dynamic_workspace_symbols<CR>"},
+            { "<leader>b", "<CMD>Telescope buffers<CR>",                       desc = "Telescope - Buffers" },
+            { "<C-h>",     "<CMD>Telescope oldfiles<CR>",                      desc = "Telescope - History" },
+            { "<C-k>",     "<CMD>Telescope find_files<CR>",                    desc = "Telescope = Find Files" },
+            { "<C-p>",     "<CMD>Telescope git_files<CR>",                     desc = "Telescope = Git Files" },
+            { "<C-g>",     "<CMD>Telescope live_grep<CR>",                     desc = "Telescope = Grep Files" },
+            { "<C-s>",     "<CMD>Telescope lsp_document_symbols<CR>",          desc = "Telescope - LSP Outline" },
+            { "<C-Enter>", "<CMD>Telescope lsp_references<CR>",                desc = "Telescope - LSP References" },
+            { "<C-S-s>",   "<CMD>Telescope lsp_dynamic_workspace_symbols<CR>", desc = "Telescope - LSP Symbols" },
         },
 
         opts = {

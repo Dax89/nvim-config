@@ -3,7 +3,7 @@ return {
         "akinsho/toggleterm.nvim",
 
         keys = {
-            {"<leader>ot", "<CMD>ToggleTerm<CR>"}
+            { "<leader>ot", "<CMD>ToggleTerm<CR>", desc = "ToggleTerm - Toggle" }
         },
 
         opts = {
@@ -11,9 +11,10 @@ return {
         },
 
         config = function(_, opts)
-            vim.api.nvim_create_autocmd("TermOpen", {pattern = "term://*", command = [[nnoremap <buffer> <LeftRelease> <LeftRelease>i]]})
+            vim.api.nvim_create_autocmd("TermOpen",
+                { pattern = "term://*", command = [[nnoremap <buffer> <LeftRelease> <LeftRelease>i]] })
 
-            vim.api.nvim_create_autocmd({"TermEnter", "TermOpen", "BufNew", "BufEnter"}, {
+            vim.api.nvim_create_autocmd({ "TermEnter", "TermOpen", "BufNew", "BufEnter" }, {
                 pattern = "term://*",
 
                 callback = function(arg)

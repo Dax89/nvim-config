@@ -4,6 +4,17 @@ return {
     "Bekaboo/deadcolumn.nvim",
 
     {
+        "folke/which-key.nvim",
+        event = "VeryLazy",
+
+        config = function()
+            vim.o.timeout = true
+            vim.o.timeoutlen = 500
+            require("which-key").setup()
+        end,
+    },
+
+    {
         "rcarriga/nvim-notify",
         opts = {
             stages = "static",
@@ -34,7 +45,7 @@ return {
         config = true,
 
         keys = {
-            { "&", "<CMD>Spectre<CR>" }
+            { "&", "<CMD>Spectre<CR>", desc = "Spectre - Open" }
         }
     },
 
@@ -57,15 +68,10 @@ return {
                     local cwd = vim.fn.expand('%:p:h')
                     vim.api.nvim_command(":Neogit kind=split")
                     vim.cmd(":lcd" .. cwd)
-                end
-            }
-        }
-    },
+                end,
 
-    {
-        url = "https://gitlab.com/yorickpeterse/nvim-window",
-        keys = {
-            { "<leader>w", function() require("nvim-window").pick() end }
+                desc = "NeoGit = Open"
+            }
         }
     },
 
@@ -93,7 +99,7 @@ return {
         "mbbill/undotree",
 
         keys = {
-            { "<leader>ou", "<CMD>UndotreeToggle<CR>" }
+            { "<leader>ou", "<CMD>UndotreeToggle<CR>", desc = "UndoTree - Open" }
         }
     },
 }
