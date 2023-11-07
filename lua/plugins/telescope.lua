@@ -31,7 +31,6 @@ return {
         opts = {
             pickers = {
                 buffers = {
-                    initial_mode = "normal",
                     show_all_buffers = true,
                     sort_mru = true,
                     mappings = {
