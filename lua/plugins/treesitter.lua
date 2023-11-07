@@ -13,15 +13,7 @@ return {
 
                 highlight = {
                     enable = true,
-                    additional_vim_regex_highlighting = { "org" },
-                },
-
-                nt_cpp_tools = {
-                    enable = true,
-                    preview = {
-                        quit = "q",
-                        accept = "<CR>"
-                    }
+                    additional_vim_regex_highlighting = false
                 },
 
                 ensure_installed = {
@@ -67,14 +59,5 @@ return {
                 },
             }
         end
-    },
-    {
-        "Wansmer/treesj",
-        dependencies = { "nvim-treesitter/nvim-treesitter" },
-        config = true,
-
-        keys = {
-            { "<leader>tj", function() require("treesj").toggle() end },
-        }
     },
 }
