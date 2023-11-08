@@ -99,14 +99,6 @@ return {
     },
 
     {
-        "folke/trouble.nvim",
-        config = true,
-        keys = {
-            { "<leader>tt", "<CMD>TroubleToggle<CR>" }
-        }
-    },
-
-    {
         "onsails/lspkind-nvim",
         config = function(_, opts)
             require("lspkind").init(opts)
