@@ -38,7 +38,8 @@ return {
                 {
                     "<C-s>",
                     function()
-                        builtin.lsp_document_symbols({ symbol_width = 60, show_preview = false })
+                        local options = { symbol_width = 60, show_preview = false }
+                        builtin.lsp_document_symbols(vim.tbl_extend("force", dropdown, options))
                     end,
                     desc = "Telescope - LSP Outline"
                 },
@@ -61,7 +62,8 @@ return {
                 {
                     "<C-S-s>",
                     function()
-                        builtin.lsp_dynamic_workspace_symbols({ fname_width = 40 })
+                        local options = { fname_width = 40 }
+                        builtin.lsp_dynamic_workspace_symbols(vim.tbl_extend("force", dropdown, options))
                     end,
                     desc = "Telescope - LSP Symbols"
                 },
