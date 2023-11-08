@@ -34,7 +34,13 @@ return {
                 { "<C-h>",     "<CMD>Telescope oldfiles<CR>",          desc = "Telescope - History" },
                 { "<C-k>",     "<CMD>Telescope find_files<CR>",        desc = "Telescope = Find Files" },
                 { "<C-p>",     "<CMD>silent! Telescope git_files<CR>", desc = "Telescope = Git Files" },
-                { "<C-g>",     "<CMD>Telescope live_grep<CR>",         desc = "Telescope = Grep Files" },
+                {
+                    "<C-g>",
+                    function()
+                        builtin.live_grep(dropdown)
+                    end,
+                    desc = "Telescope = Grep Files"
+                },
                 {
                     "<C-s>",
                     function()
