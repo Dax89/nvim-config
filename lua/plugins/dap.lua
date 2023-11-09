@@ -7,7 +7,7 @@ return {
         keys = {
             {
                 "<F9>",
-                function() require("persistent-breakpoints.api").toggle_breakpoint() end,
+                function() require("dap").toggle_breakpoint() end,
                 desc = "DAP - Toggle Breakpoint"
             },
             {
@@ -27,7 +27,7 @@ return {
             },
             {
                 "<leader>dC",
-                function() require("persistent-breakpoints.api").clear_breakpoints() end,
+                function() require("dap").clear_breakpoints() end,
                 desc = "DAP - Clear Breakpoints"
             },
             {
@@ -142,13 +142,5 @@ return {
     {
         "LiadOz/nvim-dap-repl-highlights",
         config = true
-    },
-    {
-        "Weissle/persistent-breakpoints.nvim",
-        config = true,
-
-        opts = {
-            load_breakpoints_event = { "BufReadPost" }
-        }
     }
 }
