@@ -13,7 +13,7 @@ local common = {
         "NeogitPopup",
         "NeogitCommitMessage",
         "gitcommit",
-        "dap-repl",
+        -- "dap-repl",
         "qf"
     }
 }

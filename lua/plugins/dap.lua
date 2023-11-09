@@ -7,7 +7,7 @@ return {
         keys = {
             {
                 "<F9>",
-                function() require("dap").toggle_breakpoint() end,
+                function() require("persistent-breakpoints.api").toggle_breakpoint() end,
                 desc = "DAP - Toggle Breakpoint"
             },
             {
@@ -27,7 +27,7 @@ return {
             },
             {
                 "<leader>dC",
-                function() require("dap").clear_breakpoints() end,
+                function() require("persistent-breakpoints.api").clear_breakpoints() end,
                 desc = "DAP - Clear Breakpoints"
             },
             {
@@ -48,7 +48,12 @@ return {
             {
                 "<leader>di",
                 function() require("dap.ui.widgets").hover() end,
-                mode = { "n", "v" },
+                desc = "DAP - Hover Info"
+            },
+            {
+                "<leader>di",
+                function() require("dap.ui.widgets").visual_hover() end,
+                mode = "v",
                 desc = "DAP - Hover Info"
             },
             {
@@ -59,7 +64,10 @@ return {
             },
             {
                 "<leader>dr",
-                function() require("dap").repl.open({}, "vsplit") end,
+                function()
+                    require("dap").repl.toggle({ height = 15 })
+                    vim.cmd("wincmd p") -- Focus on REPL
+                end,
                 desc = "DAP - Open REPL"
             },
             {
@@ -77,15 +85,9 @@ return {
                 function() require("telescope").extensions.dap.frames() end,
                 desc = "DAP - Open Frames"
             },
-
             {
                 "<leader>dq",
-                function()
-                    require("dap").terminate(nil, nil, function()
-                        vim.api.nvim_command(":DapVirtualTextForceRefresh")
-                    end)
-                end,
-
+                function() require("dap").terminate(nil, nil, require("config.dap").on_exit) end,
                 desc = "DAP - Quit"
             },
         },
@@ -93,6 +95,9 @@ return {
         config = function()
             local Path = require("plenary.path")
             local dap = require("dap")
+
+            dap.listeners.before.event_terminated["nvim_config"] = require("config.dap").on_exit
+            dap.listeners.before.event_exited["nvim_config"] = require("config.dap").on_exit
 
             local DAP_BASEPATH = Path:new(vim.fn.stdpath("data"), "mason", "bin")
 
@@ -130,7 +135,20 @@ return {
             })
         end
     },
+    {
+        "theHamsta/nvim-dap-virtual-text",
+        config = true
+    },
+    {
+        "LiadOz/nvim-dap-repl-highlights",
+        config = true
+    },
+    {
+        "Weissle/persistent-breakpoints.nvim",
+        config = true,
 
-    { "theHamsta/nvim-dap-virtual-text", config = true },
-
+        opts = {
+            load_breakpoints_event = { "BufReadPost" }
+        }
+    }
 }

@@ -7,7 +7,6 @@ return {
 
         opts = function()
             return {
-                -- indent = { enable = false, disable = { "python" } },
                 context_commentstring = { enable = true, enable_autocmd = false },
                 autopairs = { enable = true },
 
@@ -35,6 +34,7 @@ return {
                     "tsx",
                     "typescript",
                     "vim",
+                    "dap_repl"
                 },
             }
         end,

@@ -9,6 +9,8 @@ local function telescope_delete_buffer(promptnr)
     end)
 end
 
+local actions = require("telescope.actions")
+
 return {
     {
         "nvim-telescope/telescope.nvim",
@@ -79,6 +81,17 @@ return {
         end,
 
         opts = {
+            defaults = {
+                mappings = {
+                    i = {
+                        ["<Tab>"] = actions.move_selection_next,
+                        ["<S-Tab>"] = actions.move_selection_previous,
+                        ["<C-n>"] = actions.toggle_selection + actions.move_selection_worse,
+                        ["<C-p>"] = actions.toggle_selection + actions.move_selection_better,
+                        ["<C-h>"] = "which_key",
+                    }
+                }
+            },
             pickers = {
                 buffers = {
                     show_all_buffers = true,
