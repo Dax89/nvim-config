@@ -16,9 +16,11 @@ return {
                 function()
                     require("harpoon.mark").add_file()
 
+                    local Path = require("plenary.path")
                     local common = require("config.common")
                     local filename = common.get_filename(vim.api.nvim_buf_get_name(0))
-                    vim.notify("'" .. filename .. "' added", "info", { title = "Harpoon" })
+                    local pathname = common.get_pathname(vim.api.nvim_buf_get_name(0))
+                    vim.notify("'" .. pathname .. Path.path.sep .. filename .. "' added", "info", { title = "Harpoon" })
                 end,
                 desc = "Harpoon - Add"
             }

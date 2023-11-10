@@ -112,4 +112,15 @@ function Common.get_filename(p)
     return vim.fn.fnamemodify(tostring(p), ":t")
 end
 
+function Common.get_pathname(p)
+    local Path = require("plenary.path")
+    local r = Path:new(p)
+
+    if not r:is_dir() then
+        return Common.get_filename(r:parent())
+    end
+
+    return Common.get_filename(r)
+end
+
 return Common
