@@ -1,4 +1,4 @@
-function on_exit()
+local function on_exit()
     local ok, virtualtext = pcall(require, "nvim-dap-virtual-text/virtual_text")
 
     if ok then
