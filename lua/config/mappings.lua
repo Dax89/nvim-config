@@ -1,3 +1,5 @@
+local common = require("config.common")
+
 -- Disable Help Shortcut
 vim.keymap.set({ "i", "n" }, "<F1>", "<Nop>")
 
@@ -15,10 +17,10 @@ vim.keymap.set("n", "N", "Nzzzv")
 vim.keymap.set("n", "<leader>A", "gg0VG", { desc = "Select All" })
 
 -- Check keyboard layout
-if vim.fn.system("setxkbmap -query | grep layout | awk '{print $NF}'") == "it" then
-    vim.keymap.set("n", "<leader>+", "<CMD>enew<CR>", { desc = "New Tab" })
-else
+if common.is_layout_en() then
     vim.keymap.set("n", "<leader>=", "<CMD>enew<CR>", { desc = "New Tab" })
+else
+    vim.keymap.set("n", "<leader>+", "<CMD>enew<CR>", { desc = "New Tab" })
 end
 
 vim.keymap.set("n", "<leader>-", function() require("bufdelete").bufdelete(0, true) end, { desc = "Close Tab" })
@@ -52,7 +54,7 @@ vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv", { desc = "Move Up Down" })
 
 -- Window mappings
 for i = 1, 9 do
-    local lhs = "<leader>" .. i
+    local lhs = "<C-" .. i .. ">"
     local rhs = i .. "<C-w>w"
     vim.keymap.set("n", lhs, rhs, { desc = "Move to Window " .. i })
 end

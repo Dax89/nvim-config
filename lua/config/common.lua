@@ -1,4 +1,4 @@
-local common = {
+local Common = {
     buftype_blacklist = {
         -- "terminal",
         "gitcommit",
@@ -18,13 +18,13 @@ local common = {
     }
 }
 
-function common.highlight(items, ns)
+function Common.highlight(items, ns)
     for _, item in ipairs(items) do
         vim.api.nvim_set_hl(ns or 0, item[1], item[2])
     end
 end
 
-function common.show_select(prompt, choices, mode)
+function Common.show_select(prompt, choices, mode)
     local m = nil
 
     if mode == "cursor" then
@@ -49,17 +49,17 @@ function common.show_select(prompt, choices, mode)
         end)
 end
 
-function common.wrap_fn(mod, fn)
+function Common.wrap_fn(mod, fn)
     return string.format(":lua require('%s')['%s']()<CR>", mod, fn)
 end
 
-function common.set_options(t, options)
+function Common.set_options(t, options)
     for k, v in pairs(options) do
         vim[t][k] = v
     end
 end
 
-function common.exec_commands(commands)
+function Common.exec_commands(commands)
     if type(commands) == "string" then
         vim.api.nvim_command(commands)
         return
@@ -70,7 +70,7 @@ function common.exec_commands(commands)
     end
 end
 
-function common.open_folder(path)
+function Common.open_folder(path)
     local Job = require("plenary.job")
 
     local job = Job:new({
@@ -81,7 +81,7 @@ function common.open_folder(path)
     job:start()
 end
 
-function common.os_open(arg)
+function Common.os_open(arg)
     arg = tostring(arg)
 
     local uname = vim.loop.os_uname().sysname
@@ -104,4 +104,12 @@ function common.os_open(arg)
     }):start()
 end
 
-return common
+function Common.is_layout_en()
+    return vim.fn.system("setxkbmap -query | grep layout | awk '{print $NF}'") == "us"
+end
+
+function Common.get_filename(p)
+    return vim.fn.fnamemodify(tostring(p), ":t")
+end
+
+return Common
