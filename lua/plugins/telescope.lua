@@ -22,7 +22,6 @@ return {
         keys = function()
             local builtin = require("telescope.builtin")
             local dropdown = require("telescope.themes").get_dropdown({
-                layout_strategy = "center",
                 trim_text = true,
                 path_display = { "shorten" },
                 layout_config = {
