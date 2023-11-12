@@ -105,7 +105,7 @@ function Common.os_open(arg)
 end
 
 function Common.is_layout_en()
-    return vim.fn.system("setxkbmap -query | grep layout | awk '{print $NF}'") == "us"
+    return vim.fn.trim(vim.fn.system("setxkbmap -query | grep layout | awk '{print $NF}'")) == "us"
 end
 
 function Common.get_filename(p)
