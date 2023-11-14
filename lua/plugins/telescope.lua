@@ -82,6 +82,13 @@ return {
         opts = {
             defaults = {
                 mappings = {
+                    n = {
+                        ["<Tab>"] = actions.move_selection_next,
+                        ["<S-Tab>"] = actions.move_selection_previous,
+                        ["<C-n>"] = actions.toggle_selection + actions.move_selection_worse,
+                        ["<C-p>"] = actions.toggle_selection + actions.move_selection_better,
+                        ["<C-h>"] = "which_key",
+                    },
                     i = {
                         ["<Tab>"] = actions.move_selection_next,
                         ["<S-Tab>"] = actions.move_selection_previous,
