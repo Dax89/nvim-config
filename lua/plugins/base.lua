@@ -65,9 +65,7 @@ return {
             {
                 "<leader>gg",
                 function()
-                    local cwd = vim.fn.expand('%:p:h')
-                    vim.api.nvim_command(":Neogit kind=split")
-                    vim.cmd(":lcd" .. cwd)
+                    require("neogit").open({ kind = "vsplit" })
                 end,
 
                 desc = "NeoGit = Open"

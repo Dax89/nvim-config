@@ -21,14 +21,10 @@ return {
 
         keys = function()
             local builtin = require("telescope.builtin")
-            local dropdown = require("telescope.themes").get_dropdown({
+            local commonoptions = {
                 trim_text = true,
                 path_display = { "shorten" },
-                layout_config = {
-                    width = 0.8,
-                    height = 0.4
-                },
-            })
+            }
 
             local res = {
                 { "<leader>b", "<CMD>Telescope buffers<CR>",           desc = "Telescope - Buffers" },
@@ -46,15 +42,15 @@ return {
                     "<C-s>",
                     function()
                         local options = { symbol_width = 60, show_preview = false }
-                        builtin.lsp_document_symbols(vim.tbl_extend("force", dropdown, options))
+                        builtin.lsp_document_symbols(vim.tbl_extend("force", commonoptions, options))
                     end,
                     desc = "Telescope - LSP Outline"
                 },
                 {
                     "<C-Enter>",
                     function()
-                        local options = { fname_width = 40 }
-                        builtin.lsp_references(vim.tbl_extend("force", dropdown, options))
+                        local options = { fname_width = 30 }
+                        builtin.lsp_references(vim.tbl_extend("force", commonoptions, options))
                     end,
                     desc = "Telescope - LSP References"
                 },
@@ -62,7 +58,7 @@ return {
                     "<C-S-d>",
                     function()
                         local options = { bufnr = nil, disable_coordinates = true }
-                        builtin.diagnostics(vim.tbl_extend("force", dropdown, options))
+                        builtin.diagnostics(vim.tbl_extend("force", commonoptions, options))
                     end,
                     desc = "Telescope - LSP Diagnostics"
                 },
@@ -70,7 +66,7 @@ return {
                     "<C-S-s>",
                     function()
                         local options = { fname_width = 40 }
-                        builtin.lsp_dynamic_workspace_symbols(vim.tbl_extend("force", dropdown, options))
+                        builtin.lsp_dynamic_workspace_symbols(vim.tbl_extend("force", commonoptions, options))
                     end,
                     desc = "Telescope - LSP Symbols"
                 },
@@ -104,10 +100,10 @@ return {
                     sort_mru = true,
                     mappings = {
                         i = {
-                            ["<A-d>"] = telescope_delete_buffer,
+                            ["<C-d>"] = telescope_delete_buffer,
                         },
                         n = {
-                            ["d"] = telescope_delete_buffer
+                            ["<C-d>"] = telescope_delete_buffer
                         }
                     },
                 },
