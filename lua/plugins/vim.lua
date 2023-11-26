@@ -1,33 +1,5 @@
 return {
     {
-        "justinmk/vim-sneak",
-
-        init = function()
-            vim.g["sneak#label"] = 1
-
-            local ok, colors = pcall(require, "kanagawa.colors")
-
-            if ok then
-                colors = colors.setup()
-                vim.api.nvim_set_hl(0, "Sneak", {
-                    fg = colors.palette.sumiInk0,
-                    bg = colors.palette.roninYellow
-                })
-
-                vim.api.nvim_set_hl(0, "SneakScope", {
-                    fg = colors.palette.oldWhite,
-                    bg = colors.palette.waveBlue2
-                })
-
-                vim.api.nvim_set_hl(0, "SneakLabel", {
-                    fg = colors.palette.sumiInk0,
-                    bg = colors.palette.roninYellow
-                })
-            end
-        end
-    },
-
-    {
         "vifm/vifm.vim",
         event = "VeryLazy",
 
@@ -39,5 +11,24 @@ return {
         keys = {
             { "<C-f>", "<CMD>Vifm<CR>", desc = "VIFM - Open" }
         },
+    },
+    {
+        "easymotion/vim-easymotion",
+
+        init = function()
+            vim.g.EasyMotion_keys = "hjklasdfgyuiopqwertnmzxcvb"
+            vim.g.EasyMotion_prompt = "Jump to → "
+            vim.g.EasyMotion_leader_key = " "
+            vim.g.EasyMotion_smartcase = 1
+            vim.g.EasyMotion_grouping = 1
+            vim.g.EasyMotion_do_mapping = 0
+            vim.g.EasyMotion_verbose = 0
+        end,
+
+        keys = {
+            { "<leader>w", "<Plug>(easymotion-bd-w)",  desc = "EasyMotion - Find Word" },
+            { "<leader>W", "<Plug>(easymotion-bd-W)",  desc = "EasyMotion - Find WORD" },
+            { "<leader>f", "<Plug>(easymotion-bd-f2)", desc = "EasyMotion - Find" },
+        }
     }
 }
