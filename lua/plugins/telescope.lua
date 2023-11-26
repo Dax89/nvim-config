@@ -34,7 +34,7 @@ return {
                 {
                     "<C-g>",
                     function()
-                        builtin.live_grep(dropdown)
+                        builtin.live_grep()
                     end,
                     desc = "Telescope = Grep Files"
                 },
