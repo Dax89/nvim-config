@@ -5,6 +5,11 @@ return {
         build = ":TSUpdate",
         event = { "BufReadPost", "BufNewFile" },
 
+        keys = {
+            { "<leader>ti", "<CMD>Inspect<CR>",     desc = "TreeSitter - Inspect" },
+            { "<leader>tt", "<CMD>InspectTree<CR>", desc = "TreeSitter - Inspect Tree" },
+        },
+
         opts = function()
             return {
                 context_commentstring = { enable = true, enable_autocmd = false },
