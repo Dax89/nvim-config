@@ -73,6 +73,11 @@ local function parse(tsnode, bufnr, parent)
         end
     elseif vim.tbl_contains({ "declaration", "function_declaration", "function_definition", "field_declaration" }, tsnode:type()) then
         local decl = tsnode:field("declarator")
+
+        if not vim.tbl_isempty(decl) and decl[1]:type() == "pointer_declarator" then
+            decl = decl[1]:field("declarator")
+        end
+
         if not vim.tbl_isempty(decl) and decl[1]:type() == "function_declarator" then
             insert_function(tsnode, bufnr, parent)
         end
@@ -119,7 +124,9 @@ local function find_function(functions, line, col)
 end
 
 local function generate_prototype(tsnode, owner)
-    if tsnode:type() == "function_declarator" then
+    if tsnode:type() == "pointer_declarator" then
+        return "* " .. generate_prototype(tsnode:field("declarator")[1], owner)
+    elseif tsnode:type() == "function_declarator" then
         local name
 
         if tsnode:parent() and tsnode:parent():type() == "function_definition" and not owner then
@@ -164,6 +171,11 @@ local function generate_prototype(tsnode, owner)
         else
             local ret = get_identifier(t[1])
             local proto = generate_prototype(tsnode:field("declarator")[1], owner)
+
+            if vim.startswith(proto, "*") then
+                return ret .. proto
+            end
+
             return string.format("%s %s", ret, proto)
         end
     end
@@ -222,11 +234,14 @@ end
 
 vim.keymap.set({ "n", "v" }, "<leader>tc", function()
         if vim.bo.filetype == "cpp" then
-            if vim.tbl_isempty(snippets) then
-                extract_function()
-            else
-                insert_snippet()
-            end
+            extract_function()
         end
     end,
     { desc = "TreeSitter - Generate C++ Code" })
+
+vim.keymap.set({ "n", "v" }, "<leader>tC", function()
+        if vim.bo.filetype == "cpp" then
+            insert_snippet()
+        end
+    end,
+    { desc = "TreeSitter - Apply Generated C++ Code" })
