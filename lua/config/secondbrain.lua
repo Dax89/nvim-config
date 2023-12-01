@@ -31,6 +31,6 @@ vim.api.nvim_create_autocmd({ "FileType" }, {
             vim.keymap.set("n", k, cb, { buffer = arg.buf, silent = true, desc = desc })
         end
 
-        map("<leader>Wcm", function() generate_calendar_month(arg.buf) end, "SecondBrain - Generate Calendar")
+        map("<leader>Bcm", function() generate_calendar_month(arg.buf) end, "SecondBrain - Generate Calendar")
     end
 })

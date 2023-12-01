@@ -26,9 +26,9 @@ return {
         end,
 
         keys = {
-            { "<leader>w", "<Plug>(easymotion-bd-w)",  desc = "EasyMotion - Find Word" },
-            { "<leader>W", "<Plug>(easymotion-bd-W)",  desc = "EasyMotion - Find WORD" },
-            { "<leader>f", "<Plug>(easymotion-bd-f2)", desc = "EasyMotion - Find" },
+            { ",w", "<Plug>(easymotion-bd-w)",  desc = "EasyMotion - Find Word" },
+            { ",W", "<Plug>(easymotion-bd-W)",  desc = "EasyMotion - Find WORD" },
+            { ",f", "<Plug>(easymotion-bd-f2)", desc = "EasyMotion - Find" },
         }
     }
 }
