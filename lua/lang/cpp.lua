@@ -72,9 +72,10 @@ local function parse(tsnode, bufnr, parent)
             end
         end
     elseif vim.tbl_contains({ "declaration", "function_declaration", "function_definition", "field_declaration" }, tsnode:type()) then
+        local specifiers = { "pointer_declarator", "explicit_function_specifier" }
         local decl = tsnode:field("declarator")
 
-        if not vim.tbl_isempty(decl) and decl[1]:type() == "pointer_declarator" then
+        if not vim.tbl_isempty(decl) and vim.tbl_contains(specifiers, decl[1]:type()) then
             decl = decl[1]:field("declarator")
         end
 
