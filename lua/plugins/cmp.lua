@@ -3,6 +3,25 @@ local function has_words_before()
     return col ~= 0 and vim.api.nvim_buf_get_lines(0, line - 1, line, true)[1]:sub(col, col):match("%s") == nil
 end
 
+local function keymap_cinkeys(expr)
+    local keymap = require("cmp.utils.keymap")
+    return string.format(keymap.t("<Cmd>set cinkeys=%s<CR>"), expr and vim.fn.escape(expr, "| \t\\") or "")
+end
+
+-- https://github.com/hrsh7th/nvim-cmp/issues/1035
+local function confirm(fallback)
+    local cmp = require("cmp")
+    local feedkeys = require("cmp.utils.feedkeys")
+
+    if cmp.visible() then
+        feedkeys.call(keymap_cinkeys(), "n")
+        cmp.confirm({ select = true })
+        feedkeys.call(keymap_cinkeys(vim.bo.cinkeys), "n")
+    else
+        fallback()
+    end
+end
+
 return {
     "L3MON4D3/LuaSnip",
 
@@ -65,7 +84,7 @@ return {
                     ["<C-f>"]     = cmp.mapping(cmp.mapping.scroll_docs(4), { "i", "c" }),
                     ["<C-Space>"] = cmp.mapping(cmp.mapping.complete(), { "i", "c" }),
                     ["<C-e>"]     = cmp.mapping({ i = cmp.mapping.abort(), c = cmp.mapping.close() }),
-                    ["<CR>"]      = cmp.mapping(cmp.mapping.confirm({ select = true })),
+                    ["<CR>"]      = cmp.mapping(confirm),
 
                     ["<TAB>"]     = cmp.mapping(function(fallback)
                         if cmp.visible then
