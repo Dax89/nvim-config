@@ -72,11 +72,17 @@ local function parse(tsnode, bufnr, parent)
             end
         end
     elseif vim.tbl_contains({ "declaration", "function_declaration", "function_definition", "field_declaration" }, tsnode:type()) then
-        local specifiers = { "pointer_declarator", "explicit_function_specifier" }
+        local specifiers = { "reference_declarator", "pointer_declarator", "explicit_function_specifier" }
         local decl = tsnode:field("declarator")
 
         if not vim.tbl_isempty(decl) and vim.tbl_contains(specifiers, decl[1]:type()) then
-            decl = decl[1]:field("declarator")
+            local d = decl[1]:field("declarator")
+
+            if vim.tbl_isempty(d) then
+                decl = find_named_child(decl[1], "function_declarator")
+            else
+                decl = d
+            end
         end
 
         if not vim.tbl_isempty(decl) and decl[1]:type() == "function_declarator" then
@@ -125,7 +131,15 @@ local function find_function(functions, line, col)
 end
 
 local function generate_prototype(tsnode, owner)
-    if tsnode:type() == "pointer_declarator" then
+    if tsnode:type() == "reference_declarator" then
+        local q = find_named_child(tsnode, "function_declarator")
+
+        if vim.tbl_isempty(q) then
+            error("Cannot find 'function_declarator'")
+        end
+
+        return "& " .. generate_prototype(q[1], owner)
+    elseif tsnode:type() == "pointer_declarator" then
         return "* " .. generate_prototype(tsnode:field("declarator")[1], owner)
     elseif tsnode:type() == "function_declarator" then
         local name
@@ -171,6 +185,12 @@ local function generate_prototype(tsnode, owner)
             return generate_prototype(tsnode:field("declarator")[1], owner)
         else
             local ret = get_identifier(t[1])
+            local retq = find_named_child(tsnode, "type_qualifier")
+
+            if not vim.tbl_isempty(retq) then
+                ret = string.format("%s %s", get_identifier(retq[1]), ret)
+            end
+
             local proto = generate_prototype(tsnode:field("declarator")[1], owner)
 
             if vim.startswith(proto, "*") then
@@ -211,10 +231,11 @@ local function extract_function()
         vim.api.nvim_input("<esc>") -- Return to normal mode
     end
 
-    if not vim.tbl_isempty(newsnippets) then
-        vim.notify(string.format("Generated %d function(s)", #newsnippets))
+    if vim.tbl_isempty(newsnippets) then
+        return
     end
 
+    vim.notify(string.format("Generated %d function(s)", #newsnippets))
     snippets = newsnippets
 end
 
@@ -230,7 +251,6 @@ local function insert_snippet()
     end
 
     vim.api.nvim_put(lines, "l", true, false)
-    snippets = {}
 end
 
 vim.keymap.set({ "n", "v" }, "<leader>tc", function()
