@@ -30,7 +30,7 @@ local function get_identifier(tsnode)
         return get_identifier(tsnode:field("declarator")[1])
     elseif vim.endswith(tsnode:type(), "parameter_declaration") then
         local t = get_identifier(tsnode:field("type")[1])
-        local n = get_identifier(tsnode:field("declarator")[1])
+        local n = tsnode:field("declarator")[1] and get_identifier(tsnode:field("declarator")[1]) or ""
         local q = find_named_child(tsnode, "type_qualifier")
 
         if vim.tbl_isempty(q) then
