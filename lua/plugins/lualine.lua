@@ -7,14 +7,15 @@ local function get_current_window()
 end
 
 local function get_relative_filepath()
-    local Common = require("config.common")
     local cwd = vim.fn.getcwd()
     local filepath = vim.api.nvim_buf_get_name(0)
 
-    filepath = filepath:gsub(cwd, "")
+    if vim.startswith(filepath, cwd) then
+        filepath = filepath:sub(#cwd + 1, -1)
 
-    if filepath:sub(1, 1) == Common.sep then
-        filepath = filepath:sub(2, -1)
+        if filepath:sub(1, 1) == require("config.common").sep then
+            filepath = filepath:sub(2, -1)
+        end
     end
 
     return filepath
