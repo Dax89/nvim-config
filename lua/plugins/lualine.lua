@@ -173,17 +173,17 @@ return {
         },
         winbar = {
             lualine_a = { FileType, FileName, Navic },
-            lualine_b = {},
+            lualine_b = { "diagnostics" },
             lualine_c = {},
-            lualine_x = { "diagnostics", },
+            lualine_x = {},
             lualine_y = { "encoding" },
             lualine_z = { LanguageServer }
         },
         inactive_winbar = {
             lualine_a = { FileType, FileName },
-            lualine_b = {},
+            lualine_b = { "diagnostics" },
             lualine_c = {},
-            lualine_x = { "diagnostics", },
+            lualine_x = {},
             lualine_y = { "encoding" },
             lualine_z = { LanguageServer }
         },
