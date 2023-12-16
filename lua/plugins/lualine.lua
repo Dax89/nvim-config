@@ -108,32 +108,7 @@ local Automaton = {
 
 local Navic = {
     function()
-        local TYPES = {
-            Function = true,
-            Method = true,
-            Constructor = true,
-            Enum = true,
-            Struct = true,
-            Class = true,
-            Interface = true,
-            Object = true,
-            Namespace = true
-        }
-
-        local data = require("nvim-navic").get_data()
-        local v = nil
-
-        for _, d in ipairs(data) do
-            if TYPES[d.type] then
-                v = d
-            end
-        end
-
-        if v then
-            return table.concat({ v.icon, v.name }, " ")
-        end
-
-        return ""
+        return require("nvim-navic").get_location()
     end,
 
     cond = function()

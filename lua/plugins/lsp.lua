@@ -120,6 +120,7 @@ return {
                 "lua_ls",
                 "cmake",
                 "clangd",
+                "bashls",
                 "marksman",
                 "solargraph"
             }
@@ -134,7 +135,8 @@ return {
         "SmiteshP/nvim-navic",
 
         opts = {
-            lsp = { auto_attach = true }
+            lsp = { auto_attach = true },
+            separator = "  ",
         }
     }
 }
