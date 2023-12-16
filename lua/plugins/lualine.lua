@@ -147,6 +147,14 @@ return {
             lualine_y = {},
             lualine_z = {}
         },
+        inactive_winbar = {
+            lualine_a = { FileName },
+            lualine_b = {},
+            lualine_c = {},
+            lualine_x = { "diagnostics", get_current_lsp, "filetype" },
+            lualine_y = {},
+            lualine_z = {}
+        },
         extensions = {
             "toggleterm"
         }
