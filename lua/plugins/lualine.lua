@@ -1,5 +1,5 @@
 local function filter_filetypes(ft)
-    return not vim.tbl_contains({ "toggleterm" }, ft)
+    return not vim.tbl_contains({ "qf", "toggleterm" }, ft)
 end
 
 local function get_current_window()
@@ -149,7 +149,11 @@ return {
         options = {
             theme = "kanagawa",
             globalstatus = false,
-            disabled_filetypes = vim.tbl_filter(filter_filetypes, require("config.common").filetype_blacklist)
+
+            disabled_filetypes = {
+                statusline = vim.tbl_filter(filter_filetypes, require("config.common").filetype_blacklist),
+                winbar = require("config.common").filetype_blacklist,
+            }
         },
         sections = {
             lualine_a = { Mode },
@@ -176,7 +180,7 @@ return {
             lualine_z = { LanguageServer }
         },
         inactive_winbar = {
-            lualine_a = { FileName, FileName },
+            lualine_a = { FileType, FileName },
             lualine_b = {},
             lualine_c = {},
             lualine_x = { "diagnostics", },
