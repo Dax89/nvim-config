@@ -6,6 +6,20 @@ local function get_current_window()
     return " " .. vim.api.nvim_win_get_number(0)
 end
 
+local function get_relative_filepath()
+    local Common = require("config.common")
+    local cwd = vim.fn.getcwd()
+    local filepath = vim.api.nvim_buf_get_name(0)
+
+    filepath = filepath:gsub(cwd, "")
+
+    if filepath:sub(1, 1) == Common.sep then
+        filepath = filepath:sub(2, -1)
+    end
+
+    return filepath
+end
+
 local function get_current_lsp()
     local msg = ""
     local ft = vim.api.nvim_buf_get_option(0, "filetype")
@@ -66,9 +80,23 @@ local Mode = {
     color = { gui = "bold" }
 }
 
+local LanguageServer = {
+    get_current_lsp,
+    color = { gui = "bold" },
+}
+
+local FileType = {
+    "filetype",
+    icon_only = true,
+    padding = { left = 1, right = 0 },
+    separator = "",
+    color = "CursorLine",
+}
+
 local FileName = {
-    "filename",
-    color = { gui = "bold" }
+    get_relative_filepath,
+    color = "CursorLine",
+    separator = { left = "", right = "" },
 }
 
 local Automaton = {
@@ -127,7 +155,7 @@ return {
             lualine_a = { Mode },
             lualine_b = { Automaton },
             lualine_c = {},
-            lualine_x = { "encoding" },
+            lualine_x = {},
             lualine_y = { "progress" },
             lualine_z = { "location" },
         },
@@ -140,23 +168,23 @@ return {
             lualine_z = {},
         },
         winbar = {
-            lualine_a = { FileName, Navic },
+            lualine_a = { FileType, FileName, Navic },
             lualine_b = {},
             lualine_c = {},
-            lualine_x = { "diagnostics", get_current_lsp, "filetype" },
-            lualine_y = {},
-            lualine_z = {}
+            lualine_x = { "diagnostics", },
+            lualine_y = { "encoding" },
+            lualine_z = { LanguageServer }
         },
         inactive_winbar = {
-            lualine_a = { FileName },
+            lualine_a = { FileName, FileName },
             lualine_b = {},
             lualine_c = {},
-            lualine_x = { "diagnostics", get_current_lsp, "filetype" },
-            lualine_y = {},
-            lualine_z = {}
+            lualine_x = { "diagnostics", },
+            lualine_y = { "encoding" },
+            lualine_z = { LanguageServer }
         },
         extensions = {
-            "toggleterm"
+            "toggleterm", "quickfix"
         }
     }
 }

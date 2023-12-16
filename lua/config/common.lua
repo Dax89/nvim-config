@@ -15,7 +15,9 @@ local Common = {
         "gitcommit",
         -- "dap-repl",
         "qf"
-    }
+    },
+
+    sep = vim.loop.os_uname().sysname == "Windows" and "\\" or "/"
 }
 
 function Common.highlight(items, ns)

@@ -1,5 +1,5 @@
-local PATH_SEP = vim.loop.os_uname().sysname == "Windows" and "\\" or "/"
-local devmode = vim.fn.filereadable(vim.fn.stdpath("config") .. PATH_SEP .. ".dev") == 1
+local Common = require("config.common")
+local devmode = vim.fn.filereadable(vim.fn.stdpath("config") .. Common.sep .. ".dev") == 1
 
 local function local_plugin(name, options)
     local plugin = {}
