@@ -66,6 +66,11 @@ local Mode = {
     color = { gui = "bold" }
 }
 
+local FileName = {
+    "filename",
+    color = { gui = "bold" }
+}
+
 local Automaton = {
     get_automaton_status,
     icons_enabled = false,
@@ -119,22 +124,29 @@ return {
             disabled_filetypes = vim.tbl_filter(filter_filetypes, require("config.common").filetype_blacklist)
         },
         sections = {
-            lualine_a = { Mode, Navic },
+            lualine_a = { Mode },
             lualine_b = { Automaton },
-            lualine_c = { "filename" },
-            lualine_x = { "diagnostics", get_current_lsp, "encoding", "filetype" },
+            lualine_c = {},
+            lualine_x = { "encoding" },
             lualine_y = { "progress" },
             lualine_z = { "location" },
         },
         inactive_sections = {
             lualine_a = { Window },
             lualine_b = {},
-            lualine_c = { "filename" },
+            lualine_c = {},
             lualine_x = { "location" },
             lualine_y = {},
             lualine_z = {},
         },
-
+        winbar = {
+            lualine_a = { FileName, Navic },
+            lualine_b = {},
+            lualine_c = {},
+            lualine_x = { "diagnostics", get_current_lsp, "filetype" },
+            lualine_y = {},
+            lualine_z = {}
+        },
         extensions = {
             "toggleterm"
         }

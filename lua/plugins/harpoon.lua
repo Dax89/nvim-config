@@ -9,8 +9,6 @@ return {
     keys = function()
         local tbl = {
             { "<leader>hh", function() require("harpoon.ui").toggle_quick_menu() end, desc = "Harpoon - Open" },
-            { "H",          function() require("harpoon.ui").nav_prev() end,          desc = "Harpoon = Prev" },
-            { "L",          function() require("harpoon.ui").nav_next() end,          desc = "Harpoon - Next" },
             {
                 "<leader>ha",
                 function()
