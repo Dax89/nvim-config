@@ -1,15 +1,15 @@
 local function create_buttons()
     local BUTTONS_TEMPLATE = {
-        {"Files & Projects"},
-        {"e", "", "New File",      ":enew"},
-        {"r", "", "Recents Files", ":Telescope oldfiles"},
-        {"n", "󱕣", "New Workspace", ":Automaton create"},
-        {"p", "", "Workspaces",    ":Automaton recents"},
-        {"Settings & Plugins"},
-        {"x", "", "Settings",      ":e $MYVIMRC | :cd %:p:h"},
-        {"B", "", "Second Brain",  ":e $HOME/Dev/Cloud/BrainDump/index.wiki | :cd %:p:h"},
-        {"L", "󰒲", "Lazy",          ":Lazy"},
-        {"N", "", "News",          ":help news"},
+        { "Files & Projects" },
+        { "e", "", "New File", ":enew" },
+        { "r", "", "Recents Files", ":Telescope oldfiles" },
+        { "n", "󱕣", "New Workspace", ":Automaton create" },
+        { "p", "", "Workspaces", ":Automaton recents" },
+        { "Settings & Plugins" },
+        { "x", "", "Settings", ":e $MYVIMRC | :cd %:p:h" },
+        { "B", "", "Second Brain", ":e $HOME/Dev/Cloud/BrainDump/index.wiki | :cd %:p:h" },
+        { "L", "󰒲", "Lazy", ":Lazy" },
+        { "N", "", "News", ":help news" },
     }
 
     local function fillw(s, w, before)
@@ -20,7 +20,7 @@ local function create_buttons()
         return s .. string.rep(" ", w - #s)
     end
 
-    local buttons = { }
+    local buttons = {}
 
     for _, bt in ipairs(BUTTONS_TEMPLATE) do
         local b = nil
@@ -64,17 +64,19 @@ return {
 
             config = {
                 header = {
-                    "",
-                    "",
-                    "",
-                    " ███    ██ ███████  ██████  ██    ██ ██ ███    ███ ",
-                    " ████   ██ ██      ██    ██ ██    ██ ██ ████  ████ ",
-                    " ██ ██  ██ █████   ██    ██ ██    ██ ██ ██ ████ ██ ",
-                    " ██  ██ ██ ██      ██    ██  ██  ██  ██ ██  ██  ██ ",
-                    " ██   ████ ███████  ██████    ████   ██ ██      ██ ",
-                    "",
-                    "",
-                    "",
+                    [[                                                                       ]],
+                    [[                                                                       ]],
+                    [[                                                                     ]],
+                    [[       ████ ██████           █████      ██                     ]],
+                    [[      ███████████             █████                             ]],
+                    [[      █████████ ███████████████████ ███   ███████████   ]],
+                    [[     █████████  ███    █████████████ █████ ██████████████   ]],
+                    [[    █████████ ██████████ █████████ █████ █████ ████ █████   ]],
+                    [[  ███████████ ███    ███ █████████ █████ █████ ████ █████  ]],
+                    [[ ██████  █████████████████████ ████ █████ █████ ████ ██████ ]],
+                    [[                                                                       ]],
+                    [[                                                                       ]],
+                    [[                                                                       ]],
                 },
 
                 center = create_buttons(),
@@ -83,8 +85,9 @@ return {
                     local v, datetime = vim.version(), os.date("%d-%m-%Y")
                     local ok, lazy = pcall(require, "lazy")
                     local nplugins = ok and lazy.stats().count or 0
-                    local version = string.format("NeoVIM %d.%d.%d (API Level %d, %d Plugins)", v.major, v.minor, v.patch, v.api_level, nplugins)
-                    return {version .. " 󰇝 " .. datetime}
+                    local version = string.format("NeoVIM %d.%d.%d (API Level %d, %d Plugins)", v.major, v.minor, v
+                        .patch, v.api_level, nplugins)
+                    return { version .. " 󰇝 " .. datetime }
                 end
             }
         },
@@ -93,8 +96,8 @@ return {
             local colors = require("kanagawa.colors").setup()
 
             require("config.common").highlight({
-                {"DashboardHeader", {fg = colors.palette.sakuraPink}},
-                {"DashboardFooter", {fg = colors.palette.springGreen}},
+                { "DashboardHeader", { fg = colors.palette.sakuraPink } },
+                { "DashboardFooter", { fg = colors.palette.springGreen } },
             })
 
             require("dashboard").setup(opts)

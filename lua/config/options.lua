@@ -12,7 +12,6 @@ common.set_options("opt", {
     swapfile = false,                      -- Don"t use swapfile
     completeopt = "menu,menuone,noselect", -- Completion options
     clipboard = "unnamedplus",             -- Use System Clipboard
-    guifont = "monospace:h14",             -- GUI Font
     colorcolumn = "80,120",                -- Screen Columns
 
     -- Neovim UI
@@ -48,3 +47,10 @@ common.set_options("opt", {
 
     wildmode = "longest,full", -- Command-line completion mode
 })
+
+if vim.fn.has("gui_running") then
+    common.set_options("opt", {
+        guifont = "monospace:h14", -- GUI Font
+        linespace = -1,            -- Line vertical spacing
+    })
+end

@@ -1,7 +1,4 @@
 " Set Editor Font
-if exists(':GuiFont')
-    GuiFont! monospace:h14
-endif
 
 " Enable Ligatures
 "if exists(':GuiRenderLigatures')

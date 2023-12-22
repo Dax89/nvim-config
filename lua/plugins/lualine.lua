@@ -1,5 +1,5 @@
 local function filter_filetypes(ft)
-    return not vim.tbl_contains({ "qf", "toggleterm" }, ft)
+    return not vim.tbl_contains({ "automaton-terminal", "qf", "toggleterm" }, ft)
 end
 
 local function get_current_window()
@@ -97,7 +97,7 @@ local FileType = {
 local FileName = {
     get_relative_filepath,
     color = "CursorLine",
-    separator = { left = "", right = "" },
+    separator = { right = "" },
 }
 
 local Automaton = {
@@ -123,7 +123,7 @@ return {
 
     opts = {
         options = {
-            theme = "kanagawa",
+            theme = "onedark",
             globalstatus = false,
 
             disabled_filetypes = {
