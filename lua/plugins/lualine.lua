@@ -123,7 +123,7 @@ return {
 
     opts = {
         options = {
-            theme = "onedark",
+            theme = "kanagawa",
             globalstatus = false,
 
             disabled_filetypes = {
