@@ -91,12 +91,12 @@ local FileType = {
     icon_only = true,
     padding = { left = 1, right = 0 },
     separator = "",
-    color = "CursorLine",
+    color = "LineNr",
 }
 
 local FileName = {
     get_relative_filepath,
-    color = "CursorLine",
+    color = "LineNr",
     separator = { right = "" },
 }
 

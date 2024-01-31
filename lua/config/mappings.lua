@@ -51,6 +51,14 @@ end)
 
 vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv", { desc = "Move Row Down" })
 vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv", { desc = "Move Up Down" })
+vim.keymap.set("n", "<leader><leader>", ":so<CR>", { desc = "Source Ex Commands" })
+
+vim.keymap.set("n", "<C-e>",
+    function()
+        local result = vim.treesitter.get_captures_at_cursor(0)
+        print(vim.inspect(result))
+    end,
+    { desc = "Get Highlight under cursor" })
 
 -- Window mappings
 for i = 1, 9 do
@@ -58,11 +66,3 @@ for i = 1, 9 do
     local rhs = i .. "<C-w>w"
     vim.keymap.set("n", lhs, rhs, { desc = "Move to Window " .. i })
 end
-
-vim.api.nvim_create_autocmd("FileType", {
-    pattern = "lua",
-    callback = function(arg)
-        local options = { buffer = arg.buf, remap = false, desc = "Source File" }
-        vim.keymap.set("n", "<leader><leader>", ":so<CR>", options)
-    end
-})

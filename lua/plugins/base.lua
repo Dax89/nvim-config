@@ -35,8 +35,15 @@ return {
     { "numToStr/Comment.nvim",        config = true },
 
     {
-        "norcalli/nvim-colorizer.lua",
-        opts = { "*" },
+        "NvChad/nvim-colorizer.lua",
+        opts = {
+            user_default_options = {
+                RRGGBBAA = true,
+                AARRGGBB = true,
+                rgb_fn = true,
+                hsl_fn = true,
+            }
+        },
         config = true
     },
 

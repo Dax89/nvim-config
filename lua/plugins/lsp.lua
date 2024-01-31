@@ -128,7 +128,7 @@ return {
                 "clangd",
                 "bashls",
                 "marksman",
-                "solargraph"
+                -- "solargraph"
             }
         },
         config = function(_, opts)

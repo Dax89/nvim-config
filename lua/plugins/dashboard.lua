@@ -28,7 +28,7 @@ local function create_buttons()
         if #bt == 1 then
             b = {
                 desc = fillw(bt[1], 33, true),
-                desc_hl = "Operator"
+                desc_hl = "Normal"
             }
         else
             b = {
@@ -37,8 +37,8 @@ local function create_buttons()
                 desc = fillw(bt[3], 40),
                 action = bt[4],
 
-                key_hl = "Number",
-                icon_hl = "Keyword"
+                key_hl = "Special",
+                icon_hl = "Statement"
             }
         end
 
@@ -50,7 +50,7 @@ end
 
 return {
     {
-        "glepnir/dashboard-nvim",
+        "nvimdev/dashboard-nvim",
         event = "VimEnter",
 
         opts = {
@@ -92,15 +92,6 @@ return {
             }
         },
 
-        config = function(_, opts)
-            local colors = require("kanagawa.colors").setup()
-
-            require("config.common").highlight({
-                { "DashboardHeader", { fg = colors.palette.sakuraPink } },
-                { "DashboardFooter", { fg = colors.palette.springGreen } },
-            })
-
-            require("dashboard").setup(opts)
-        end
+        config = true
     }
 }

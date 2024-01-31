@@ -1,4 +1,5 @@
 return {
+    "cocopon/colorswatch.vim",
     {
         "vifm/vifm.vim",
         event = "VeryLazy",
@@ -30,5 +31,5 @@ return {
             { ",W", "<Plug>(easymotion-bd-W)",  desc = "EasyMotion - Find WORD" },
             { ",f", "<Plug>(easymotion-bd-f2)", desc = "EasyMotion - Find" },
         }
-    }
+    },
 }

@@ -253,16 +253,21 @@ local function insert_snippet()
     vim.api.nvim_put(lines, "l", true, false)
 end
 
-vim.keymap.set({ "n", "v" }, "<leader>tc", function()
-        if vim.bo.filetype == "cpp" then
-            extract_function()
-        end
-    end,
-    { desc = "TreeSitter - Generate C++ Code" })
+vim.api.nvim_create_autocmd("FileType", {
+    pattern = "cpp",
+    callback = function(arg)
+        vim.keymap.set({ "n", "v" }, "<leader>tc", function()
+                if vim.bo.filetype == "cpp" then
+                    extract_function()
+                end
+            end,
+            { buffer = arg.buf, desc = "TreeSitter - Generate C++ Code" })
 
-vim.keymap.set({ "n", "v" }, "<leader>tC", function()
-        if vim.bo.filetype == "cpp" then
-            insert_snippet()
-        end
-    end,
-    { desc = "TreeSitter - Apply Generated C++ Code" })
+        vim.keymap.set({ "n", "v" }, "<leader>tC", function()
+                if vim.bo.filetype == "cpp" then
+                    insert_snippet()
+                end
+            end,
+            { buffer = arg.buf, desc = "TreeSitter - Apply Generated C++ Code" })
+    end
+})
