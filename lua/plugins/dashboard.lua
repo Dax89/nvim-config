@@ -28,7 +28,7 @@ local function create_buttons()
         if #bt == 1 then
             b = {
                 desc = fillw(bt[1], 33, true),
-                desc_hl = "Normal"
+                desc_hl = "Comment"
             }
         else
             b = {
@@ -37,8 +37,8 @@ local function create_buttons()
                 desc = fillw(bt[3], 40),
                 action = bt[4],
 
-                key_hl = "Special",
-                icon_hl = "Statement"
+                key_hl = "String",
+                icon_hl = "Type"
             }
         end
 

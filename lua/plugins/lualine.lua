@@ -91,12 +91,12 @@ local FileType = {
     icon_only = true,
     padding = { left = 1, right = 0 },
     separator = "",
-    color = "LineNr",
+    color = "CursorLine",
 }
 
 local FileName = {
     get_relative_filepath,
-    color = "LineNr",
+    color = "CursorLine",
     separator = { right = "" },
 }
 
@@ -123,7 +123,7 @@ return {
 
     opts = {
         options = {
-            theme = "kanagawa",
+            theme = "rose-pine",
             globalstatus = false,
 
             disabled_filetypes = {
