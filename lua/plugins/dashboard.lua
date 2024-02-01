@@ -37,8 +37,8 @@ local function create_buttons()
                 desc = fillw(bt[3], 40),
                 action = bt[4],
 
-                key_hl = "String",
-                icon_hl = "Type"
+                key_hl = "Number",
+                icon_hl = "Keyword"
             }
         end
 

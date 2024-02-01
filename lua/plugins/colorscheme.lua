@@ -2,24 +2,16 @@ vim.o.background = "dark"
 
 return {
     {
-        "rose-pine/neovim",
-        name = "rose-pine",
-        lazy = false,
+        dir = vim.fn.stdpath("config") .. "/lua/config/ansi16",
         priority = 1000,
+        lazy = false,
 
-        opts = {
-            extend_background_behind_borders = false,
-
-            highlight_groups = {
-                EndOfBuffer = { fg = "base" },
-                DashboardHeader = { fg = "love" },
-            }
+        dependencies = {
+            "rktjmp/lush.nvim",
         },
 
-        config = function(_, opts)
-            -- https://rosepinetheme.com/palette/ingredients
-            require("rose-pine").setup(opts)
-            require("config.common").exec_commands("colorscheme rose-pine")
+        config = function()
+            vim.cmd("colorscheme ansi16")
         end
-    },
+    }
 }

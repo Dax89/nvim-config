@@ -58,7 +58,13 @@ return {
 
     {
         "NeogitOrg/neogit",
-        opts = { disable_builtin_notifications = true, },
+        opts = {
+            signs = {
+                item = { "", "" },
+                section = { "", "" },
+            },
+            disable_builtin_notifications = true,
+        },
         config = true,
 
         dependencies = {

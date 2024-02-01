@@ -123,7 +123,6 @@ return {
 
     opts = {
         options = {
-            theme = "rose-pine",
             globalstatus = false,
 
             disabled_filetypes = {
