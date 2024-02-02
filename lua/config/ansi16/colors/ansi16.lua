@@ -7,4 +7,4 @@ vim.opt.background = "dark"
 vim.g.colors_name = "ansi16"
 
 package.loaded["config.ansi16"] = nil
-require("lush")(require("config.ansi16").colorscheme())
+require("lush")(require("config.ansi16"))
