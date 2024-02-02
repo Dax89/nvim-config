@@ -1,26 +1,26 @@
 local lush = require("lush")
 local hsl = lush.hsl
 
--- https://m1.material.io/style/color.html#color-color-palette
-
 local p = {
-    color0  = hsl("#1d1d1d"),
-    color1  = hsl("#c2185b"), -- Pink        700
-    color2  = hsl("#4caf50"), -- Green       500
-    color3  = hsl("#ffa000"), -- Amber       700
-    color4  = hsl("#7986cb"), -- Indigo      300
-    color5  = hsl("#ba68c8"), -- Purple      300
-    color6  = hsl("#00acc1"), -- Cyan        600
-    color7  = hsl("#757575"), -- Gray        600
+    -- Regular
+    color0  = hsl("#282828"), -- Black
+    color1  = hsl("#c74545"), -- Red
+    color2  = hsl("#52b24b"), -- Green
+    color3  = hsl("#ffa000"), -- Yellow
+    color4  = hsl("#6699cc"), -- Blue
+    color5  = hsl("#c371d1"), -- Magenta
+    color6  = hsl("#11ad8f"), -- Cyan
+    color7  = hsl("#91919c"), -- White
 
-    color8  = hsl("#263238"), -- Blue Grey   900
-    color9  = hsl("#d81b60"), -- Pink        600
-    color10 = hsl("#8bc34a"), -- Light Green 500
-    color11 = hsl("#ffeb3b"), -- Yellow      500
-    color12 = hsl("#90caf9"), -- Blue        200
-    color13 = hsl("#e1bee7"), -- Purple      100
-    color14 = hsl("#80deea"), -- Cyan        200
-    color15 = hsl("#bdbdbd"), -- Gray        400
+    -- Bright
+    color8  = hsl("#383838"), -- Black
+    color9  = hsl("#e65c75"), -- Red
+    color10 = hsl("#96d952"), -- Green
+    color11 = hsl("#e5d649"), -- Yellow
+    color12 = hsl("#90caf9"), -- Blue
+    color13 = hsl("#f8cfff"), -- Magenta
+    color14 = hsl("#4ce0c5"), -- Cyan
+    color15 = hsl("#f4f1d6"), -- White
 }
 
 -- Setup terminal colors
@@ -95,7 +95,7 @@ local colorscheme = lush(function(f)
         sym("@function.builtin") {},
         sym("@function.call") { italic = true },
         sym("@type.builtin") { Keyword },
-        sym("@constant.builtin") { fg = p.color1, bold = true },
+        sym("@constant.builtin") { fg = p.color9, bold = true },
         sym("@variable") { fg = p.color13 },
         sym("@variable.builtin") { fg = p.color13, bold = true },
         sym("@variable.parameter") { fg = p.color5, italic = true },
