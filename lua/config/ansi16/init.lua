@@ -13,7 +13,7 @@ local p = {
     color7  = hsl("#91919c"), -- White
 
     -- Bright
-    color8  = hsl("#383838"), -- Black
+    color8  = hsl("#333333"), -- Black
     color9  = hsl("#e65c75"), -- Red
     color10 = hsl("#96d952"), -- Green
     color11 = hsl("#e5d649"), -- Yellow
@@ -72,9 +72,9 @@ local colorscheme = lush(function(f)
         SpellCap { sp = p.color3, undercurl = true },
         SpellLocal { sp = p.color2, undercurl = true },
         SpellRare { sp = p.color4, undercurl = true },
-        Error { fg = p.color1 },
+        Error { fg = p.color9 },
         ErrorMsg { Error },
-        WarningMsg { fg = p.color3 },
+        WarningMsg { fg = p.color11 },
 
         -- Generic Syntax
         PreProc { fg = p.color5 },
@@ -90,6 +90,7 @@ local colorscheme = lush(function(f)
         Character { String },
         MatchParen { fg = p.color11, bold = true },
         Function { fg = p.color6 },
+        QuickFixLine { CursorLine },
 
         -- TreeSitter
         sym("@function.builtin") {},
