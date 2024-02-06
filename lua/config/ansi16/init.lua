@@ -3,7 +3,7 @@ local hsl = lush.hsl
 
 local p = {
     -- Regular
-    color0  = hsl("#282828"), -- Black
+    color0  = hsl("#1f1f1f"), -- Black
     color1  = hsl("#c74545"), -- Red
     color2  = hsl("#52b24b"), -- Green
     color3  = hsl("#ffa000"), -- Yellow
@@ -13,7 +13,7 @@ local p = {
     color7  = hsl("#91919c"), -- White
 
     -- Bright
-    color8  = hsl("#333333"), -- Black
+    color8  = hsl("#404040"), -- Black
     color9  = hsl("#e65c75"), -- Red
     color10 = hsl("#96d952"), -- Green
     color11 = hsl("#e5d649"), -- Yellow
@@ -46,7 +46,7 @@ local colorscheme = lush(function(f)
         LineNr { Normal },
         SignColumn { Normal },
         Cursor { Normal, reverse = true },
-        CursorLineNr { fg = p.color11, bold = true },
+        CursorLineNr { fg = p.color11, bg = CursorLine.bg, bold = true },
         StatusLine { fg = p.color15, bg = p.color0 },
         StatusLineNC { fg = p.color7, bg = p.color0 },
         Pmenu { Normal },
@@ -91,7 +91,7 @@ local colorscheme = lush(function(f)
         MatchParen { fg = p.color11, bold = true },
         Function { fg = p.color6 },
         QuickFixLine { CursorLine },
-        gitCommitSummary {},
+        gitCommitSummary { fg = Normal.fg },
 
         -- Diagnostic
         DiagnosticDeprecated { fg = Comment.fg, strikethrough = true },
