@@ -1,14 +1,14 @@
 local function create_buttons()
     local BUTTONS_TEMPLATE = {
-        { string.rep(" ", 24) .. "Files & Projects" },
+        { string.rep(" ", 4) .. "Files & Projects" },
         { "e", "", "New File", ":enew" },
         { "r", "", "Recents Files", ":Telescope oldfiles" },
         { "n", "󱕣", "New Workspace", ":Automaton create" },
         { "p", "", "Workspaces", ":Automaton recents" },
-        { string.rep(" ", 28) .. "Utilities" },
+        { string.rep(" ", 4) .. "Utilities" },
         { "j", "", "JSON Editor", function() require("config.common").json_editor() end },
         { "b", "", "Second Brain", ":e $HOME/Dev/Cloud/BrainDump/index.wiki | :cd %:p:h" },
-        { string.rep(" ", 23) .. "Settings & Plugins" },
+        { string.rep(" ", 4) .. "Settings & Plugins" },
         { "x", "", "Settings", ":e $MYVIMRC | :cd %:p:h" },
         { "l", "󰒲", "Lazy", ":Lazy" },
     }
