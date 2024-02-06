@@ -18,6 +18,8 @@ local Common = {
         "qf"
     },
 
+    jsoneditors = 0,
+
     sep = vim.loop.os_uname().sysname == "Windows" and "\\" or "/"
 }
 
@@ -33,7 +35,8 @@ function Common.json_editor(split)
     end
 
     vim.cmd("enew")
-    vim.api.nvim_buf_set_name(0, "JSON Editor")
+    vim.api.nvim_buf_set_name(0, "JSON Editor " .. tostring(Common.jsoneditors))
+    Common.jsoneditors = Common.jsoneditors + 1
     vim.bo.filetype = "json"
 end
 
