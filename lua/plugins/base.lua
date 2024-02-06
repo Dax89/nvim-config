@@ -16,12 +16,16 @@ return {
 
     {
         "rcarriga/nvim-notify",
+
         opts = {
             stages = "static",
             top_down = false,
             timeout = 2000,
+            max_width = 50,
+            render = "wrapped-compact",
             fps = 60,
         },
+
         config = function(_, opts)
             local notify = require("notify")
             notify.setup(opts)
