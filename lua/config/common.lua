@@ -27,6 +27,16 @@ function Common.highlight(items, ns)
     end
 end
 
+function Common.json_editor(split)
+    if split == true then
+        vim.cmd("botright vsplit")
+    end
+
+    vim.cmd("enew")
+    vim.api.nvim_buf_set_name(0, "JSON Editor")
+    vim.bo.filetype = "json"
+end
+
 function Common.show_select(prompt, choices, mode)
     local m = nil
 

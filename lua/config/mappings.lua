@@ -41,6 +41,7 @@ vim.keymap.set("n", "<A-p>", function()
     require("config.common").show_select("Quick Actions", {
         { " Workspaces", ":Automaton recents" },
         { "󱕣 New Workspace", ":Automaton create" },
+        { " JSON Editor", function() require("config.common").json_editor(true) end },
         { " Settings", ":e $MYVIMRC | :cd %:p:h" },
         { "󰒲 Lazy", ":Lazy" },
         { "↺ Restart LSP", ":LspRestart" },

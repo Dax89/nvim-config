@@ -1,23 +1,20 @@
 local function create_buttons()
     local BUTTONS_TEMPLATE = {
-        { "Files & Projects" },
+        { string.rep(" ", 23) .. "Files & Projects" },
         { "e", "", "New File", ":enew" },
         { "r", "", "Recents Files", ":Telescope oldfiles" },
         { "n", "󱕣", "New Workspace", ":Automaton create" },
         { "p", "", "Workspaces", ":Automaton recents" },
-        { "Settings & Plugins" },
+        { string.rep(" ", 27) .. "Utilities" },
+        { "j", "", "JSON Editor", function() require("config.common").json_editor() end },
+        { "b", "", "Second Brain", ":e $HOME/Dev/Cloud/BrainDump/index.wiki | :cd %:p:h" },
+        { string.rep(" ", 22) .. "Settings & Plugins" },
         { "x", "", "Settings", ":e $MYVIMRC | :cd %:p:h" },
-        { "B", "", "Second Brain", ":e $HOME/Dev/Cloud/BrainDump/index.wiki | :cd %:p:h" },
         { "L", "󰒲", "Lazy", ":Lazy" },
-        { "N", "", "News", ":help news" },
     }
 
-    local function fillw(s, w, before)
-        if before == true then
-            return string.rep(" ", w - #s) .. s
-        end
-
-        return s .. string.rep(" ", w - #s)
+    local function fillw(s)
+        return s .. string.rep(" ", 50 - #s)
     end
 
     local buttons = {}
@@ -27,14 +24,14 @@ local function create_buttons()
 
         if #bt == 1 then
             b = {
-                desc = fillw(bt[1], 33, true),
+                desc = bt[1],
                 desc_hl = "Comment"
             }
         else
             b = {
                 key = bt[1],
                 icon = string.format("%s  ", bt[2]),
-                desc = fillw(bt[3], 40),
+                desc = fillw(bt[3]),
                 action = bt[4],
 
                 key_hl = "Number",
