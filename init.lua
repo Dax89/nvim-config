@@ -49,3 +49,4 @@ require("config.secondbrain")
 require("lazy").setup("plugins")
 
 require("lang.cpp")
+require("lang.json")

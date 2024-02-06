@@ -5,4 +5,5 @@ return {
     { "bakpakin/fennel.vim",        ft = "fennel" },
     { "alaviss/nim.nvim",           ft = "nim" },
     { "ziglang/zig.vim",            ft = "zig" },
+    { "bfrg/vim-jq",                ft = "jq" },
 }
