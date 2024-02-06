@@ -38,7 +38,7 @@ local colorscheme = lush(function(f)
         EndOfBuffer { fg = p.color0 },
         Visual { fg = Normal.bg, bg = p.color15 },
         VisualNC { fg = Normal.bg, bg = p.color7 },
-        Comment { fg = p.color7 },
+        Comment { fg = p.color7, italic = true },
         Conceal { Comment },
         Title { fg = p.color2 },
         CursorLine { bg = p.color8 },
@@ -91,27 +91,7 @@ local colorscheme = lush(function(f)
         MatchParen { fg = p.color11, bold = true },
         Function { fg = p.color6 },
         QuickFixLine { CursorLine },
-
-        -- TreeSitter
-        sym("@function.builtin") {},
-        sym("@function.call") { italic = true },
-        sym("@type.builtin") { Keyword },
-        sym("@constant.builtin") { fg = p.color9, bold = true },
-        sym("@variable") { fg = p.color13 },
-        sym("@variable.builtin") { fg = p.color13, bold = true },
-        sym("@variable.parameter") { fg = p.color5, italic = true },
-        sym("@module") { fg = p.color4 },
-        sym("@string") { String },
-
-        -- LSP
-        sym("@lsp.type.variable") {},
-        sym("@lsp.type.parameter") { sym("@variable.parameter") },
-        sym("@lsp.type.namespace") {},
-        sym("@lsp.type.module") {},
-        sym("@lsp.typemod.function.defaultLibrary") { sym("@function.builtin") },
-        sym("@lsp.typemod.string.injected") { sym("@string") },
-        sym("@lsp.typemod.variable.defaultLibrary") { sym("@variable.builtin") },
-        sym("@lsp.typemod.variable.injected") { sym("@variable") },
+        gitCommitSummary {},
 
         -- Diagnostic
         DiagnosticDeprecated { fg = Comment.fg, strikethrough = true },
@@ -125,6 +105,32 @@ local colorscheme = lush(function(f)
         DiagnosticUnderlineOk { sp = DiagnosticOk.fg, underline = true },
         DiagnosticUnderlineWarn { sp = DiagnosticWarn.fg, underline = true },
         DiagnosticUnderlineError { sp = DiagnosticWarn.fg, underline = true },
+
+        -- TreeSitter
+        sym("@function.builtin") {},
+        sym("@function.call") { italic = true },
+        sym("@type.builtin") { Keyword },
+        sym("@constant.builtin") { fg = p.color9 },
+        sym("@variable") { fg = p.color13 },
+        sym("@variable.builtin") { fg = p.color13, bold = true },
+        sym("@variable.parameter") { fg = p.color5, italic = true },
+        sym("@module") { fg = p.color4 },
+        sym("@string") { String },
+
+        -- TreeSitter C++
+        sym("@keyword.storage.cpp") { fg = p.color10, bold = false },
+        sym("@type.qualifier.cpp") { sym("@keyword.storage.cpp") },
+
+        -- LSP
+        sym("@lsp.type.variable") {},
+        sym("@lsp.type.parameter") { sym("@variable.parameter") },
+        sym("@lsp.type.namespace") {},
+        sym("@lsp.type.module") {},
+        sym("@lsp.typemod.function.defaultLibrary") { sym("@function.builtin") },
+        sym("@lsp.typemod.string.injected") { sym("@string") },
+        sym("@lsp.typemod.variable.defaultLibrary") { sym("@variable.builtin") },
+        sym("@lsp.typemod.variable.injected") { sym("@variable") },
+
 
         -- Telescope
         TelescopeSelection { CursorLine },
