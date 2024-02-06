@@ -131,15 +131,14 @@ local colorscheme = lush(function(f)
         sym("@lsp.typemod.variable.defaultLibrary") { sym("@variable.builtin") },
         sym("@lsp.typemod.variable.injected") { sym("@variable") },
 
-
-        -- Telescope
+        -- nvim-telescope/telescope.nvim
         TelescopeSelection { CursorLine },
 
-        -- Dashboard
+        -- nvimdev/dashboard-nvim
         DashboardHeader { fg = p.color2 },
         DashboardFooter { fg = p.color12 },
 
-        -- NeoGit
+        -- NeogitOrg/neogit
         NeogitChangeAdded { DiffAdd, bold = true, italic = true },
         NeogitChangeBothModified { DiffChange, bold = true, italic = true },
         NeogitChangeCopied { fg = groups.git_untracked, bold = true, italic = true },
@@ -159,6 +158,23 @@ local colorscheme = lush(function(f)
         NeogitDiffDeleteHighlight { DiffDelete },
         NeogitDiffAdd { DiffAdd },
         NeogitDiffDelete { DiffDelete },
+
+        -- rcarriga/nvim-notify
+        NotifyDEBUGBorder { fg = p.color7 },
+        NotifyDEBUGTitle { NotifyDEBUGBorder },
+        NotifyDEBUGIcon { NotifyDEBUGBorder },
+        NotifyTRACEBorder { fg = p.color13 },
+        NotifyTRACEIcon { NotifyTRACEBorder },
+        NotifyTRACETitle { NotifyTRACEBorder },
+        NotifyINFOBorder { DiagnosticOk },
+        NotifyINFOIcon { DiagnosticOk },
+        NotifyINFOTitle { DiagnosticOk },
+        NotifyWARNBorder { DiagnosticWarn },
+        NotifyWARNIcon { DiagnosticWarn },
+        NotifyWARNTitle { DiagnosticWarn },
+        NotifyERRORBorder { DiagnosticError },
+        NotifyERRORIcon { DiagnosticError },
+        NotifyERRORTitle { DiagnosticError },
     }
 end)
 
