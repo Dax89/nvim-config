@@ -1,10 +1,5 @@
 local lush = require("lush")
-local p = require("config.ansi16.palette")
-
--- NeoVim's chrome is outside 16 colors palette
-local chrome = p.color0
-    .mix(p.color4, 30)
-    .darken(46)
+local p = require("ansi16.palette")
 
 -- Setup terminal colors
 for i = 0, 15 do
@@ -20,27 +15,27 @@ local colorscheme = lush(function(f)
         Normal { fg = p.color15, bg = p.color0 },
         EndOfBuffer { fg = p.color0 },
         Visual { fg = Normal.bg, bg = p.color15 },
-        VisualNC { fg = Normal.bg, bg = p.color7 },
-        Comment { fg = p.color7, italic = true },
+        VisualNC { fg = Normal.bg, bg = p.color8 },
+        Comment { fg = p.color8, italic = true },
         Conceal { Comment },
         Title { fg = p.color2 },
-        CursorLine { bg = chrome },
+        CursorLine { bg = p.chrome },
         CursorColumn { CursorLine },
         LineNr { Normal },
         SignColumn { Normal },
-        Cursor { Normal, reverse = true },
+        Cursor { fg = p.color0, bg = p.color15 },
         CursorLineNr { fg = p.color11, bg = CursorLine.bg, bold = true },
-        StatusLine { fg = p.color15, bg = chrome },
-        StatusLineNC { fg = p.color7, bg = chrome },
+        StatusLine { fg = p.color15, bg = p.chrome },
+        StatusLineNC { fg = p.color8, bg = p.chrome },
         Pmenu { Normal },
-        PmenuSel { fg = Normal.bg, bg = p.color4 },
-        PmenuSbar { fg = Normal.fg, bg = chrome },
-        PmenuThumb { fg = Normal.bg, bg = p.color7 },
+        PmenuSel { fg = Normal.bg, bg = p.color4, bold = true },
+        PmenuSbar { fg = Normal.fg, bg = p.chrome },
+        PmenuThumb { fg = Normal.fg, bg = p.color8 },
         ModeMsg { fg = p.color4 },
         MoreMsg { fg = p.color4 },
 
         -- Overlay
-        NonText { fg = p.color7 },
+        NonText { fg = p.color8 },
         Search { fg = Normal.bg, bg = p.color11 },
         IncSearch { fg = Normal.bg, bg = p.color3 },
         Substitute { IncSearch },
@@ -55,19 +50,19 @@ local colorscheme = lush(function(f)
         SpellCap { sp = p.color3, undercurl = true },
         SpellLocal { sp = p.color2, undercurl = true },
         SpellRare { sp = p.color4, undercurl = true },
-        Error { fg = p.color9 },
+        Error { fg = p.color1 },
         ErrorMsg { Error },
         WarningMsg { fg = p.color11 },
 
         -- Generic Syntax
-        PreProc { fg = p.color1 },
+        PreProc { fg = p.color9 },
         Statement { fg = p.color10 },
         Identifier { fg = p.color15 },
         Constant { fg = p.color3 },
         Keyword { Statement, bold = true },
         Special { fg = p.color7 },
         Operator { fg = p.color7 },
-        Type { fg = p.color12, bold = true },
+        Type { fg = p.color12 },
         String { fg = p.color2 },
         Number { fg = p.color3 },
         Character { String },
@@ -97,6 +92,7 @@ local colorscheme = lush(function(f)
         sym("@variable") { fg = p.color13 },
         sym("@variable.builtin") { fg = p.color13, bold = true },
         sym("@variable.parameter") { fg = p.color5, italic = true },
+        sym("@attribute") { fg = p.color15, bg = p.color8 },
         sym("@module") { fg = p.color4 },
         sym("@string") { String },
 
@@ -137,7 +133,7 @@ local colorscheme = lush(function(f)
         NeogitRemote { fg = p.color2, bold = true },
         NeogitHunkHeaderHighlight { fg = Normal.bg, bg = p.color4 },
         NeogitDiffAddHighlight { DiffAdd },
-        NeogitDiffContextHighlight { bg = chrome },
+        NeogitDiffContextHighlight { bg = p.chrome },
         NeogitDiffDeleteHighlight { DiffDelete },
         NeogitDiffAdd { DiffAdd },
         NeogitDiffDelete { DiffDelete },

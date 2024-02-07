@@ -96,14 +96,14 @@ local FileType = {
 
 local FileName = {
     get_relative_filepath,
-    color = "CursorLine",
     separator = { right = "" },
+    color = "CursorLine",
 }
 
 local Automaton = {
     get_automaton_status,
     icons_enabled = false,
-    color = "CursorLine",
+    color = "PmenuThumb",
     separator = { left = "", right = "" },
 }
 
@@ -123,6 +123,7 @@ return {
 
     opts = {
         options = {
+            theme = require("ansi16.lualine"),
             globalstatus = false,
 
             disabled_filetypes = {

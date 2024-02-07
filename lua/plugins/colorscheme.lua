@@ -2,7 +2,7 @@ vim.o.background = "dark"
 
 return {
     {
-        dir = vim.fn.stdpath("config") .. "/lua/config/ansi16",
+        dir = vim.fn.stdpath("config") .. "/lua/ansi16",
         priority = 1000,
         lazy = false,
 
