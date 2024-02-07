@@ -19,7 +19,6 @@ local Common = {
     },
 
     jsoneditors = 0,
-
     sep = vim.loop.os_uname().sysname == "Windows" and "\\" or "/"
 }
 

@@ -45,7 +45,7 @@ function jq.read_buffer(id, lines)
 end
 
 function jq.create_buffer(name, filetype)
-    local id = vim.api.nvim_create_buf(false, true)
+    local id = vim.api.nvim_create_buf(true, true)
     vim.api.nvim_buf_set_name(id, name)
 
     if filetype then
@@ -75,7 +75,7 @@ function jq.open_output(text)
 end
 
 function jq.open_editor(buf)
-    if jq.lastbuf ~= nil and buf ~= jq.lastbuf then
+    if jq.lastbuf ~= nil and buf ~= jq.lastbuf and jq.editors[jq.lastbuf] then
         vim.api.nvim_buf_set_option(jq.editors[jq.lastbuf], "bufhidden", "hide")
     end
 
@@ -99,7 +99,7 @@ function jq.open_editor(buf)
 
     if vim.fn.getbufinfo(jq.editors[buf])[1].hidden == 1 then
         if jq.editorwin ~= nil and vim.api.nvim_win_is_valid(jq.editorwin) then
-            vim.api.nvim_win_close(jq.editorwin, true)
+            pcall(vim.api.nvim_win_close, jq.editorwin, true)
             jq.editorwin = nil
         end
 
@@ -116,7 +116,6 @@ if vim.fn.executable("jq") then
             -- Make sure to clean up associated windows
             vim.api.nvim_create_autocmd("BufHidden", {
                 buffer = arg.buf,
-                once = true,
                 callback = function()
                     if not jq.editors[arg.buf] then return end
 
