@@ -3,25 +3,30 @@ local hsl = lush.hsl
 
 local p = {
     -- Regular
-    color0  = hsl("#1f1f1f"), -- Black
-    color1  = hsl("#c74545"), -- Red
-    color2  = hsl("#52b24b"), -- Green
-    color3  = hsl("#ffa000"), -- Yellow
-    color4  = hsl("#6699cc"), -- Blue
-    color5  = hsl("#c371d1"), -- Magenta
-    color6  = hsl("#11ad8f"), -- Cyan
-    color7  = hsl("#91919c"), -- White
+    color0  = hsl("#202020"), -- Black
+    color1  = hsl("#ff7575"), -- Red
+    color2  = hsl("#67bd61"), -- Green
+    color3  = hsl("#ffb22e"), -- Yellow
+    color4  = hsl("#88b0d7"), -- Blue
+    color5  = hsl("#e28ee6"), -- Magenta
+    color6  = hsl("#13c3a0"), -- Cyan
+    color7  = hsl("#cacaca"), -- White
 
     -- Bright
-    color8  = hsl("#404040"), -- Black
-    color9  = hsl("#e65c75"), -- Red
+    color8  = hsl("#757575"), -- Black
+    color9  = hsl("#ffa3a3"), -- Red
     color10 = hsl("#96d952"), -- Green
-    color11 = hsl("#e5d649"), -- Yellow
+    color11 = hsl("#fff061"), -- Yellow
     color12 = hsl("#90caf9"), -- Blue
-    color13 = hsl("#f8cfff"), -- Magenta
+    color13 = hsl("#f8c7ff"), -- Magenta
     color14 = hsl("#4ce0c5"), -- Cyan
     color15 = hsl("#f4f1d6"), -- White
 }
+
+-- NeoVim's chrome is outside 16 colors palette
+local chrome = p.color0
+    .mix(p.color4, 30)
+    .darken(46)
 
 -- Setup terminal colors
 for i = 0, 15 do
@@ -41,7 +46,7 @@ local colorscheme = lush(function(f)
         Comment { fg = p.color7, italic = true },
         Conceal { Comment },
         Title { fg = p.color2 },
-        CursorLine { bg = p.color8 },
+        CursorLine { bg = chrome },
         CursorColumn { CursorLine },
         LineNr { Normal },
         SignColumn { Normal },
@@ -77,7 +82,7 @@ local colorscheme = lush(function(f)
         WarningMsg { fg = p.color11 },
 
         -- Generic Syntax
-        PreProc { fg = p.color5 },
+        PreProc { fg = p.color1 },
         Statement { fg = p.color10 },
         Identifier { fg = p.color15 },
         Constant { fg = p.color3 },
@@ -154,7 +159,7 @@ local colorscheme = lush(function(f)
         NeogitRemote { fg = p.color2, bold = true },
         NeogitHunkHeaderHighlight { fg = Normal.bg, bg = p.color4 },
         NeogitDiffAddHighlight { DiffAdd },
-        NeogitDiffContextHighlight { bg = p.color8 },
+        NeogitDiffContextHighlight { bg = chrome },
         NeogitDiffDeleteHighlight { DiffDelete },
         NeogitDiffAdd { DiffAdd },
         NeogitDiffDelete { DiffDelete },

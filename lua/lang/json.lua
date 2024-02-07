@@ -75,13 +75,11 @@ function jq.open_output(text)
 end
 
 function jq.open_editor(buf)
-    vim.print("~~ " .. tostring(jq.lastbuf))
     if jq.lastbuf ~= nil and buf ~= jq.lastbuf then
         vim.api.nvim_buf_set_option(jq.editors[jq.lastbuf], "bufhidden", "hide")
     end
 
     jq.lastbuf = buf
-    vim.print("## " .. tostring(jq.lastbuf))
 
     if not jq.editors[buf] then
         local editorname = "JQ Editor"
@@ -100,8 +98,9 @@ function jq.open_editor(buf)
     end
 
     if vim.fn.getbufinfo(jq.editors[buf])[1].hidden == 1 then
-        if jq.editorwin ~= nil then
+        if jq.editorwin ~= nil and vim.api.nvim_win_is_valid(jq.editorwin) then
             vim.api.nvim_win_close(jq.editorwin, true)
+            jq.editorwin = nil
         end
 
         vim.api.nvim_command("belowright split")
@@ -114,6 +113,24 @@ if vim.fn.executable("jq") then
     vim.api.nvim_create_autocmd("FileType", {
         pattern = "json",
         callback = function(arg)
+            -- Make sure to clean up associated windows
+            vim.api.nvim_create_autocmd("BufHidden", {
+                buffer = arg.buf,
+                once = true,
+                callback = function()
+                    if not jq.editors[arg.buf] then return end
+
+                    vim.api.nvim_buf_delete(jq.editors[arg.buf], { force = true })
+                    jq.editors[arg.buf] = nil
+                    jq.editorwin = nil
+
+                    if vim.tbl_isempty(jq.editors) and jq.outputbuf ~= nil then
+                        vim.api.nvim_buf_delete(jq.outputbuf, { force = true })
+                        jq.outputbuf = nil
+                    end
+                end
+            })
+
             vim.api.nvim_buf_create_user_command(arg.buf, "JqFormat", function()
                 vim.api.nvim_command(":%!jq")
             end, { desc = "JSON - Format" })
