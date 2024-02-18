@@ -10,13 +10,13 @@ return {
         b = { fg = p.color15.hex, bg = p.chrome.hex },
     },
     inactive = {
-        c = { fg = p.color15.hex, bg = p.chrome.hex },
-        b = { fg = p.color15.hex, bg = p.chrome.hex },
+        c = { fg = p.color15.hex, bg = p.color0.hex },
+        b = { fg = p.color15.hex, bg = p.color0.hex },
         a = { fg = p.color15.hex, bg = p.color8.hex, gui = "bold" },
     },
     normal = {
         a = { fg = p.color0.hex, bg = p.color4.hex, gui = "bold" },
-        c = { fg = p.color15.hex, bg = p.color0.hex },
+        c = { fg = p.color15.hex, bg = p.chromealt.hex },
         b = { fg = p.color15.hex, bg = p.chrome.hex },
     },
     insert = {

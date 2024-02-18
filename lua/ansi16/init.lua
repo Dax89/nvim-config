@@ -96,9 +96,33 @@ local colorscheme = lush(function(f)
         sym("@module") { fg = p.color4 },
         sym("@string") { String },
 
-        -- TreeSitter C++
+        -- TreeSitter `C++`
         sym("@keyword.storage.cpp") { fg = p.color10, bold = false },
         sym("@type.qualifier.cpp") { sym("@keyword.storage.cpp") },
+
+        -- TreeSitter `CMake`
+        sym("cmakeVariable") { sym("@variable") },
+        sym("cmakeGeneratorExpression") { sym("@variable") },
+        sym("cmakeGeneratorExpressions") { Constant },
+        sym("cmakeKWtarget_include_directories") { Constant },
+        sym("cmakeKWtarget_link_libraries") { Constant },
+        sym("cmakeKWget_filename_component") { Constant },
+        sym("cmakeKWset_tests_properties") { Constant },
+        sym("cmakeKWget_cmake_property") { Constant },
+        sym("cmakeKWctest_configure") { Constant },
+        sym("cmakeKWtarget_sources") { Constant },
+        sym("cmakeKWtry_compile") { Constant },
+        sym("cmakeKWtry_run") { Constant },
+        sym("cmakeKWset_property") { Constant },
+        sym("cmakeKWfind_program") { Constant },
+        sym("cmakeKWfind_package") { Constant },
+        sym("cmakeKWadd_test") { Constant },
+        sym("cmakeKWproject") { Constant },
+        sym("cmakeKWmessage") { Constant },
+        sym("cmakeKWinstall") { Constant },
+        sym("cmakeKWfile") { Constant },
+        sym("cmakeKWif") { Constant },
+        sym("cmakeKWset") { String },
 
         -- LSP
         sym("@lsp.type.variable") {},

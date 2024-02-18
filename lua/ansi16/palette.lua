@@ -28,4 +28,7 @@ p.chrome = p.color0
     .mix(p.color4, 30)
     .darken(46)
 
+p.chromealt = p.color0
+    .lighten(4)
+
 return p
