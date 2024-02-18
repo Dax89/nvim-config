@@ -103,7 +103,7 @@ local FileName = {
 local Automaton = {
     get_automaton_status,
     icons_enabled = false,
-    color = "PmenuThumb",
+    color = "CursorLine",
     separator = { left = "", right = "" },
 }
 
