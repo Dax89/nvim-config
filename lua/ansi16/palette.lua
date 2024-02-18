@@ -25,10 +25,10 @@ local p = {
 
 -- NeoVim's chrome is outside 16 colors palette
 p.chrome = p.color0
-    .mix(p.color4, 30)
-    .darken(46)
+    .lighten(4)
 
 p.chromealt = p.color0
-    .lighten(4)
+    .mix(p.color4, 30)
+    .darken(46)
 
 return p
