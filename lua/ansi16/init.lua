@@ -125,7 +125,9 @@ local colorscheme = lush(function(f)
         sym("cmakeKWset") { String },
 
         -- LSP
+        LspSignatureActiveParameter { sp = p.color15, bold = true, underline = true },
         sym("@lsp.type.variable") {},
+        sym("@lsp.type.property") {},
         sym("@lsp.type.parameter") { sym("@variable.parameter") },
         sym("@lsp.type.namespace") {},
         sym("@lsp.type.module") {},
