@@ -68,7 +68,9 @@ local colorscheme = lush(function(f)
         Character { String },
         MatchParen { fg = p.color11, bold = true },
         Function { fg = p.color6 },
+        Directory { fg = p.color12 },
         QuickFixLine { CursorLine },
+        qfLineNr { fg = p.color10 },
         gitCommitSummary { fg = Normal.fg },
 
         -- Diagnostic
