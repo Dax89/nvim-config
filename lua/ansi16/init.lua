@@ -27,12 +27,15 @@ local colorscheme = lush(function(f)
         CursorLineNr { fg = p.color11, bg = CursorLine.bg, bold = true },
         StatusLine { fg = p.color15, bg = p.chrome },
         StatusLineNC { fg = p.color8, bg = p.chrome },
+        TabLine { fg = p.color7, bg = p.chromealt },
+        TabLineFill { bg = p.chrome },
+        TabLineSel { fg = p.color0, bg = p.color2, bold = true },
         Pmenu { Normal },
         PmenuSel { fg = Normal.bg, bg = p.color4, bold = true },
         PmenuSbar { fg = Normal.fg, bg = p.chromealt },
         PmenuThumb { fg = Normal.fg, bg = p.color8 },
         ModeMsg { fg = p.color4 },
-        MoreMsg { fg = p.color4 },
+        MoreMsg { fg = p.color12 },
 
         -- Overlay
         NonText { fg = p.color8 },
@@ -87,12 +90,12 @@ local colorscheme = lush(function(f)
         DiagnosticUnderlineError { sp = DiagnosticWarn.fg, underline = true },
 
         -- TreeSitter
-        sym("@function.builtin") {},
+        sym("@function.builtin") { Function, bold = true },
         sym("@function.call") { italic = true },
         sym("@type.builtin") { Keyword },
         sym("@constant.builtin") { fg = p.color9 },
         sym("@variable") { fg = p.color13 },
-        sym("@variable.builtin") { fg = p.color13, bold = true },
+        sym("@variable.builtin") { sym("@variable"), bold = true },
         sym("@variable.parameter") { fg = p.color5, italic = true },
         sym("@attribute") { fg = p.color15, bg = p.color8 },
         sym("@module") { fg = p.color4 },
@@ -130,6 +133,12 @@ local colorscheme = lush(function(f)
         sym("cmakeKWfile") { Constant },
         sym("cmakeKWif") { Constant },
         sym("cmakeKWset") { String },
+
+        -- TreeSitter `Lisp`
+        sym("lispKey") { Constant },
+        sym("lispSymbol") { sym("@variable") },
+        sym("lispFunc") { Function },
+        sym("lispEscapeSpecial") { PreProc },
 
         -- LSP
         LspSignatureActiveParameter { sp = p.color15, bold = true, underline = true },
