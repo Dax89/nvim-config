@@ -54,9 +54,9 @@ vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv", { desc = "Move Row Down" })
 vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv", { desc = "Move Up Down" })
 vim.keymap.set("n", "<leader><leader>", ":so<CR>", { desc = "Source Ex Commands" })
 
--- Window mappings
+-- Window Manager
 for i = 1, 9 do
     local lhs = "<C-" .. i .. ">"
     local rhs = i .. "<C-w>w"
-    vim.keymap.set("n", lhs, rhs, { desc = "Move to Window " .. i })
+    vim.keymap.set("n", lhs, rhs, { desc = "Window - Move #" .. i })
 end

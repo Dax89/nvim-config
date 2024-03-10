@@ -120,7 +120,7 @@ return {
         "williamboman/mason-lspconfig.nvim",
         opts = {
             ensure_installed = {
-                "pyright",
+                "pylsp",
                 "tsserver",
                 "svelte",
                 "lua_ls",
@@ -128,7 +128,6 @@ return {
                 "clangd",
                 "bashls",
                 "marksman",
-                -- "solargraph"
             }
         },
         config = function(_, opts)

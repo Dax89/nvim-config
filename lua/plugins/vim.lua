@@ -31,5 +31,5 @@ return {
             { ",W", "<Plug>(easymotion-bd-W)",  desc = "EasyMotion - Find WORD" },
             { ",f", "<Plug>(easymotion-bd-f2)", desc = "EasyMotion - Find" },
         }
-    },
+    }
 }

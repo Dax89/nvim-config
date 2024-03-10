@@ -119,4 +119,13 @@ return {
             { "<leader>u", "<CMD>UndotreeToggle<CR>", desc = "UndoTree - Open" }
         }
     },
+    {
+        "otavioschwanck/arrow.nvim",
+
+        opts = {
+            global_bookmarks = true,
+            show_icons = true,
+            leader_key = ";",
+        }
+    }
 }
