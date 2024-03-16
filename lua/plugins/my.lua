@@ -134,7 +134,7 @@ return {
             integrations = {
                 luasnip = true,
                 cmp = true
-            },
+            }
         }
     })
 }
