@@ -220,7 +220,7 @@ Bookmarks.show = function()
         col = col,
         focusable = true,
         border = "single",
-        title = string.format(" Bookmarks - \"%s\" ", Common.get_filename(Bookmarks.cwd))
+        title = string.format("   %s ", Common.get_filename(Bookmarks.cwd))
     })
 
     vim.api.nvim_win_set_option(Bookmarks.winid, "number", true)
