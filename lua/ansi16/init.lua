@@ -185,6 +185,15 @@ local colorscheme = lush(function(f)
         NeogitDiffAdd { DiffAdd },
         NeogitDiffDelete { DiffDelete },
 
+        -- HiPhish/rainbow-delimiters.nvim
+        RainbowDelimiterRed { fg = p.color1 },
+        RainbowDelimiterYellow { fg = p.color11 },
+        RainbowDelimiterBlue { fg = p.color4 },
+        RainbowDelimiterOrange { fg = p.color3 },
+        RainbowDelimiterGreen { fg = p.color2 },
+        RainbowDelimiterViolet { fg = p.color5 },
+        RainbowDelimiterCyan { fg = p.color6 },
+
         -- rcarriga/nvim-notify
         NotifyDEBUGBorder { fg = p.color15 },
         NotifyDEBUGIcon { fg = p.color7 },
