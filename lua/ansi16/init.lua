@@ -101,6 +101,9 @@ local colorscheme = lush(function(f)
         sym("@module") { fg = p.color4 },
         sym("@string") { String },
 
+        -- TreeSitter `json`
+        sym("@property.json") { Type },
+
         -- TreeSitter `C++`
         sym("@keyword.storage.cpp") { fg = p.color10, bold = false },
         sym("@type.qualifier.cpp") { sym("@keyword.storage.cpp") },
