@@ -156,9 +156,12 @@ local colorscheme = lush(function(f)
         sym("@lsp.type.namespace") {},
         sym("@lsp.type.module") {},
         sym("@lsp.typemod.function.defaultLibrary") { sym("@function.builtin") },
-        sym("@lsp.typemod.string.injected") { sym("@string") },
         sym("@lsp.typemod.variable.defaultLibrary") { sym("@variable.builtin") },
         sym("@lsp.typemod.variable.injected") { sym("@variable") },
+        sym("@lsp.typemod.string.injected") { sym("@string") },
+
+        -- LSP `C++`
+        sym("@lsp.typemod.variable.readonly.cpp") { Constant },
 
         -- nvim-telescope/telescope.nvim
         TelescopeSelection { CursorLine },
