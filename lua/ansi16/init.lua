@@ -107,6 +107,7 @@ local colorscheme = lush(function(f)
         -- TreeSitter `C++`
         sym("@keyword.storage.cpp") { fg = p.color10, bold = false },
         sym("@type.qualifier.cpp") { sym("@keyword.storage.cpp") },
+        sym("@property.cpp") { sym("@variable") },
 
         -- TreeSitter `CMake`
         sym("cmakeVariable") { sym("@variable") },
