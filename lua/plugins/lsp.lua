@@ -50,17 +50,10 @@ local function setup_lsp_qmlls()
     }
 end
 
-local function setup_lsp_solargraph()
-    return {
-        single_file_support = true
-    }
-end
-
 local CUSTOM_LSP_CONFIGS = {
-    lua_ls     = setup_lsp_lua_ls,
-    clangd     = setup_lsp_clangd,
-    qmlls      = setup_lsp_qmlls,
-    solargraph = setup_lsp_solargraph,
+    lua_ls = setup_lsp_lua_ls,
+    clangd = setup_lsp_clangd,
+    qmlls  = setup_lsp_qmlls,
 }
 
 local CUSTOM_SERVERS = { "qmlls" }
