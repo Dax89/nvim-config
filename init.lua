@@ -47,7 +47,12 @@ require("config.mappings")
 require("config.bookmarks")
 require("config.secondbrain")
 
-require("lazy").setup("plugins")
+require("lazy").setup("plugins", {
+    ui = {
+        backdrop = 100,
+        border = "single"
+    }
+})
 
 require("lang.cpp")
 require("lang.json")
