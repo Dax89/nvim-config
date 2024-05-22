@@ -50,7 +50,7 @@ require("config.secondbrain")
 require("lazy").setup("plugins", {
     ui = {
         backdrop = 100,
-        border = "single"
+        border = "rounded"
     }
 })
 

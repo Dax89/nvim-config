@@ -11,6 +11,7 @@ local function create_buttons()
         { string.rep(" ", 4) .. "Settings & Plugins" },
         { "x", "", "Settings", ":e $MYVIMRC | :cd %:p:h" },
         { "l", "󰒲", "Lazy", ":Lazy" },
+        { "m", "", "Mason", ":Mason" },
     }
 
     local function fillw(s)

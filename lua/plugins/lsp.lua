@@ -109,7 +109,7 @@ return {
         config = true,
         opts = {
             ui = {
-                border = "single"
+                border = "rounded"
             }
         },
     },

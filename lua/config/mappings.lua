@@ -44,8 +44,8 @@ vim.keymap.set("n", "<A-p>", function()
         { " JSON Editor", function() require("config.common").json_editor(true) end },
         { " Settings", ":e $MYVIMRC | :cd %:p:h" },
         { "󰒲 Lazy", ":Lazy" },
-        { "↺ Restart LSP", ":LspRestart" },
-        { "! Mason", ":Mason" },
+        { " Restart LSP", ":LspRestart" },
+        { " Mason", ":Mason" },
         { "⚙ Commands", function() require("telescope.builtin").commands() end }
     })
 end)

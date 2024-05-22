@@ -232,7 +232,7 @@ Bookmarks.show = function()
         row = row,
         col = col,
         focusable = true,
-        border = "single",
+        border = "rounded",
         title = string.format("   %s ", Common.get_filename(Bookmarks.cwd))
     })
 
