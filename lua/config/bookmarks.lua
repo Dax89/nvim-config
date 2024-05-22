@@ -2,6 +2,14 @@ local Bookmarks = {
     FNV_OFFSET_BASIS = 2166136261,
     FNV_PRIME = 16777619,
 
+    DISABLED_KEYS = {
+        "a", "A", "c", "C", "D",
+        "o", "O",
+        "s", "S",
+        "u", "U", "x",
+        "v", "V",
+    },
+
     bmfile = nil,
     selwinid = nil,
     selbufid = nil,
@@ -175,6 +183,11 @@ Bookmarks.show = function()
             noremap = true,
             silent = true
         }
+
+        -- Disable some keybinds
+        for _, key in ipairs(Bookmarks.DISABLED_KEYS) do
+            vim.keymap.set("n", key, "<NOP>", options)
+        end
 
         vim.keymap.set("n", "<ESC>", Bookmarks.close_window, options)
         vim.keymap.set("n", "q", Bookmarks.close_window, options)
