@@ -36,6 +36,8 @@ local colorscheme = lush(function(f)
         PmenuThumb { fg = Normal.fg, bg = p.color8 },
         ModeMsg { fg = p.color4 },
         MoreMsg { fg = p.color12 },
+        NormalFloat { Normal },
+        FloatBorder { NormalFloat },
 
         -- Overlay
         NonText { fg = p.color8 },
