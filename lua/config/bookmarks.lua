@@ -5,6 +5,7 @@ local Bookmarks = {
     DISABLED_KEYS = {
         "a", "A", "c", "C", "D",
         "o", "O",
+        "p", "P",
         "s", "S",
         "u", "U", "x",
         "v", "V",
