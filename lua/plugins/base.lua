@@ -62,6 +62,8 @@ return {
 
     {
         "NeogitOrg/neogit",
+        tag = "v0.0.1", -- FIXME: Keep NVIM 0.9.x compatibility
+
         opts = {
             signs = {
                 item = { "", "" },
@@ -69,7 +71,10 @@ return {
             },
             disable_builtin_notifications = true,
         },
-        config = true,
+
+        config = function(_, opts)
+            require("neogit").setup(opts)
+        end,
 
         dependencies = {
             "nvim-lua/plenary.nvim",         -- required
