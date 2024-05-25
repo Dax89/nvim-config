@@ -26,7 +26,7 @@ common.set_options("opt", {
     laststatus = 3,        -- Set global statusline
     signcolumn = "number", -- LSP Diagnostic column is always visible
     sidescrolloff = 8,     -- Columns of context
-    scrolloff = 4,         -- Lines of context
+    scrolloff = 10,        -- Lines of context
     cursorline = true,     -- Highlight current line
     joinspaces = false,    -- No double spaces with join after a dot
     hlsearch = false,      -- Don't highlight search results
