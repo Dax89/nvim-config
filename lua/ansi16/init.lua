@@ -95,9 +95,9 @@ local colorscheme = lush(function(f)
         sym("@function.builtin") { Function, bold = true },
         sym("@function.call") { italic = true },
         sym("@type.builtin") { Keyword },
-        sym("@constant.builtin") { fg = p.color9 },
+        sym("@constant.builtin") { Constant, bold = true },
         sym("@variable") { fg = p.color13 },
-        sym("@variable.builtin") { sym("@variable"), bold = true },
+        sym("@variable.builtin") { fg = p.color1, bold = true },
         sym("@variable.parameter") { fg = p.color5, italic = true },
         sym("@attribute") { fg = p.color15, bg = p.color8 },
         sym("@module") { fg = p.color4 },
@@ -165,6 +165,7 @@ local colorscheme = lush(function(f)
 
         -- LSP `C++`
         sym("@lsp.typemod.variable.readonly.cpp") { Constant },
+        sym("@lsp.type.modifier.cpp") { Keyword },
 
         -- nvim-telescope/telescope.nvim
         TelescopeSelection { CursorLine },
