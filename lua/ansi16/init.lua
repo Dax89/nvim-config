@@ -164,6 +164,7 @@ local colorscheme = lush(function(f)
         sym("@lsp.typemod.string.injected") { sym("@string") },
 
         -- LSP `C++`
+        sym("@lsp.typemod.parameter.readonly.cpp") { Constant },
         sym("@lsp.typemod.variable.readonly.cpp") { Constant },
         sym("@lsp.type.modifier.cpp") { Keyword },
 
