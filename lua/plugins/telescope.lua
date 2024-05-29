@@ -79,15 +79,15 @@ return {
             defaults = {
                 mappings = {
                     n = {
-                        ["<Tab>"] = actions.move_selection_next,
-                        ["<S-Tab>"] = actions.move_selection_previous,
+                        ["<Tab>"] = actions.move_selection_previous,
+                        ["<S-Tab>"] = actions.move_selection_next,
                         ["<C-n>"] = actions.toggle_selection + actions.move_selection_worse,
                         ["<C-p>"] = actions.toggle_selection + actions.move_selection_better,
                         ["<C-h>"] = "which_key",
                     },
                     i = {
-                        ["<Tab>"] = actions.move_selection_next,
-                        ["<S-Tab>"] = actions.move_selection_previous,
+                        ["<Tab>"] = actions.move_selection_previous,
+                        ["<S-Tab>"] = actions.move_selection_next,
                         ["<C-n>"] = actions.toggle_selection + actions.move_selection_worse,
                         ["<C-p>"] = actions.toggle_selection + actions.move_selection_better,
                         ["<C-h>"] = "which_key",
