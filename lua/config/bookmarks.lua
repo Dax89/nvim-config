@@ -7,8 +7,7 @@ local Bookmarks = {
         "o", "O",
         "p", "P",
         "s", "S",
-        "u", "U", "x",
-        "v", "V",
+        "U", "x", "v"
     },
 
     bmfile = nil,
