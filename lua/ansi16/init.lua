@@ -104,7 +104,10 @@ local colorscheme = lush(function(f)
         sym("@string") { String },
 
         -- TreeSitter `json`
-        sym("@property.json") { Type },
+        sym("@property.json") { PreProc },
+
+        -- TreeSitter `css`
+        sym("@property.css") { PreProc },
 
         -- TreeSitter `C++`
         sym("@keyword.storage.cpp") { fg = p.color10, bold = false },
@@ -167,6 +170,7 @@ local colorscheme = lush(function(f)
         sym("@lsp.typemod.parameter.readonly.cpp") { Constant },
         sym("@lsp.typemod.variable.readonly.cpp") { Constant },
         sym("@lsp.type.modifier.cpp") { Keyword },
+        sym("@lsp.type.macro.cpp") { PreProc },
 
         -- nvim-telescope/telescope.nvim
         TelescopeSelection { CursorLine },
