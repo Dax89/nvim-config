@@ -119,7 +119,7 @@ return {
         opts = {
             ensure_installed = {
                 "pylsp",
-                "tsserver",
+                "ts_ls",
                 "svelte",
                 "lua_ls",
                 "cmake",
