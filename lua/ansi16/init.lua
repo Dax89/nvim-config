@@ -127,6 +127,7 @@ local colorscheme = lush(function(f)
         sym("cmakeKWget_cmake_property") { Constant },
         sym("cmakeKWctest_configure") { Constant },
         sym("cmakeKWadd_custom_target") { Constant },
+        sym("cmakeKWqt_wrap_cpp") { Constant },
         sym("cmakeKWvariable_watch") { Constant },
         sym("cmakeKWtarget_sources") { Constant },
         sym("cmakeKWadd_library") { Constant },
