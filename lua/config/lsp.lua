@@ -1,4 +1,6 @@
-local M = {}
+local M = {
+    IGNORE_FORMATTING = { "css" }, -- FileType
+}
 
 function M.on_attach(client, bufnr)
     local setkey = function(key, cb, desc)
@@ -18,7 +20,10 @@ function M.on_attach(client, bufnr)
         vim.keymap.set("n", "<F4>", ":ClangdSwitchSourceHeader<CR>", { desc = "LSP - Switch Source/Header" })
     end
 
-    if client.supports_method("textDocument/formatting") then
+    local filetype = vim.bo[bufnr].filetype
+
+    if not vim.tbl_contains(M.IGNORE_FORMATTING, filetype) and
+        client.supports_method("textDocument/formatting") then
         vim.api.nvim_create_autocmd({ "BufWritePre" }, {
             callback = function() vim.lsp.buf.format() end,
             buffer = bufnr,
