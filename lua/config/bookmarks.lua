@@ -165,7 +165,7 @@ Bookmarks.open_selected = function(r)
             if bi.file == selline then
                 Bookmarks.close_window(false)
                 vim.cmd(":edit " .. bi.file)
-                vim.api.nvim_win_set_cursor(0, { bi.row, bi.col })
+                pcall(vim.api.nvim_win_set_cursor, 0, { bi.row, bi.col })
             end
         end
     end
