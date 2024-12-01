@@ -50,10 +50,25 @@ local function setup_lsp_qmlls()
     }
 end
 
+local function setup_lsp_pylsp()
+    return {
+        settings = {
+            pylsp = {
+                plugins = {
+                    pycodestyle = {
+                        ignore = { "E501", "W504" },
+                    }
+                }
+            }
+        }
+    }
+end
+
 local CUSTOM_LSP_CONFIGS = {
     lua_ls = setup_lsp_lua_ls,
     clangd = setup_lsp_clangd,
     qmlls  = setup_lsp_qmlls,
+    pylsp  = setup_lsp_pylsp,
 }
 
 local CUSTOM_SERVERS = { "qmlls" }

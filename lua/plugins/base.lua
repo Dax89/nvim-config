@@ -62,7 +62,6 @@ return {
 
     {
         "NeogitOrg/neogit",
-        -- tag = "v0.0.1", -- FIXME: Keep NVIM 0.9.x compatibility
 
         opts = {
             signs = {
