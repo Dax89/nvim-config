@@ -7,7 +7,6 @@ local function create_buttons()
         { "p", "", "Workspaces", ":Automaton recents" },
         { string.rep(" ", 4) .. "Utilities" },
         { "j", "", "JSON Editor", function() require("config.common").json_editor() end },
-        { "b", "", "Second Brain", ":e $HOME/Dev/Cloud/BrainDump/index.wiki | :cd %:p:h" },
         { string.rep(" ", 4) .. "Settings & Plugins" },
         { "x", "", "Settings", ":e $MYVIMRC | :cd %:p:h" },
         { "l", "󰒲", "Lazy", ":Lazy" },
