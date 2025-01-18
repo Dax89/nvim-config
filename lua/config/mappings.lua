@@ -1,5 +1,31 @@
 local common = require("config.common")
 
+-- HACK: Remap Foldings before custom mappings fixes UI refresh
+-- https://github.com/dante0624/nvim_config/blob/main/lua/core/myModules/folding.lua
+local function fold_keymap(mode, lhs, rhs, opts)
+    local options = { noremap = true, silent = true }
+    if opts then
+        options = vim.tbl_extend("force", options, opts)
+    end
+
+    vim.keymap.set(mode, lhs, function()
+        local method = vim.o.foldmethod
+        vim.cmd("setlocal foldmethod=" .. method)
+        vim.cmd("normal! " .. rhs)
+    end, options)
+end
+
+fold_keymap("", "ze", "]z")
+fold_keymap("", "zb", "[z")
+
+fold_keymap("", "za", "za")
+fold_keymap("", "zo", "zo")
+fold_keymap("", "zO", "zO")
+fold_keymap("", "zc", "zc")
+fold_keymap("", "zC", "zC")
+fold_keymap("", "zR", "zR")
+fold_keymap("", "zM", "zM")
+
 -- Disable Help Shortcut
 vim.keymap.set({ "i", "n" }, "<F1>", "<Nop>")
 
