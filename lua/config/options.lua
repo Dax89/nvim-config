@@ -14,10 +14,9 @@ common.set_options("opt", {
     clipboard = "unnamedplus",             -- Use System Clipboard
     colorcolumn = "80,120",                -- Screen Columns
 
-    -- Neovim UI
+    -- UI
     number = true,         -- Print line number
     showmatch = true,      -- Highlight matching parenthesis
-    foldenable = false,    -- Disable folding
     splitbelow = true,     -- Put new windows below current
     splitright = true,     -- Put new windows right of current
     ignorecase = true,     -- Ignore case
@@ -32,15 +31,33 @@ common.set_options("opt", {
     hlsearch = false,      -- Don't highlight search results
     wrap = false,          -- Disable line wrap
 
-    -- Tabs, indent
-    expandtab = true,   -- Use spaces instead of tabs
-    shiftwidth = 4,     -- Shift 4 spaces when tab
-    softtabstop = 4,    -- 4 spaces == 1 tab
-    tabstop = 4,        -- 1 tab == 4 spaces
-    smartindent = true, -- Autoindent new lines
-    shiftround = true,  -- Round indent
+    fillchars = {          -- Redefine UI characters
+        foldclose = "",
+        foldopen = "",
+        vert = "│",
+        fold = " ",
+        diff = "░",
+        msgsep = "",
+        foldsep = "│",
+        eob = " ",
+    },
 
-    -- Memory, CPU
+    -- Tabs & Indent
+    expandtab = true,      -- Use spaces instead of tabs
+    shiftwidth = 4,        -- Shift 4 spaces when tab
+    softtabstop = 4,       -- 4 spaces == 1 tab
+    tabstop = 4,           -- 1 tab == 4 spaces
+    smartindent = true,    -- Autoindent new lines
+    shiftround = true,     -- Round indent
+    foldmethod = "indent", -- Indent based folds
+
+    -- Folding
+    foldcolumn = "0",   -- Hide fold column
+    foldlevel = 99,     -- Minimum fold level that will be closed
+    foldenable = false, -- Disable folding by default
+    foldtext = "",      -- Normal highlighting and no line wrapping
+
+    -- Performance
     -- lazyredraw = true,      -- Improve performance when running macros
     hidden = true,             -- Enable modified buffers in background
     history = 100,             -- Remember N lines in history
@@ -48,6 +65,7 @@ common.set_options("opt", {
     wildmode = "longest,full", -- Command-line completion mode
 })
 
+-- Setup GUI Frontend
 if vim.fn.has("gui_running") then
     common.set_options("opt", {
         guifont = "monospace:h14", -- GUI Font

@@ -108,6 +108,10 @@ return {
 
         config = function(_, opts)
             require("nvim-treesitter.configs").setup(opts)
+
+            -- Switch to TreeSitter based folding
+            vim.opt.foldmethod = "expr"
+            vim.opt.foldexpr = "v:lua.vim.treesitter.foldexpr()"
         end
     },
     {
