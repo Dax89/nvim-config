@@ -42,12 +42,13 @@ vim.keymap.set("n", "<leader>A", "gg0VG", { desc = "Select All" })
 
 -- Check keyboard layout
 if common.is_layout_en() then
-    vim.keymap.set("n", "<leader>=", "<CMD>enew<CR>", { desc = "New Tab" })
+    vim.keymap.set("n", "<leader>=", "<CMD>enew<CR>", { desc = "New Buffer" })
 else
-    vim.keymap.set("n", "<leader>+", "<CMD>enew<CR>", { desc = "New Tab" })
+    vim.keymap.set("n", "<leader>+", "<CMD>enew<CR>", { desc = "New Buffer" })
 end
 
-vim.keymap.set("n", "<leader>-", function() require("bufdelete").bufdelete(0, true) end, { desc = "Close Tab" })
+vim.keymap.set("n", "<leader>q", "<CMD>%bd|e#|bd#<CR>", { desc = "Close Other Buffers" })
+vim.keymap.set("n", "<leader>-", function() require("bufdelete").bufdelete(0, true) end, { desc = "Close Buffer" })
 
 vim.keymap.set("n", "<leader>s", function()
     local p = require("plenary.path"):new(vim.api.nvim_buf_get_name(0))
