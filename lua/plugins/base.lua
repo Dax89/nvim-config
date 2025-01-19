@@ -61,40 +61,6 @@ return {
     },
 
     {
-        "NeogitOrg/neogit",
-
-        opts = {
-            signs = {
-                item = { "", "" },
-                section = { "", "" },
-            },
-            disable_builtin_notifications = true,
-        },
-
-        config = function(_, opts)
-            require("neogit").setup(opts)
-        end,
-
-        dependencies = {
-            "nvim-lua/plenary.nvim",         -- required
-            "nvim-telescope/telescope.nvim", -- optional
-            "sindrets/diffview.nvim",        -- optional
-            "ibhagwan/fzf-lua",              -- optional
-        },
-
-        keys = {
-            {
-                "<leader>gg",
-                function()
-                    require("neogit").open({ kind = "vsplit" })
-                end,
-
-                desc = "NeoGit = Open"
-            }
-        }
-    },
-
-    {
         "windwp/nvim-autopairs",
 
         opts = {
