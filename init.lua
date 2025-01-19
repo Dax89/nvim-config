@@ -40,6 +40,24 @@ end
 check_lazy()
 disable_builtins()
 
+-- Use "q" to close special buffer types.
+-- "" catches a lot of transient plugin windows.
+vim.api.nvim_create_autocmd("BufEnter", {
+    callback = function(args)
+        local TYPES = {
+            "help", "fugitive", "checkhealth", "vim", "qf", ""
+        }
+
+        if vim.tbl_contains(TYPES, vim.bo[args.buf].filetype) then
+            vim.api.nvim_buf_set_keymap(args.buf, "n", "q", "", {
+                callback = function()
+                    vim.api.nvim_command("close")
+                end
+            })
+        end
+    end
+})
+
 require("config.options")
 require("config.commands")
 require("config.diagnostic")
