@@ -77,7 +77,6 @@ end)
 
 vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv", { desc = "Move Row Down" })
 vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv", { desc = "Move Up Down" })
-vim.keymap.set("n", "<leader><leader>", ":so<CR>", { desc = "Source Ex Commands" })
 
 -- Window Manager
 for i = 1, 9 do
