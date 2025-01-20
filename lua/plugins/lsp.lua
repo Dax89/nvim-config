@@ -137,7 +137,7 @@ return {
                 "ts_ls",
                 "svelte",
                 "lua_ls",
-                "cmake",
+                -- "cmake",
                 "clangd",
                 "bashls",
                 "marksman",
