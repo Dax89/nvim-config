@@ -9,6 +9,7 @@ local function obsidian_sync()
     local currpath = vim.api.nvim_buf_get_name(0)
     if not vim.startswith(currpath, vaultpath) then return end
 
+    vim.notify("Syncing vault...")
     local oldcwd = vim.fn.getcwd()
     vim.api.nvim_set_current_dir(vaultpath)
 
