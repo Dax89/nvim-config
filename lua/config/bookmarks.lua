@@ -70,7 +70,7 @@ Bookmarks.insert_line = function(index, line)
 end
 
 Bookmarks.close_window = function(update)
-    if update ~= false then
+    if Bookmarks.bufid and update ~= false then
         local lines = vim.tbl_filter(function(x)
             return x ~= "" -- Filter empty lines
         end, Bookmarks.get_lines())
@@ -103,7 +103,10 @@ Bookmarks.close_window = function(update)
         end
     end
 
-    vim.api.nvim_win_close(Bookmarks.winid, { force = true })
+    if Bookmarks.winid then
+        vim.api.nvim_win_close(Bookmarks.winid, { force = true })
+    end
+
     Bookmarks.winid = nil
 end
 
@@ -207,6 +210,15 @@ Bookmarks.show = function()
             buffer = Bookmarks.bufid,
             desc = "Bookmarks - Save on leave",
             callback = Bookmarks.close_window
+        })
+
+        vim.api.nvim_create_autocmd("BufUnload", {
+            buffer = Bookmarks.bufid,
+            desc = "Bookmarks - Save on delete",
+            callback = function()
+                Bookmarks.close_window()
+                Bookmarks.bufid = nil
+            end
         })
     end
 
