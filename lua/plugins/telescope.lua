@@ -9,6 +9,14 @@ local function telescope_delete_buffer(promptnr)
     end)
 end
 
+local function telescope_show_buffers()
+    local builtin = require("telescope.builtin")
+    builtin.buffers({
+        ignore_current_buffer = true,
+        sort_mru = true
+    })
+end
+
 local actions = require("telescope.actions")
 
 return {
@@ -27,7 +35,7 @@ return {
             }
 
             local res = {
-                { "<leader>b", "<CMD>Telescope buffers<CR>",           desc = "Telescope - Buffers" },
+                { "<leader>b", telescope_show_buffers,                 desc = "Telescope - Buffers" },
                 { "<C-h>",     "<CMD>Telescope oldfiles<CR>",          desc = "Telescope - History" },
                 { "<C-k>",     "<CMD>Telescope find_files<CR>",        desc = "Telescope = Find Files" },
                 { "<C-p>",     "<CMD>silent! Telescope git_files<CR>", desc = "Telescope = Git Files" },
