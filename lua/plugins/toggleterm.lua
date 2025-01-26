@@ -3,7 +3,7 @@ return {
         "akinsho/toggleterm.nvim",
 
         keys = {
-            { "t", "<CMD>ToggleTerm<CR>", desc = "ToggleTerm - Toggle", mode = "n" }
+            { "T", "<CMD>ToggleTerm<CR>", desc = "ToggleTerm - Toggle", mode = "n" }
         },
 
         opts = {
