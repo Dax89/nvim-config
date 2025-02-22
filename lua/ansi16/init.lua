@@ -167,7 +167,7 @@ local colorscheme = lush(function(f)
         sym("@lsp.type.namespace") {},
         sym("@lsp.type.module") {},
         sym("@lsp.typemod.function.defaultLibrary") { sym("@function.builtin") },
-        sym("@lsp.typemod.variable.defaultLibrary") { sym("@variable.builtin") },
+        sym("@lsp.typemod.variable.usedAsMutableReference") { fg = p.color14, italic = true, },
         sym("@lsp.typemod.variable.injected") { sym("@variable") },
         sym("@lsp.typemod.string.injected") { sym("@string") },
 
