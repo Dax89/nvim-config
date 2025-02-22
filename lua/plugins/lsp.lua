@@ -96,6 +96,11 @@ return {
     "RRethy/vim-illuminate",
 
     {
+        "j-hui/fidget.nvim",
+        config = true
+    },
+
+    {
         "ray-x/lsp_signature.nvim",
         event = "VeryLazy",
         opts = {
