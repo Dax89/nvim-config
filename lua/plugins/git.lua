@@ -3,7 +3,7 @@ return {
         "tpope/vim-fugitive",
 
         keys = {
-            { "<leader>gg", ":Git<CR>",                                                 mode = "n", desc = "Git - Open" },
+            { "<leader>gg", ":vertical Git<CR>",                                        mode = "n", desc = "Git - Open" },
             { "<leader>gl", ":vertical :Git log<CR>",                                   mode = "n", desc = "Git - Log" },
             { "<leader>gc", ":vertical Git commit --quiet<CR>",                         mode = "n", desc = "Git - Commit" },
             { "<leader>ga", ":vertical Git commit --amend --quiet<CR>",                 mode = "n", desc = "Git - Commit" },
