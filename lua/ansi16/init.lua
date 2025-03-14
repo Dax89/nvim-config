@@ -103,6 +103,9 @@ local colorscheme = lush(function(f)
         sym("@attribute") { fg = p.color15, bg = p.color8 },
         sym("@module") { fg = p.color4 },
         sym("@string") { String },
+        sym("@keyword.storage") { fg = p.color10, bold = false },
+        sym("@type.qualifier") { sym("@keyword.storage") },
+        sym("@property") { sym("@variable") },
 
         -- TreeSitter `json`
         sym("@property.json") { PreProc },
@@ -111,9 +114,6 @@ local colorscheme = lush(function(f)
         sym("@property.css") { PreProc },
 
         -- TreeSitter `C++`
-        sym("@keyword.storage.cpp") { fg = p.color10, bold = false },
-        sym("@type.qualifier.cpp") { sym("@keyword.storage.cpp") },
-        sym("@property.cpp") { sym("@variable") },
 
         -- TreeSitter `CMake`
         sym("cmakeVariable") { sym("@variable") },
@@ -170,12 +170,10 @@ local colorscheme = lush(function(f)
         sym("@lsp.typemod.variable.usedAsMutableReference") { fg = p.color5, italic = true, },
         sym("@lsp.typemod.variable.injected") { sym("@variable") },
         sym("@lsp.typemod.string.injected") { sym("@string") },
-
-        -- LSP `C++`
-        sym("@lsp.typemod.parameter.readonly.cpp") { Constant },
-        sym("@lsp.typemod.variable.readonly.cpp") { Constant },
-        sym("@lsp.type.modifier.cpp") { Keyword },
-        sym("@lsp.type.macro.cpp") { PreProc },
+        sym("@lsp.typemod.parameter.readonly") { Constant },
+        sym("@lsp.typemod.variable.readonly") { Constant },
+        sym("@lsp.type.modifier") { Keyword },
+        sym("@lsp.type.macro") { PreProc },
 
         -- nvim-telescope/telescope.nvim
         TelescopeSelection { CursorLine },
