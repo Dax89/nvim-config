@@ -16,7 +16,7 @@ local colorscheme = lush(function(f)
         EndOfBuffer { fg = p.color0 },
         Visual { fg = Normal.bg, bg = p.color15 },
         VisualNC { fg = Normal.bg, bg = p.color8 },
-        Comment { fg = p.color8, italic = true },
+        Comment { fg = p.color8, bg = p.color0, italic = true },
         Title { fg = p.color2 },
         CursorLine { bg = p.chromealt },
         CursorColumn { CursorLine },
