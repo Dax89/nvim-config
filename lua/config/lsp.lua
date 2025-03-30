@@ -2,7 +2,7 @@ local M = {
     IGNORE_FORMATTING = { "css" }, -- FileType
 }
 
-vim.lsp.set_log_level("off")
+vim.lsp.set_log_level("ERROR")
 
 function M.on_attach(client, bufnr)
     local setkey = function(key, cb, desc)
