@@ -24,7 +24,7 @@ end
 local function get_current_lsp()
     local msg = ""
     local ft = vim.api.nvim_buf_get_option(0, "filetype")
-    local clients = vim.lsp.get_active_clients()
+    local clients = vim.lsp.get_clients()
 
     for _, client in ipairs(clients) do
         local filetypes = client.config.filetypes
