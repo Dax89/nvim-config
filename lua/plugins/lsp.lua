@@ -43,12 +43,12 @@ local function setup_lsp_clangd()
     }
 end
 
-local function setup_lsp_qmlls()
-    return {
-        cmd = { "qmlls6" },
-        filetypes = { "qmljs", "qml" }
-    }
-end
+-- local function setup_lsp_qmlls()
+--     return {
+--         cmd = { "qmlls6" },
+--         filetypes = { "qmljs", "qml" }
+--     }
+-- end
 
 local function setup_lsp_pylsp()
     return {
@@ -64,35 +64,53 @@ local function setup_lsp_pylsp()
     }
 end
 
-local CUSTOM_LSP_CONFIGS = {
-    lua_ls = setup_lsp_lua_ls,
-    clangd = setup_lsp_clangd,
-    qmlls  = setup_lsp_qmlls,
-    pylsp  = setup_lsp_pylsp,
+local LSP_SERVERS = {
+    lua_ls   = setup_lsp_lua_ls,
+    clangd   = setup_lsp_clangd,
+    -- qmlls  = setup_lsp_qmlls,
+    pylsp    = setup_lsp_pylsp,
+    ts_ls    = {},
+    svelte   = {},
+    -- cmake = { },
+    bashls   = {},
+    marksman = {},
 }
 
-local CUSTOM_SERVERS = { "qmlls" }
-
 local function setup_servers()
-    local installedservers = require("mason-lspconfig").get_installed_servers()
-    local lspconfig = require("lspconfig")
-
-    for _, name in ipairs(vim.list_extend(installedservers, CUSTOM_SERVERS)) do
+    for name, ep in pairs(LSP_SERVERS) do
         local config = {
-            on_attach = require("config.lsp").on_attach,
             capabilities = require("cmp_nvim_lsp").default_capabilities()
         }
 
-        if vim.is_callable(CUSTOM_LSP_CONFIGS[name]) then
-            config = vim.tbl_deep_extend("force", config, CUSTOM_LSP_CONFIGS[name]())
+        if vim.is_callable(ep) then -- Customize config (if any)
+            config = vim.tbl_deep_extend("force", config, ep())
         end
 
-        lspconfig[name].setup(config)
+        -- NOTE: Some servers may require an old setup until they are updated.
+        -- See https://github.com/neovim/nvim-lspconfig/issues/3705
+        -- require("lspconfig")[name].setup(config)
+        vim.lsp.config(name, config)
     end
 end
 
 return {
-    "neovim/nvim-lspconfig",
+    {
+        "neovim/nvim-lspconfig",
+
+        config = function()
+            setup_servers()
+
+            vim.api.nvim_create_autocmd("LspAttach", {
+                group = vim.api.nvim_create_augroup("config-lsp-attach", { clear = true }),
+
+                callback = function(event)
+                    local client = vim.lsp.get_client_by_id(event.data.client_id)
+                    require("config.lsp").on_attach(client, event.buf)
+                end
+            })
+        end
+    },
+
     "RRethy/vim-illuminate",
 
     {
@@ -137,21 +155,8 @@ return {
     {
         "williamboman/mason-lspconfig.nvim",
         opts = {
-            ensure_installed = {
-                "pylsp",
-                "ts_ls",
-                "svelte",
-                "lua_ls",
-                -- "cmake",
-                "clangd",
-                "bashls",
-                "marksman",
-            }
+            ensure_installed = vim.tbl_keys(LSP_SERVERS),
         },
-        config = function(_, opts)
-            require("mason-lspconfig").setup(opts)
-            setup_servers()
-        end
     },
 
     {
