@@ -112,7 +112,10 @@ local colorscheme = lush(function(f)
         -- TreeSitter `css`
         sym("@property.css") { PreProc },
 
-        -- TreeSitter `C++`
+        -- TreeSitter `Forth`
+        sym("forthColonDef") { Function },
+        sym("forthAdrArith") { sym("@variable") },
+        sym("forthStack") { Type },
 
         -- TreeSitter `CMake`
         sym("cmakeVariable") { sym("@variable") },
@@ -157,6 +160,9 @@ local colorscheme = lush(function(f)
         sym("lispSymbol") { sym("@variable") },
         sym("lispFunc") { Function },
         sym("lispEscapeSpecial") { PreProc },
+
+        -- TreeSitter `TCL`
+        sym("tclVarRef") { sym("@variable") },
 
         -- LSP
         LspSignatureActiveParameter { sp = p.color15, bold = true, underline = true },
