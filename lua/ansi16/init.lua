@@ -180,6 +180,9 @@ local colorscheme = lush(function(f)
         sym("@lsp.type.modifier") { Keyword },
         sym("@lsp.type.macro") { PreProc },
 
+        -- LSP `Lua`
+        sym("@lsp.type.property.lua") { sym("@variable") },
+
         -- nvim-telescope/telescope.nvim
         TelescopeSelection { CursorLine },
 
