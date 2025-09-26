@@ -18,5 +18,30 @@ return {
                 }
             }
         }
-    }
+    },
+
+    {
+        "vlime/vlime",
+        ft = { "lisp", "commonlisp" },
+
+        dependencies = {
+            "kovisoft/paredit"
+        },
+
+        enabled = function()
+            return vim.fn.executable("sbcl")
+        end,
+
+        init = function()
+            vim.opt.rtp:append(vim.fn.stdpath("data") .. "/lazy/vlime/vim")
+
+            vim.g.vlime_enable_autodoc = 1
+            vim.g.vlime_window_settings = {
+                repl = { pos = "belowright", vertical = true },
+                sldb = { pos = "belowright", size = 20 },
+                server = { pos = "belowright", size = 10 },
+                inspector = { pos = "belowright", size = 15 },
+            }
+        end,
+    },
 }

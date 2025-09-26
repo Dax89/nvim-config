@@ -45,7 +45,9 @@ disable_builtins()
 vim.api.nvim_create_autocmd("BufEnter", {
     callback = function(args)
         local TYPES = {
-            "help", "fugitive", "checkhealth", "vim", "qf", ""
+            "help", "fugitive", "checkhealth", "vim", "qf",
+            "vlime_server", "vlime_repl", "vlime_threads",
+            ""
         }
 
         if vim.tbl_contains(TYPES, vim.bo[args.buf].filetype) then

@@ -46,7 +46,8 @@ return {
             "hrsh7th/cmp-buffer",
             "hrsh7th/cmp-path",
             "hrsh7th/cmp-nvim-lsp",
-            "hrsh7th/cmp-nvim-lua"
+            "hrsh7th/cmp-nvim-lua",
+            "HiPhish/nvim-cmp-vlime",
         },
         opts = function()
             local cmp, luasnip = require("cmp"), require("luasnip")
@@ -123,6 +124,7 @@ return {
                     { name = "nvim_lua" },
                     { name = "path" },
                     { name = "luasnip" },
+                    { name = "vlime" },
                 }),
 
                 sorting = {
