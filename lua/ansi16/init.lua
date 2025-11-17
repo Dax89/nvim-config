@@ -65,6 +65,7 @@ local colorscheme = lush(function(f)
         Statement { fg = p.color10 },
         Identifier { fg = p.color15 },
         Constant { fg = p.color3 },
+        Exception { fg = p.color1, bold = true },
         Keyword { Statement, bold = true },
         Special { fg = p.color7 },
         Operator { fg = p.color7 },
