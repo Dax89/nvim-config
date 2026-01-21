@@ -63,9 +63,8 @@ return {
                     end
                 },
                 formatting = {
-                    fields = { "kind", "abbr", "menu" },
+                    fields = { "icon", "abbr", "menu" },
                     format = require("lspkind").cmp_format({
-                        mode = "symbol",
                         maxwidth = 100,
 
                         before = function(entry, item)
@@ -142,6 +141,10 @@ return {
             if ok then
                 cmp.event:on("confirm_done", cmp_autopairs.on_confirm_done())
             end
+
+            -- Enhance highlighting
+            vim.api.nvim_set_hl(0, "CmpItemKindIcon", { link = "Type" })
+            vim.api.nvim_set_hl(0, "CmpItemMenu", { link = "Keyword" })
         end
     }
 }
