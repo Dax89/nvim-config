@@ -46,7 +46,12 @@ return {
                 AARRGGBB = true,
                 rgb_fn = true,
                 hsl_fn = true,
+            },
+            filetypes = {
+                "*",
+                "!TelescopePrompt"
             }
+
         },
         config = true
     },
