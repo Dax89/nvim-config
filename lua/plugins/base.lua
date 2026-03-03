@@ -39,18 +39,40 @@ return {
     { "numToStr/Comment.nvim",        config = true },
 
     {
-        "NvChad/nvim-colorizer.lua",
+        "catgoose/nvim-colorizer.lua",
         opts = {
-            user_default_options = {
-                RRGGBBAA = true,
-                AARRGGBB = true,
-                rgb_fn = true,
-                hsl_fn = true,
+            options = {
+                parsers = {
+                    css = true,
+                    names = false,
+
+                    tailwind = {
+                        enable = true,
+                        lsp = true,
+                        update_names = true,
+                    },
+
+                    hex = {
+                        rgb = true,
+                        rgba = true,
+                        rrggbb = true,
+                        rrggbbaa = true,
+                        aarrggbb = false,
+                    },
+                },
+
+                display = {
+                    mode = "virtualtext",
+
+                    virtualtext = {
+                        char = "■",
+                        position = "before",
+                        hl_mode = "foreground",
+                    },
+                }
             },
-            filetypes = {
-                "*",
-                "!TelescopePrompt"
-            }
+
+            filetypes = { "*", "!TelescopePrompt" }
 
         },
         config = true
