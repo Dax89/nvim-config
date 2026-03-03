@@ -8,14 +8,17 @@ return {
     { "bfrg/vim-jq",                ft = "jq" },
 
     {
-        {
-            "lukas-reineke/headlines.nvim",
-            ft = { "markdown" },
-            opts = {
-                markdown = {
-                    fat_headline_upper_string = "▁",
-                    fat_headline_lower_string = "▔",
-                }
+        "davidmh/mdx.nvim",
+        dependencies = "nvim-treesitter/nvim-treesitter"
+    },
+
+    {
+        "lukas-reineke/headlines.nvim",
+        ft = { "markdown" },
+        opts = {
+            markdown = {
+                fat_headline_upper_string = "▁",
+                fat_headline_lower_string = "▔",
             }
         }
     },
