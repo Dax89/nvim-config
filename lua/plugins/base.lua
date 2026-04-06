@@ -92,7 +92,7 @@ return {
 
         opts = {
             check_ts = true,
-            disable_filetype = { "fennel", "lisp" }
+            disable_filetype = { "fennel", "lisp", "TelescopePrompt" }
         }
     },
 
