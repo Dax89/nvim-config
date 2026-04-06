@@ -95,25 +95,4 @@ return {
             disable_filetype = { "fennel", "lisp", "TelescopePrompt" }
         }
     },
-
-    {
-        "mbbill/undotree",
-
-        init = function()
-            vim.g.undotree_CustomUndotreeCmd = "vertical 50 new"
-            vim.g.undotree_CustomDiffpanelCmd = "botright 10 new"
-            vim.g.undotree_TreeNodeShape = "●"
-            vim.g.undotree_TreeVertShape = "│"
-            vim.g.undotree_TreeSplitShape = "╱"
-            vim.g.undotree_TreeReturnShape = "╲"
-            vim.g.undotree_SetFocusWhenToggle = true
-            vim.g.undotree_DiffAutoOpen = true
-            vim.g.undotree_HelpLine = false
-            vim.g.undotree_ShortIndicators = true
-        end,
-
-        keys = {
-            { "<leader>u", "<CMD>UndotreeToggle<CR>", desc = "UndoTree - Open" }
-        }
-    }
 }

@@ -78,6 +78,21 @@ end)
 vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv", { desc = "Move Row Down" })
 vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv", { desc = "Move Up Down" })
 
+vim.keymap.set("n", "<leader>f", function()
+    vim.cmd.packadd("cfilter")
+    vim.fn.feedkeys(":Cfilter ")
+end, { desc = "CFilter - matching" })
+
+vim.keymap.set("n", "<leader>F", function()
+    vim.cmd.packadd("cfilter")
+    vim.fn.feedkeys(":Cfilter! ")
+end, { desc = "CFilter - NOT matching" })
+
+vim.keymap.set("n", "<leader>U", function()
+    vim.cmd.packadd("nvim.undotree")
+    require("undotree").open({ command = "50vnew" })
+end, { desc = "Show undo tree" })
+
 -- Window Manager
 for i = 1, 9 do
     local lhs = "<C-" .. i .. ">"
