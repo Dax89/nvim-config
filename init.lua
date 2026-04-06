@@ -40,13 +40,16 @@ end
 check_lazy()
 disable_builtins()
 
+vim.cmd.packadd("nvim.difftool")
+
 -- Use "q" to close special buffer types.
 -- "" catches a lot of transient plugin windows.
-vim.api.nvim_create_autocmd("BufEnter", {
+vim.api.nvim_create_autocmd("FileType", {
     callback = function(args)
         local TYPES = {
             "help", "fugitive", "checkhealth", "vim", "qf",
             "vlime_server", "vlime_repl", "vlime_threads",
+            "nvim-undotree"
         }
 
         if vim.tbl_contains(TYPES, vim.bo[args.buf].filetype) then
