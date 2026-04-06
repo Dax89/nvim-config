@@ -1,7 +1,23 @@
+local function treesitter_autoinstall()
+    local ENSURE_INSTALLED = {
+        "bash", "c", "cpp", "ruby", "css", -- "help",
+        "html", "javascript", "json", "lua", "markdown",
+        "markdown_inline", "python", "regex", "svelte",
+        "tsx", "typescript", "vim", -- "dap_repl"
+    }
+
+    local installed = require("nvim-treesitter.config").get_installed()
+    local toinstall = vim.iter(ENSURE_INSTALLED):filter(function(parser)
+        return not vim.tbl_contains(installed, parser)
+    end):totable()
+
+    require("nvim-treesitter").install(toinstall)
+end
+
 return {
     {
         "nvim-treesitter/nvim-treesitter",
-        version = false,
+        branch = "main",
         build = ":TSUpdate",
         event = { "BufReadPost", "BufNewFile" },
 
@@ -77,37 +93,22 @@ return {
                     },
                 },
 
-                highlight = {
-                    enable = true,
-                    additional_vim_regex_highlighting = false
-                },
-
-                ensure_installed = {
-                    "bash",
-                    "c",
-                    "cpp",
-                    "ruby",
-                    "css",
-                    "help",
-                    "html",
-                    "javascript",
-                    "json",
-                    "lua",
-                    "markdown",
-                    "markdown_inline",
-                    "python",
-                    "regex",
-                    "svelte",
-                    "tsx",
-                    "typescript",
-                    "vim",
-                    "dap_repl"
-                },
             }
         end,
 
+        init = function()
+            vim.api.nvim_create_autocmd("FileType", {
+                callback = function()
+                    pcall(vim.treesitter.start)
+                    vim.bo.indentexpr = "v:lua.require'nvim-treesitter'.indentexpr()"
+                end
+            })
+
+            treesitter_autoinstall()
+        end,
+
         config = function(_, opts)
-            require("nvim-treesitter.configs").setup(opts)
+            require("nvim-treesitter").setup(opts)
 
             -- Switch to TreeSitter based folding
             vim.opt.foldmethod = "expr"
@@ -116,7 +117,8 @@ return {
     },
     {
         "nvim-treesitter/nvim-treesitter-textobjects",
-        event = "InsertEnter"
+        event = "InsertEnter",
+        branch = "main"
     },
     {
         "hiphish/rainbow-delimiters.nvim",
