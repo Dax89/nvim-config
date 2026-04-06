@@ -19,7 +19,7 @@ local function clangd_switch_source_header(client, bufnr)
     end, bufnr)
 end
 
-vim.lsp.set_log_level("ERROR")
+vim.lsp.log.set_level("ERROR")
 
 function M.on_attach(client, bufnr)
     local function setkey(key, cb, desc)
