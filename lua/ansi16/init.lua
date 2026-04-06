@@ -91,7 +91,7 @@ local colorscheme = lush(function(f)
         DiagnosticUnderlineInfo { sp = DiagnosticInfo.fg, underline = true },
         DiagnosticUnderlineOk { sp = DiagnosticOk.fg, underline = true },
         DiagnosticUnderlineWarn { sp = DiagnosticWarn.fg, underline = true },
-        DiagnosticUnderlineError { sp = DiagnosticWarn.fg, underline = true },
+        DiagnosticUnderlineError { sp = DiagnosticError.fg, underline = true },
 
         -- TreeSitter
         sym("@function.builtin") { Function, bold = true },
@@ -130,6 +130,7 @@ local colorscheme = lush(function(f)
         sym("cmakeKWcmake_language") { Constant },
         sym("cmakeKWwrite_basic_package_version_file") { Constant },
         sym("cmakeKWset_tests_properties") { Constant },
+        sym("cmakeKWset_source_files_properties") { Constant },
         sym("cmakeKWget_cmake_property") { Constant },
         sym("cmakeKWctest_configure") { Constant },
         sym("cmakeKWadd_custom_target") { Constant },
@@ -139,6 +140,7 @@ local colorscheme = lush(function(f)
         sym("cmakeKWadd_library") { Constant },
         sym("cmakeKWsource_group") { Constant },
         sym("cmakeKWconfigure_file") { Constant },
+        sym("cmakeKWconfigure_package_config_file") { Constant },
         sym("cmakeKWtry_compile") { Constant },
         sym("cmakeKWtry_run") { Constant },
         sym("cmakeKWset_property") { Constant },
@@ -148,6 +150,7 @@ local colorscheme = lush(function(f)
         sym("cmakeKWwrite_file") { Constant },
         sym("cmakeKWadd_test") { Constant },
         sym("cmakeKWproject") { Constant },
+        sym("cmakeKWexport") { Constant },
         sym("cmakeKWmessage") { Constant },
         sym("cmakeKWinstall") { Constant },
         sym("cmakeKWstring") { Constant },
