@@ -35,7 +35,6 @@ return {
 
     { "stevearc/dressing.nvim",       config = true },
     { "kyazdani42/nvim-web-devicons", config = true },
-    { "kylechui/nvim-surround",       config = true },
     { "numToStr/Comment.nvim",        config = true },
 
     {

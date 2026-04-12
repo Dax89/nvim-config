@@ -23,44 +23,24 @@ local function confirm(fallback)
 end
 
 return {
-    "L3MON4D3/LuaSnip",
-
-    {
-        "rafamadriz/friendly-snippets",
-
-        config = function()
-            require("luasnip/loaders/from_vscode").lazy_load({
-                paths = {
-                    vim.fn.stdpath("data") .. "/lazy/friendly_snippets",
-                    vim.fn.stdpath("config") .. "/snippet",
-                }
-            })
-        end
-    },
-
     {
         "hrsh7th/nvim-cmp",
         event = { "InsertEnter", "CmdlineEnter" },
+
         dependencies = {
-            "saadparwaiz1/cmp_luasnip",
             "hrsh7th/cmp-buffer",
             "hrsh7th/cmp-path",
             "hrsh7th/cmp-nvim-lsp",
             "hrsh7th/cmp-nvim-lua",
-            "HiPhish/nvim-cmp-vlime",
         },
+
         opts = function()
-            local cmp, luasnip = require("cmp"), require("luasnip")
+            local cmp = require("cmp")
 
             return {
                 preselect = cmp.PreselectMode.Item,
                 completion = {
                     completeopt = "menu,menuone,noinsert"
-                },
-                snippet = {
-                    expand = function(args)
-                        luasnip.lsp_expand(args.body)
-                    end
                 },
                 formatting = {
                     fields = { "icon", "abbr", "menu" },
@@ -93,8 +73,6 @@ return {
                             else
                                 cmp.select_next_item()
                             end
-                        elseif luasnip.expand_or_jumpable() then
-                            luasnip.expand_or_jump()
                         elseif has_words_before() then
                             cmp.complete()
                             if #cmp.get_entries() == 1 then
@@ -108,8 +86,6 @@ return {
                     ["<S-TAB>"]   = cmp.mapping(function(fallback)
                         if cmp.visible then
                             cmp.select_prev_item()
-                        elseif luasnip.jumpable(-1) then
-                            luasnip.expand_or_jump()
                         elseif has_words_before() then
                             cmp.complete()
                         else
@@ -122,8 +98,6 @@ return {
                     { name = "nvim_lsp" },
                     { name = "nvim_lua" },
                     { name = "path" },
-                    { name = "luasnip" },
-                    { name = "vlime" },
                 }),
 
                 sorting = {

@@ -1,5 +1,4 @@
 local common = require("config.common")
-
 -- HACK: Remap Foldings before custom mappings fixes UI refresh
 -- https://github.com/dante0624/nvim_config/blob/main/lua/core/myModules/folding.lua
 local function fold_keymap(mode, lhs, rhs, opts)
@@ -47,7 +46,7 @@ else
     vim.keymap.set("n", "<leader>+", "<CMD>enew<CR>", { desc = "New Buffer" })
 end
 
-vim.keymap.set("n", "<leader>q", "<CMD>silent! %bd|e#|bd#<CR>", { desc = "Close Other Buffers" })
+vim.keymap.set("n", "<leader>Q", "<CMD>silent! %bd|e#|bd#<CR>", { desc = "Close Other Buffers" })
 vim.keymap.set("n", "<leader>-", function() require("bufdelete").bufdelete(0, true) end, { desc = "Close Buffer" })
 
 vim.keymap.set("n", "<leader>s", function()
@@ -77,16 +76,6 @@ end)
 
 vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv", { desc = "Move Row Down" })
 vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv", { desc = "Move Up Down" })
-
-vim.keymap.set("n", "<leader>f", function()
-    vim.cmd.packadd("cfilter")
-    vim.fn.feedkeys(":Cfilter ")
-end, { desc = "CFilter - matching" })
-
-vim.keymap.set("n", "<leader>F", function()
-    vim.cmd.packadd("cfilter")
-    vim.fn.feedkeys(":Cfilter! ")
-end, { desc = "CFilter - NOT matching" })
 
 vim.keymap.set("n", "<leader>U", function()
     vim.cmd.packadd("nvim.undotree")

@@ -1,5 +1,4 @@
 return {
-    "cocopon/colorswatch.vim",
     {
         "vifm/vifm.vim",
         event = "VeryLazy",

@@ -1,3 +1,5 @@
+vim.lsp.log.set_level("ERROR")
+
 -- Custom LSP Callbacks
 local function setup_lsp_lua_ls()
     -- Make runtime files discoverable to the server
@@ -43,13 +45,6 @@ local function setup_lsp_clangd()
     }
 end
 
--- local function setup_lsp_qmlls()
---     return {
---         cmd = { "qmlls6" },
---         filetypes = { "qmljs", "qml" }
---     }
--- end
-
 local function setup_lsp_pylsp()
     return {
         settings = {
@@ -67,47 +62,85 @@ end
 local LSP_SERVERS = {
     lua_ls   = setup_lsp_lua_ls,
     clangd   = setup_lsp_clangd,
-    -- qmlls  = setup_lsp_qmlls,
     pylsp    = setup_lsp_pylsp,
     ts_ls    = {},
     svelte   = {},
-    -- cmake = { },
     bashls   = {},
     marksman = {},
 }
 
-local function setup_servers()
-    for name, ep in pairs(LSP_SERVERS) do
-        local config = {
-            capabilities = require("cmp_nvim_lsp").default_capabilities()
-        }
+local LSP_IGNORE_FORMATTING = { "css" }
 
-        if vim.is_callable(ep) then -- Customize config (if any)
-            config = vim.tbl_deep_extend("force", config, ep())
+-- HACK: LSPConfig defaults commmand to buffer 0 (the current one)
+-- https://github.com/neovim/nvim-lspconfig/blob/ac1dfbe3b60e5e23a2cff90e3bd6a3bc88031a57/lsp/clangd.lua#L81
+local function clangd_switch_source_header(client, bufnr)
+    local method_name = "textDocument/switchSourceHeader"
+    local params = vim.lsp.util.make_text_document_params(bufnr)
+    client.request(method_name, params, function(err, result)
+        if err then
+            error(tostring(err))
         end
+        if not result then
+            vim.notify("corresponding file cannot be determined")
+            return
+        end
+        vim.cmd.edit(vim.uri_to_fname(result))
+    end, bufnr)
+end
 
-        -- NOTE: Some servers may require an old setup until they are updated.
-        -- See https://github.com/neovim/nvim-lspconfig/issues/3705
-        -- require("lspconfig")[name].setup(config)
-        vim.lsp.config(name, config)
+local function lsp_attach(client, bufnr)
+    local function setkey(key, cb, desc)
+        local options = { buffer = bufnr, desc = desc }
+        vim.keymap.set("n", key, cb, options)
+    end
+
+    local filetype = vim.bo[bufnr].filetype
+
+    -- Setup shortcuts
+    setkey("<A-Enter>", function() vim.lsp.buf.code_action() end, "LSP - Code Action")
+    setkey("<F2>", function() vim.lsp.buf.rename() end, "LSP - Rename")
+    setkey("gt", function() vim.lsp.buf.type_definition() end, "LSP - GoTo Type Definition")
+    setkey("gi", function() vim.lsp.buf.implementation() end, "LSP - GoTo Implementation")
+    setkey("gd", function() vim.lsp.buf.definition() end, "LSP - GoTo Definition")
+    setkey("gD", function() vim.lsp.buf.declaration() end, "LSP - GoTo Declaration")
+    setkey("K", function() vim.lsp.buf.hover() end, "LSP - Hover")
+
+    if client.name == "clangd" then
+        setkey("<F4>", function() clangd_switch_source_header(client, bufnr) end, "LSP - Switch Source/Header")
+    end
+
+    -- Auto Formatting (optional)
+    if not vim.tbl_contains(LSP_IGNORE_FORMATTING, filetype) and
+        client:supports_method(vim.lsp.protocol.Methods.textDocument_formatting, bufnr) then
+        vim.api.nvim_create_autocmd({ "BufWritePre" }, {
+            callback = function() vim.lsp.buf.format() end,
+            buffer = bufnr,
+        })
     end
 end
+
+
+vim.api.nvim_create_autocmd("LspAttach", {
+    callback = function(e)
+        local client = vim.lsp.get_client_by_id(e.data.client_id)
+        if client then
+            lsp_attach(client, e.buf)
+        end
+    end
+})
 
 return {
     {
         "neovim/nvim-lspconfig",
 
         config = function()
-            setup_servers()
+            vim.lsp.enable(LSP_SERVERS)
 
-            vim.api.nvim_create_autocmd("LspAttach", {
-                group = vim.api.nvim_create_augroup("config-lsp-attach", { clear = true }),
-
-                callback = function(event)
-                    local client = vim.lsp.get_client_by_id(event.data.client_id)
-                    require("config.lsp").on_attach(client, event.buf)
+            for name, ep in pairs(LSP_SERVERS) do
+                if vim.is_callable(ep) then
+                    vim.lsp.config(name, ep())
                 end
-            })
+            end
         end
     },
 
@@ -121,12 +154,7 @@ return {
     {
         "ray-x/lsp_signature.nvim",
         event = "VeryLazy",
-        opts = {
-            hint_prefix = " ",
-        },
-        config = function(_, opts)
-            require "lsp_signature".setup(opts)
-        end
+        opts = { hint_prefix = " ", }
     },
 
     {

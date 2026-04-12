@@ -49,7 +49,7 @@ vim.api.nvim_create_autocmd("FileType", {
         local TYPES = {
             "help", "fugitive", "checkhealth", "vim", "qf",
             "vlime_server", "vlime_repl", "vlime_threads",
-            "nvim-undotree"
+            "nvim-undotree", "automaton-terminal"
         }
 
         if vim.tbl_contains(TYPES, vim.bo[args.buf].filetype) then
@@ -66,8 +66,8 @@ require("config.options")
 require("config.commands")
 require("config.diagnostic")
 require("config.mappings")
+require("config.quickfix")
 require("config.bookmarks")
-require("config.secondbrain")
 
 require("lazy").setup("plugins", {
     ui = {
