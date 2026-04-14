@@ -93,18 +93,16 @@ return {
         },
 
         config = function()
-            local Path = require("plenary.path")
             local dap = require("dap")
-
             dap.listeners.before.event_terminated["nvim_config"] = require("config.dap").on_exit
             dap.listeners.before.event_exited["nvim_config"] = require("config.dap").on_exit
 
-            local DAP_BASEPATH = Path:new(vim.fn.stdpath("data"), "mason", "bin")
+            local DAP_BASEPATH = vim.fs.joinpath(vim.fn.stdpath("data"), "mason", "bin")
 
             dap.adapters.cppdbg = {
                 id = "cppdbg",
                 type = "executable",
-                command = tostring(Path:new(DAP_BASEPATH, "OpenDebugAD7"))
+                command = vim.fs.joinpath(DAP_BASEPATH, "OpenDebugAD7")
             }
 
             vim.api.nvim_set_hl(0, "DapBreakpoint", { ctermbg = 0, fg = "#993939" })

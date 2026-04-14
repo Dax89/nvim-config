@@ -128,7 +128,6 @@ return {
         },
 
         opts = {
-            debug = true,
             ignore_ft = require("config.common").buftype_blacklist,
 
             integrations = {

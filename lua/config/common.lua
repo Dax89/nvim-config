@@ -86,38 +86,22 @@ function Common.exec_commands(commands)
     end
 end
 
-function Common.open_folder(path)
-    local Job = require("plenary.job")
-
-    local job = Job:new({
-        command = vim.fn.has("unix") and "xdg-open" or "start",
-        args = { path }
-    })
-
-    job:start()
-end
-
 function Common.os_open(arg)
-    arg = tostring(arg)
-
-    local uname = vim.loop.os_uname().sysname
+    local uname = vim.uv.os_uname().sysname
     local cmd = nil
 
     if uname == "Windows" then
-        cmd = { command = "cmd", args = { "/c", "start", arg } }
+        cmd = { "cmd", "/c", "start", arg }
     elseif uname == "Darwin" then
-        cmd = { command = "open", args = { arg } }
+        cmd = { "open", arg }
     elseif uname == "Linux" then
-        cmd = { command = "xdg-open", args = { arg } }
+        cmd = { "xdg-open", arg }
     else
         vim.notify("Unsupported Platform '" .. uname .. "'", "warn", { title = "OS Open" })
         return
     end
 
-    require("plenary.job"):new({
-        command = cmd.command,
-        args = cmd.args,
-    }):start()
+    vim.fn.jobstart(cmd)
 end
 
 function Common.is_layout_en()
@@ -128,15 +112,8 @@ function Common.get_filename(p)
     return vim.fn.fnamemodify(tostring(p), ":t")
 end
 
-function Common.get_pathname(p)
-    local Path = require("plenary.path")
-    local r = Path:new(p)
-
-    if not r:is_dir() then
-        return Common.get_filename(r:parent())
-    end
-
-    return Common.get_filename(r)
+function Common.get_parent(p)
+    return vim.fn.fnamemodify(p, ":h")
 end
 
 return Common

@@ -50,14 +50,15 @@ vim.keymap.set("n", "<leader>Q", "<CMD>silent! %bd|e#|bd#<CR>", { desc = "Close 
 vim.keymap.set("n", "<leader>-", function() require("bufdelete").bufdelete(0, true) end, { desc = "Close Buffer" })
 
 vim.keymap.set("n", "<leader>s", function()
-    local p = require("plenary.path"):new(vim.api.nvim_buf_get_name(0))
+    local Common = require("config.common")
+    local p = vim.api.nvim_buf_get_name(0)
 
-    if p:is_file() then
-        p = p:parent()
+    if vim.fn.filereadable(p) == 1 then
+        p = Common.get_parent(p)
     end
 
-    if p:is_dir() then
-        require("config.common").os_open(tostring(p))
+    if vim.fn.isdirectory(p) == 1 then
+        Common.os_open(p)
     end
 end, { desc = "System Open" })
 

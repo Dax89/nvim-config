@@ -1,10 +1,10 @@
 local TS_PARSERS = {
-    "bash", "c", "cpp", "ruby", "css", -- "help",
-    "html", "javascript", "json", "lua", "markdown",
-    "markdown_inline", "python", "regex", "svelte",
-    "tsx", "typescript", "vim", -- "dap_repl"
+    "bash", "c", "cpp", "css",
+    "html", "javascript", "json", "lua",
+    "markdown", "markdown_inline",
+    "python", "regex", "sql",
+    "tsx", "typescript", "vim",
 }
-
 
 return {
     {
