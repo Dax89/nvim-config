@@ -5,8 +5,8 @@ return {
         keys = {
             { "<leader>gg", ":vertical Git<CR>",                                        mode = "n", desc = "Git - Open" },
             { "<leader>gl", ":vertical :Git log<CR>",                                   mode = "n", desc = "Git - Log" },
-            { "<leader>gc", ":vertical Git commit --quiet<CR>",                         mode = "n", desc = "Git - Commit" },
-            { "<leader>ga", ":vertical Git commit --amend --quiet<CR>",                 mode = "n", desc = "Git - Commit" },
+            { "<leader>gC", ":vertical Git commit --quiet<CR>",                         mode = "n", desc = "Git - Commit" },
+            { "<leader>gA", ":vertical Git commit --amend --quiet<CR>",                 mode = "n", desc = "Git - Commit" },
             { "<leader>gd", ":vertical :Gdiffsplit<CR>",                                mode = "n", desc = "Git - Diff" },
             { "<leader>gf", ":Git fetch<CR>",                                           mode = "n", desc = "Git - Fetch" },
             { "<leader>gp", ":Git pull<CR>",                                            mode = "n", desc = "Git - Pull" },
