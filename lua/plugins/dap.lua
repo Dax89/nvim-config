@@ -1,3 +1,17 @@
+local function dap_on_exit()
+    local ok, virtualtext = pcall(require, "nvim-dap-virtual-text/virtual_text")
+
+    if ok then
+        virtualtext.clear_virtual_text()
+        virtualtext.clear_last_frames()
+    end
+
+    local dap = require("dap")
+    dap.repl.close()
+
+    vim.cmd("silent! bd! \\[dap-terminal]")
+end
+
 return {
     "nvim-telescope/telescope-dap.nvim",
 
@@ -87,15 +101,15 @@ return {
             },
             {
                 "<leader>dq",
-                function() require("dap").terminate(nil, nil, require("config.dap").on_exit) end,
+                function() require("dap").terminate(nil, nil, dap_on_exit) end,
                 desc = "DAP - Quit"
             },
         },
 
         config = function()
             local dap = require("dap")
-            dap.listeners.before.event_terminated["nvim_config"] = require("config.dap").on_exit
-            dap.listeners.before.event_exited["nvim_config"] = require("config.dap").on_exit
+            dap.listeners.before.event_terminated["nvim_config"] = dap_on_exit
+            dap.listeners.before.event_exited["nvim_config"] = dap_on_exit
 
             local DAP_BASEPATH = vim.fs.joinpath(vim.fn.stdpath("data"), "mason", "bin")
 
@@ -135,10 +149,6 @@ return {
     },
     {
         "theHamsta/nvim-dap-virtual-text",
-        config = true
-    },
-    {
-        "LiadOz/nvim-dap-repl-highlights",
         config = true
     }
 }
