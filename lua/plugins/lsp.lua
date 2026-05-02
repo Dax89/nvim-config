@@ -71,23 +71,6 @@ local LSP_SERVERS = {
 
 local LSP_IGNORE_FORMATTING = { "css" }
 
--- HACK: LSPConfig defaults commmand to buffer 0 (the current one)
--- https://github.com/neovim/nvim-lspconfig/blob/ac1dfbe3b60e5e23a2cff90e3bd6a3bc88031a57/lsp/clangd.lua#L81
-local function clangd_switch_source_header(client, bufnr)
-    local method_name = "textDocument/switchSourceHeader"
-    local params = vim.lsp.util.make_text_document_params(bufnr)
-    client.request(method_name, params, function(err, result)
-        if err then
-            error(tostring(err))
-        end
-        if not result then
-            vim.notify("corresponding file cannot be determined")
-            return
-        end
-        vim.cmd.edit(vim.uri_to_fname(result))
-    end, bufnr)
-end
-
 local function lsp_attach(client, bufnr)
     local function setkey(key, cb, desc)
         local options = { buffer = bufnr, desc = desc }
@@ -106,7 +89,7 @@ local function lsp_attach(client, bufnr)
     setkey("K", function() vim.lsp.buf.hover() end, "LSP - Hover")
 
     if client.name == "clangd" then
-        setkey("<F4>", function() clangd_switch_source_header(client, bufnr) end, "LSP - Switch Source/Header")
+        setkey("<F4>", "<CMD>LspClangdSwitchSourceHeader<CR>", "LSP - Switch Source/Header")
     end
 
     -- Auto Formatting (optional)
