@@ -69,7 +69,7 @@ local LSP_SERVERS = {
     marksman = {},
 }
 
-local LSP_IGNORE_FORMATTING = { "css" }
+local LSP_IGNORE_FORMATTING = { "css", "toml" }
 
 local function lsp_attach(client, bufnr)
     local function setkey(key, cb, desc)

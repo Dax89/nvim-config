@@ -110,6 +110,13 @@ local colorscheme = lush(function(f)
         -- TreeSitter `json`
         sym("@property.json") { PreProc },
 
+        -- TreeSitter `toml`
+        sym("tomlTable") { Type },
+        sym("tomlTableArray") { sym("tomlTable") },
+        sym("tomlDotInKey") { Operator },
+        sym("tomlKey") { sym("@property.json") },
+        sym("tomlDate") { fg = p.color6 },
+
         -- TreeSitter `css`
         sym("@property.css") { PreProc },
 
