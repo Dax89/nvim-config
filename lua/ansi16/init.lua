@@ -117,6 +117,10 @@ local colorscheme = lush(function(f)
         sym("tomlKey") { sym("@property.json") },
         sym("tomlDate") { fg = p.color6 },
 
+        -- TreeSitter `yaml`
+        sym("yamlBlockMappingKey") { sym("@property.json") },
+        sym("yamlBlockString") { String },
+
         -- TreeSitter `css`
         sym("@property.css") { PreProc },
 
