@@ -108,6 +108,11 @@ return {
                 desc = "Automaton - Open Config"
             },
             {
+                "<leader>ax",
+                "<CMD>Automaton toggle_terminal<CR>",
+                desc = "Automaton - Toggle Terminal"
+            },
+            {
                 "<leader>al",
                 "<CMD><C-U>Automaton launch<CR>",
                 mode = "v",

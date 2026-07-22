@@ -70,7 +70,7 @@ return {
                 }
             },
 
-            filetypes = { "*", "!TelescopePrompt" }
+            filetypes = { "*", "!TelescopePrompt", "!automaton-terminal" }
 
         },
         config = true
