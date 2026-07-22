@@ -40,8 +40,6 @@ end
 check_lazy()
 disable_builtins()
 
-vim.cmd.packadd("nvim.difftool")
-
 -- Use "q" to close special buffer types.
 -- "" catches a lot of transient plugin windows.
 vim.api.nvim_create_autocmd("FileType", {
@@ -78,3 +76,5 @@ require("lazy").setup("plugins", {
 
 require("lang.cpp")
 require("lang.json")
+
+vim.cmd.packadd("nvim.difftool")
