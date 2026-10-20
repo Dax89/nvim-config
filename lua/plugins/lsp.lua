@@ -45,28 +45,27 @@ local function setup_lsp_clangd()
     }
 end
 
-local function setup_lsp_pylsp()
+local function setup_lsp_basedpyright()
     return {
         settings = {
-            pylsp = {
-                plugins = {
-                    pycodestyle = {
-                        ignore = { "E501", "W504" },
-                    }
-                }
-            }
+            basedpyright = {
+                autoSearchPaths = true,
+                diagnosticMode = "workspace",
+                typeCheckingMode = "basic",
+                useLibraryCodeForTypes = true,
+            },
         }
     }
 end
 
 local LSP_SERVERS = {
-    lua_ls   = setup_lsp_lua_ls,
-    clangd   = setup_lsp_clangd,
-    pylsp    = setup_lsp_pylsp,
-    ts_ls    = {},
-    svelte   = {},
-    bashls   = {},
-    marksman = {},
+    lua_ls       = setup_lsp_lua_ls,
+    clangd       = setup_lsp_clangd,
+    basedpyright = setup_lsp_basedpyright,
+    ts_ls        = {},
+    svelte       = {},
+    bashls       = {},
+    marksman     = {},
 }
 
 local LSP_IGNORE_FORMATTING = { "css", "toml" }
